@@ -9,26 +9,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask">
 
-
-        <activity android:name=".MainActivity"
-            android:launchMode="singleTask"
-            android:clearTaskOnLaunch="true">
-            <!-- Above two lines ensure every HOME press gets you to main screen-->
+            <!-- Above two lines ensure every HOME press gets you to main screen -->
 
             <intent-filter>
-                <!--Map launcher to home button (two lines below)-->
+
+                <!-- Map launcher to home button (two lines below) -->
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
         </activity>
         <activity android:name=".RecyclerList" />
         <activity android:name=".AppDrawer" />
+        <!--<activity android:name="com.launcher.ava.helperApp.MainAppActivity"></activity>-->
+
+        <activity android:name="com.launcher.ava.helperApp.MainAppActivity" android:label="MainAppActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

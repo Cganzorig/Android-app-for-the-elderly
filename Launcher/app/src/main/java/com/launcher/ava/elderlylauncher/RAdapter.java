@@ -1,4 +1,4 @@
-package com.example.launcher_find_app;
+package com.launcher.ava.elderlylauncher;
 
 import android.content.Context;
 import android.content.Intent;

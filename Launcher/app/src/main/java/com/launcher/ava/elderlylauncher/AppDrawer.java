@@ -16,7 +16,7 @@ public class AppDrawer extends AppCompatActivity {
         getWindow().getDecorView().setBackgroundColor(Color.WHITE);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RView);
-        com.example.launcher_find_app.RAdapter radapter = new com.example.launcher_find_app.RAdapter(this);
+        com.launcher.ava.elderlylauncher.RAdapter radapter = new com.launcher.ava.elderlylauncher.RAdapter(this);
         recyclerView.setAdapter(radapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
