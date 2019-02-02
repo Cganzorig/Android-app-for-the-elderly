@@ -27,8 +27,8 @@
 
             </intent-filter>
         </activity>
+        <activity android:name=".RecyclerList" />
         <activity android:name=".AppDrawer" />
-        <activity android:name=".Main2Activity" />
     </application>
 
 </manifest>
