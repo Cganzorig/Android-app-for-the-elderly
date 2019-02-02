@@ -12,13 +12,12 @@
 
 
         <activity android:name=".MainActivity"
-            §
             android:launchMode="singleTask"
             android:clearTaskOnLaunch="true">
             <!-- Above two lines ensure every HOME press gets you to main screen-->
 
             <intent-filter>
-                // Map launcher to home button (two lines below)
+                <!--Map launcher to home button (two lines below)-->
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
 

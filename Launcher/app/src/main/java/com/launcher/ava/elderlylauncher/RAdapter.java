@@ -18,6 +18,7 @@ import com.launcher.ava.elderlylauncher.AppInfo;
 import com.launcher.ava.elderlylauncher.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
@@ -72,6 +73,8 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
             app.icon = ri.activityInfo.loadIcon(pm);
             appsList.add(app);
         }
+
+        Collections.sort(appsList);
 
     }
 

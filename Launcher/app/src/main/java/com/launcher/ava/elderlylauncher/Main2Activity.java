@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -17,28 +19,12 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
-        // Launch browser
-//        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.browser");
-//        startActivity(launchIntent);
-
+        // Change the background of the app drawer to white
+        getWindow().getDecorView().setBackgroundColor(Color.WHITE);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RView);
         com.example.launcher_find_app.RAdapter radapter = new com.example.launcher_find_app.RAdapter(this);
         recyclerView.setAdapter(radapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-
-
-    // method to grab ico
-    public static Drawable getActivityIcon(Context context, String packageName, String activityName) {
-
-        PackageManager pm = context.getPackageManager();
-        Intent intent = new Intent();
-        intent.setComponent(new ComponentName(packageName, activityName));
-        ResolveInfo resolveInfo = pm.resolveActivity(intent, 0);
-
-        return resolveInfo.loadIcon(pm);
     }
 }
