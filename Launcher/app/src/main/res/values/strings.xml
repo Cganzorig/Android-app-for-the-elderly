@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">Ava Launcher</string>
-    <string name="callButton">Make a phone call</string>
-    <string name="searchButton">Search the internet</string>
-    <string name='messageButton'>Send a message</string>
-
-</resources>
