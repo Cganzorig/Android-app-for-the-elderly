@@ -30,6 +30,12 @@ public class MainAppActivity extends AppCompatActivity {
         startActivityForResult(intent, PICK_CONTACT);
     }
 
+    public void launchMessages(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("sms:"));
+        startActivity(intent);
+    }
+
     @Override
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
