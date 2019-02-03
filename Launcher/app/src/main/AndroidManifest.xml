@@ -12,7 +12,10 @@
         <activity
             android:name=".MainActivity"
             android:clearTaskOnLaunch="true"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            >
+
 
             <!-- Above two lines ensure every HOME press gets you to main screen -->
 
@@ -27,11 +30,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyclerList" />
-        <activity android:name=".AppDrawer" />
+        <activity android:name=".RecyclerList"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".AppDrawer"
+            android:screenOrientation="portrait"
+            />
         <!--<activity android:name="com.launcher.ava.helperApp.MainAppActivity"></activity>-->
 
-        <activity android:name="com.launcher.ava.helperApp.MainAppActivity" android:label="MainAppActivity">
+        <activity android:name="com.launcher.ava.helperApp.MainAppActivity"
+            android:label="MainAppActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER"/>
