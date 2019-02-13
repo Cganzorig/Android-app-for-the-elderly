@@ -22,7 +22,7 @@
         android:id="@+id/text"
         android:layout_width="0dp"
         android:layout_height="113dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="12dp"
         android:paddingLeft="7dp"
         android:paddingTop="27dp"
         android:text="TextView"

@@ -17,11 +17,15 @@ import android.widget.Toast;
 
 import com.launcher.ava.elderlylauncher.AppInfo;
 import com.launcher.ava.elderlylauncher.R;
+import com.launcher.ava.frequentlyUsedAppsScreen.AppFrequencyList;
+import com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity;
 import com.launcher.ava.helperApp.MainAppActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     private List<AppInfo> appsList;
@@ -29,6 +33,7 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textView;
         public ImageView img;
+
 
 
         //This is the subclass ViewHolder which simply
@@ -59,16 +64,18 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
             context.startActivity(launchIntent);
             Toast.makeText(v.getContext(), appsList.get(pos).label.toString(), Toast.LENGTH_LONG).show();
+            // increment the frequency
+
+
+
         }
     }
-
 
 
     public RAdapter(Context c) {
 
         //This is where we build our list of app details, using the app
         //object we created to store the label, package name and icon
-
         PackageManager pm = c.getPackageManager();
         appsList = new ArrayList<AppInfo>();
 

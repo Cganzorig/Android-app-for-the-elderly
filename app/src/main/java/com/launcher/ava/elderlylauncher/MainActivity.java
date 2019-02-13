@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 
+import com.launcher.ava.frequentlyUsedAppsScreen.AppFrequencyList;
+import com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity;
 import com.launcher.ava.helperApp.MainAppActivity;
 
 
@@ -30,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainAppActivity.class);
         startActivity(intent);
     }
+
+    public void launchFrequentlyUsedAppList(View view) {
+        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(50); // 1000 miliseconds = 1 seconds
+        Intent intent = new Intent(this, FrequentlyUsedAppsActivity.class);
+        startActivity(intent);
+    }
+
 
     public void goToAnActivity(View view) {
         Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
