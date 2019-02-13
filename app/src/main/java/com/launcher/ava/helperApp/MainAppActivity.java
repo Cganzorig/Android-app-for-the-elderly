@@ -1,10 +1,12 @@
 package com.launcher.ava.helperApp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Vibrator;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +20,8 @@ public class MainAppActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(50); // 1000 miliseconds = 1 seconds
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_app);
         // Change the background of the app drawer to white
@@ -26,14 +30,25 @@ public class MainAppActivity extends AppCompatActivity {
 
 
     public void launchContacts(View view) {
+        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(50); // 1000 miliseconds = 1 seconds
         Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         startActivityForResult(intent, PICK_CONTACT);
     }
 
     public void launchMessages(View view) {
+        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(50); // 1000 miliseconds = 1 seconds
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("sms:"));
         startActivity(intent);
+    }
+
+    public void launchChrome(View view) {
+        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(50); // 1000 miliseconds = 1 seconds
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.chrome");
+        startActivity(launchIntent);
     }
 
     @Override

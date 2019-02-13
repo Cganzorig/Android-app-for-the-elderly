@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.launcher.ava.elderlylauncher.AppInfo;
 import com.launcher.ava.elderlylauncher.R;
+import com.launcher.ava.helperApp.MainAppActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,10 +47,18 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
             int pos = getAdapterPosition();
             Context context = v.getContext();
 
-            Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(appsList.get(pos).packageName.toString());
+            // get the package name of the app clicked on in the list
+            String package_name = appsList.get(pos).packageName.toString();
+            Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(package_name);
+
+            // if they click on Ava Helper, then we need to set the intent manually without using packageManager()
+            // because AvaHelper isn't actually a seperate app
+            if (package_name.equals("com.launcher.ava.helperApp")) {
+                launchIntent = new Intent(v.getContext(), MainAppActivity.class);
+            }
+
             context.startActivity(launchIntent);
             Toast.makeText(v.getContext(), appsList.get(pos).label.toString(), Toast.LENGTH_LONG).show();
-
         }
     }
 
@@ -73,6 +83,14 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
             app.icon = ri.activityInfo.loadIcon(pm);
             appsList.add(app);
         }
+
+        // add link to helper app
+        AppInfo app = new AppInfo();
+        app.label = "Ava Helper";
+        app.packageName = "com.launcher.ava.helperApp";
+        Drawable drawable = ContextCompat.getDrawable(c.getApplicationContext(),R.drawable.ic_info);
+        app.icon = drawable;
+        appsList.add(app);
 
         Collections.sort(appsList);
 
