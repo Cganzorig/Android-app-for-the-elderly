@@ -1,5 +1,6 @@
 package com.launcher.ava.frequentlyUsedAppsScreen;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -13,12 +14,11 @@ public class FrequentlyUsedAppsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AppFrequencyList list = new AppFrequencyList(this);
-
         setContentView(R.layout.activity_frequently_used_apps);
+        getWindow().getDecorView().setBackgroundColor(Color.WHITE);
 
         final TextView textViewToChange = (TextView) findViewById(R.id.textView);
-        textViewToChange.setText(list.topHit());
+        textViewToChange.setText(AppFrequencyList.getInstance().getHit(1));
     }
 
 

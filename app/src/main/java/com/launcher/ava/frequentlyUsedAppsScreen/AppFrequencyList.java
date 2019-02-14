@@ -1,22 +1,24 @@
 package com.launcher.ava.frequentlyUsedAppsScreen;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.support.v7.app.AppCompatActivity;
-
-import com.launcher.ava.frequentlyUsedAppsScreen.NameFrequencyPair;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AppFrequencyList extends Application {
-    private static  ArrayList<NameFrequencyPair> frequentlyUsedList = new ArrayList();
+public class AppFrequencyList {
 
-    public AppFrequencyList(Context c) {
+    private static final ArrayList<NameFrequencyPair> frequentlyUsedList = new ArrayList();
+    private static final AppFrequencyList instance = new AppFrequencyList();
+
+    private AppFrequencyList(){}
+
+    public static AppFrequencyList getInstance(){return instance;}
+
+    public static void populate(Context c) {
 
         PackageManager pm = c.getPackageManager();
         Intent i = new Intent(Intent.ACTION_MAIN, null);
@@ -36,10 +38,11 @@ public class AppFrequencyList extends Application {
         Collections.sort(frequentlyUsedList);
     }
 
-    public static void incrementFrequency(String package_name) {
+    public void incrementFrequency(String package_name) {
         for (NameFrequencyPair elem : frequentlyUsedList) {
             if (elem.getPackName().equals(package_name)) {
                 elem.incrementFreq();
+                Collections.sort(frequentlyUsedList, Collections.<NameFrequencyPair>reverseOrder());
                 return;
             }
         }
@@ -50,13 +53,13 @@ public class AppFrequencyList extends Application {
         frequentlyUsedList.add(newApp);
     }
 
-    public String topHit(){return frequentlyUsedList.get(0).getPackName();}
+    public String getHit(int num){return frequentlyUsedList.get(num).getPackName();}
 
     public void removeApp(String package_name) {
         for (NameFrequencyPair elem : frequentlyUsedList) {
             if (elem.getPackName().equals(package_name)) {
                 frequentlyUsedList.remove(elem);
-                Collections.sort(frequentlyUsedList);
+                Collections.sort(frequentlyUsedList, Collections.<NameFrequencyPair>reverseOrder());
                 return;
             }
         }

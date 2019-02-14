@@ -29,12 +29,11 @@ import java.util.Map;
 
 public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     private List<AppInfo> appsList;
+    private AppFrequencyList appFrequencyList;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textView;
         public ImageView img;
-
-
 
         //This is the subclass ViewHolder which simply
         //'holds the views' for us to show on each row
@@ -64,9 +63,9 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
             context.startActivity(launchIntent);
             Toast.makeText(v.getContext(), appsList.get(pos).label.toString(), Toast.LENGTH_LONG).show();
+
             // increment the frequency
-
-
+            AppFrequencyList.getInstance().incrementFrequency(package_name);
 
         }
     }
@@ -84,11 +83,14 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
         List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
         for(ResolveInfo ri:allApps) {
-            AppInfo app = new AppInfo();
-            app.label = ri.loadLabel(pm);
-            app.packageName = ri.activityInfo.packageName;
-            app.icon = ri.activityInfo.loadIcon(pm);
-            appsList.add(app);
+            if(!ri.activityInfo.packageName.equals("com.launcher.ava.elderlylauncher")){
+
+                AppInfo app = new AppInfo();
+                app.label = ri.loadLabel(pm);
+                app.packageName = ri.activityInfo.packageName;
+                app.icon = ri.activityInfo.loadIcon(pm);
+                appsList.add(app);
+            }
         }
 
         // add link to helper app

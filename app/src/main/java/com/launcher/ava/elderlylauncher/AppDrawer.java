@@ -20,6 +20,7 @@ public class AppDrawer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_app_drawer);
         // Change the background of the app drawer to white
         getWindow().getDecorView().setBackgroundColor(Color.WHITE);

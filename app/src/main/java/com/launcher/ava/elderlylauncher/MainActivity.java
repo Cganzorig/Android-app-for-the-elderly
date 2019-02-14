@@ -14,13 +14,11 @@ import com.launcher.ava.frequentlyUsedAppsScreen.AppFrequencyList;
 import com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity;
 import com.launcher.ava.helperApp.MainAppActivity;
 
-
-
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppFrequencyList.populate(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setFontSize();
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void goToAnActivity(View view) {
+    public void launchAppDrawer(View view) {
         Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(50); // 1000 miliseconds = 1 seconds
         Intent intent = new Intent(this, AppDrawer.class);
