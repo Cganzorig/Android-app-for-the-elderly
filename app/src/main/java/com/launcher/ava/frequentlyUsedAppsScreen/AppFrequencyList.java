@@ -5,13 +5,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 
+import com.launcher.ava.elderlylauncher.AppInfo;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class AppFrequencyList {
 
-    private static final ArrayList<NameFrequencyPair> frequentlyUsedList = new ArrayList();
+    private static final ArrayList<AppInfoFrequencyPair> frequentlyUsedList = new ArrayList();
     private static final AppFrequencyList instance = new AppFrequencyList();
 
     private AppFrequencyList(){}
@@ -26,12 +28,14 @@ public class AppFrequencyList {
 
         List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
         for(ResolveInfo ri:allApps) {
-            String packageName = ri.activityInfo.packageName;
-            NameFrequencyPair entry = new NameFrequencyPair(packageName);
+
+            AppInfo app = new AppInfo();
+            app.label = ri.loadLabel(pm);
+            app.packageName = ri.activityInfo.packageName;
+            app.icon = ri.activityInfo.loadIcon(pm);
+            AppInfoFrequencyPair entry = new AppInfoFrequencyPair(app);
             frequentlyUsedList.add(entry);
         }
-
-        frequentlyUsedList.add(new NameFrequencyPair("TOP APP"));
     }
 
     public void sortFrequencyMap() {
@@ -39,27 +43,27 @@ public class AppFrequencyList {
     }
 
     public void incrementFrequency(String package_name) {
-        for (NameFrequencyPair elem : frequentlyUsedList) {
-            if (elem.getPackName().equals(package_name)) {
+        for (AppInfoFrequencyPair elem : frequentlyUsedList) {
+            if (elem.getPackage().equals(package_name)) {
                 elem.incrementFreq();
-                Collections.sort(frequentlyUsedList, Collections.<NameFrequencyPair>reverseOrder());
+                Collections.sort(frequentlyUsedList, Collections.<AppInfoFrequencyPair>reverseOrder());
                 return;
             }
         }
     }
 
-    public void addNewApp(String package_name) {
-        NameFrequencyPair newApp = new NameFrequencyPair(package_name);
+    public void addNewApp(AppInfo app) {
+        AppInfoFrequencyPair newApp = new AppInfoFrequencyPair(app);
         frequentlyUsedList.add(newApp);
     }
 
-    public String getHit(int num){return frequentlyUsedList.get(num).getPackName();}
+    public AppInfo getHit(int num){return frequentlyUsedList.get(num).getAppInfo();}
 
     public void removeApp(String package_name) {
-        for (NameFrequencyPair elem : frequentlyUsedList) {
-            if (elem.getPackName().equals(package_name)) {
+        for (AppInfoFrequencyPair elem : frequentlyUsedList) {
+            if (elem.getLabel().equals(package_name)) {
                 frequentlyUsedList.remove(elem);
-                Collections.sort(frequentlyUsedList, Collections.<NameFrequencyPair>reverseOrder());
+                Collections.sort(frequentlyUsedList, Collections.<AppInfoFrequencyPair>reverseOrder());
                 return;
             }
         }
