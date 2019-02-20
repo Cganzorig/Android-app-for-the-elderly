@@ -3,4 +3,8 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="phoneGreen">#2AA838</color>
+    <color name="messageOrange">#D39906</color>
+    <color name="browserBlue">#1A60ED</color>
+    <color name="toolboxPurple">#6B0B61</color>
 </resources>
