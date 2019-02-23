@@ -34,10 +34,6 @@ public class AppDrawer extends AppCompatActivity {
         mContainerView.setBackground(new BitmapDrawable(getResources(), blurredBitmap));
 
 
-
-        // Change the background of the app drawer to white
-//        getWindow().getDecorView().setBackgroundColor(Color.WHITE);
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RView);
         com.launcher.ava.elderlylauncher.RAdapter radapter = new com.launcher.ava.elderlylauncher.RAdapter(this);
         recyclerView.setAdapter(radapter);

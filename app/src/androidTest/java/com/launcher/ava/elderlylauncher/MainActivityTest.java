@@ -8,12 +8,12 @@ import android.app.Instrumentation;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.filters.SmallTest;
+import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
-import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity;
 import com.launcher.ava.helperApp.MainAppActivity;
+import com.launcher.ava.utilities.AppFrequencyList;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -21,7 +21,7 @@ import org.mockito.Mockito;
 // Only required if you mix JUnit 3 and 4
 // @RunWith(AndroidJUnit4.class)
 
-@SmallTest
+@LargeTest
 public class MainActivityTest {
 
   public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
@@ -33,6 +33,7 @@ public class MainActivityTest {
   // helper app
   Instrumentation.ActivityMonitor monitorHelperApp = getInstrumentation()
       .addMonitor(MainAppActivity.class.getName(), null, false);
+
 
   // drawer
   Instrumentation.ActivityMonitor monitorAppDrawer = getInstrumentation()
