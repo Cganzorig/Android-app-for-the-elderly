@@ -15,17 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.launcher.ava.elderlylauncher.AppInfo;
-import com.launcher.ava.elderlylauncher.R;
-import com.launcher.ava.frequentlyUsedAppsScreen.AppFrequencyList;
-import com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity;
+import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.helperApp.MainAppActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     private List<AppInfo> appsList;

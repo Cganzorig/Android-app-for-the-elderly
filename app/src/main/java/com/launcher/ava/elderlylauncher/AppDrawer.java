@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.launcher.ava.frequentlyUsedAppsScreen.BlurBuilder;
+import com.launcher.ava.utilities.BlurBuilder;
 import com.launcher.ava.utilities.RemoveStatusBar;
 
 public class AppDrawer extends AppCompatActivity {

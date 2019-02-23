@@ -1,4 +1,4 @@
-package com.launcher.ava.frequentlyUsedAppsScreen;
+package com.launcher.ava.utilities;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,8 +11,6 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 
 public class BlurBuilder {
-//    private static final float BITMAP_SCALE = 0.4f;
-//    private static final float BLUR_RADIUS = 7.5f;
     private static final float BITMAP_SCALE = 0.4f;
     private static final float BLUR_RADIUS = 20.0f;
 
@@ -39,7 +37,6 @@ public class BlurBuilder {
         drawable.draw(canvas);
         return bitmap;
     }
-
 
 
     public static Bitmap blur(Context context, Bitmap image) {
