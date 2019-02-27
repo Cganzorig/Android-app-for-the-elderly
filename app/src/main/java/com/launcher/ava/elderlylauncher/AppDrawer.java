@@ -34,7 +34,7 @@ public class AppDrawer extends AppCompatActivity {
         mContainerView.setBackground(new BitmapDrawable(getResources(), blurredBitmap));
 
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RView);
+        RecyclerView recyclerView = findViewById(R.id.RView);
         com.launcher.ava.elderlylauncher.RAdapter radapter = new com.launcher.ava.elderlylauncher.RAdapter(this);
         recyclerView.setAdapter(radapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

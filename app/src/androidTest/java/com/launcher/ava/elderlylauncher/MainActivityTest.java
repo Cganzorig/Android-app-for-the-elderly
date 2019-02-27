@@ -16,7 +16,6 @@ import com.launcher.ava.helperApp.MainAppActivity;
 import com.launcher.ava.utilities.AppFrequencyList;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 // Only required if you mix JUnit 3 and 4
 // @RunWith(AndroidJUnit4.class)
@@ -26,9 +25,7 @@ public class MainActivityTest {
 
   public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
 
-  MainActivity mainActivity;
-
-  AppFrequencyList mockedAppFrequencyList = Mockito.mock(AppFrequencyList.class);
+  private MainActivity mainActivity;
 
   // helper app
   Instrumentation.ActivityMonitor monitorHelperApp = getInstrumentation()
@@ -61,7 +58,7 @@ public class MainActivityTest {
   @Test
   public void clickOnCreateShouldPopulateAppFrequencyList() {
 
-    mockedAppFrequencyList.populate(mainActivity);
+    AppFrequencyList.populate(mainActivity);
   }
 
   @Test

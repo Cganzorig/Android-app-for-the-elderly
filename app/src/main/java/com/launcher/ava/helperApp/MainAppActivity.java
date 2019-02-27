@@ -47,7 +47,8 @@ public class MainAppActivity extends AppCompatActivity {
     public void launchChrome(View view) {
         Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(50); // 1000 miliseconds = 1 seconds
-        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.chrome");
+        String packName = "com.android.chrome";
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage(packName);
         startActivity(launchIntent);
     }
 

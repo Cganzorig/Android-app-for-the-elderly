@@ -24,7 +24,6 @@ import java.util.List;
 
 public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     private List<AppInfo> appsList;
-    private AppFrequencyList appFrequencyList;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textView;
@@ -36,8 +35,8 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
             super(itemView);
 
             //Finds the views from our row.xml
-            textView = (TextView) itemView.findViewById(R.id.text);
-            img = (ImageView) itemView.findViewById(R.id.img);
+            textView = itemView.findViewById(R.id.text);
+            img = itemView.findViewById(R.id.img);
             itemView.setOnClickListener(this);
         }
 
