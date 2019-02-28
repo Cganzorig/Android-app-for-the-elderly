@@ -9,7 +9,7 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
-
+//TODO delete class
 public class BlurBuilder {
     private static final float BITMAP_SCALE = 0.4f;
     private static final float BLUR_RADIUS = 20.0f;

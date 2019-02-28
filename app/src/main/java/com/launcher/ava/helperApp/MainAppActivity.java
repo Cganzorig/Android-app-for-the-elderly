@@ -67,7 +67,7 @@ public class MainAppActivity extends AppCompatActivity {
                     Cursor c =  getContentResolver().query(contactData, null, null, null, null);
                     if (c.moveToFirst()) {
                         String name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                        // TODO Whatever you want to do with the selected contact name.
+                        // TODO Delete for tests.
                     }
                 }
                 break;
