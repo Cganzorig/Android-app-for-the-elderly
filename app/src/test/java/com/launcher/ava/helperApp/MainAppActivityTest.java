@@ -42,11 +42,14 @@ public class MainAppActivityTest {
     assertEquals(expectedIntent.getComponent(), actual.getComponent());
   }
 
-//  @Test
-//  public void launchChrome() throws Exception {
-//    activity.findViewById(R.id.searchButton).callOnClick();
-//    ShadowActivity shadowActivity = Shadows.shadowOf(activity);
-//  }
+  @Test
+  public void launchChrome()  {
+    activity.findViewById(R.id.searchButton).callOnClick();
+    Intent actual = shadowOf(RuntimeEnvironment.application).getNextStartedActivity();
+    Intent expectedIntent = new Intent(Intent.ACTION_VIEW);
+    expectedIntent.setData(Uri.parse("https://duckduckgo.com/"));
+    assertEquals(expectedIntent.getComponent(), actual.getComponent());
+  }
 
   @Test
   public void onActivityResult() {

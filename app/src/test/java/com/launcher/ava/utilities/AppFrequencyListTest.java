@@ -7,8 +7,8 @@ import org.mockito.Mockito;
 
 public class AppFrequencyListTest {
 
-  AppInfo mockedAppInfo = Mockito.mock(AppInfo.class);
-  AppFrequencyList appFrequencyList = AppFrequencyList.getInstance();
+  private AppInfo mockedAppInfo = Mockito.mock(AppInfo.class);
+  private AppFrequencyList appFrequencyList = AppFrequencyList.getInstance();
 
   @Test
   public void testGetInstance() {

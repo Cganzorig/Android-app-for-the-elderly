@@ -47,9 +47,13 @@ public class MainAppActivity extends AppCompatActivity {
     public void launchChrome(View view) {
         Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(50); // 1000 miliseconds = 1 seconds
-        String packName = "com.android.chrome";
-        Intent launchIntent = getPackageManager().getLaunchIntentForPackage(packName);
-        startActivity(launchIntent);
+        Uri webpage = Uri.parse("https://duckduckgo.com/");
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        // String packName = "com.android.chrome";
+        // Intent launchIntent = getPackageManager().getLaunchIntentForPackage(packName);
+        if(intent!= null){
+          startActivity(intent);
+        }
     }
 
     @Override
