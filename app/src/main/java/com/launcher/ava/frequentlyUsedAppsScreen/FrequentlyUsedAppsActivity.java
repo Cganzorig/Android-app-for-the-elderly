@@ -17,6 +17,7 @@ public class FrequentlyUsedAppsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        AppFrequencyList.populate(this);
 
         RemoveStatusBar.remove(this);
         setContentView(R.layout.activity_frequently_used_apps);
