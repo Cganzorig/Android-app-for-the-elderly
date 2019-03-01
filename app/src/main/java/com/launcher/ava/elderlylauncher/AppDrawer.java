@@ -15,18 +15,6 @@ public class AppDrawer extends AppCompatActivity {
         RemoveStatusBar.remove(this);
         setContentView(R.layout.activity_app_drawer);
 
-//        final WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-//        final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-//
-//
-//        ConstraintLayout mContainerView = findViewById(R.id.appDrawerContainer);
-//        Bitmap originalBitmap = BlurBuilder.drawableToBitmap(wallpaperDrawable);
-//
-//        Bitmap blurredBitmap = BlurBuilder.blur( this, originalBitmap );
-//
-//        mContainerView.setBackground(new BitmapDrawable(getResources(), blurredBitmap));
-
-
         RecyclerView recyclerView = findViewById(R.id.RView);
         com.launcher.ava.elderlylauncher.RAdapter radapter = new com.launcher.ava.elderlylauncher.RAdapter(this);
         recyclerView.setAdapter(radapter);

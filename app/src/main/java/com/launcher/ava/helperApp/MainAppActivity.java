@@ -55,22 +55,4 @@ public class MainAppActivity extends AppCompatActivity {
           startActivity(intent);
         }
     }
-
-    @Override
-    public void onActivityResult(int reqCode, int resultCode, Intent data) {
-        super.onActivityResult(reqCode, resultCode, data);
-
-        switch (reqCode) {
-            case (PICK_CONTACT) :
-                if (resultCode == Activity.RESULT_OK) {
-                    Uri contactData = data.getData();
-                    Cursor c =  getContentResolver().query(contactData, null, null, null, null);
-                    if (c.moveToFirst()) {
-                        String name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                        // TODO Delete for tests.
-                    }
-                }
-                break;
-        }
-    }
 }

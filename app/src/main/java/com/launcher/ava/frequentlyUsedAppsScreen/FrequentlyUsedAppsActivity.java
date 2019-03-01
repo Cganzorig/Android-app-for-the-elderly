@@ -21,18 +21,6 @@ public class FrequentlyUsedAppsActivity extends AppCompatActivity {
         RemoveStatusBar.remove(this);
         setContentView(R.layout.activity_frequently_used_apps);
 
-
-//        final WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-//        final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-//
-//
-//        ConstraintLayout mContainerView = (ConstraintLayout) findViewById(R.id.container);
-//        Bitmap originalBitmap = BlurBuilder.drawableToBitmap(wallpaperDrawable);
-//
-//        Bitmap blurredBitmap = BlurBuilder.blur( this, originalBitmap );
-
-//        mContainerView.setBackground(new BitmapDrawable(getResources(), blurredBitmap));
-
         final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
         textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
         final Button app1 = (Button) findViewById(R.id.app1);
@@ -88,9 +76,4 @@ public class FrequentlyUsedAppsActivity extends AppCompatActivity {
                 getPackageManager().getLaunchIntentForPackage(packageName);
         startActivity(launchIntent);
     }
-
-    public void onResetClick() {
-
-    }
-
 }
