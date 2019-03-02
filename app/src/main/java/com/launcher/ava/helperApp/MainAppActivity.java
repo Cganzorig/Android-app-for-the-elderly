@@ -1,17 +1,14 @@
 package com.launcher.ava.helperApp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-
 import com.launcher.ava.elderlylauncher.R;
 
 public class MainAppActivity extends AppCompatActivity {

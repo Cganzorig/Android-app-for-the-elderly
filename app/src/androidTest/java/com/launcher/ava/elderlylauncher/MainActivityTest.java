@@ -24,13 +24,11 @@ import org.junit.Test;
 public class MainActivityTest {
 
   public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
-
   private MainActivity mainActivity;
 
   // helper app
   Instrumentation.ActivityMonitor monitorHelperApp = getInstrumentation()
       .addMonitor(MainAppActivity.class.getName(), null, false);
-
 
   // drawer
   Instrumentation.ActivityMonitor monitorAppDrawer = getInstrumentation()
@@ -43,7 +41,6 @@ public class MainActivityTest {
   @Before
   public void createMainActivity() {
     activityRule.launchActivity(null);
-
     mainActivity = activityRule.getActivity();
   }
 
@@ -57,13 +54,11 @@ public class MainActivityTest {
 
   @Test
   public void clickOnCreateShouldPopulateAppFrequencyList() {
-
     AppFrequencyList.populate(mainActivity);
   }
 
   @Test
   public void clickLaunchHelperAppOpensActivityMainApp() {
-
     // checks click is working
     assertNotNull(mainActivity.findViewById(R.id.helperApp));
 
@@ -79,7 +74,6 @@ public class MainActivityTest {
 
   @Test
   public void launchFrequentlyUsedAppList() {
-
     // checks click is working
     assertNotNull(mainActivity.findViewById(R.id.frequentlyUsedButton));
 
@@ -94,8 +88,6 @@ public class MainActivityTest {
 
   @Test
   public void launchAppDrawer() {
-
-
     // checks click is working
     assertNotNull(mainActivity.findViewById(R.id.app_drawer_button));
 
@@ -106,11 +98,6 @@ public class MainActivityTest {
 
     assertNotNull(activity);
     activity.finish();
-  }
-
-  @Test
-  public void setFontSize() {
-
   }
 
 }
