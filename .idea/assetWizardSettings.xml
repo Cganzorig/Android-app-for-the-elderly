@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_power_button" />
-                            <entry key="sourceFile" value="$USER_HOME$/Downloads/power-button.svg" />
+                            <entry key="outputName" value="ic_app" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../../Image/app.svg" />
                           </map>
                         </option>
                       </PersistentState>

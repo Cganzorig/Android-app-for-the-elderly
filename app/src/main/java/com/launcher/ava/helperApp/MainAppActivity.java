@@ -68,4 +68,12 @@ public class MainAppActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
+    public void launchAppScreen(View view) {
+        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(50); // 1000 miliseconds = 1 seconds
+        Intent intent = new Intent(this, AppScreen.class);
+        startActivity(intent);
+    }
 }

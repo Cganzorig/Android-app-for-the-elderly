@@ -2,6 +2,9 @@
     <string name="app_name">Ava Launcher</string>
     <string name="callButton">Make a phone call</string>
     <string name="searchButton">Search the internet</string>
-    <string name='messageButton'>Send a message</string>
-
+    <string name="messageButton">Send a message</string>
+    <string name="search_hint">Search an app</string>
+    <string name="title_activity_searchable">SearchableActivity</string>
+    <string name="app_label"> Search Feature</string>
+    <string name="search_view">Enter search</string>
 </resources>

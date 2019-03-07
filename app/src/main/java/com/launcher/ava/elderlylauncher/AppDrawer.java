@@ -28,7 +28,6 @@ public class AppDrawer extends AppCompatActivity {
 
         ConstraintLayout mContainerView = findViewById(R.id.appDrawerContainer);
         Bitmap originalBitmap = BlurBuilder.drawableToBitmap(wallpaperDrawable);
-
         Bitmap blurredBitmap = BlurBuilder.blur( this, originalBitmap );
 
         mContainerView.setBackground(new BitmapDrawable(getResources(), blurredBitmap));

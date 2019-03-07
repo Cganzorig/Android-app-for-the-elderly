@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,7 +85,6 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
         List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
         for(ResolveInfo ri:allApps) {
             if(!ri.activityInfo.packageName.equals("com.launcher.ava.elderlylauncher")){
-
                 AppInfo app = new AppInfo();
                 app.label = ri.loadLabel(pm);
                 app.packageName = ri.activityInfo.packageName;
@@ -103,6 +103,17 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
         Collections.sort(appsList);
 
+    }
+
+    public void reuturnQueryResults(String str) {
+        List<AppInfo> results = new ArrayList<>();
+        for (AppInfo ri : appsList) {
+            if (ri.packageName.toString().contains(str)) {
+                results.add(ri);
+            }
+        }
+
+        appsList = results;
     }
 
     @Override
