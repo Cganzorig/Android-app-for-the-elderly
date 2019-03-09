@@ -4,11 +4,8 @@ import android.app.SearchManager;
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Vibrator;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,15 +17,10 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.launcher.ava.elderlylauncher.AppDrawer;
-import com.launcher.ava.elderlylauncher.AppInfo;
 import com.launcher.ava.elderlylauncher.R;
 import com.launcher.ava.elderlylauncher.RAdapter;
-import com.launcher.ava.frequentlyUsedAppsScreen.AppFrequencyList;
-import com.launcher.ava.frequentlyUsedAppsScreen.BlurBuilder;
+import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.utilities.RemoveStatusBar;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AppScreen extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
@@ -42,20 +34,6 @@ public class AppScreen extends AppCompatActivity implements SearchView.OnQueryTe
 
         RemoveStatusBar.remove(this);
         setContentView(R.layout.activity_app_screen);
-
-        final WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-        final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-
-
-        ConstraintLayout mContainerView = (ConstraintLayout) findViewById(R.id.container);
-        Bitmap originalBitmap = BlurBuilder.drawableToBitmap(wallpaperDrawable);
-
-        Bitmap blurredBitmap = BlurBuilder.blur(this, originalBitmap);
-
-        mContainerView.setBackground(new BitmapDrawable(getResources(), blurredBitmap));
-
-//        setContentView(R.layout.activity_frequently_used_apps);
-//        getWindow().getDecorView().setBackgroundColor(Color.WHITE);
 
         final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
         textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
