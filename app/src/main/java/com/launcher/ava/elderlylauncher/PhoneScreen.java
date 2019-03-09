@@ -2,8 +2,11 @@ package com.launcher.ava.elderlylauncher;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -11,8 +14,11 @@ import android.net.Uri;
 import android.os.Vibrator;
 import android.provider.Contacts;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresPermission;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,9 +27,26 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.launcher.ava.helperApp.AppScreen;
+
+import java.util.ArrayList;
+
 public class PhoneScreen extends AppCompatActivity {
 
   static final int PICK_CONTACT_REQUEST = 1;  // The request code
+  private int CALL_PHONE_PERMISSION_CODE = 1;
+  private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
+  private String number;
+
+  private Runnable show_toast = new Runnable()
+  {
+    public void run()
+    {
+      Toast.makeText(PhoneScreen.this, "My Toast message", Toast.LENGTH_SHORT)
+              .show();
+    }
+  };
+
 
   @RequiresPermission(Manifest.permission.CALL_PHONE)
   public static final String ACTION_CALL = "android.intent.action.CALL";
@@ -45,7 +68,6 @@ public class PhoneScreen extends AppCompatActivity {
     startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
 
   }
-
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -69,19 +91,122 @@ public class PhoneScreen extends AppCompatActivity {
         cursor.moveToNext();
 //         Retrieve the phone number from the NUMBER column
         int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-        String number = cursor.getString(column);
+        this.number = cursor.getString(column);
 
         TextView tv1 = (TextView)findViewById(R.id.phoneNumber);
         tv1.setText(number);
 
-        Uri call = Uri.parse("tel:" + number);
-        Intent surf = new Intent(Intent.ACTION_DIAL, call);
-        startActivity(surf);
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(PhoneScreen.this,
+                Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+          ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CALL_PHONE}, CALL_PHONE_PERMISSION_CODE);
+
+//          // Permission is not granted
+//          // Should we show an explanation?
+//          if (ActivityCompat.shouldShowRequestPermissionRationale(PhoneScreen.this,
+//                  Manifest.permission.CALL_PHONE)) {
+//            // Show an explanation to the user *asynchronously* -- don't block
+//            // this thread waiting for the user's response! After the user
+//            // sees the explanation, try again to request the permission.
+//          } else {
+//            // No explanation needed; request the permission
+//            ActivityCompat.requestPermissions(PhoneScreen.this,
+//                    new String[]{Manifest.permission.CALL_PHONE},
+//                    MY_PERMISSIONS_REQUEST_CALL_PHONE);
+
+            // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+            // app-defined int constant. The callback method gets the
+            // result of the request.
+        } else {
+          // Permission has already been granted
+          Intent call = new Intent(Intent.ACTION_CALL);
+          call.setData(Uri.parse("tel:" + this.number));
+          startActivity(call);
+        }
+
+
+        //This class provides applications access to the content model.
+//        ContentResolver cr = getContentResolver();
+
+//RowContacts for filter Account Types
+//        Cursor contactCursor = cr.query(
+//                ContactsContract.RawContacts.CONTENT_URI,
+//                new String[]{ContactsContract.RawContacts.CONTACT_ID},
+//                ContactsContract.RawContacts.ACCOUNT_TYPE + "= ?",
+//                new String[]{"com.whatsapp"},
+//                null);
+//
+//        contactCursor.close();
+////ArrayList for Store Whatsapp Contact
+//        ArrayList<String> myWhatsappContacts = new ArrayList<>();
+//
+//        if (contactCursor != null) {
+//          if (contactCursor.getCount() > 0) {
+//            if (contactCursor.moveToFirst()) {
+//              do {
+//                //whatsappContactId for get Number,Name,Id ect... from  ContactsContract.CommonDataKinds.Phone
+//                String whatsappContactId = contactCursor.getString(contactCursor.getColumnIndex(ContactsContract.RawContacts.CONTACT_ID));
+//
+//                if (whatsappContactId != null) {
+//                  //Get Data from ContactsContract.CommonDataKinds.Phone of Specific CONTACT_ID
+//                  Cursor whatsAppContactCursor = cr.query(
+//                          ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+//                          new String[]{ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
+//                                  ContactsContract.CommonDataKinds.Phone.NUMBER,
+//                                  ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME},
+//                          ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
+//                          new String[]{whatsappContactId}, null);
+//
+//                  if (whatsAppContactCursor != null) {
+//                    whatsAppContactCursor.moveToFirst();
+//                    String id = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
+//                    String name = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+//                    String num = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+//
+//                    whatsAppContactCursor.close();
+//
+//                    //Add Number to ArrayList
+//                    myWhatsappContacts.add(num);
+//
+//                  }
+//                }
+//              } while (contactCursor.moveToNext());
+//              contactCursor.close();
+//            }
+//          }
+//        }
+//
+//
+//        if (myWhatsappContacts.contains(number)) {
+//          TextView tv1 = (TextView)findViewById(R.id.phoneNumber);
+//          tv1.setText("HAS WHATSAPP");
+//        }
+
       }
     }
   }
 
+  @Override
+  public void onRequestPermissionsResult(int requestCode,
+                                         String permissions[], int[] grantResults) {
+    switch (requestCode) {
+      case MY_PERMISSIONS_REQUEST_CALL_PHONE: {
+        // permission was granted
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+          Intent call = new Intent(Intent.ACTION_CALL);
+          call.setData(Uri.parse("tel:" + this.number));
+          startActivity(call);
 
-
+        } else {
+          // permission denied
+          // Could display information here why you need permission
+        }
+        return;
+      }
+    }
+  }
 
 }
