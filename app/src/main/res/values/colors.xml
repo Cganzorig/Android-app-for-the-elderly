@@ -2,10 +2,12 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#00574B</color>
+    <color name="toolsPink">#D81B60</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBlack">#000000</color>
-    <color name="phoneGreen">#2AA838</color>
-    <color name="messageOrange">#D39906</color>
+    <color name="phoneGreen">#279C35</color>
+    <color name="launchAppOrange">#942ED3</color>
     <color name="browserBlue">#1A60ED</color>
-    <color name="toolboxPurple">#6B0B61</color>
+    <color name="messageYellow">#D39906</color>
+    <color name="questionGray">#A29794</color>
 </resources>

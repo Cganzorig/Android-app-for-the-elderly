@@ -7,4 +7,12 @@
     <string name="title_activity_searchable">SearchableActivity</string>
     <string name="app_label"> Search Feature</string>
     <string name="search_view">Enter search</string>
+
+    <string name="main_question">WHAT DO YOU WANT TO DO?</string>
+    <string name="main_call">MAKE A PHONE CALL</string>
+    <string name="main_message">SEND A MESSAGE</string>
+    <string name="main_internet">SEARCH THE INTERNET</string>
+    <string name="main_tool">USE COMMON TOOLS</string>
+    <string name="main_apps">LAUNCH AN APP</string>
+
 </resources>

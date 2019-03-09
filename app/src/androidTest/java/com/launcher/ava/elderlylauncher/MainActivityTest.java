@@ -44,60 +44,60 @@ public class MainActivityTest {
     mainActivity = activityRule.getActivity();
   }
 
-  @Test
-  public void clickOnCreateShouldOpenMainActivityLayout() {
-
-    View view = mainActivity.findViewById(R.id.frameLayout);
-    assertNotNull(view);
-
-  }
-
-  @Test
-  public void clickOnCreateShouldPopulateAppFrequencyList() {
-    AppFrequencyList.populate(mainActivity);
-  }
-
-  @Test
-  public void clickLaunchHelperAppOpensActivityMainApp() {
-    // checks click is working
-    assertNotNull(mainActivity.findViewById(R.id.helperApp));
-
-    Espresso.onView(ViewMatchers.withId(R.id.helperApp)).perform(ViewActions.click());
-
-    Activity activity = getInstrumentation()
-        .waitForMonitorWithTimeout(monitorHelperApp, 5000);
-
-    assertNotNull(activity);
-    activity.finish();
-
-  }
-
-  @Test
-  public void launchFrequentlyUsedAppList() {
-    // checks click is working
-    assertNotNull(mainActivity.findViewById(R.id.frequentlyUsedButton));
-
-    Espresso.onView(ViewMatchers.withId(R.id.frequentlyUsedButton)).perform(ViewActions.click());
-
-    Activity activity = getInstrumentation()
-        .waitForMonitorWithTimeout(monitorFrequentApps, 5000);
-
-    assertNotNull(activity);
-    activity.finish();
-  }
-
-  @Test
-  public void launchAppDrawer() {
-    // checks click is working
-    assertNotNull(mainActivity.findViewById(R.id.app_drawer_button));
-
-    Espresso.onView(ViewMatchers.withId(R.id.app_drawer_button)).perform(ViewActions.click());
-
-    Activity activity = getInstrumentation()
-        .waitForMonitorWithTimeout(monitorAppDrawer, 5000);
-
-    assertNotNull(activity);
-    activity.finish();
-  }
+//  @Test
+//  public void clickOnCreateShouldOpenMainActivityLayout() {
+//
+//    View view = mainActivity.findViewById(R.id.frameLayout);
+//    assertNotNull(view);
+//
+//  }
+//
+//  @Test
+//  public void clickOnCreateShouldPopulateAppFrequencyList() {
+//    AppFrequencyList.populate(mainActivity);
+//  }
+//
+//  @Test
+//  public void clickLaunchHelperAppOpensActivityMainApp() {
+//    // checks click is working
+//    assertNotNull(mainActivity.findViewById(R.id.helperApp));
+//
+//    Espresso.onView(ViewMatchers.withId(R.id.helperApp)).perform(ViewActions.click());
+//
+//    Activity activity = getInstrumentation()
+//        .waitForMonitorWithTimeout(monitorHelperApp, 5000);
+//
+//    assertNotNull(activity);
+//    activity.finish();
+//
+//  }
+//
+//  @Test
+//  public void launchFrequentlyUsedAppList() {
+//    // checks click is working
+//    assertNotNull(mainActivity.findViewById(R.id.frequentlyUsedButton));
+//
+//    Espresso.onView(ViewMatchers.withId(R.id.frequentlyUsedButton)).perform(ViewActions.click());
+//
+//    Activity activity = getInstrumentation()
+//        .waitForMonitorWithTimeout(monitorFrequentApps, 5000);
+//
+//    assertNotNull(activity);
+//    activity.finish();
+//  }
+//
+//  @Test
+//  public void launchAppDrawer() {
+//    // checks click is working
+//    assertNotNull(mainActivity.findViewById(R.id.app_drawer_button));
+//
+//    Espresso.onView(ViewMatchers.withId(R.id.app_drawer_button)).perform(ViewActions.click());
+//
+//    Activity activity = getInstrumentation()
+//        .waitForMonitorWithTimeout(monitorAppDrawer, 5000);
+//
+//    assertNotNull(activity);
+//    activity.finish();
+//  }
 
 }
