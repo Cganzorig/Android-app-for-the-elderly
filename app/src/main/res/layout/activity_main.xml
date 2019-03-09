@@ -93,11 +93,12 @@
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:background="@color/phoneGreen"
+      android:onClick="launchPhoneScreen"
       app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@+id/guide2"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide1"
-      app:layout_constraintBottom_toTopOf="@+id/guide2">
+      app:layout_constraintTop_toTopOf="@+id/guide1">
 
         <ImageView
           android:id="@+id/imagePhone"
@@ -232,10 +233,10 @@
       android:layout_height="0dp"
       android:background="@color/toolsPink"
       app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@+id/guide5"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide4"
-      app:layout_constraintBottom_toTopOf="@+id/guide5">
+      app:layout_constraintTop_toTopOf="@+id/guide4">
 
         <ImageView
           android:id="@+id/imageTools"
@@ -277,6 +278,7 @@
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:background="@color/launchAppOrange"
+      android:onClick="launchAppScreen"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
