@@ -1,18 +1,13 @@
 package com.launcher.ava.frequentlyUsedAppsScreen;
 
-import android.app.WallpaperManager;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.launcher.ava.elderlylauncher.R;
+import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.utilities.RemoveStatusBar;
 
 public class FrequentlyUsedAppsActivity extends AppCompatActivity {
@@ -22,24 +17,10 @@ public class FrequentlyUsedAppsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        AppFrequencyList.populate(this);
 
         RemoveStatusBar.remove(this);
         setContentView(R.layout.activity_frequently_used_apps);
-
-
-        final WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-        final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-
-
-        ConstraintLayout mContainerView = (ConstraintLayout) findViewById(R.id.container);
-        Bitmap originalBitmap = BlurBuilder.drawableToBitmap(wallpaperDrawable);
-
-        Bitmap blurredBitmap = BlurBuilder.blur( this, originalBitmap );
-
-        mContainerView.setBackground(new BitmapDrawable(getResources(), blurredBitmap));
-
-//        setContentView(R.layout.activity_frequently_used_apps);
-//        getWindow().getDecorView().setBackgroundColor(Color.WHITE);
 
         final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
         textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
@@ -89,21 +70,6 @@ public class FrequentlyUsedAppsActivity extends AppCompatActivity {
 
     }
 
-//    public void onApp1Click(View v){
-//        String packageName = AppFrequencyList.getInstance().getHit(0).packageName.toString();
-//        AppFrequencyList.getInstance().incrementFrequency(packageName);
-//        Intent launchIntent =
-//                getPackageManager().getLaunchIntentForPackage(packageName);
-//        startActivity(launchIntent);
-//    }
-//
-//    public void powerOffPhone() {
-//        Intent i = new Intent("com.android.internal.intent.action.REQUEST_SHUTDOWN");
-//        i.putExtra("android.intent.extra.KEY_CONFIRM", false);
-//        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(i);
-//    }
-
     private void startFreqApp(int i){
         String packageName = AppFrequencyList.getInstance().getHit(i).packageName.toString();
         AppFrequencyList.getInstance().incrementFrequency(packageName);
@@ -111,35 +77,4 @@ public class FrequentlyUsedAppsActivity extends AppCompatActivity {
                 getPackageManager().getLaunchIntentForPackage(packageName);
         startActivity(launchIntent);
     }
-
-
-//
-//    public void onApp2Click(View v){
-//        String packageName = AppFrequencyList.getInstance().getHit(1).packageName.toString();
-//        AppFrequencyList.getInstance().incrementFrequency(packageName);
-//        Intent launchIntent =
-//                getPackageManager().getLaunchIntentForPackage(packageName);
-//        startActivity(launchIntent);
-//    }
-//
-//    public void onApp3Click(View v){
-//        String packageName = AppFrequencyList.getInstance().getHit(2).packageName.toString();
-//        AppFrequencyList.getInstance().incrementFrequency(packageName);
-//        Intent launchIntent =
-//                getPackageManager().getLaunchIntentForPackage(packageName);
-//        startActivity(launchIntent);
-//    }
-//
-//    public void onApp4Click(View v){
-//        String packageName = AppFrequencyList.getInstance().getHit(3).packageName.toString();
-//        AppFrequencyList.getInstance().incrementFrequency(packageName);
-//        Intent launchIntent =
-//                getPackageManager().getLaunchIntentForPackage(packageName);
-//        startActivity(launchIntent);
-//    }
-
-    public void onResetClick() {
-
-    }
-
 }

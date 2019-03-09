@@ -1,4 +1,4 @@
-package com.launcher.ava.frequentlyUsedAppsScreen;
+package com.launcher.ava.utilities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +13,8 @@ import java.util.List;
 
 public class AppFrequencyList {
 
-    private static final ArrayList<AppInfoFrequencyPair> frequentlyUsedList = new ArrayList();
-    private static final AppFrequencyList instance = new AppFrequencyList();
+    private static ArrayList<AppInfoFrequencyPair> frequentlyUsedList = new ArrayList();
+    private static AppFrequencyList instance = new AppFrequencyList();
 
     private AppFrequencyList(){}
 
@@ -36,10 +36,6 @@ public class AppFrequencyList {
             AppInfoFrequencyPair entry = new AppInfoFrequencyPair(app);
             frequentlyUsedList.add(entry);
         }
-    }
-
-    public void sortFrequencyMap() {
-        Collections.sort(frequentlyUsedList);
     }
 
     public void incrementFrequency(String package_name) {
@@ -68,4 +64,19 @@ public class AppFrequencyList {
             }
         }
     }
+
+    // to make unit testing easier(so we don't have to mock insides of AppInfo)
+    public void removeApp(int pos) {
+        int i = 0;
+        for (AppInfoFrequencyPair elem : frequentlyUsedList) {
+            if (i == pos) {
+                frequentlyUsedList.remove(elem);
+                Collections.sort(frequentlyUsedList, Collections.<AppInfoFrequencyPair>reverseOrder());
+                return;
+            }
+            i+=1;
+        }
+    }
+
+    public int getSize() {return frequentlyUsedList.size();}
 }

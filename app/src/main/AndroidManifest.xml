@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.launcher.ava.elderlylauncher">
 
-    <uses-permission android:name="android.permission.VIBRATE" />
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_rocket"
@@ -56,6 +54,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name="com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity" />
 
         <!-- this is the searchable activity; it performs searches -->
@@ -70,6 +69,13 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+=======
+        <activity android:name="com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity"/>
+>>>>>>> testing
     </application>
+
+  <uses-permission android:name="android.permission.VIBRATE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

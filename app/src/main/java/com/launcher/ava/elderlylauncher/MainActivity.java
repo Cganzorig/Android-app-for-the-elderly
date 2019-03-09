@@ -1,16 +1,13 @@
 package com.launcher.ava.elderlylauncher;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.HapticFeedbackConstants;
 import android.view.View;
-
-import com.launcher.ava.frequentlyUsedAppsScreen.AppFrequencyList;
+import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity;
 import com.launcher.ava.helperApp.MainAppActivity;
 

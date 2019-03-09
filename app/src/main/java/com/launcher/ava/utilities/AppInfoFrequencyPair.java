@@ -1,4 +1,4 @@
-package com.launcher.ava.frequentlyUsedAppsScreen;
+package com.launcher.ava.utilities;
 
 import android.graphics.drawable.Drawable;
 
@@ -14,7 +14,7 @@ public class AppInfoFrequencyPair implements Comparable<AppInfoFrequencyPair>{
         this.freq = 0;
     }
 
-    public Integer getFreq(){return freq;}
+    public Integer getFreq(){return this.freq;}
     public String getLabel(){return app_info.label.toString();}
     public Drawable getIcon(){return app_info.icon;}
     public CharSequence getPackage(){return app_info.packageName;}

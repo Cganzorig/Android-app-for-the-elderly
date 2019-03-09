@@ -16,21 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.launcher.ava.elderlylauncher.AppInfo;
-import com.launcher.ava.elderlylauncher.R;
-import com.launcher.ava.frequentlyUsedAppsScreen.AppFrequencyList;
-import com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity;
+import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.helperApp.MainAppActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     private List<AppInfo> appsList;
-    private AppFrequencyList appFrequencyList;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textView;
@@ -42,8 +36,8 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
             super(itemView);
 
             //Finds the views from our row.xml
-            textView = (TextView) itemView.findViewById(R.id.text);
-            img = (ImageView) itemView.findViewById(R.id.img);
+            textView = itemView.findViewById(R.id.text);
+            img = itemView.findViewById(R.id.img);
             itemView.setOnClickListener(this);
         }
 
