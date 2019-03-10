@@ -1,33 +1,22 @@
 package com.launcher.ava.elderlylauncher;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Vibrator;
-import android.provider.Contacts;
 import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresPermission;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.launcher.ava.helperApp.AppScreen;
 
 import java.util.ArrayList;
 
@@ -38,10 +27,8 @@ public class PhoneScreen extends AppCompatActivity {
   private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
   private String number;
 
-  private Runnable show_toast = new Runnable()
-  {
-    public void run()
-    {
+  private Runnable show_toast = new Runnable() {
+    public void run() {
       Toast.makeText(PhoneScreen.this, "My Toast message", Toast.LENGTH_SHORT)
               .show();
     }
@@ -93,10 +80,16 @@ public class PhoneScreen extends AppCompatActivity {
         int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
         this.number = cursor.getString(column);
 
-        TextView tv1 = (TextView)findViewById(R.id.phoneNumber);
+        TextView tv1 = (TextView) findViewById(R.id.phoneNumber);
         tv1.setText(number);
 
-        // Here, thisActivity is the current activity
+        // convert number to contact id so we can use the hasWhatsapp function
+        String cid = convertNumberToID(number);
+
+        if (hasWhatsApp(cid)) {
+          tv1.setText("HAS WHATSAPP");
+        }
+
         if (ContextCompat.checkSelfPermission(PhoneScreen.this,
                 Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -126,64 +119,6 @@ public class PhoneScreen extends AppCompatActivity {
           startActivity(call);
         }
 
-
-        //This class provides applications access to the content model.
-//        ContentResolver cr = getContentResolver();
-
-//RowContacts for filter Account Types
-//        Cursor contactCursor = cr.query(
-//                ContactsContract.RawContacts.CONTENT_URI,
-//                new String[]{ContactsContract.RawContacts.CONTACT_ID},
-//                ContactsContract.RawContacts.ACCOUNT_TYPE + "= ?",
-//                new String[]{"com.whatsapp"},
-//                null);
-//
-//        contactCursor.close();
-////ArrayList for Store Whatsapp Contact
-//        ArrayList<String> myWhatsappContacts = new ArrayList<>();
-//
-//        if (contactCursor != null) {
-//          if (contactCursor.getCount() > 0) {
-//            if (contactCursor.moveToFirst()) {
-//              do {
-//                //whatsappContactId for get Number,Name,Id ect... from  ContactsContract.CommonDataKinds.Phone
-//                String whatsappContactId = contactCursor.getString(contactCursor.getColumnIndex(ContactsContract.RawContacts.CONTACT_ID));
-//
-//                if (whatsappContactId != null) {
-//                  //Get Data from ContactsContract.CommonDataKinds.Phone of Specific CONTACT_ID
-//                  Cursor whatsAppContactCursor = cr.query(
-//                          ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-//                          new String[]{ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
-//                                  ContactsContract.CommonDataKinds.Phone.NUMBER,
-//                                  ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME},
-//                          ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
-//                          new String[]{whatsappContactId}, null);
-//
-//                  if (whatsAppContactCursor != null) {
-//                    whatsAppContactCursor.moveToFirst();
-//                    String id = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
-//                    String name = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-//                    String num = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-//
-//                    whatsAppContactCursor.close();
-//
-//                    //Add Number to ArrayList
-//                    myWhatsappContacts.add(num);
-//
-//                  }
-//                }
-//              } while (contactCursor.moveToNext());
-//              contactCursor.close();
-//            }
-//          }
-//        }
-//
-//
-//        if (myWhatsappContacts.contains(number)) {
-//          TextView tv1 = (TextView)findViewById(R.id.phoneNumber);
-//          tv1.setText("HAS WHATSAPP");
-//        }
-
       }
     }
   }
@@ -209,4 +144,33 @@ public class PhoneScreen extends AppCompatActivity {
     }
   }
 
+  private boolean hasWhatsApp(String contact_id) {
+    String[] projection = new String[] { ContactsContract.RawContacts._ID };
+    String selection = ContactsContract.Data.CONTACT_ID + " = ? AND account_type IN (?)";
+    String[] selectionArgs = new String[] { contact_id, "com.whatsapp" };
+    Cursor cursor = PhoneScreen.this.getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, projection, selection, selectionArgs, null);
+    boolean contactHasWhatsApp = cursor.moveToNext();
+    return contactHasWhatsApp;
+  }
+
+  private String convertNumberToID(String number) {
+    ContentResolver contentResolver = PhoneScreen.this.getContentResolver();
+
+    Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
+
+    String[] projection = new String[] {ContactsContract.PhoneLookup.DISPLAY_NAME, ContactsContract.PhoneLookup._ID};
+
+    Cursor cursor =
+            contentResolver.query(
+                    uri,
+                    projection,
+                    null,
+                    null,
+                    null);
+
+    cursor.moveToNext();
+    String contactId = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.PhoneLookup._ID));
+    cursor.close();
+    return contactId;
+    }
 }
