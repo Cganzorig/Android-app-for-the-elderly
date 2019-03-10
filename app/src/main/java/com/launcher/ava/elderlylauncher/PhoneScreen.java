@@ -62,39 +62,47 @@ public class PhoneScreen extends AppCompatActivity {
     if (requestCode == PICK_CONTACT_REQUEST) {
       // Make sure the request was successful
       if (resultCode == RESULT_OK) {
-        Uri contactUri = data.getData();
-        // We only need the NUMBER column, because there will be only one row in the result
-        String[] projection = {ContactsContract.CommonDataKinds.Phone.NUMBER};
+        getPhoneNumber(data);
+        makePhoneCall();
+      }
+    }
+  }
 
-        // Perform the query on the contact to get the NUMBER column
-        // We don't need a selection or sort order (there's only one result for the given URI)
-        // CAUTION: The query() method should be called from a separate thread to avoid blocking
-        // your app's UI thread. (For simplicity of the sample, this code doesn't do that.)
-        // Consider using <code><a href="/reference/android/content/CursorLoader.html">CursorLoader</a></code> to perform the query.
+  private void getPhoneNumber(Intent data) {
+    Uri contactUri = data.getData();
+    // We only need the NUMBER column, because there will be only one row in the result
+    String[] projection = {ContactsContract.CommonDataKinds.Phone.NUMBER};
 
+    // Perform the query on the contact to get the NUMBER column
+    // We don't need a selection or sort order (there's only one result for the given URI)
+    // CAUTION: The query() method should be called from a separate thread to avoid blocking
+    // your app's UI thread. (For simplicity of the sample, this code doesn't do that.)
+    // Consider using <code><a href="/reference/android/content/CursorLoader.html">CursorLoader</a></code> to perform the query.
 
-        Cursor cursor = getContentResolver()
-                .query(contactUri, projection, null, null, null);
-        cursor.moveToNext();
+    Cursor cursor = getContentResolver()
+            .query(contactUri, projection, null, null, null);
+    cursor.moveToNext();
 //         Retrieve the phone number from the NUMBER column
-        int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-        this.number = cursor.getString(column);
+    int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+    this.number = cursor.getString(column);
+  }
 
-        TextView tv1 = (TextView) findViewById(R.id.phoneNumber);
-        tv1.setText(number);
+  private void makePhoneCall() {
+    TextView tv1 = (TextView) findViewById(R.id.phoneNumber);
+    tv1.setText(number);
 
-        // convert number to contact id so we can use the hasWhatsapp function
-        String cid = convertNumberToID(number);
+    // convert number to contact id so we can use the hasWhatsapp function
+    String cid = convertNumberToID(number);
 
-        if (hasWhatsApp(cid)) {
-          tv1.setText("HAS WHATSAPP");
-        }
+    if (hasWhatsApp(cid)) {
+      tv1.setText("HAS WHATSAPP");
+    }
 
-        if (ContextCompat.checkSelfPermission(PhoneScreen.this,
-                Manifest.permission.CALL_PHONE)
-                != PackageManager.PERMISSION_GRANTED) {
+    if (ContextCompat.checkSelfPermission(PhoneScreen.this,
+            Manifest.permission.CALL_PHONE)
+            != PackageManager.PERMISSION_GRANTED) {
 
-          ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CALL_PHONE}, CALL_PHONE_PERMISSION_CODE);
+      ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CALL_PHONE}, CALL_PHONE_PERMISSION_CODE);
 
 //          // Permission is not granted
 //          // Should we show an explanation?
@@ -109,23 +117,20 @@ public class PhoneScreen extends AppCompatActivity {
 //                    new String[]{Manifest.permission.CALL_PHONE},
 //                    MY_PERMISSIONS_REQUEST_CALL_PHONE);
 
-            // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-            // app-defined int constant. The callback method gets the
-            // result of the request.
-        } else {
-          // Permission has already been granted
-          Intent call = new Intent(Intent.ACTION_CALL);
-          call.setData(Uri.parse("tel:" + this.number));
-          startActivity(call);
-        }
-
-      }
+      // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+      // app-defined int constant. The callback method gets the
+      // result of the request.
+    } else {
+      // Permission has already been granted
+      Intent call = new Intent(Intent.ACTION_CALL);
+      call.setData(Uri.parse("tel:" + this.number));
+      startActivity(call);
     }
+
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode,
-                                         String permissions[], int[] grantResults) {
+  public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
     switch (requestCode) {
       case MY_PERMISSIONS_REQUEST_CALL_PHONE: {
         // permission was granted
