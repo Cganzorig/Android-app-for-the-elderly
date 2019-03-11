@@ -7,11 +7,8 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import com.launcher.ava.helperApp.AppScreen;
 import com.launcher.ava.utilities.AppFrequencyList;
-import com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity;
-import com.launcher.ava.helperApp.MainAppActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
   public void launchPhoneScreen(View view) {
     Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
     v.vibrate(50); // 1000 miliseconds = 1 seconds
-    Intent intent = new Intent(this, PhoneScreen.class);
+    Intent intent = new Intent(this, FirstPhoneScreen.class);
     startActivity(intent);
   }
 

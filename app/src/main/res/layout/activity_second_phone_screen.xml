@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimary"
+  tools:context=".SecondPhoneScreen">
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guide0"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.0"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guide1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.20"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guide2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.30"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guide3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.40"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guide4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.50"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guide5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.60"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guide6"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent=".70"/>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutPhone"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/phoneGreen"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/guide1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guide0">
+
+    <ImageView
+      android:id="@+id/imagePhone"
+      android:layout_width="126dp"
+      android:layout_height="94dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="250dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_phone_receiver"/>
+    <TextView
+      android:id="@+id/textPhone"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="73dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="170dp"
+      android:layout_marginEnd="25dp"
+      android:gravity="center"
+      android:text="@string/main_call"
+      android:textColor="@android:color/black"
+      android:textSize="28sp"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutWhatsapp"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:onClick="callWhatsApp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/guide2"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guide1">
+
+    <ImageView
+      android:id="@+id/imageWhatsapp"
+      android:layout_width="80dp"
+      android:layout_height="65dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="300dp"
+      android:layout_marginBottom="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_whatsapp" />
+
+    <TextView
+      android:id="@+id/textWhatsapp"
+      android:layout_width="0dp"
+      android:layout_height="65dp"
+      android:layout_marginStart="23dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="25dp"
+      android:layout_marginBottom="10dp"
+      android:gravity="center"
+      android:text="@string/using_whatsapp"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      android:textStyle="bold"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageWhatsapp"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49" />
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutRegCall"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:onClick="makePhoneCall"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/guide3"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guide2">
+
+    <ImageView
+      android:id="@+id/imageRegCall"
+      android:layout_width="80dp"
+      android:layout_height="65dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="300dp"
+      android:layout_marginBottom="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_telephone_symbol_button" />
+
+    <TextView
+      android:id="@+id/textRegCall"
+      android:layout_width="0dp"
+      android:layout_height="65dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="25dp"
+      android:layout_marginBottom="10dp"
+      android:gravity="center"
+      android:text="@string/using_reg_phone"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      android:textStyle="bold"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageRegCall"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49" />
+
+  </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

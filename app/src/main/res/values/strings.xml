@@ -1,18 +1,26 @@
 <resources>
-    <string name="app_name">Ava Launcher</string>
-    <string name="callButton">Make a phone call</string>
-    <string name="searchButton">Search the internet</string>
-    <string name="messageButton">Send a message</string>
-    <string name="search_hint">Search an app</string>
-    <string name="title_activity_searchable">SearchableActivity</string>
-    <string name="app_label"> Search Feature</string>
-    <string name="search_view">Enter search</string>
+  <string name="app_name">Ava Launcher</string>
+  <string name="callButton">Make a phone call</string>
+  <string name="searchButton">Search the internet</string>
+  <string name="messageButton">Send a message</string>
+  <string name="search_hint">Search an app</string>
+  <string name="title_activity_searchable">SearchableActivity</string>
+  <string name="app_label"> Search Feature</string>
+  <string name="search_view">Enter search</string>
 
-    <string name="main_question">WHAT DO YOU WANT TO DO?</string>
-    <string name="main_call">MAKE A PHONE CALL</string>
-    <string name="main_message">SEND A MESSAGE</string>
-    <string name="main_internet">SEARCH THE INTERNET</string>
-    <string name="main_tool">USE COMMON TOOLS</string>
-    <string name="main_apps">LAUNCH AN APP</string>
+  <string name="main_question">WHAT DO YOU WANT TO DO?</string>
+  <string name="main_call">MAKE A PHONE CALL</string>
+  <string name="main_message">SEND A MESSAGE</string>
+  <string name="main_internet">SEARCH THE INTERNET</string>
+  <string name="main_tool">USE COMMON TOOLS</string>
+  <string name="main_apps">LAUNCH AN APP</string>
+
+  <string name="using_whatsapp">Call using WhatsApp</string>
+  <string name="using_viber">Call using Viber</string>
+  <string name="using_reg_phone">Call using regular phone</string>
+  <string name="pick_contact_from_list">Pick contact from list</string>
+
+
+
 
 </resources>

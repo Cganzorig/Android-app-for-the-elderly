@@ -5,7 +5,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".PhoneScreen">
+  android:background="@color/colorPrimary"
+  tools:context=".FirstPhoneScreen">
 
   <android.support.constraint.Guideline
     android:id="@+id/guide0"
@@ -28,22 +29,6 @@
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.28"/>
 
-  <Button
-    android:id="@+id/button2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="229dp"
-    android:layout_marginBottom="308dp"
-    android:layout_marginStart="131dp"
-    android:layout_marginEnd="162dp"
-    android:onClick="launchContacts"
-    android:text="pickContact"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/cLayoutPhone"
-    app:layout_constraintVertical_bias="1.0"/>
   <android.support.constraint.Guideline
     android:id="@+id/guide3"
     android:layout_width="wrap_content"
@@ -118,18 +103,41 @@
 
   </android.support.constraint.ConstraintLayout>
 
-  <TextView
-      android:id="@+id/phoneNumber"
-      android:layout_width="216dp"
-      android:layout_height="75dp"
-      android:layout_marginStart="19dp"
-      android:layout_marginEnd="152dp"
-      android:layout_marginBottom="8dp"
-      android:text="TextView"
-      android:textSize="30sp"
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutPickContact"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    android:onClick="pickContactFromList"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/guide5"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guide4">
+
+    <TextView
+      android:id="@+id/textPickContact"
+      android:layout_width="0dp"
+      android:layout_height="73dp"
+      android:layout_marginStart="25dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="25dp"
+      android:layout_marginBottom="10dp"
+      android:gravity="center"
+      android:text="@string/pick_contact_from_list"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      android:textStyle="bold"
+      app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent" />
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.512" />
+
+  </android.support.constraint.ConstraintLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
