@@ -138,6 +138,120 @@
 
   </android.support.constraint.ConstraintLayout>
 
+  <Button
+      android:id="@+id/pickButton2"
+      android:layout_width="56dp"
+      android:layout_height="56dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="+"
+      app:layout_constraintBottom_toTopOf="@+id/guide3"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guide2"
+      app:layout_constraintVertical_bias="0.462" />
+
+  <Button
+      android:id="@+id/pickButton4"
+      android:layout_width="56dp"
+      android:layout_height="56dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="+"
+      app:layout_constraintBottom_toTopOf="@+id/cLayoutPickContact"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guide3" />
+
+  <Button
+      android:id="@+id/pickButton1"
+      android:layout_width="56dp"
+      android:layout_height="56dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="+"
+      app:layout_constraintBottom_toTopOf="@+id/guide3"
+      app:layout_constraintEnd_toStartOf="@+id/pickButton2"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guide2" />
+
+  <Button
+      android:id="@+id/pickButton3"
+      android:layout_width="56dp"
+      android:layout_height="56dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="+"
+      app:layout_constraintBottom_toTopOf="@+id/guide4"
+      app:layout_constraintEnd_toStartOf="@+id/pickButton4"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guide3" />
+
+  <TextView
+      android:id="@+id/textView1"
+      android:layout_width="wrap_content"
+      android:layout_height="15dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="Phone number"
+      app:layout_constraintBottom_toTopOf="@+id/guide3"
+      app:layout_constraintEnd_toStartOf="@+id/pickButton1"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guide2" />
+
+  <TextView
+      android:id="@+id/textView2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="Phone number"
+      app:layout_constraintBottom_toTopOf="@+id/guide3"
+      app:layout_constraintEnd_toStartOf="@+id/pickButton2"
+      app:layout_constraintStart_toEndOf="@+id/pickButton1"
+      app:layout_constraintTop_toTopOf="@+id/guide2" />
+
+  <TextView
+      android:id="@+id/textView3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="Phone number"
+      app:layout_constraintBottom_toTopOf="@+id/guide4"
+      app:layout_constraintEnd_toStartOf="@+id/pickButton3"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guide3" />
+
+  <TextView
+      android:id="@+id/textView4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="Phone number"
+      app:layout_constraintBottom_toTopOf="@+id/guide4"
+      app:layout_constraintEnd_toStartOf="@+id/pickButton4"
+      app:layout_constraintStart_toEndOf="@+id/pickButton3"
+      app:layout_constraintTop_toTopOf="@+id/guide3" />
 
 
 </android.support.constraint.ConstraintLayout>
