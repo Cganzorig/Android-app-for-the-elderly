@@ -1,5 +1,8 @@
 package com.launcher.ava.elderlylauncher;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,6 +10,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.PhoneLookup;
+import android.provider.ContactsContract.RawContacts;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -15,107 +21,132 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
   static final int PICK_CONTACT_REQUEST = 1;  // The request code
 
-  // pass these to second screen
-  private String number;
-  private String hasWhatsapp;
-  private String contactId;
+  private class ContactInfo {
+    String displayName;
+    String id;
+    String number;
+    String hasWhatsapp;
+    String hasViber;
+  }
+
+  private ContactInfo contactInfo4;
+  private ContactInfo contactInfo5;
+
+  private static final int ID_TYPE = 1;
+  private static final int NUMBER_TYPE = 2;
+  private static final int NAME_TYPE = 3;
+  private static final int MIME_TYPE = 4;
 
   private int selectedButton;
 
-  TextView contactNumber4 = null;
+  TextView quickCallButton4 = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_first_phone_screen);
 
-    contactNumber4 = findViewById(R.id.textView4);
+    quickCallButton4 = findViewById(R.id.textView4);
   }
 
-  public void pressButton4(View view) {
+  public void pressPlusButton4(View view) {
     this.selectedButton = 4;
     Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+    pickContactIntent.setType(Phone.CONTENT_TYPE);
     startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+  }
+
+  public void pressQuickCallButton4(View view) {
+    Intent intent = new Intent(this, SecondPhoneScreen.class);
+    intent.putExtra("number", contactInfo4.number);
+    intent.putExtra("whatsapp", contactInfo4.hasWhatsapp);
+    intent.putExtra("contactId", contactInfo4.id);
+    startActivity(intent);
   }
 
   public void pickContactFromList(View view) {
     this.selectedButton = 5;
     Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+    pickContactIntent.setType(Phone.CONTENT_TYPE);
     startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
   }
 
-  // get contact data (boilerplate)
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
     if (requestCode == PICK_CONTACT_REQUEST && resultCode == RESULT_OK) {
-      // Get the URI and query the content provider for the phone number
+
+      // data is returned from startActivityFromResult()
       Uri contactUri = data.getData();
 
-      // get number
-      String[] projection = new String[]{Phone.NUMBER};
-      Cursor cursor = getContentResolver()
-          .query(contactUri, projection, null, null, null);
+      // temp housing for data of selected contact
+      ContactInfo tmpInfo = new ContactInfo();
+      tmpInfo.id = queryCursor(contactUri, ID_TYPE);
+      tmpInfo.displayName = queryCursor(contactUri, NAME_TYPE);
+      tmpInfo.number = queryCursor(contactUri, NUMBER_TYPE);
+      tmpInfo.hasWhatsapp = (hasWhatsApp(tmpInfo.id)) ? "True" : "False";
 
-      // If the cursor returned is valid, get the phone number and check for Whatsapp
-      if (cursor != null && cursor.moveToFirst()) {
-        if(this.selectedButton == 4) {
-          String name1 = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-          contactNumber4.setText(name1);
-        }
-        if(this.selectedButton == 5) {
-        int numberIndex = cursor.getColumnIndex(Phone.NUMBER);
-        this.number = cursor.getString(numberIndex);
-        this.contactId = convertNumberToID(number);
-        this.hasWhatsapp = (hasWhatsApp(this.contactId)) ? "True" : "False";
-        }
+      Intent intent = new Intent(this, SecondPhoneScreen.class);
+      switch (this.selectedButton) {
+        case 4:
+          this.contactInfo4 = tmpInfo;
+          quickCallButton4.setText(contactInfo4.displayName);
+          break;
+        case 5:
+          intent.putExtra("number", tmpInfo.number);
+          intent.putExtra("whatsapp", tmpInfo.hasWhatsapp);
+          intent.putExtra("contactId", tmpInfo.id);
+          startActivity(intent);
+          break;
       }
-      cursor.close();
     }
-
-    if(this.selectedButton ==5) {
-    // start second scree; pass parameters
-    Intent intent = new Intent(this, SecondPhoneScreen.class);
-    intent.putExtra("number", this.number);
-    intent.putExtra("whatsapp", this.hasWhatsapp);
-    intent.putExtra("contactId", this.contactId);
-    startActivity(intent);}
   }
 
   private boolean hasWhatsApp(String contact_id) {
-    String[] projection = new String[] { ContactsContract.RawContacts._ID };
-    String selection = ContactsContract.Data.CONTACT_ID + " = ? AND account_type IN (?)";
+    String[] projection = new String[] { RawContacts._ID };
+    String selection = Data.CONTACT_ID + " = ? AND account_type IN (?)";
     String[] selectionArgs = new String[] { contact_id, "com.whatsapp" };
-    Cursor cursor = this.getContentResolver()
-        .query(ContactsContract.RawContacts.CONTENT_URI,
-            projection, selection, selectionArgs, null);
-    return cursor.moveToNext();
+    Cursor cursor = getContentResolver()
+        .query(RawContacts.CONTENT_URI,
+            projection,
+            selection,
+            selectionArgs,
+            null);
+    if(cursor.moveToNext()){
+      cursor.close();
+      return TRUE;
+    }
+    return FALSE;
   }
 
-  private String convertNumberToID(String number) {
-    ContentResolver contentResolver = FirstPhoneScreen.this.getContentResolver();
+  private String queryCursor(Uri contactUri, int infoType) {
 
-    Uri uri = Uri
-        .withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
+    String content;
+    String answer = "False";
+    switch (infoType) {
+      case ID_TYPE:
+        content = Phone.CONTACT_ID;
+        break;
+      case NUMBER_TYPE:
+        content = Phone.NUMBER;
+        break;
+      case NAME_TYPE:
+        content = Phone.DISPLAY_NAME;
+        break;
+      case MIME_TYPE:
+        default:
+          content = Phone._ID;
+    }
+    String[] projection = new String[] {content};
 
-    String[] projection = new String[]
-        {ContactsContract.PhoneLookup.DISPLAY_NAME, ContactsContract.PhoneLookup._ID};
+    Cursor cursor = getContentResolver()
+        .query(contactUri, projection, null, null, null);
 
-    Cursor cursor =
-        contentResolver.query(
-            uri,
-            projection,
-            null,
-            null,
-            null);
-
-    cursor.moveToNext();
-    String contactId = cursor
-        .getString(cursor.getColumnIndexOrThrow(ContactsContract.PhoneLookup._ID));
+    if (cursor != null && cursor.moveToFirst()) {
+      answer = cursor.getString(cursor.getColumnIndex(content));
+    }
     cursor.close();
-    return contactId;
+    return answer;
   }
 }
