@@ -20,6 +20,10 @@
   <string name="using_reg_phone">Call using regular phone</string>
   <string name="pick_contact_from_list">Pick contact from list</string>
 
+  <string name="plus_sign">+</string>
+  <string name="minus_sign">-</string>
+  <string name="default_quick_call">Add favourite contact</string>
+
 
 
 

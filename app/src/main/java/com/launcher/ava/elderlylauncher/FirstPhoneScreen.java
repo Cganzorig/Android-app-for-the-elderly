@@ -1,8 +1,10 @@
 package com.launcher.ava.elderlylauncher;
 
+import static android.app.PendingIntent.getActivity;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
+import android.app.Application;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,22 +19,21 @@ import android.provider.ContactsContract.PhoneLookup;
 import android.provider.ContactsContract.RawContacts;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FirstPhoneScreen extends AppCompatActivity {
 
   static final int PICK_CONTACT_REQUEST = 1;  // The request code
 
-  private class ContactInfo {
-    String displayName;
+  public class ContactInfo {
+    public String displayName;
     String id;
     String number;
     String hasWhatsapp;
     String hasViber;
   }
-
-  private ContactInfo contactInfo4;
-  private ContactInfo contactInfo5;
 
   private static final int ID_TYPE = 1;
   private static final int NUMBER_TYPE = 2;
@@ -41,58 +42,54 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
   private int selectedButton;
 
-  TextView quickCallButton1 = null;
-  TextView quickCallButton2 = null;
-  TextView quickCallButton3 = null;
-  TextView quickCallButton4 = null;
+  Button quickCallButton4;
+  Button addButton4;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_first_phone_screen);
 
-    quickCallButton1 = findViewById(R.id.textView1);
-    quickCallButton2 = findViewById(R.id.textView2);
-    quickCallButton3 = findViewById(R.id.textView3);
     quickCallButton4 = findViewById(R.id.textView4);
-
+    addButton4 = findViewById(R.id.pickButton4);
     DisplayFavouriteContacts();
-  }
-
-  public void pressPlusButton1(View view) {
-    this.selectedButton = 1;
-    Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(Phone.CONTENT_TYPE);
-    startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
-  }
-
-  public void pressPlusButton2(View view) {
-    this.selectedButton = 2;
-    Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(Phone.CONTENT_TYPE);
-    startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
-  }
-
-  public void pressPlusButton3(View view) {
-    this.selectedButton = 3;
-    Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(Phone.CONTENT_TYPE);
-    startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
   }
 
   public void pressPlusButton4(View view) {
     this.selectedButton = 4;
-    Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(Phone.CONTENT_TYPE);
-    startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+    if(addButton4.getText().toString().equals("+")){
+      Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
+      pickContactIntent.setType(Phone.CONTENT_TYPE);
+      startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+    } else {
+      quickCallButton4.setText(R.string.default_quick_call);
+      addButton4.setText(R.string.plus_sign);
+
+    }
   }
 
   public void pressQuickCallButton4(View view) {
-    Intent intent = new Intent(this, SecondPhoneScreen.class);
-    intent.putExtra("number", contactInfo4.number);
-    intent.putExtra("whatsapp", contactInfo4.hasWhatsapp);
-    intent.putExtra("contactId", contactInfo4.id);
-    startActivity(intent);
+    if(!quickCallButton4.getText().toString().equals(getResources().getString(R.string.default_quick_call))) {
+      Intent intent = new Intent(this, SecondPhoneScreen.class);
+      SharedPreferences sp = getSharedPreferences("button4", Context.MODE_PRIVATE);
+
+      String contactId = sp.getString("contactId", "");
+      String number = sp.getString("number", "");
+      String hasWhatsapp = sp.getString("hasWhatsapp", "");
+
+      intent.putExtra("number", number);
+      intent.putExtra("contactId", contactId);
+      intent.putExtra("whatsapp", hasWhatsapp);
+
+      startActivity(intent);
+    } else {
+      Context context = getApplicationContext();
+      CharSequence text = "Please select a contact first";
+      int duration = Toast.LENGTH_SHORT;
+      Toast toast = Toast.makeText(context, text, duration);
+      toast.show();
+    }
   }
 
   public void pickContactFromList(View view) {
@@ -120,42 +117,16 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
       Intent intent = new Intent(this, SecondPhoneScreen.class);
       switch (this.selectedButton) {
-        case 1:
-          this.contactInfo4 = tmpInfo;
-          quickCallButton1.setText(contactInfo4.displayName);
-
-          SharedPreferences sharedPreferences1 = getSharedPreferences("button1", MODE_PRIVATE);
-          SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-          editor1.putString("phoneNumber1", quickCallButton1.getText().toString());
-          editor1.apply();
-
-          break;
-        case 2:
-          this.contactInfo4 = tmpInfo;
-          quickCallButton2.setText(contactInfo4.displayName);
-
-          SharedPreferences sharedPreferences2 = getSharedPreferences("button2", MODE_PRIVATE);
-          SharedPreferences.Editor editor2 = sharedPreferences2.edit();
-          editor2.putString("phoneNumber2", quickCallButton2.getText().toString());
-          editor2.apply();
-          break;
-        case 3:
-          this.contactInfo4 = tmpInfo;
-          quickCallButton3.setText(contactInfo4.displayName);
-
-          SharedPreferences sharedPreferences3 = getSharedPreferences("button3", MODE_PRIVATE);
-          SharedPreferences.Editor editor3 = sharedPreferences3.edit();
-          editor3.putString("phoneNumber3", quickCallButton3.getText().toString());
-          editor3.apply();
-          break;
         case 4:
-          this.contactInfo4 = tmpInfo;
-          quickCallButton4.setText(contactInfo4.displayName);
+          quickCallButton4.setText(tmpInfo.displayName);
+          addButton4.setText(R.string.minus_sign);
 
-          SharedPreferences sharedPreferences4 = getSharedPreferences("button4", MODE_PRIVATE);
-          SharedPreferences.Editor editor4 = sharedPreferences4.edit();
-          editor4.putString("phoneNumber4", quickCallButton4.getText().toString());
-          editor4.apply();
+          SharedPreferences sp = getSharedPreferences("button4", MODE_PRIVATE);
+          SharedPreferences.Editor editor = sp.edit();
+          editor.putString("displayName", tmpInfo.displayName);
+          editor.putString("number", tmpInfo.number);
+          editor.putString("hasWhatsapp", tmpInfo.hasWhatsapp);
+          editor.apply();
           break;
         case 5:
           intent.putExtra("number", tmpInfo.number);
@@ -168,17 +139,11 @@ public class FirstPhoneScreen extends AppCompatActivity {
   }
 
   public void DisplayFavouriteContacts() {
-    SharedPreferences sharedPreferences1 = getSharedPreferences("button1", Context.MODE_PRIVATE);
-    quickCallButton1.setText(sharedPreferences1.getString("phoneNumber1", ""));
-
-    SharedPreferences sharedPreferences2 = getSharedPreferences("button2", Context.MODE_PRIVATE);
-    quickCallButton2.setText(sharedPreferences2.getString("phoneNumber2", ""));
-
-    SharedPreferences sharedPreferences3 = getSharedPreferences("button3", Context.MODE_PRIVATE);
-    quickCallButton3.setText(sharedPreferences3.getString("phoneNumber3", ""));
-
-    SharedPreferences sharedPreferences4 = getSharedPreferences("button4", Context.MODE_PRIVATE);
-    quickCallButton4.setText(sharedPreferences4.getString("phoneNumber4", ""));
+    SharedPreferences sp = getSharedPreferences("button4", Context.MODE_PRIVATE);
+    if(sp.contains("displayName")){
+    quickCallButton4.setText(sp.getString("displayName", ""));
+    addButton4.setText(R.string.minus_sign);
+    }
   }
 
 
