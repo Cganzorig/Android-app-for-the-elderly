@@ -19,7 +19,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
   boolean hasWhatsApp;
   String number;
-  String contactId;
+  String whatsappVoiceId;
   private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
 
   @Override
@@ -33,20 +33,21 @@ public class SecondPhoneScreen extends AppCompatActivity {
     this.number = thisIntent.getStringExtra("number");
     String tmpWp = thisIntent.getStringExtra("whatsapp");
     this.hasWhatsApp = (tmpWp.equals("True")) ? TRUE : FALSE;
-    this.contactId = thisIntent.getStringExtra("contactId");
+    this.whatsappVoiceId = thisIntent.getStringExtra("contactId");
   }
 
   public void callWhatsApp(View view) {
 
-    if(hasWhatsApp) {
+    if(!this.whatsappVoiceId.equals("NONE")) {
 
       String mimeString = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
-      String data = "content://com.android.contacts/data/" + this.contactId;
+      String data = "content://com.android.contacts/data/" + this.whatsappVoiceId;
       Intent intent = new Intent();
       intent.setAction(Intent.ACTION_VIEW);
       intent.setDataAndType(Uri.parse(data), mimeString);
       intent.setPackage("com.whatsapp");
       startActivity(intent);
+
     } else {
 
       Context context = getApplicationContext();
