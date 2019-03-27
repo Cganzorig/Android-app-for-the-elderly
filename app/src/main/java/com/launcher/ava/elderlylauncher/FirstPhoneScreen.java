@@ -3,22 +3,17 @@ package com.launcher.ava.elderlylauncher;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.provider.ContactsContract.Data;
-import android.support.constraint.ConstraintHelper;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintLayout.LayoutParams;
-import android.support.constraint.Guideline;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactTableRow;
 
@@ -29,24 +24,17 @@ public class FirstPhoneScreen extends AppCompatActivity {
   public class ContactInfo {
     String displayName;
     String number;
-    String hasWhatsapp;
     String whatsappVoiceId;
   }
 
   private ContactInfoTable table = new ContactInfoTable();
+  private int numFavs;
 
   private int selectedButton;
 
-  TextView quickCallButton1;
-  TextView addButton1;
-
-  TextView quickCallButton2;
-  TextView addButton2;
-
   ConstraintLayout addAndSearch;
-  Guideline guide0;
-
-
+  ConstraintLayout whiteBlock;
+  Button btn;
 
 
   @Override
@@ -54,20 +42,54 @@ public class FirstPhoneScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_first_phone_screen);
 
-    quickCallButton1 = findViewById(R.id.textFirstFav);
-    addButton1 = findViewById(R.id.textChangeFirstFav);
-
-    quickCallButton2 = findViewById(R.id.textSecondFav);
-    addButton2 = findViewById(R.id.textChangeSecondFav);
-
-    addAndSearch = findViewById(R.id.cLayoutPickContact);
-    guide0 = findViewById(R.id.firstPhoneScreenguide0);
-    LayoutParams params = (LayoutParams) addAndSearch.getLayoutParams();
-    //params.topToTop = R.id.firstPhoneScreenguide0;
-
+    this.addAndSearch = findViewById(R.id.cLayoutBtn);
+    this.whiteBlock = findViewById(R.id.cLayoutWhiteBlock);
+    this.btn = findViewById(R.id.add_remove_button);
+    if(this.numFavs ==3) {
+      btn.setText(R.string.minus_sign);
+    } else {
+      btn.setText(R.string.minus_sign);
+    }
     displayFavouriteContacts();
   }
 
+
+  public void setWhiteBlocks() {
+    LayoutParams params1 = (LayoutParams) this.addAndSearch.getLayoutParams();
+    LayoutParams params2 = (LayoutParams) this.whiteBlock.getLayoutParams();
+
+    switch (this.numFavs) {
+      case 0:
+        params1.topToTop= R.id.firstPhoneScreenguide1;
+        params1.bottomToTop= R.id.firstPhoneScreenguide2;
+        params2.topToTop= R.id.firstPhoneScreenguide2;
+        params2.bottomToTop= R.id.firstPhoneScreenguide6;
+        break;
+      case 1:
+        params1.topToTop= R.id.firstPhoneScreenguide2;
+        params1.bottomToTop= R.id.firstPhoneScreenguide3;
+        params2.topToTop= R.id.firstPhoneScreenguide3;
+        params2.bottomToTop= R.id.firstPhoneScreenguide6;
+        break;
+      case 2:
+        params1.topToTop= R.id.firstPhoneScreenguide3;
+        params1.bottomToTop= R.id.firstPhoneScreenguide4;
+        params2.topToTop= R.id.firstPhoneScreenguide4;
+        params2.bottomToTop= R.id.firstPhoneScreenguide6;
+        break;
+      case 3:
+        params1.topToTop= R.id.firstPhoneScreenguide4;
+        params1.bottomToTop= R.id.firstPhoneScreenguide5;
+        params2.topToTop= R.id.firstPhoneScreenguide5;
+        params2.bottomToTop= R.id.firstPhoneScreenguide6;
+        break;
+
+    }
+    addAndSearch.setLayoutParams(params1);
+    whiteBlock.setLayoutParams(params2);
+  }
+
+  public void doNothing(View view) {}
 
   public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {
 
@@ -77,6 +99,21 @@ public class FirstPhoneScreen extends AppCompatActivity {
     editor.putString("number", tmpInfo.number);
     editor.putString("whatsappVoiceId", tmpInfo.whatsappVoiceId);
     editor.apply();
+  }
+
+  public void pressPlus(View view) {
+    if(this.btn.getText().equals("+")) {
+      this.numFavs = (this.numFavs != 3) ? this.numFavs + 1 : this.numFavs;
+      if(this.numFavs ==3) {
+        btn.setText(R.string.minus_sign);
+      }
+    } else {
+      this.numFavs = (this.numFavs != 0) ? this.numFavs - 1 : this.numFavs;
+      if(this.numFavs ==0) {
+        btn.setText(R.string.plus_sign);
+      }
+    }
+    setWhiteBlocks();
   }
 
   public void passExtraInfoToNewIntent(String sharedPrefName) {
@@ -102,43 +139,64 @@ public class FirstPhoneScreen extends AppCompatActivity {
     startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
   }
 
-  public void pressQuickCallButton1(View view) {
-    // if equals default value, pressing is the same as overwriting
-    if(quickCallButton1.getText().toString()
-        .equals(getResources().getString(R.string.add_fav_contact))) {
-      this.selectedButton = 1;
+  public void pressFav(View view) {
+    TextView tv;
+    String spName;
+    switch (view.getId()){
+      case R.id.textFirstFav:
+        tv = findViewById(R.id.textFirstFav);
+        spName = "button1";
+        this.selectedButton = 1;
+        break;
+      case R.id.textSecondFav:
+        tv = findViewById(R.id.textSecondFav);
+        spName = "button2";
+        this.selectedButton = 2;
+        break;
+      case R.id.textThirdFav:
+        tv = findViewById(R.id.textThirdFav);
+        spName = "button3";
+        this.selectedButton = 3;
+        break;
+        default:
+          tv = findViewById(R.id.textPickContact);
+          spName = "button4";
+          this.selectedButton = 4;
+    }
+    if(tv.getText().toString().equals(getResources().getString(R.string.add_fav_contact))) {
+      pickFromList();
+    } else if (tv.getText().toString().equals(getResources().getString(R.string.pick_contact_from_list))) {
       pickFromList();
     } else {
-      passExtraInfoToNewIntent("button1");
+      passExtraInfoToNewIntent(spName);
     }
   }
 
-  public void pressEllipsis1(View view) {
-    this.selectedButton = 1;
-    pickFromList();
-  }
-
-  public void pressQuickCallButton2(View view) {
-    // if equals default value, pressing is the same as overwriting
-    if(quickCallButton2.getText().toString()
-        .equals(getResources().getString(R.string.add_fav_contact))) {
-      this.selectedButton = 2;
-      pickFromList();
-    } else {
-      passExtraInfoToNewIntent("button2");
+  public void pressEllipsis(View view) {
+    TextView tv;
+    String spName;
+    switch (view.getId()){
+      case R.id.textChangeFirstFav:
+        tv = findViewById(R.id.textFirstFav);
+        spName = "button1";
+        break;
+      case R.id.textChangeSecondFav:
+        tv = findViewById(R.id.textSecondFav);
+        spName = "button2";
+        break;
+      case R.id.textChangeThirdFav:
+        tv = findViewById(R.id.textThirdFav);
+        spName = "button3";
+        break;
+      default:
+        tv = findViewById(R.id.textFirstFav);
+        spName = "button1";
     }
-  }
-
-  public void pressEllipsis2(View view) {
-    this.selectedButton = 2;
-    pickFromList();
-  }
-
-  public void pickContactFromList(View view) {
-    this.selectedButton = 5;
-    Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(Phone.CONTENT_TYPE);
-    startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+    SharedPreferences sp1 = getSharedPreferences(spName, MODE_PRIVATE);
+    SharedPreferences.Editor editor = sp1.edit();
+    editor.clear();
+    editor.apply();
+    tv.setText(R.string.add_fav_contact);
   }
 
   @Override
@@ -168,12 +226,12 @@ public class FirstPhoneScreen extends AppCompatActivity {
         case 2:
           putContactInfoInSharedPrefs("button2", tmpInfo);
           break;
-        case 5:
-          Intent intent = new Intent(this, SecondPhoneScreen.class);
-          intent.putExtra("number", tmpInfo.number);
-          intent.putExtra("whatsapp", tmpInfo.hasWhatsapp);
-          intent.putExtra("contactId", tmpInfo.whatsappVoiceId);
-          startActivity(intent);
+        case 3:
+          putContactInfoInSharedPrefs("button3", tmpInfo);
+          break;
+        case 4:
+          putContactInfoInSharedPrefs("button4", tmpInfo);
+          passExtraInfoToNewIntent("button4");
           break;
       }
       displayFavouriteContacts();
@@ -182,25 +240,33 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
   public void displayFavouriteContacts() {
 
+    int numFavs = 0;
     SharedPreferences sp1 = getSharedPreferences("button1", Context.MODE_PRIVATE);
-
-    if(sp1.contains("displayName")){
-      String s = "Call "+ sp1.getString("displayName", "");
-      quickCallButton1.setText(s);
-    } else {
-      quickCallButton1.setText("ERROR");
+    if(sp1.contains("displayName")) {
+      String s = "Call " + sp1.getString("displayName", "");
+      TextView tv1 = findViewById(R.id.textFirstFav);
+      tv1.setText(s);
+      numFavs += 1;
     }
 
     SharedPreferences sp2 = getSharedPreferences("button2", Context.MODE_PRIVATE);
-
     if(sp2.contains("displayName")) {
       String s = "Call " + sp2.getString("displayName", "");
-      quickCallButton2.setText(s);
-    }
-    else {
-      quickCallButton1.setText("ERROR");
+      TextView tv2 = findViewById(R.id.textSecondFav);
+      tv2.setText(s);
+      numFavs +=1;
     }
 
+    SharedPreferences sp3 = getSharedPreferences("button3", Context.MODE_PRIVATE);
+    if(sp3.contains("displayName")) {
+      String s = "Call " + sp3.getString("displayName", "");
+      TextView tv3 = findViewById(R.id.textThirdFav);
+      tv3.setText(s);
+      numFavs +=1;
+    }
+
+    this.numFavs= numFavs;
+    setWhiteBlocks();
   }
 
   private String queryCursor(Uri contactUri) {

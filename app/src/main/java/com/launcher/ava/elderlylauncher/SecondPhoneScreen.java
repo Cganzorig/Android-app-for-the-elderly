@@ -1,8 +1,5 @@
 package com.launcher.ava.elderlylauncher;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -53,7 +50,6 @@ public class SecondPhoneScreen extends AppCompatActivity {
       Toast toast = Toast.makeText(context, text, duration);
       toast.show();
     }
-
   }
 
   public void makePhoneCall(View view) {
