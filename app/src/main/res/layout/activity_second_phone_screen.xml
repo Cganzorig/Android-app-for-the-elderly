@@ -9,53 +9,67 @@
   tools:context=".SecondPhoneScreen">
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide0"
+    android:id="@+id/secondPhoneScreenGuide0"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.0"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide1"
+    android:id="@+id/secondPhoneScreenGuide1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.20"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide2"
+    android:id="@+id/secondPhoneScreenGuide2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.30"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide3"
+    android:id="@+id/secondPhoneScreenGuide3"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.40"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide4"
+    android:id="@+id/secondPhoneScreenGuide4"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.50"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide5"
+    android:id="@+id/secondPhoneScreenGuide5"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.60"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide6"
+    android:id="@+id/secondPhoneScreenGuide6"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent=".70"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/secondPhoneScreenGuide7"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent=".80"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/secondPhoneScreenGuide8"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="1.0"/>
 
   <android.support.constraint.ConstraintLayout
     android:id="@+id/cLayoutPhone"
@@ -63,10 +77,10 @@
     android:layout_height="0dp"
     android:background="@color/phoneGreen"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/guide1"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/guide0">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide0">
 
     <ImageView
       android:id="@+id/imagePhone"
@@ -82,10 +96,10 @@
       app:layout_constraintVertical_bias="0.51"
       app:srcCompat="@drawable/ic_phone_receiver"/>
     <TextView
-      android:id="@+id/textPhone"
+      android:id="@+id/textSecondPhoneScreenPhone"
       android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="73dp"
+      android:layout_height="wrap_content"
       android:layout_marginTop="10dp"
       android:layout_marginBottom="10dp"
       android:layout_marginStart="170dp"
@@ -98,11 +112,9 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.49"/>
+      app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
-
 
   <android.support.constraint.ConstraintLayout
     android:id="@+id/cLayoutWhatsapp"
@@ -110,10 +122,10 @@
     android:layout_height="0dp"
     android:onClick="callWhatsApp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/guide2"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide3"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/guide1">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide2">
 
     <ImageView
       android:id="@+id/imageWhatsapp"
@@ -132,23 +144,24 @@
 
     <TextView
       android:id="@+id/textWhatsapp"
+      android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="65dp"
-      android:layout_marginStart="23dp"
       android:layout_marginTop="10dp"
-      android:layout_marginEnd="25dp"
       android:layout_marginBottom="10dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="25dp"
       android:gravity="center"
       android:text="@string/using_whatsapp"
+      android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      android:textStyle="bold"
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toEndOf="@+id/imageWhatsapp"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.49" />
+      app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 
@@ -158,10 +171,10 @@
     android:layout_height="0dp"
     android:onClick="makePhoneCall"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/guide3"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide2"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/guide2">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide1">
 
     <ImageView
       android:id="@+id/imageRegCall"
@@ -180,23 +193,184 @@
 
     <TextView
       android:id="@+id/textRegCall"
+      android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="65dp"
-      android:layout_marginStart="8dp"
       android:layout_marginTop="10dp"
-      android:layout_marginEnd="25dp"
       android:layout_marginBottom="10dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="25dp"
       android:gravity="center"
       android:text="@string/using_reg_phone"
+      android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      android:textStyle="bold"
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/imageRegCall"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.49" />
+      app:layout_constraintVertical_bias="0.49"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutViber"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:onClick="makePhoneCall"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide4"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide3">
+
+    <ImageView
+      android:id="@+id/iamgeViber"
+      android:layout_width="80dp"
+      android:layout_height="65dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="300dp"
+      android:layout_marginBottom="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_telephone_symbol_button" />
+
+    <TextView
+      android:id="@+id/textViber"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="65dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="25dp"
+      android:gravity="center"
+      android:text="@string/using_viber"
+      android:textAlignment="viewStart"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/iamgeViber"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutMessenger"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:onClick="makePhoneCall"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide5"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide4">
+
+    <ImageView
+      android:id="@+id/imageMessenger"
+      android:layout_width="80dp"
+      android:layout_height="65dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="300dp"
+      android:layout_marginBottom="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_telephone_symbol_button" />
+
+    <TextView
+      android:id="@+id/textMessenger"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="65dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="25dp"
+      android:gravity="center"
+      android:text="@string/using_messenger"
+      android:textAlignment="viewStart"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageMessenger"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutSkype"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:onClick="makePhoneCall"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide6"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide5">
+
+    <ImageView
+      android:id="@+id/iamgeSkype"
+      android:layout_width="80dp"
+      android:layout_height="65dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="300dp"
+      android:layout_marginBottom="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_telephone_symbol_button" />
+
+    <TextView
+      android:id="@+id/textSkype"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="65dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="25dp"
+      android:gravity="center"
+      android:text="@string/using_skype"
+      android:textAlignment="viewStart"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/iamgeSkype"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutSecondPhoneScreenWhiteBlock"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    android:onClick="doNothing"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide7"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide8">
 
   </android.support.constraint.ConstraintLayout>
 

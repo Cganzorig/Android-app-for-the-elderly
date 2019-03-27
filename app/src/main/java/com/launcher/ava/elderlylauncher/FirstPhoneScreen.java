@@ -45,12 +45,14 @@ public class FirstPhoneScreen extends AppCompatActivity {
     this.addAndSearch = findViewById(R.id.cLayoutBtn);
     this.whiteBlock = findViewById(R.id.cLayoutWhiteBlock);
     this.btn = findViewById(R.id.add_remove_button);
+
+    displayFavouriteContacts();
+
     if(this.numFavs ==3) {
       btn.setText(R.string.minus_sign);
     } else {
-      btn.setText(R.string.minus_sign);
+      btn.setText(R.string.plus_sign);
     }
-    displayFavouriteContacts();
   }
 
 

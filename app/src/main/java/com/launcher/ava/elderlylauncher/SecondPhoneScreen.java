@@ -10,13 +10,16 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SecondPhoneScreen extends AppCompatActivity {
 
+  String displayName;
   String number;
   String whatsappVoiceId;
   private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
+  TextView title;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,16 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
     // get additional params passed from first phone screen
     Intent thisIntent = getIntent();
+    this.displayName = thisIntent.getStringExtra("displayName");
     this.number = thisIntent.getStringExtra("number");
     this.whatsappVoiceId = thisIntent.getStringExtra("whatsappVoiceId");
+
+    this.title = findViewById(R.id.textSecondPhoneScreenPhone);
+    String s = title.getText().toString()  + " TO " + this.displayName;
+    title.setText(s);
   }
+
+  public void doNothing(View view) {}
 
   public void callWhatsApp(View view) {
 

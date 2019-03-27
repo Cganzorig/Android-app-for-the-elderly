@@ -15,9 +15,11 @@
   <string name="main_tool">USE COMMON TOOLS</string>
   <string name="main_apps">LAUNCH AN APP</string>
 
-  <string name="using_whatsapp">Call using WhatsApp</string>
-  <string name="using_viber">Call using Viber</string>
-  <string name="using_reg_phone">Call using regular phone</string>
+  <string name="using_whatsapp">Using WhatsApp</string>
+  <string name="using_viber">Using Viber</string>
+  <string name="using_reg_phone">Using regular phone</string>
+  <string name="using_messenger">Using Messenger</string>
+  <string name="using_skype">Using Skype</string>
   <string name="pick_contact_from_list">Pick contact from list</string>
 
   <string name="plus_sign">+</string>
