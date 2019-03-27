@@ -9,49 +9,49 @@
   tools:context=".FirstPhoneScreen">
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide0"
+    android:id="@+id/firstPhoneScreenguide0"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.0"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide1"
+    android:id="@+id/firstPhoneScreenguide1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.20"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide2"
+    android:id="@+id/firstPhoneScreenguide2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.28"/>
+    app:layout_constraintGuide_percent="0.35"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide3"
+    android:id="@+id/firstPhoneScreenguide3"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.46"/>
+    app:layout_constraintGuide_percent="0.50"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide4"
+    android:id="@+id/firstPhoneScreenguide4"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.64"/>
+    app:layout_constraintGuide_percent="0.65"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide5"
+    android:id="@+id/firstPhoneScreenguide5"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.82"/>
+    app:layout_constraintGuide_percent="0.80"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/guide6"
+    android:id="@+id/firstPhoneScreenguide6"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -63,10 +63,10 @@
     android:layout_height="0dp"
     android:background="@color/phoneGreen"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/guide1"
+    app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/guide0">
+    app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide0">
 
     <ImageView
       android:id="@+id/imagePhone"
@@ -110,175 +110,154 @@
     android:background="@color/colorPrimary"
     android:onClick="pickContactFromList"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/guide5"
+    app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide5"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/guide4">
+    app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide4">
 
     <TextView
       android:id="@+id/textPickContact"
+      android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="73dp"
-      android:layout_marginStart="25dp"
+      android:layout_height="40dp"
       android:layout_marginTop="10dp"
-      android:layout_marginEnd="25dp"
       android:layout_marginBottom="10dp"
+      android:layout_marginStart="25dp"
+      android:layout_marginEnd="25dp"
       android:gravity="center"
       android:text="@string/pick_contact_from_list"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      android:textStyle="bold"
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.512" />
-
-  </android.support.constraint.ConstraintLayout>
-
-
-  <Button
-    android:id="@+id/pickButton4"
-    android:layout_width="56dp"
-    android:layout_height="56dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:onClick="pressPlusButton4"
-    android:text="+"
-    app:layout_constraintBottom_toTopOf="@+id/cLayoutPickContact"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/guide3"/>
-
-
-  <Button
-      android:id="@+id/textView4"
+      app:layout_constraintVertical_bias="1.0"/>
+    <Button
+      android:id="@+id/button2"
       android:layout_width="wrap_content"
-      android:layout_height="56dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginBottom="8dp"
-      android:onClick="pressQuickCallButton4"
-      android:text="@string/default_quick_call"
-      android:textAppearance="@style/TextAppearance.AppCompat"
-      android:textSize="10sp"
-      app:layout_constraintBottom_toTopOf="@+id/guide4"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.768"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/guide3"
-      app:layout_constraintVertical_bias="0.558" />
-
-  <Button
-      android:id="@+id/pickButton3"
-      android:layout_width="56dp"
-      android:layout_height="56dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginBottom="8dp"
-      android:onClick="pressPlusButton3"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="11dp"
+      android:layout_marginBottom="1dp"
+      android:layout_marginStart="162dp"
+      android:layout_marginEnd="162dp"
       android:text="+"
-      app:layout_constraintBottom_toTopOf="@+id/guide4"
-      app:layout_constraintEnd_toEndOf="@+id/pickButton4"
-      app:layout_constraintHorizontal_bias="0.407"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide3" />
-
-  <Button
-      android:id="@+id/textView3"
-      android:layout_width="wrap_content"
-      android:layout_height="56dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginBottom="8dp"
-      android:onClick="pressQuickCallButton3"
-      android:text="@string/default_quick_call"
-      android:textAppearance="@style/TextAppearance.AppCompat"
-      android:textSize="10sp"
-      app:layout_constraintBottom_toTopOf="@+id/guide4"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.026"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide3" />
-
-  <Button
-      android:id="@+id/pickButton2"
-      android:layout_width="56dp"
-      android:layout_height="56dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginBottom="8dp"
-      android:onClick="pressPlusButton2"
-      android:text="+"
-      app:layout_constraintBottom_toTopOf="@+id/guide3"
+      app:layout_constraintBottom_toTopOf="@+id/textPickContact"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide2"
-      app:layout_constraintVertical_bias="0.61" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0"/>
 
-  <Button
-      android:id="@+id/textView2"
-      android:layout_width="wrap_content"
-      android:layout_height="56dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginBottom="8dp"
-      android:onClick="pressQuickCallButton2"
-      android:text="@string/default_quick_call"
-      android:textAppearance="@style/TextAppearance.AppCompat"
-      android:textSize="10sp"
-      app:layout_constraintBottom_toTopOf="@+id/guide3"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.768"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide2"
-      app:layout_constraintVertical_bias="0.61" />
+  </android.support.constraint.ConstraintLayout>
 
-  <Button
-      android:id="@+id/pickButton1"
-      android:layout_width="56dp"
-      android:layout_height="56dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginBottom="8dp"
-      android:onClick="pressPlusButton1"
-      android:text="+"
-      app:layout_constraintBottom_toTopOf="@+id/guide3"
-      app:layout_constraintEnd_toEndOf="@+id/pickButton2"
-      app:layout_constraintHorizontal_bias="0.407"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide2"
-      app:layout_constraintVertical_bias="0.61" />
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutFirstFav"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide2"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide1">
 
-  <Button
-      android:id="@+id/textView1"
-      android:layout_width="wrap_content"
-      android:layout_height="56dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginBottom="8dp"
+    <TextView
+      android:id="@+id/textFirstFav"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="15dp"
+      android:layout_marginEnd="50dp"
+      android:gravity="center"
       android:onClick="pressQuickCallButton1"
-      android:text="@string/default_quick_call"
-      android:textAppearance="@style/TextAppearance.AppCompat"
-      android:textSize="10sp"
-      app:layout_constraintBottom_toTopOf="@+id/guide3"
-      app:layout_constraintEnd_toEndOf="@+id/pickButton2"
-      app:layout_constraintHorizontal_bias="0.03"
+      android:text="@string/add_fav_contact"
+      android:textAlignment="viewStart"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide2"
-      app:layout_constraintVertical_bias="0.61" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.714"/>
+    <TextView
+      android:id="@+id/textChangeFirstFav"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:fontFamily="sans-serif-black"
+      android:gravity="center"
+      android:text="@string/ellipsis"
+      android:textColor="@android:color/black"
+      android:textSize="24sp"
+      android:onClick="pressEllipsis1"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toEndOf="@+id/textFirstFav"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0"
+      tools:text=" ..."
+      tools:textAlignment="viewStart"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutSecondFav"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide3"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide2">
+
+    <TextView
+      android:id="@+id/textSecondFav"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="15dp"
+      android:layout_marginEnd="50dp"
+      android:gravity="center"
+      android:onClick="pressQuickCallButton2"
+      android:text="@string/add_fav_contact"
+      android:textAlignment="viewStart"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.714"/>
+    <TextView
+      android:id="@+id/textChangeSecondFav"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:fontFamily="sans-serif-black"
+      android:gravity="center"
+      android:text="@string/ellipsis"
+      android:textColor="@android:color/black"
+      android:textSize="24sp"
+      android:onClick="pressEllipsis2"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toEndOf="@+id/textSecondFav"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0"
+      tools:text=" ..."
+      tools:textAlignment="viewStart"/>
+
+  </android.support.constraint.ConstraintLayout>
 
 
 </android.support.constraint.ConstraintLayout>

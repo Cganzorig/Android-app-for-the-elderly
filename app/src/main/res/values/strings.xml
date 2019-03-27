@@ -23,8 +23,8 @@
   <string name="plus_sign">+</string>
   <string name="minus_sign">-</string>
   <string name="default_quick_call">Add favourite contact</string>
-
-
+  <string name="ellipsis">...</string>
+  <string name="add_fav_contact">Add favourite contact</string>
 
 
 </resources>

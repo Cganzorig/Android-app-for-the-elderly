@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 public class SecondPhoneScreen extends AppCompatActivity {
 
-  boolean hasWhatsApp;
   String number;
   String whatsappVoiceId;
   private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
@@ -31,9 +30,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
     // get additional params passed from first phone screen
     Intent thisIntent = getIntent();
     this.number = thisIntent.getStringExtra("number");
-    String tmpWp = thisIntent.getStringExtra("whatsapp");
-    this.hasWhatsApp = (tmpWp.equals("True")) ? TRUE : FALSE;
-    this.whatsappVoiceId = thisIntent.getStringExtra("contactId");
+    this.whatsappVoiceId = thisIntent.getStringExtra("whatsappVoiceId");
   }
 
   public void callWhatsApp(View view) {
