@@ -281,20 +281,20 @@
 
     <Button
       android:id="@+id/add_remove_button"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="96dp"
+      android:layout_height="69dp"
       android:layout_marginTop="11dp"
-      android:layout_marginBottom="10dp"
+      android:layout_marginBottom="11dp"
       android:layout_marginStart="161dp"
       android:layout_marginEnd="162dp"
       android:onClick="pressPlus"
       android:text="@string/plus_sign"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.0"/>
+      app:layout_constraintVertical_bias="0.736"/>
 
   </android.support.constraint.ConstraintLayout>
 

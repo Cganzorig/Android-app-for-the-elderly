@@ -11,21 +11,17 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintLayout.LayoutParams;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactTableRow;
 
 public class FirstPhoneScreen extends AppCompatActivity {
 
   static final int PICK_CONTACT_REQUEST = 1;  // The request code
-
-  public class ContactInfo {
-    String displayName;
-    String number;
-    String whatsappVoiceId;
-  }
 
   private ContactInfoTable table = new ContactInfoTable();
   private int numFavs;
@@ -100,6 +96,8 @@ public class FirstPhoneScreen extends AppCompatActivity {
     editor.putString("displayName", tmpInfo.displayName);
     editor.putString("number", tmpInfo.number);
     editor.putString("whatsappVoiceId", tmpInfo.whatsappVoiceId);
+    editor.putString("viberVoiceId", tmpInfo.viberVoiceId);
+    editor.putString("skypeVoiceId", tmpInfo.skypeVoiceId);
     editor.apply();
   }
 
@@ -126,10 +124,14 @@ public class FirstPhoneScreen extends AppCompatActivity {
     String displayName = sp.getString("displayName", "");
     String number = sp.getString("number", "");
     String whatsappVoiceId = sp.getString("whatsappVoiceId", "");
+    String viberVoiceId = sp.getString("viberVoiceId", "");
+
 
     intent.putExtra("number", number);
     intent.putExtra("displayName", displayName);
     intent.putExtra("whatsappVoiceId", whatsappVoiceId);
+    intent.putExtra("viberVoiceId", viberVoiceId);
+
 
     startActivity(intent);
 
@@ -214,12 +216,19 @@ public class FirstPhoneScreen extends AppCompatActivity {
       // temp housing for data of selected contact
       ContactInfo tmpInfo = new ContactInfo();
 
+      // mime types we need
       String mimeWhatsappVoice = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
       String mimePhoneVoice = "vnd.android.cursor.item/phone_v2";
+      String mimeViberVoice = "vnd.android.cursor.item/vnd.com.viber.voip.viber_out_call_viber";
+      String mimeMessengerVoice = "";
+      String mimeSkypeVoice = "vnd.android.cursor.item/com.skype4life.phone";
+
 
       tmpInfo.displayName = this.table.getColumnWithMime("displayName", mimePhoneVoice);
       tmpInfo.number = this.table.getColumnWithMime("phoneNumber", mimePhoneVoice);
       tmpInfo.whatsappVoiceId = this.table.getColumnWithMime("_id", mimeWhatsappVoice);
+      tmpInfo.viberVoiceId = this.table.getColumnWithMime("_id", mimeViberVoice);
+      tmpInfo.skypeVoiceId = this.table.getColumnWithMime("_id", mimeSkypeVoice);
 
       switch (this.selectedButton) {
         case 1:
@@ -298,11 +307,17 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
     while (cursor.moveToNext()) {
       String phoneNumber= cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-      if(phoneNumber != null && phoneNumber.contains(target.substring(1))) {
+      if(phoneNumber != null) {
+        phoneNumber = phoneNumber.replace(" ", "");
+        target = target.replace(" ", "");
+      }
+      if(phoneNumber != null && phoneNumber.contains(target.substring(2))) {
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
         String displayName = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
         String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
         table.add(new ContactTableRow(_id, displayName, phoneNumber, mimeType));
+        //Log.d("t",_id + " " + displayName +" "+ phoneNumber + " "+ mimeType);
+
       }
     }
     cursor.close();
