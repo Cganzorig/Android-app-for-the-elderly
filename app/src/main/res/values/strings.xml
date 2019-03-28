@@ -1,32 +1,32 @@
 <resources>
-  <string name="app_name">Ava Launcher</string>
-  <string name="callButton">Make a phone call</string>
-  <string name="searchButton">Search the internet</string>
-  <string name="messageButton">Send a message</string>
-  <string name="search_hint">Search an app</string>
-  <string name="title_activity_searchable">SearchableActivity</string>
-  <string name="app_label"> Search Feature</string>
-  <string name="search_view">Enter search</string>
+    <string name="app_name">Ava Launcher</string>
+    <string name="callButton">Make a phone call</string>
+    <string name="searchButton">Search the internet</string>
+    <string name="messageButton">Send a message</string>
+    <string name="search_hint">Search an app</string>
+    <string name="title_activity_searchable">SearchableActivity</string>
+    <string name="app_label"> Search Feature</string>
+    <string name="search_view">Enter search</string>
 
-  <string name="main_question">WHAT DO YOU WANT TO DO?</string>
-  <string name="main_call">MAKE A PHONE CALL</string>
-  <string name="main_message">SEND A MESSAGE</string>
-  <string name="main_internet">SEARCH THE INTERNET</string>
-  <string name="main_tool">USE COMMON TOOLS</string>
-  <string name="main_apps">LAUNCH AN APP</string>
+    <string name="main_question">WHAT DO YOU WANT TO DO?</string>
+    <string name="main_call">MAKE A PHONE CALL</string>
+    <string name="main_message">SEND A MESSAGE</string>
+    <string name="main_internet">SEARCH THE INTERNET</string>
+    <string name="main_tool">USE COMMON TOOLS</string>
+    <string name="main_apps">LAUNCH AN APP</string>
 
-  <string name="using_whatsapp">Using WhatsApp</string>
-  <string name="using_viber">Using Viber</string>
-  <string name="using_reg_phone">Using regular phone</string>
-  <string name="using_messenger">Using Messenger</string>
-  <string name="using_skype">Using Skype</string>
-  <string name="pick_contact_from_list">Pick contact from list</string>
+    <string name="using_whatsapp">Using WhatsApp</string>
+    <string name="using_viber">Using Viber</string>
+    <string name="using_reg_phone">Using regular phone</string>
+    <string name="using_messenger">Using Messenger</string>
+    <string name="using_skype">Using Skype</string>
+    <string name="pick_contact_from_list">Pick contact from list</string>
 
-  <string name="plus_sign">+</string>
-  <string name="minus_sign">-</string>
-  <string name="default_quick_call">Add favourite contact</string>
-  <string name="ellipsis">...</string>
-  <string name="add_fav_contact">Add favourite contact</string>
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
+    <string name="default_quick_call">Add favourite contact</string>
+    <string name="ellipsis">...</string>
+    <string name="add_fav_contact">Add favourite contact</string>
 
 
 </resources>

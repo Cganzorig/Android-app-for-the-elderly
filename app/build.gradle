@@ -89,4 +89,6 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.2'
     testImplementation 'androidx.test:core:1.1.0'
     testImplementation 'org.mockito:mockito-core:2.24.5'
+    compile 'com.github.Abhi347:NoobCameraFlash:0.2.0'
+
 }
