@@ -95,7 +95,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
   public void pressCall(View view) {
     switch (view.getId()) {
-      case R.id.cLayoutRegCall:
+      case R.id.textRegCall:
         if (ContextCompat.checkSelfPermission(this,
             Manifest.permission.CALL_PHONE)
             != PackageManager.PERMISSION_GRANTED) {
@@ -110,7 +110,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
           startActivity(call);
         }
         break;
-      case R.id.cLayoutSecondCall:
+      case R.id.textSecondCall:
         if(this.secondOptionFlag.equals("WHATSAPP")) {
           String mimeString = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
           String data = "content://com.android.contacts/data/" + this.contactInfo.whatsappVoiceId;
@@ -129,7 +129,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
           startActivity(intent);
         }
         break;
-      case R.id.cLayoutThirdCall:
+      case R.id.textThirdCall:
         Uri uri = Uri.parse("tel:" + Uri.encode(contactInfo.number));
         Intent intent = new Intent("android.intent.action.VIEW");
         intent.setClassName("com.viber.voip", "com.viber.voip.WelcomeActivity");
@@ -141,50 +141,11 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
   public void doNothing(View view) {}
 
-  public void callWhatsApp(View view) {
-
-    if(!this.contactInfo.whatsappVoiceId.equals("NONE")) {
-
-      String mimeString = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
-      String data = "content://com.android.contacts/data/" + this.contactInfo.whatsappVoiceId;
-      Intent intent = new Intent();
-      intent.setAction(Intent.ACTION_VIEW);
-      intent.setDataAndType(Uri.parse(data), mimeString);
-      intent.setPackage("com.whatsapp");
-      startActivity(intent);
-
-    } else {
-
-      Context context = getApplicationContext();
-      CharSequence text = "You or your contact don't have WhatsApp installed";
-      int duration = Toast.LENGTH_SHORT;
-      Toast toast = Toast.makeText(context, text, duration);
-      toast.show();
-    }
-  }
-
-  public void makePhoneCall(View view) {
-
-    if (ContextCompat.checkSelfPermission(this,
-        Manifest.permission.CALL_PHONE)
-        != PackageManager.PERMISSION_GRANTED) {
-
-      int CALL_PHONE_PERMISSION_CODE = 1;
-      ActivityCompat.requestPermissions(this,
-          new String[] {Manifest.permission.CALL_PHONE}, CALL_PHONE_PERMISSION_CODE);
-    } else {
-      // Permission has already been granted
-      Intent call = new Intent(Intent.ACTION_CALL);
-      call.setData(Uri.parse("tel:" + this.contactInfo.number));
-      startActivity(call);
-    }
-
-  }
 
   @Override
   public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
     switch (requestCode) {
-      case MY_PERMISSIONS_REQUEST_CALL_PHONE: {
+      case MY_PERMISSIONS_REQUEST_CALL_PHONE:
         // permission was granted
         if (grantResults.length > 0
             && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -196,7 +157,6 @@ public class SecondPhoneScreen extends AppCompatActivity {
           // permission denied
           // Could display information here why you need permission
         }
-      }
     }
   }
 }
