@@ -3,6 +3,7 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="toolsPink">#D81B60</color>
+    <color name="toolsPink2">#FFA1C2</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBlack">#000000</color>
     <color name="phoneGreen">#279C35</color>
@@ -10,4 +11,8 @@
     <color name="browserBlue">#1A60ED</color>
     <color name="messageYellow">#D39906</color>
     <color name="questionGray">#A29794</color>
+    <color name="lightGray">#E0DEDD</color>
+    <color name="lighterGray">#D5D3D3</color>
+
+
 </resources>

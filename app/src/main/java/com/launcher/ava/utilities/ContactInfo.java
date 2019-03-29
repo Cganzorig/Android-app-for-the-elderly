@@ -7,3 +7,4 @@ public class ContactInfo {
   public String viberVoiceId;
   public String skypeVoiceId;
 }
+

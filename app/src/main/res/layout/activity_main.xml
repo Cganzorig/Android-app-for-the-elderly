@@ -231,7 +231,7 @@
         android:id="@+id/cLayoutTools"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/toolsPink"
+        android:background="@color/lightGray"
         android:onClick="launchCommonToolsScreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/guide5"

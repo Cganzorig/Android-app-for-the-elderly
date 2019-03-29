@@ -28,5 +28,13 @@
     <string name="ellipsis">...</string>
     <string name="add_fav_contact">Add favourite contact</string>
 
+    <string name="toggle_torch">TURN ON/OFF TORCH</string>
+    <string name="take_photo">TAKE A PHOTO</string>
+    <string name="add_contact">ADD A CONTACT</string>
+    <string name="set_alarm">SET AN ALARM</string>
+    <string name="launch_calc">LAUNCH CALCULATOR</string>
+
+
+
 
 </resources>
