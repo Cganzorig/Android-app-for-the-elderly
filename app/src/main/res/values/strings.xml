@@ -33,8 +33,7 @@
     <string name="add_contact">ADD A CONTACT</string>
     <string name="set_alarm">SET AN ALARM</string>
     <string name="launch_calc">LAUNCH CALCULATOR</string>
-
-
+  <string name="del_text">DEL</string>
 
 
 </resources>

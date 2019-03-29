@@ -121,7 +121,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide1">
 
-    <TextView
+    <Button
       android:id="@+id/textFirstFav"
       android:textStyle="bold"
       android:layout_width="0dp"
@@ -134,32 +134,30 @@
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.714"/>
-    <TextView
+    <Button
       android:id="@+id/textChangeFirstFav"
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:fontFamily="sans-serif-black"
       android:gravity="center"
-      android:text="@string/ellipsis"
+      android:onClick="pressEllipsis"
+      android:text="@string/minus_sign"
       android:textColor="@android:color/black"
       android:textSize="24sp"
-      android:onClick="pressEllipsis"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toEndOf="@+id/textFirstFav"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0"
-      tools:text=" ..."
-      tools:textAlignment="viewStart"/>
+      />
 
   </android.support.constraint.ConstraintLayout>
 
@@ -174,7 +172,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide2">
 
-    <TextView
+    <Button
       android:id="@+id/textSecondFav"
       android:textStyle="bold"
       android:layout_width="0dp"
@@ -187,32 +185,30 @@
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.714"/>
-    <TextView
+    <Button
       android:id="@+id/textChangeSecondFav"
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:fontFamily="sans-serif-black"
       android:gravity="center"
-      android:text="@string/ellipsis"
+      android:onClick="pressEllipsis"
+      android:text="@string/minus_sign"
       android:textColor="@android:color/black"
       android:textSize="24sp"
-      android:onClick="pressEllipsis"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toEndOf="@+id/textSecondFav"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0"
-      tools:text=" ..."
-      tools:textAlignment="viewStart"/>
+      />
 
   </android.support.constraint.ConstraintLayout>
 
@@ -227,7 +223,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide3">
 
-    <TextView
+    <Button
       android:id="@+id/textThirdFav"
       android:textStyle="bold"
       android:layout_width="0dp"
@@ -240,32 +236,30 @@
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.714"/>
-    <TextView
+    <Button
       android:id="@+id/textChangeThirdFav"
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:fontFamily="sans-serif-black"
       android:gravity="center"
-      android:text="@string/ellipsis"
+      android:onClick="pressEllipsis"
+      android:text="@string/minus_sign"
       android:textColor="@android:color/black"
       android:textSize="24sp"
-      android:onClick="pressEllipsis"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toEndOf="@+id/textThirdFav"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0"
-      tools:text=" ..."
-      tools:textAlignment="viewStart"/>
+      />
 
   </android.support.constraint.ConstraintLayout>
 
@@ -280,21 +274,35 @@
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide4">
 
     <Button
-      android:id="@+id/add_remove_button"
+      android:id="@+id/add_button"
       android:layout_width="96dp"
       android:layout_height="69dp"
-      android:layout_marginTop="11dp"
+      android:layout_marginTop="30dp"
       android:layout_marginBottom="11dp"
-      android:layout_marginStart="161dp"
-      android:layout_marginEnd="162dp"
+      android:layout_marginStart="106dp"
+      android:layout_marginEnd="8dp"
       android:onClick="pressPlus"
       android:text="@string/plus_sign"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintEnd_toStartOf="@+id/remove_button"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.736"/>
+      app:layout_constraintVertical_bias="1.0"/>
+    <Button
+      android:id="@+id/remove_button"
+      android:layout_width="96dp"
+      android:layout_height="69dp"
+      android:layout_marginTop="30dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="106dp"
+      android:onClick="pressMinus"
+      android:text="@string/minus_sign"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/add_button"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0"/>
 
   </android.support.constraint.ConstraintLayout>
 
@@ -308,13 +316,13 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide6">
 
-    <TextView
+    <Button
       android:id="@+id/textPickContact"
       android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="40dp"
+      android:layout_height="51dp"
       android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
+      android:layout_marginBottom="12dp"
       android:layout_marginStart="25dp"
       android:layout_marginEnd="25dp"
       android:gravity="center"
@@ -322,13 +330,11 @@
       android:text="@string/pick_contact_from_list"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.0"/>
+      app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 

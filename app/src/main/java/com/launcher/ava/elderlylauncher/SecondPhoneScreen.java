@@ -62,17 +62,17 @@ public class SecondPhoneScreen extends AppCompatActivity {
     this.callOption = findViewById(R.id.textRegCall);
 
     if (!this.contactInfo.whatsappVoiceId.equals("NONE")) {
-      this.whatsappVoiceOption = (TextView) findViewById(R.id.textSecondCall);
+      this.whatsappVoiceOption = findViewById(R.id.textSecondCall);
       this.whatsappVoiceOption.setText(getString(R.string.using_whatsapp));
-      this.whatsappVoiceImage = (ImageView) findViewById(R.id.imageSecondCall);
+      this.whatsappVoiceImage = findViewById(R.id.imageSecondCall);
       this.whatsappVoiceImage.setImageDrawable(getDrawable(R.drawable.ic_whatsapp));
 
       this.secondOptionFlag = "WHATSAPP";
-      if (!this.contactInfo.whatsappVoiceId.equals("NONE")) {
-        this.viberVoiceOption = (TextView) findViewById(R.id.textThirdCall);
+      if (!this.contactInfo.viberVoiceId.equals("NONE")) {
+        this.viberVoiceOption = findViewById(R.id.textThirdCall);
         this.viberVoiceOption.setText(getString(R.string.using_viber));
 
-        this.viberVoiceImage = (ImageView) findViewById(R.id.imageThirdCall);
+        this.viberVoiceImage = findViewById(R.id.imageThirdCall);
         this.viberVoiceImage.setImageDrawable(getDrawable(R.drawable.ic_viber));
         params.topToTop = R.id.secondPhoneScreenGuide4;
       } else {
@@ -81,9 +81,9 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
     } else {
       if (!this.contactInfo.viberVoiceId.equals("NONE")) {
-        this.viberVoiceOption = (TextView) findViewById(R.id.textSecondCall);
+        this.viberVoiceOption = findViewById(R.id.textSecondCall);
         this.viberVoiceOption.setText(getString(R.string.using_viber));
-        this.viberVoiceImage = (ImageView) findViewById(R.id.imageSecondCall);
+        this.viberVoiceImage = findViewById(R.id.imageSecondCall);
         this.viberVoiceImage.setImageDrawable(getDrawable(R.drawable.ic_viber));
         this.secondOptionFlag = "VIBER";
         params.topToTop = R.id.secondPhoneScreenGuide3;

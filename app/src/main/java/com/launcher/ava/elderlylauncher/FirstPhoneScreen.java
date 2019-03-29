@@ -11,7 +11,6 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintLayout.LayoutParams;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,7 +29,8 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
   ConstraintLayout addAndSearch;
   ConstraintLayout whiteBlock;
-  Button btn;
+  Button add_btn;
+  Button remove_btn;
 
 
   @Override
@@ -40,15 +40,10 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
     this.addAndSearch = findViewById(R.id.cLayoutBtn);
     this.whiteBlock = findViewById(R.id.cLayoutWhiteBlock);
-    this.btn = findViewById(R.id.add_remove_button);
+    this.add_btn = findViewById(R.id.add_button);
+    this.remove_btn = findViewById(R.id.remove_button);
 
     displayFavouriteContacts();
-
-    if(this.numFavs ==3) {
-      btn.setText(R.string.minus_sign);
-    } else {
-      btn.setText(R.string.plus_sign);
-    }
   }
 
 
@@ -101,19 +96,46 @@ public class FirstPhoneScreen extends AppCompatActivity {
     editor.apply();
   }
 
-  public void pressPlus(View view) {
-    if(this.btn.getText().equals("+")) {
-      this.numFavs = (this.numFavs != 3) ? this.numFavs + 1 : this.numFavs;
-      if(this.numFavs ==3) {
-        btn.setText(R.string.minus_sign);
-      }
-    } else {
-      this.numFavs = (this.numFavs != 0) ? this.numFavs - 1 : this.numFavs;
-      if(this.numFavs ==0) {
-        btn.setText(R.string.plus_sign);
-      }
+  public void pressMinus(View view) {
+    displayFavouriteContacts();
+    switch (this.numFavs) {
+      case 3:
+        pressEllipsis(findViewById(R.id.textChangeThirdFav));
+        break;
+      case 2:
+        pressEllipsis(findViewById(R.id.textChangeSecondFav));
+        break;
+      case 1:
+        pressEllipsis(findViewById(R.id.textChangeFirstFav));
+        break;
+        default:
+          break;
     }
-    setWhiteBlocks();
+    displayFavouriteContacts();
+  }
+
+  public void pressPlus(View view) {
+    displayFavouriteContacts();
+    switch (this.numFavs) {
+      case 0:
+        this.selectedButton = 1;
+        this.numFavs +=1;
+        pickFromList();
+        break;
+      case 1:
+        this.selectedButton = 2;
+        this.numFavs +=1;
+        pickFromList();
+        break;
+      case 2:
+        this.selectedButton = 3;
+        this.numFavs +=1;
+        pickFromList();
+        break;
+        default:
+          break;
+    }
+    displayFavouriteContacts();
   }
 
   public void passExtraInfoToNewIntent(String sharedPrefName) {
@@ -201,6 +223,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
     editor.clear();
     editor.apply();
     tv.setText(R.string.add_fav_contact);
+    displayFavouriteContacts();
   }
 
   @Override
@@ -219,7 +242,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
       // mime types we need
       String mimeWhatsappVoice = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
       String mimePhoneVoice = "vnd.android.cursor.item/phone_v2";
-      String mimeViberVoice = "vnd.android.cursor.item/vnd.com.viber.voip.viber_out_call_viber";
+      String mimeViberVoice = "vnd.android.cursor.item/vnd.com.viber.voip.viber_number_call";
       String mimeMessengerVoice = "";
       String mimeSkypeVoice = "vnd.android.cursor.item/com.skype4life.phone";
 
