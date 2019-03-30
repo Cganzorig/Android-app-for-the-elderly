@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactTableRow;
+import org.w3c.dom.Text;
 
 public class FirstPhoneScreen extends AppCompatActivity {
 
@@ -34,8 +35,8 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
   ConstraintLayout addAndRemove;
   ConstraintLayout whiteBlock;
-  Button add_btn;
-  Button remove_btn;
+  Button plusBtn;
+  Button minusBtn;
   private Intent pickContactIntent;
 
 
@@ -46,46 +47,84 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
     this.addAndRemove = findViewById(R.id.cLayoutBtn);
     this.whiteBlock = findViewById(R.id.cLayoutWhiteBlock);
-    this.add_btn = findViewById(R.id.add_button);
-    this.remove_btn = findViewById(R.id.remove_button);
+    this.plusBtn = findViewById(R.id.add_button);
+    this.minusBtn = findViewById(R.id.remove_button);
 
     displayFavouriteContacts();
   }
 
 
   public void setWhiteBlocks() {
-    LayoutParams params1 = (LayoutParams) this.addAndRemove.getLayoutParams();
-    LayoutParams params2 = (LayoutParams) this.whiteBlock.getLayoutParams();
+    LayoutParams paramsAddAndRemove = (LayoutParams) this.addAndRemove.getLayoutParams();
+    LayoutParams paramsWhiteBlock = (LayoutParams) this.whiteBlock.getLayoutParams();
+    TextView tv = findViewById(R.id.textExplainPlusMinus);
+    LayoutParams paramsPlus = (LayoutParams) this.plusBtn.getLayoutParams();
+    LayoutParams paramsMinus = (LayoutParams) this.minusBtn.getLayoutParams();
+
 
     switch (this.numFavs) {
       case 0:
-        params1.topToTop = R.id.firstPhoneScreenguide1;
-        params1.bottomToTop = R.id.firstPhoneScreenguide2;
-        params2.topToTop = R.id.firstPhoneScreenguide2;
-        params2.bottomToTop = R.id.firstPhoneScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide1;
+        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide2;
+        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide2;
+        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+
+        minusBtn.setVisibility(View.INVISIBLE);
+        plusBtn.setVisibility(View.VISIBLE);
+        tv.setText(R.string.add_fav);
+
+        paramsPlus.startToStart = R.id.firstPhoneScreenVertical5;
+        paramsPlus.endToStart = R.id.firstPhoneScreenVertical6;
         break;
       case 1:
-        params1.topToTop = R.id.firstPhoneScreenguide2;
-        params1.bottomToTop = R.id.firstPhoneScreenguide3;
-        params2.topToTop = R.id.firstPhoneScreenguide3;
-        params2.bottomToTop = R.id.firstPhoneScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide2;
+        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide3;
+        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide3;
+        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+
+        minusBtn.setVisibility(View.VISIBLE);
+        plusBtn.setVisibility(View.VISIBLE);
+        tv.setText(R.string.add_remove_fav);
+
+        paramsPlus.startToStart = R.id.firstPhoneScreenVertical1;
+        paramsPlus.endToStart = R.id.firstPhoneScreenVertical2;
+        paramsMinus.startToStart = R.id.firstPhoneScreenVertical3;
+        paramsMinus.endToStart = R.id.firstPhoneScreenVertical4;
         break;
       case 2:
-        params1.topToTop = R.id.firstPhoneScreenguide3;
-        params1.bottomToTop = R.id.firstPhoneScreenguide4;
-        params2.topToTop = R.id.firstPhoneScreenguide4;
-        params2.bottomToTop = R.id.firstPhoneScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide3;
+        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide4;
+        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide4;
+        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+
+        minusBtn.setVisibility(View.VISIBLE);
+        plusBtn.setVisibility(View.VISIBLE);
+        tv.setText(R.string.add_remove_fav);
+
+        paramsPlus.startToStart = R.id.firstPhoneScreenVertical1;
+        paramsPlus.endToStart = R.id.firstPhoneScreenVertical2;
+        paramsMinus.startToStart = R.id.firstPhoneScreenVertical3;
+        paramsMinus.endToStart = R.id.firstPhoneScreenVertical4;
         break;
       case 3:
-        params1.topToTop = R.id.firstPhoneScreenguide4;
-        params1.bottomToTop = R.id.firstPhoneScreenguide5;
-        params2.topToTop = R.id.firstPhoneScreenguide5;
-        params2.bottomToTop = R.id.firstPhoneScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide4;
+        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide5;
+        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide5;
+        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+
+        minusBtn.setVisibility(View.VISIBLE);
+        plusBtn.setVisibility(View.INVISIBLE);
+        tv.setText(R.string.remove_fav);
+
+        paramsMinus.startToStart = R.id.firstPhoneScreenVertical5;
+        paramsMinus.endToStart = R.id.firstPhoneScreenVertical6;
         break;
 
     }
-    addAndRemove.setLayoutParams(params1);
-    whiteBlock.setLayoutParams(params2);
+    addAndRemove.setLayoutParams(paramsAddAndRemove);
+    whiteBlock.setLayoutParams(paramsWhiteBlock);
+    plusBtn.setLayoutParams(paramsPlus);
+    minusBtn.setLayoutParams(paramsMinus);
   }
 
   public void doNothing(View view) {
@@ -375,6 +414,9 @@ public class FirstPhoneScreen extends AppCompatActivity {
         } else {
           // permission denied, boo! Disable the
           // functionality that depends on this permission.
+          Intent backToHome = new Intent(this, FirstPhoneScreen.class);
+          startActivity(backToHome);
+          finish();
         }
         return;
       }

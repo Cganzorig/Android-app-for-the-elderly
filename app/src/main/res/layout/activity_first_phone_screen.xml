@@ -55,7 +55,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.9"/>
+    app:layout_constraintGuide_percent="0.8"/>
 
   <android.support.constraint.Guideline
     android:id="@+id/firstPhoneScreenguide7"
@@ -190,8 +190,8 @@
     <Button
       android:id="@+id/textThirdFav"
       android:textStyle="bold"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
+      android:layout_width="361dp"
+      android:layout_height="105dp"
       android:layout_marginStart="25dp"
       android:layout_marginEnd="25dp"
       android:gravity="center"
@@ -202,10 +202,8 @@
       android:textSize="25sp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.714"/>
+      app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 
@@ -220,36 +218,90 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide4">
 
+    <android.support.constraint.Guideline
+      android:id="@+id/firstPhoneScreenVertical1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_begin="101dp"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/firstPhoneScreenVertical2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_begin="197dp"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/firstPhoneScreenVertical3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_end="197dp"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/firstPhoneScreenVertical4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_end="101dp"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/firstPhoneScreenVertical5"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_begin="254dp"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/firstPhoneScreenVertical6"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_begin="158dp"/>
+
     <Button
       android:id="@+id/add_button"
       android:layout_width="96dp"
-      android:layout_height="69dp"
+      android:layout_height="55dp"
       android:layout_marginTop="30dp"
-      android:layout_marginBottom="11dp"
-      android:layout_marginStart="106dp"
-      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="10dp"
       android:onClick="pressPlus"
       android:text="@string/plus_sign"
+      android:textSize="30sp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toStartOf="@+id/remove_button"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/firstPhoneScreenVertical2"
+      app:layout_constraintStart_toStartOf="@+id/firstPhoneScreenVertical1"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0"/>
     <Button
       android:id="@+id/remove_button"
       android:layout_width="96dp"
-      android:layout_height="69dp"
+      android:layout_height="55dp"
       android:layout_marginTop="30dp"
       android:layout_marginBottom="10dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginEnd="106dp"
       android:onClick="pressMinus"
       android:text="@string/minus_sign"
+      android:textSize="30sp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/add_button"
+      app:layout_constraintEnd_toStartOf="@+id/firstPhoneScreenVertical4"
+      app:layout_constraintStart_toStartOf="@+id/firstPhoneScreenVertical3"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0"/>
+    <TextView
+      android:id="@+id/textExplainPlusMinus"
+      android:textStyle="italic"
+      android:layout_width="wrap_content"
+      android:layout_height="33dp"
+      android:layout_marginTop="11dp"
+      android:layout_marginStart="39dp"
+      android:layout_marginEnd="39dp"
+      android:gravity="bottom"
+      android:onClick="doNothing"
+      android:text="@string/add_remove_fav"
+      android:textAlignment="center"
+      android:textColor="@color/questionGray"
+      android:textSize="24sp"
+      app:layout_constraintBottom_toTopOf="@+id/add_button"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+
 
   </android.support.constraint.ConstraintLayout>
 
@@ -267,9 +319,9 @@
       android:id="@+id/textPickContact"
       android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="51dp"
-      android:layout_marginTop="10dp"
-      android:layout_marginBottom="12dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="30dp"
+      android:layout_marginBottom="30dp"
       android:layout_marginStart="25dp"
       android:layout_marginEnd="25dp"
       android:gravity="center"

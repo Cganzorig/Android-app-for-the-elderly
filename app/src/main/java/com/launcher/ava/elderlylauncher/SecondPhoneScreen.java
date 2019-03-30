@@ -36,7 +36,6 @@ public class SecondPhoneScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_second_phone_screen);
 
-    // get additional params passed from first phone screen
     Intent thisIntent = getIntent();
     this.contactInfo.displayName = thisIntent.getStringExtra("displayName");
     this.contactInfo.number = thisIntent.getStringExtra("number");
@@ -158,7 +157,21 @@ public class SecondPhoneScreen extends AppCompatActivity {
           makeCall();
         } else {
           // permission denied
-          // Could display information here why you need permission
+          Intent backToHome = new Intent(this, SecondPhoneScreen.class);
+          backToHome.putExtra("displayName", this.contactInfo.displayName);
+          backToHome.putExtra("number", this.contactInfo.number);
+          backToHome.putExtra("whatsappVoiceId", this.contactInfo.whatsappVoiceId);
+          backToHome.putExtra("skypeVoiceId", this.contactInfo.skypeVoiceId);
+          backToHome.putExtra("viberVoiceId", this.contactInfo.viberVoiceId);
+
+          startActivity(backToHome);
+          finish();
+//
+//          SharedPreferences sp1 = getSharedPreferences(spName, MODE_PRIVATE);
+//          SharedPreferences.Editor editor = sp1.edit();
+//          editor.clear();
+//          editor.apply();
+//          tv.setText(R.string.add_fav_contact);
         }
     }
   }

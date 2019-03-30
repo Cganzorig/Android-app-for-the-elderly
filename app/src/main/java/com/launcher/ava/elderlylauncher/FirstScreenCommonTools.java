@@ -1,6 +1,5 @@
 package com.launcher.ava.elderlylauncher;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -11,11 +10,8 @@ import android.provider.AlarmClock;
 import android.provider.ContactsContract;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
-
 import com.noob.noobcameraflash.managers.NoobCameraManager;
 import java.util.ArrayList;
 import java.util.HashMap;
