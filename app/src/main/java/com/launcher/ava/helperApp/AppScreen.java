@@ -28,29 +28,31 @@ public class AppScreen extends AppCompatActivity implements SearchView.OnQueryTe
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
     RemoveStatusBar.remove(this);
+
     setContentView(R.layout.activity_app_screen);
 
-    final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
-    textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
-    final Button app1 = (Button) findViewById(R.id.app1);
-    app1.setBackground(AppFrequencyList.getInstance().getHit(0).icon);
+    setFavouriteApps();
 
-    final TextView textApp2 = (TextView) findViewById(R.id.textApp2);
-    textApp2.setText(AppFrequencyList.getInstance().getHit(1).label);
-    final Button app2 = (Button) findViewById(R.id.app2);
-    app2.setBackground(AppFrequencyList.getInstance().getHit(1).icon);
-
-    final TextView textApp3 = (TextView) findViewById(R.id.textApp3);
-    textApp3.setText(AppFrequencyList.getInstance().getHit(2).label);
-    final Button app3 = (Button) findViewById(R.id.app3);
-    app3.setBackground(AppFrequencyList.getInstance().getHit(2).icon);
-
-    final TextView textApp4 = (TextView) findViewById(R.id.textApp4);
-    textApp4.setText(AppFrequencyList.getInstance().getHit(3).label);
-    final Button app4 = (Button) findViewById(R.id.app4);
-    app4.setBackground(AppFrequencyList.getInstance().getHit(3).icon);
+//    final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
+//    textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
+//    final Button app1 = (Button) findViewById(R.id.app1);
+//    app1.setBackground(AppFrequencyList.getInstance().getHit(0).icon);
+//
+//    final TextView textApp2 = (TextView) findViewById(R.id.textApp2);
+//    textApp2.setText(AppFrequencyList.getInstance().getHit(1).label);
+//    final Button app2 = (Button) findViewById(R.id.app2);
+//    app2.setBackground(AppFrequencyList.getInstance().getHit(1).icon);
+//
+//    final TextView textApp3 = (TextView) findViewById(R.id.textApp3);
+//    textApp3.setText(AppFrequencyList.getInstance().getHit(2).label);
+//    final Button app3 = (Button) findViewById(R.id.app3);
+//    app3.setBackground(AppFrequencyList.getInstance().getHit(2).icon);
+//
+//    final TextView textApp4 = (TextView) findViewById(R.id.textApp4);
+//    textApp4.setText(AppFrequencyList.getInstance().getHit(3).label);
+//    final Button app4 = (Button) findViewById(R.id.app4);
+//    app4.setBackground(AppFrequencyList.getInstance().getHit(3).icon);
 
 
     /* Below is the search function */
@@ -74,6 +76,35 @@ public class AppScreen extends AppCompatActivity implements SearchView.OnQueryTe
         return false;
       }
     });
+  }
+
+  public void setFavouriteApps() {
+    setContentView(R.layout.activity_app_screen);
+    final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
+    textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
+    final Button app1 = (Button) findViewById(R.id.app1);
+    app1.setBackground(AppFrequencyList.getInstance().getHit(0).icon);
+
+    final TextView textApp2 = (TextView) findViewById(R.id.textApp2);
+    textApp2.setText(AppFrequencyList.getInstance().getHit(1).label);
+    final Button app2 = (Button) findViewById(R.id.app2);
+    app2.setBackground(AppFrequencyList.getInstance().getHit(1).icon);
+
+    final TextView textApp3 = (TextView) findViewById(R.id.textApp3);
+    textApp3.setText(AppFrequencyList.getInstance().getHit(2).label);
+    final Button app3 = (Button) findViewById(R.id.app3);
+    app3.setBackground(AppFrequencyList.getInstance().getHit(2).icon);
+
+    final TextView textApp4 = (TextView) findViewById(R.id.textApp4);
+    textApp4.setText(AppFrequencyList.getInstance().getHit(3).label);
+    final Button app4 = (Button) findViewById(R.id.app4);
+    app4.setBackground(AppFrequencyList.getInstance().getHit(3).icon);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    setFavouriteApps();
   }
 
   public void onAppClick(View v) {
