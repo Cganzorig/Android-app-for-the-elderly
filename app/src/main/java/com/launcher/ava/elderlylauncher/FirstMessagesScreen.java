@@ -23,7 +23,7 @@ import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactTableRow;
 
-public class FirstPhoneScreen extends AppCompatActivity {
+public class FirstMessagesScreen extends AppCompatActivity {
 
   static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;  // The request code
 
@@ -43,12 +43,12 @@ public class FirstPhoneScreen extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_first_phone_screen);
+    setContentView(R.layout.activity_first_messages_screen);
 
-    this.addAndRemove = findViewById(R.id.cLayoutBtn);
-    this.whiteBlock = findViewById(R.id.cLayoutWhiteBlock);
-    this.plusBtn = findViewById(R.id.add_button);
-    this.minusBtn = findViewById(R.id.remove_button);
+    this.addAndRemove = findViewById(R.id.cLayoutMessagesBtn);
+    this.whiteBlock = findViewById(R.id.cLayoutMessagesWhiteBlock);
+    this.plusBtn = findViewById(R.id.message_add_button);
+    this.minusBtn = findViewById(R.id.message_remove_button);
 
     displayFavouriteContacts();
   }
@@ -56,67 +56,67 @@ public class FirstPhoneScreen extends AppCompatActivity {
   public void setWhiteBlocks() {
     LayoutParams paramsAddAndRemove = (LayoutParams) this.addAndRemove.getLayoutParams();
     LayoutParams paramsWhiteBlock = (LayoutParams) this.whiteBlock.getLayoutParams();
-    TextView tv = findViewById(R.id.textExplainPlusMinus);
+    TextView tv = findViewById(R.id.textMessageExplainPlusMinus);
     LayoutParams paramsPlus = (LayoutParams) this.plusBtn.getLayoutParams();
     LayoutParams paramsMinus = (LayoutParams) this.minusBtn.getLayoutParams();
 
 
     switch (this.numFavs) {
       case 0:
-        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide1;
-        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide2;
-        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide2;
-        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstMessagesScreenguide1;
+        paramsAddAndRemove.bottomToTop = R.id.firstMessagesScreenguide2;
+        paramsWhiteBlock.topToTop = R.id.firstMessagesScreenguide2;
+        paramsWhiteBlock.bottomToTop = R.id.firstMessagesScreenguide6;
 
         minusBtn.setVisibility(View.INVISIBLE);
         plusBtn.setVisibility(View.VISIBLE);
         tv.setText(R.string.add_fav);
 
-        paramsPlus.startToStart = R.id.firstPhoneScreenVertical5;
-        paramsPlus.endToStart = R.id.firstPhoneScreenVertical6;
+        paramsPlus.startToStart = R.id.firstMessagesScreenVertical5;
+        paramsPlus.endToStart = R.id.firstMessagesScreenVertical6;
         break;
       case 1:
-        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide2;
-        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide3;
-        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide3;
-        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstMessagesScreenguide2;
+        paramsAddAndRemove.bottomToTop = R.id.firstMessagesScreenguide3;
+        paramsWhiteBlock.topToTop = R.id.firstMessagesScreenguide3;
+        paramsWhiteBlock.bottomToTop = R.id.firstMessagesScreenguide6;
 
         minusBtn.setVisibility(View.VISIBLE);
         plusBtn.setVisibility(View.VISIBLE);
         tv.setText(R.string.add_remove_fav);
 
-        paramsPlus.startToStart = R.id.firstPhoneScreenVertical1;
-        paramsPlus.endToStart = R.id.firstPhoneScreenVertical2;
-        paramsMinus.startToStart = R.id.firstPhoneScreenVertical3;
-        paramsMinus.endToStart = R.id.firstPhoneScreenVertical4;
+        paramsPlus.startToStart = R.id.firstMessagesScreenVertical1;
+        paramsPlus.endToStart = R.id.firstMessagesScreenVertical2;
+        paramsMinus.startToStart = R.id.firstMessagesScreenVertical3;
+        paramsMinus.endToStart = R.id.firstMessagesScreenVertical4;
         break;
       case 2:
-        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide3;
-        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide4;
-        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide4;
-        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstMessagesScreenguide3;
+        paramsAddAndRemove.bottomToTop = R.id.firstMessagesScreenguide4;
+        paramsWhiteBlock.topToTop = R.id.firstMessagesScreenguide4;
+        paramsWhiteBlock.bottomToTop = R.id.firstMessagesScreenguide6;
 
         minusBtn.setVisibility(View.VISIBLE);
         plusBtn.setVisibility(View.VISIBLE);
         tv.setText(R.string.add_remove_fav);
 
-        paramsPlus.startToStart = R.id.firstPhoneScreenVertical1;
-        paramsPlus.endToStart = R.id.firstPhoneScreenVertical2;
-        paramsMinus.startToStart = R.id.firstPhoneScreenVertical3;
-        paramsMinus.endToStart = R.id.firstPhoneScreenVertical4;
+        paramsPlus.startToStart = R.id.firstMessagesScreenVertical1;
+        paramsPlus.endToStart = R.id.firstMessagesScreenVertical2;
+        paramsMinus.startToStart = R.id.firstMessagesScreenVertical3;
+        paramsMinus.endToStart = R.id.firstMessagesScreenVertical4;
         break;
       case 3:
-        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide4;
-        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide5;
-        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide5;
-        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstMessagesScreenguide4;
+        paramsAddAndRemove.bottomToTop = R.id.firstMessagesScreenguide5;
+        paramsWhiteBlock.topToTop = R.id.firstMessagesScreenguide5;
+        paramsWhiteBlock.bottomToTop = R.id.firstMessagesScreenguide6;
 
         minusBtn.setVisibility(View.VISIBLE);
         plusBtn.setVisibility(View.INVISIBLE);
         tv.setText(R.string.remove_fav);
 
-        paramsMinus.startToStart = R.id.firstPhoneScreenVertical5;
-        paramsMinus.endToStart = R.id.firstPhoneScreenVertical6;
+        paramsMinus.startToStart = R.id.firstMessagesScreenVertical5;
+        paramsMinus.endToStart = R.id.firstMessagesScreenVertical6;
         break;
 
     }
@@ -147,17 +147,17 @@ public class FirstPhoneScreen extends AppCompatActivity {
     displayFavouriteContacts();
     switch (this.numFavs) {
       case 3:
-        tv = findViewById(R.id.textThirdFav);
+        tv = findViewById(R.id.buttonMessageThirdFav);
         spName = "button3";
         this.numFavs -= 1;
         break;
       case 2:
-        tv = findViewById(R.id.textSecondFav);
+        tv = findViewById(R.id.buttonMessageSecondFav);
         spName = "button2";
         this.numFavs -= 1;
         break;
       case 1:
-        tv = findViewById(R.id.textFirstFav);
+        tv = findViewById(R.id.buttonMessageFirstFav);
         spName = "button1";
         this.numFavs -= 1;
         break;
@@ -200,7 +200,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
   public void passExtraInfoToNewIntent(String sharedPrefName) {
 
-    Intent intent = new Intent(this, SecondPhoneScreen.class);
+    Intent intent = new Intent(this, SecondMessagesScreen.class);
     SharedPreferences sp = getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE);
 
     String displayName = sp.getString("displayName", "");
@@ -224,27 +224,28 @@ public class FirstPhoneScreen extends AppCompatActivity {
     startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
   }
 
+
   public void pressFav(View view) {
     TextView tv;
     String spName;
     switch (view.getId()) {
-      case R.id.textFirstFav:
-        tv = findViewById(R.id.textFirstFav);
+      case R.id.buttonMessageFirstFav:
+        tv = findViewById(R.id.buttonMessageFirstFav);
         spName = "button1";
         this.selectedButton = 1;
         break;
-      case R.id.textSecondFav:
-        tv = findViewById(R.id.textSecondFav);
+      case R.id. buttonMessageSecondFav:
+        tv = findViewById(R.id.buttonMessageSecondFav);
         spName = "button2";
         this.selectedButton = 2;
         break;
-      case R.id.textThirdFav:
-        tv = findViewById(R.id.textThirdFav);
+      case R.id.buttonMessageThirdFav:
+        tv = findViewById(R.id.buttonMessageThirdFav);
         spName = "button3";
         this.selectedButton = 3;
         break;
       default:
-        tv = findViewById(R.id.textPickContact);
+        tv = findViewById(R.id.buttonMessagePickContact);
         spName = "button4";
         this.selectedButton = 4;
     }
@@ -324,30 +325,29 @@ public class FirstPhoneScreen extends AppCompatActivity {
     }
   }
 
-
   public void displayFavouriteContacts() {
 
     int numFavs = 0;
     SharedPreferences sp1 = getSharedPreferences("button1", Context.MODE_PRIVATE);
     if (sp1.contains("displayName")) {
-      String s = "Call " + sp1.getString("displayName", "");
-      TextView tv1 = findViewById(R.id.textFirstFav);
+      String s = "Message " + sp1.getString("displayName", "");
+      TextView tv1 = findViewById(R.id.buttonMessageFirstFav);
       tv1.setText(s);
       numFavs += 1;
     }
 
     SharedPreferences sp2 = getSharedPreferences("button2", Context.MODE_PRIVATE);
     if (sp2.contains("displayName")) {
-      String s = "Call " + sp2.getString("displayName", "");
-      TextView tv2 = findViewById(R.id.textSecondFav);
+      String s = "Message " + sp2.getString("displayName", "");
+      TextView tv2 = findViewById(R.id.buttonMessageSecondFav);
       tv2.setText(s);
       numFavs += 1;
     }
 
     SharedPreferences sp3 = getSharedPreferences("button3", Context.MODE_PRIVATE);
     if (sp3.contains("displayName")) {
-      String s = "Call " + sp3.getString("displayName", "");
-      TextView tv3 = findViewById(R.id.textThirdFav);
+      String s = "Message " + sp3.getString("displayName", "");
+      TextView tv3 = findViewById(R.id.buttonMessageThirdFav);
       tv3.setText(s);
       numFavs += 1;
     }
@@ -355,6 +355,8 @@ public class FirstPhoneScreen extends AppCompatActivity {
     this.numFavs = numFavs;
     setWhiteBlocks();
   }
+
+
 
   private String queryCursor(Uri contactUri) {
 
@@ -415,7 +417,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
         } else {
           // permission denied, boo! Disable the
           // functionality that depends on this permission.
-          Intent backToHome = new Intent(this, FirstPhoneScreen.class);
+          Intent backToHome = new Intent(this, FirstMessagesScreen.class);
           startActivity(backToHome);
           finish();
         }

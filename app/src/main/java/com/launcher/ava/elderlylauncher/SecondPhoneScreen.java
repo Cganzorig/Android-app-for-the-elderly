@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintLayout.LayoutParams;
 import android.support.v4.app.ActivityCompat;
@@ -146,8 +147,8 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, String permissions[],
-    int[] grantResults) {
+  public void onRequestPermissionsResult(int requestCode,
+    @NonNull String permissions[], @NonNull int[] grantResults) {
     switch (requestCode) {
       case MY_PERMISSIONS_REQUEST_CALL_PHONE:
         // permission was granted
