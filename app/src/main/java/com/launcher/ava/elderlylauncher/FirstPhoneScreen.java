@@ -24,7 +24,6 @@ import com.launcher.ava.utilities.ContactTableRow;
 
 public class FirstPhoneScreen extends AppCompatActivity {
 
-  static final int PICK_CONTACT_REQUEST = 1;  // The request code
   static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;  // The request code
 
 
@@ -37,6 +36,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
   ConstraintLayout whiteBlock;
   Button add_btn;
   Button remove_btn;
+  private Intent pickContactIntent;
 
 
   @Override
@@ -182,33 +182,6 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
   public void pickFromList() {
 
-//    if (ContextCompat.checkSelfPermission(this,
-//        Manifest.permission.READ_CONTACTS)
-//        != PackageManager.PERMISSION_GRANTED) {
-//
-//      // Permission is not granted
-//      // Should we show an explanation?
-//      if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-//          Manifest.permission.READ_CONTACTS)) {
-//        // Show an explanation to the user *asynchronously* -- don't block
-//        // this thread waiting for the user's response! After the user
-//        // sees the explanation, try again to request the permission.
-//      } else {
-//        // No explanation needed; request the permission
-//        ActivityCompat.requestPermissions(this,
-//            new String[]{Manifest.permission.READ_CONTACTS},
-//            MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-//
-//        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-//        // app-defined int constant. The callback method gets the
-//        // result of the request.
-//      }
-//    } else {
-//      Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-//      pickContactIntent.setType(Phone.CONTENT_TYPE);
-//      startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-//    }
-
     Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
     pickContactIntent.setType(Phone.CONTENT_TYPE);
     startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
@@ -249,7 +222,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
   private void handleResult(int requestCode, int resultCode, Intent data) {
 
-    if (requestCode == PICK_CONTACT_REQUEST && resultCode == RESULT_OK) {
+    if (requestCode == MY_PERMISSIONS_REQUEST_READ_CONTACTS && resultCode == RESULT_OK) {
       // data is returned from startActivityFromResult()
       Uri contactUri = data.getData();
       getInfo(contactUri);
@@ -293,7 +266,24 @@ public class FirstPhoneScreen extends AppCompatActivity {
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
-    handleResult(requestCode, resultCode, data);
+    this.pickContactIntent = data;
+
+    if (ContextCompat.checkSelfPermission(this,
+        Manifest.permission.READ_CONTACTS)
+        != PackageManager.PERMISSION_GRANTED) {
+
+      // No explanation needed; request the permission
+      ActivityCompat.requestPermissions(this,
+          new String[]{Manifest.permission.READ_CONTACTS},
+          MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+      // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+      // app-defined int constant. The callback method gets the
+      // result of the request.
+
+      } else {
+        handleResult(requestCode, resultCode, data);
+      }
   }
 
 
@@ -371,4 +361,26 @@ public class FirstPhoneScreen extends AppCompatActivity {
     cursor.close();
     this.table = table;
   }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode,
+      String[] permissions, int[] grantResults) {
+    switch (requestCode) {
+      case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+        // If request is cancelled, the result arrays are empty.
+        if (grantResults.length > 0
+            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+          handleResult(MY_PERMISSIONS_REQUEST_READ_CONTACTS, RESULT_OK, this.pickContactIntent);
+        } else {
+          // permission denied, boo! Disable the
+          // functionality that depends on this permission.
+        }
+        return;
+      }
+
+      // other 'case' lines to check for other
+      // permissions this app might request.
+    }
+  }
+
 }

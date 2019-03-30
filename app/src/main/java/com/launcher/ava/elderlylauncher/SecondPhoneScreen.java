@@ -93,6 +93,13 @@ public class SecondPhoneScreen extends AppCompatActivity {
     }
   }
 
+  public void makeCall() {
+    // Permission has already been granted
+    Intent call = new Intent(Intent.ACTION_CALL);
+    call.setData(Uri.parse("tel:" + this.contactInfo.number));
+    startActivity(call);
+  }
+
   public void pressCall(View view) {
     switch (view.getId()) {
       case R.id.textRegCall:
@@ -100,14 +107,12 @@ public class SecondPhoneScreen extends AppCompatActivity {
             Manifest.permission.CALL_PHONE)
             != PackageManager.PERMISSION_GRANTED) {
 
-          int CALL_PHONE_PERMISSION_CODE = 1;
           ActivityCompat.requestPermissions(this,
-              new String[] {Manifest.permission.CALL_PHONE}, CALL_PHONE_PERMISSION_CODE);
+              new String[] {Manifest.permission.CALL_PHONE},
+              MY_PERMISSIONS_REQUEST_CALL_PHONE);
+
         } else {
-          // Permission has already been granted
-          Intent call = new Intent(Intent.ACTION_CALL);
-          call.setData(Uri.parse("tel:" + this.contactInfo.number));
-          startActivity(call);
+          makeCall();
         }
         break;
       case R.id.textSecondCall:
@@ -149,10 +154,8 @@ public class SecondPhoneScreen extends AppCompatActivity {
         // permission was granted
         if (grantResults.length > 0
             && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-          Intent call = new Intent(Intent.ACTION_CALL);
-          call.setData(Uri.parse("tel:" + this.contactInfo.number));
-          startActivity(call);
 
+          makeCall();
         } else {
           // permission denied
           // Could display information here why you need permission
