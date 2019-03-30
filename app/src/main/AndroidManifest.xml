@@ -16,14 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirstScreenCommonTools"></activity>
-        <activity android:name=".SecondPhoneScreen"></activity>
-        <activity android:name=".FirstPhoneScreen"></activity>
+        <activity android:name=".FirstScreenCommonTools"
+          android:screenOrientation="portrait"></activity>
+        <activity android:name=".SecondPhoneScreen"
+          android:screenOrientation="portrait"></activity>
+        <activity android:name=".FirstPhoneScreen"
+          android:screenOrientation="portrait"></activity>
         <!--
                  this activity enables the search dialog to initiate searches
                     in the SearchableActivity
         -->
-        <activity android:name="com.launcher.ava.helperApp.AppScreen">
+        <activity android:name="com.launcher.ava.helperApp.AppScreen"
+          android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
