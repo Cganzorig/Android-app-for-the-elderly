@@ -12,20 +12,20 @@ import com.launcher.ava.utilities.AppFrequencyList;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        AppFrequencyList.populate(this);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setFontSize();
-    }
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    AppFrequencyList.populate(this);
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    setFontSize();
+  }
 
-    public void launchAppScreen(View view) {
-        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(50); // 1000 miliseconds = 1 seconds
-        Intent intent = new Intent(this, AppScreen.class);
-        startActivity(intent);
-    }
+  public void launchAppScreen(View view) {
+    Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+    v.vibrate(50); // 1000 miliseconds = 1 seconds
+    Intent intent = new Intent(this, AppScreen.class);
+    startActivity(intent);
+  }
 
   public void launchPhoneScreen(View view) {
     Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
     startActivity(intent);
   }
 
-    public void launchCommonToolsScreen(View view) {
-        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(50); // 1000 miliseconds = 1 seconds
-        Intent intent = new Intent(this, CommonTools.class);
-        startActivity(intent);
-    }
+  public void launchCommonToolsScreen(View view) {
+    Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+    v.vibrate(50); // 1000 miliseconds = 1 seconds
+    Intent intent = new Intent(this, FirstScreenCommonTools.class);
+    startActivity(intent);
+  }
 
 
-//    public void launchHelperApp(View view) {
+  //    public void launchHelperApp(View view) {
 //        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 //        v.vibrate(50); // 1000 miliseconds = 1 seconds
 //        Intent intent = new Intent(this, MainAppActivity.class);
@@ -64,15 +64,15 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(intent);
 //    }
 //
-    public void setFontSize() {
-        Configuration config = new Configuration();
-        config.fontScale = 4.0f;
-        getResources().getConfiguration().setTo(config);
-    }
+  public void setFontSize() {
+    Configuration config = new Configuration();
+    config.fontScale = 4.0f;
+    getResources().getConfiguration().setTo(config);
+  }
 
-    @Override
-    public void onBackPressed() {
-        // do nothing when back button is pressed from home page
-    }
+  @Override
+  public void onBackPressed() {
+    // do nothing when back button is pressed from home page
+  }
 
 }

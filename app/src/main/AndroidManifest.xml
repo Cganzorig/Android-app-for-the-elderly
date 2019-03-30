@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CommonTools"></activity>
+        <activity android:name=".FirstScreenCommonTools"></activity>
         <activity android:name=".SecondPhoneScreen"></activity>
         <activity android:name=".FirstPhoneScreen"></activity>
         <!--
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RecyclerList"
+            android:name="com.launcher.ava.utilities.RecyclerList"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AppDrawer"

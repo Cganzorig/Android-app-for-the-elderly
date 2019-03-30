@@ -59,28 +59,28 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
     switch (this.numFavs) {
       case 0:
-        params1.topToTop= R.id.firstPhoneScreenguide1;
-        params1.bottomToTop= R.id.firstPhoneScreenguide2;
-        params2.topToTop= R.id.firstPhoneScreenguide2;
-        params2.bottomToTop= R.id.firstPhoneScreenguide6;
+        params1.topToTop = R.id.firstPhoneScreenguide1;
+        params1.bottomToTop = R.id.firstPhoneScreenguide2;
+        params2.topToTop = R.id.firstPhoneScreenguide2;
+        params2.bottomToTop = R.id.firstPhoneScreenguide6;
         break;
       case 1:
-        params1.topToTop= R.id.firstPhoneScreenguide2;
-        params1.bottomToTop= R.id.firstPhoneScreenguide3;
-        params2.topToTop= R.id.firstPhoneScreenguide3;
-        params2.bottomToTop= R.id.firstPhoneScreenguide6;
+        params1.topToTop = R.id.firstPhoneScreenguide2;
+        params1.bottomToTop = R.id.firstPhoneScreenguide3;
+        params2.topToTop = R.id.firstPhoneScreenguide3;
+        params2.bottomToTop = R.id.firstPhoneScreenguide6;
         break;
       case 2:
-        params1.topToTop= R.id.firstPhoneScreenguide3;
-        params1.bottomToTop= R.id.firstPhoneScreenguide4;
-        params2.topToTop= R.id.firstPhoneScreenguide4;
-        params2.bottomToTop= R.id.firstPhoneScreenguide6;
+        params1.topToTop = R.id.firstPhoneScreenguide3;
+        params1.bottomToTop = R.id.firstPhoneScreenguide4;
+        params2.topToTop = R.id.firstPhoneScreenguide4;
+        params2.bottomToTop = R.id.firstPhoneScreenguide6;
         break;
       case 3:
-        params1.topToTop= R.id.firstPhoneScreenguide4;
-        params1.bottomToTop= R.id.firstPhoneScreenguide5;
-        params2.topToTop= R.id.firstPhoneScreenguide5;
-        params2.bottomToTop= R.id.firstPhoneScreenguide6;
+        params1.topToTop = R.id.firstPhoneScreenguide4;
+        params1.bottomToTop = R.id.firstPhoneScreenguide5;
+        params2.topToTop = R.id.firstPhoneScreenguide5;
+        params2.bottomToTop = R.id.firstPhoneScreenguide6;
         break;
 
     }
@@ -88,7 +88,8 @@ public class FirstPhoneScreen extends AppCompatActivity {
     whiteBlock.setLayoutParams(params2);
   }
 
-  public void doNothing(View view) {}
+  public void doNothing(View view) {
+  }
 
   public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {
 
@@ -110,22 +111,22 @@ public class FirstPhoneScreen extends AppCompatActivity {
       case 3:
         tv = findViewById(R.id.textThirdFav);
         spName = "button3";
-        this.numFavs -=1;
+        this.numFavs -= 1;
         break;
       case 2:
         tv = findViewById(R.id.textSecondFav);
         spName = "button2";
-        this.numFavs -=1;
+        this.numFavs -= 1;
         break;
       case 1:
         tv = findViewById(R.id.textFirstFav);
         spName = "button1";
-        this.numFavs -=1;
+        this.numFavs -= 1;
         break;
-        default:
-          break;
+      default:
+        break;
     }
-    if(tv != null && spName != null) {
+    if (tv != null && spName != null) {
       SharedPreferences sp1 = getSharedPreferences(spName, MODE_PRIVATE);
       SharedPreferences.Editor editor = sp1.edit();
       editor.clear();
@@ -140,21 +141,21 @@ public class FirstPhoneScreen extends AppCompatActivity {
     switch (this.numFavs) {
       case 0:
         this.selectedButton = 1;
-        this.numFavs +=1;
+        this.numFavs += 1;
         pickFromList();
         break;
       case 1:
         this.selectedButton = 2;
-        this.numFavs +=1;
+        this.numFavs += 1;
         pickFromList();
         break;
       case 2:
         this.selectedButton = 3;
-        this.numFavs +=1;
+        this.numFavs += 1;
         pickFromList();
         break;
-        default:
-          break;
+      default:
+        break;
     }
     displayFavouriteContacts();
   }
@@ -169,12 +170,10 @@ public class FirstPhoneScreen extends AppCompatActivity {
     String whatsappVoiceId = sp.getString("whatsappVoiceId", "");
     String viberVoiceId = sp.getString("viberVoiceId", "");
 
-
     intent.putExtra("number", number);
     intent.putExtra("displayName", displayName);
     intent.putExtra("whatsappVoiceId", whatsappVoiceId);
     intent.putExtra("viberVoiceId", viberVoiceId);
-
 
     startActivity(intent);
 
@@ -190,7 +189,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
   public void pressFav(View view) {
     TextView tv;
     String spName;
-    switch (view.getId()){
+    switch (view.getId()) {
       case R.id.textFirstFav:
         tv = findViewById(R.id.textFirstFav);
         spName = "button1";
@@ -206,14 +205,15 @@ public class FirstPhoneScreen extends AppCompatActivity {
         spName = "button3";
         this.selectedButton = 3;
         break;
-        default:
-          tv = findViewById(R.id.textPickContact);
-          spName = "button4";
-          this.selectedButton = 4;
+      default:
+        tv = findViewById(R.id.textPickContact);
+        spName = "button4";
+        this.selectedButton = 4;
     }
-    if(tv.getText().toString().equals(getResources().getString(R.string.add_fav_contact))) {
+    if (tv.getText().toString().equals(getResources().getString(R.string.add_fav_contact))) {
       pickFromList();
-    } else if (tv.getText().toString().equals(getResources().getString(R.string.pick_contact_from_list))) {
+    } else if (tv.getText().toString()
+      .equals(getResources().getString(R.string.pick_contact_from_list))) {
       pickFromList();
     } else {
       passExtraInfoToNewIntent(spName);
@@ -269,21 +269,21 @@ public class FirstPhoneScreen extends AppCompatActivity {
     this.pickContactIntent = data;
 
     if (ContextCompat.checkSelfPermission(this,
-        Manifest.permission.READ_CONTACTS)
-        != PackageManager.PERMISSION_GRANTED) {
+      Manifest.permission.READ_CONTACTS)
+      != PackageManager.PERMISSION_GRANTED) {
 
       // No explanation needed; request the permission
       ActivityCompat.requestPermissions(this,
-          new String[]{Manifest.permission.READ_CONTACTS},
-          MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+        new String[]{Manifest.permission.READ_CONTACTS},
+        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
 
       // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
       // app-defined int constant. The callback method gets the
       // result of the request.
 
-      } else {
-        handleResult(requestCode, resultCode, data);
-      }
+    } else {
+      handleResult(requestCode, resultCode, data);
+    }
   }
 
 
@@ -291,7 +291,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
     int numFavs = 0;
     SharedPreferences sp1 = getSharedPreferences("button1", Context.MODE_PRIVATE);
-    if(sp1.contains("displayName")) {
+    if (sp1.contains("displayName")) {
       String s = "Call " + sp1.getString("displayName", "");
       TextView tv1 = findViewById(R.id.textFirstFav);
       tv1.setText(s);
@@ -299,32 +299,32 @@ public class FirstPhoneScreen extends AppCompatActivity {
     }
 
     SharedPreferences sp2 = getSharedPreferences("button2", Context.MODE_PRIVATE);
-    if(sp2.contains("displayName")) {
+    if (sp2.contains("displayName")) {
       String s = "Call " + sp2.getString("displayName", "");
       TextView tv2 = findViewById(R.id.textSecondFav);
       tv2.setText(s);
-      numFavs +=1;
+      numFavs += 1;
     }
 
     SharedPreferences sp3 = getSharedPreferences("button3", Context.MODE_PRIVATE);
-    if(sp3.contains("displayName")) {
+    if (sp3.contains("displayName")) {
       String s = "Call " + sp3.getString("displayName", "");
       TextView tv3 = findViewById(R.id.textThirdFav);
       tv3.setText(s);
-      numFavs +=1;
+      numFavs += 1;
     }
 
-    this.numFavs= numFavs;
+    this.numFavs = numFavs;
     setWhiteBlocks();
   }
 
   private String queryCursor(Uri contactUri) {
 
     String answer = "False";
-    String[] projection = new String[] {Phone.NUMBER};
+    String[] projection = new String[]{Phone.NUMBER};
 
     Cursor cursor = getContentResolver()
-        .query(contactUri, projection, null, null, null);
+      .query(contactUri, projection, null, null, null);
 
     if (cursor != null && cursor.moveToFirst()) {
       answer = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
@@ -339,19 +339,20 @@ public class FirstPhoneScreen extends AppCompatActivity {
     String target = queryCursor(contactUri);
 
     Cursor cursor = getContentResolver().query(
-        ContactsContract.Data.CONTENT_URI,
-        null, null, null,
-        ContactsContract.Contacts.DISPLAY_NAME);
+      ContactsContract.Data.CONTENT_URI,
+      null, null, null,
+      ContactsContract.Contacts.DISPLAY_NAME);
 
     while (cursor.moveToNext()) {
-      String phoneNumber= cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-      if(phoneNumber != null) {
+      String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
+      if (phoneNumber != null) {
         phoneNumber = phoneNumber.replace(" ", "");
         target = target.replace(" ", "");
       }
-      if(phoneNumber != null && phoneNumber.contains(target.substring(2))) {
+      if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
-        String displayName = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
+        String displayName = cursor
+          .getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
         String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
         table.add(new ContactTableRow(_id, displayName, phoneNumber, mimeType));
         //Log.d("t",_id + " " + displayName +" "+ phoneNumber + " "+ mimeType);
@@ -364,12 +365,12 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
   @Override
   public void onRequestPermissionsResult(int requestCode,
-      String[] permissions, int[] grantResults) {
+    String[] permissions, int[] grantResults) {
     switch (requestCode) {
       case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
         // If request is cancelled, the result arrays are empty.
         if (grantResults.length > 0
-            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
           handleResult(MY_PERMISSIONS_REQUEST_READ_CONTACTS, RESULT_OK, this.pickContactIntent);
         } else {
           // permission denied, boo! Disable the

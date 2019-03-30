@@ -4,7 +4,7 @@
     android:id="@+id/appList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecyclerList"
+    tools:context="com.launcher.ava.utilities.RecyclerList"
     android:scrollbars="vertical">
 
 </android.support.constraint.ConstraintLayout>

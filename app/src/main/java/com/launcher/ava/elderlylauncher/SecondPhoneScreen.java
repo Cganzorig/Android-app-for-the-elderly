@@ -1,7 +1,6 @@
 package com.launcher.ava.elderlylauncher;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -14,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.launcher.ava.utilities.ContactInfo;
 
 public class SecondPhoneScreen extends AppCompatActivity {
@@ -47,7 +45,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
     this.contactInfo.viberVoiceId = thisIntent.getStringExtra("viberVoiceId");
 
     this.title = findViewById(R.id.textSecondPhoneScreenPhone);
-    String s = title.getText().toString()  + " TO " + this.contactInfo.displayName;
+    String s = title.getText().toString() + " TO " + this.contactInfo.displayName;
     title.setText(s);
 
     this.whiteBlock = findViewById(R.id.cLayoutSecondPhoneScreenWhiteBlock);
@@ -104,19 +102,19 @@ public class SecondPhoneScreen extends AppCompatActivity {
     switch (view.getId()) {
       case R.id.textRegCall:
         if (ContextCompat.checkSelfPermission(this,
-            Manifest.permission.CALL_PHONE)
-            != PackageManager.PERMISSION_GRANTED) {
+          Manifest.permission.CALL_PHONE)
+          != PackageManager.PERMISSION_GRANTED) {
 
           ActivityCompat.requestPermissions(this,
-              new String[] {Manifest.permission.CALL_PHONE},
-              MY_PERMISSIONS_REQUEST_CALL_PHONE);
+            new String[]{Manifest.permission.CALL_PHONE},
+            MY_PERMISSIONS_REQUEST_CALL_PHONE);
 
         } else {
           makeCall();
         }
         break;
       case R.id.textSecondCall:
-        if(this.secondOptionFlag.equals("WHATSAPP")) {
+        if (this.secondOptionFlag.equals("WHATSAPP")) {
           String mimeString = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
           String data = "content://com.android.contacts/data/" + this.contactInfo.whatsappVoiceId;
           Intent intent = new Intent();
@@ -126,7 +124,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
           startActivity(intent);
         }
 
-        if(this.secondOptionFlag.equals("VIBER")) {
+        if (this.secondOptionFlag.equals("VIBER")) {
           Uri uri = Uri.parse("tel:" + Uri.encode(contactInfo.number));
           Intent intent = new Intent("android.intent.action.VIEW");
           intent.setClassName("com.viber.voip", "com.viber.voip.WelcomeActivity");
@@ -144,16 +142,18 @@ public class SecondPhoneScreen extends AppCompatActivity {
     }
   }
 
-  public void doNothing(View view) {}
+  public void doNothing(View view) {
+  }
 
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+  public void onRequestPermissionsResult(int requestCode, String permissions[],
+    int[] grantResults) {
     switch (requestCode) {
       case MY_PERMISSIONS_REQUEST_CALL_PHONE:
         // permission was granted
         if (grantResults.length > 0
-            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
           makeCall();
         } else {

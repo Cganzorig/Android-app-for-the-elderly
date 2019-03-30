@@ -2,40 +2,33 @@ package com.launcher.ava.helperApp;
 
 import android.app.ListActivity;
 import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.SearchView;
-
 import com.launcher.ava.elderlylauncher.R;
-
-import java.util.ArrayList;
+import com.launcher.ava.utilities.RAdapter;
 
 public class SearchableActivity extends ListActivity {
-    private com.launcher.ava.elderlylauncher.RAdapter radapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_searchable);
+  private RAdapter radapter;
 
-        RecyclerView recyclerView = findViewById(R.id.search_RView);
-        radapter = new com.launcher.ava.elderlylauncher.RAdapter(this);
-        recyclerView.setAdapter(radapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_searchable);
 
+    RecyclerView recyclerView = findViewById(R.id.search_RView);
+    radapter = new RAdapter(this);
+    recyclerView.setAdapter(radapter);
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // The search intent contains the search query. Call the handle intent function to get
-        // the query
-        handleIntent(getIntent());
-    }
+    // The search intent contains the search query. Call the handle intent function to get
+    // the query
+    handleIntent(getIntent());
+  }
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,32 +46,32 @@ public class SearchableActivity extends ListActivity {
 //        return true;
 //    }
 
-    public void onNewIntent(Intent intent) {
-        setIntent(intent);
-        handleIntent(intent);
+  public void onNewIntent(Intent intent) {
+    setIntent(intent);
+    handleIntent(intent);
+  }
+
+  public void onListItemClick(ListView l,
+    View v, int position, long id) {
+    // call detail activity for clicked entry
+  }
+
+  private void handleIntent(Intent intent) {
+    // Get the intent, verify the action and get the query
+    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+      String query =
+        intent.getStringExtra(SearchManager.QUERY);
+      doSearch(query);
     }
+  }
 
-    public void onListItemClick(ListView l,
-                                View v, int position, long id) {
-        // call detail activity for clicked entry
-    }
-
-    private void handleIntent(Intent intent) {
-        // Get the intent, verify the action and get the query
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query =
-                    intent.getStringExtra(SearchManager.QUERY);
-            doSearch(query);
-        }
-    }
-
-    private void doSearch(String queryStr) {
-        // Get all applications
-        radapter.reuturnQueryResults(queryStr);
-    }
+  private void doSearch(String queryStr) {
+    // Get all applications
+    radapter.reuturnQueryResults(queryStr);
+  }
 
 
-    /* Using list activity - From Android Developer*/
+  /* Using list activity - From Android Developer*/
     /*
     @Override
     protected void onCreate(Bundle savedInstanceState){

@@ -3,7 +3,6 @@ package com.launcher.ava.utilities;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import com.launcher.ava.elderlylauncher.AppInfo;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

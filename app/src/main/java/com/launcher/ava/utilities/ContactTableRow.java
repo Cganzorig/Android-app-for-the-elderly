@@ -8,10 +8,10 @@ public class ContactTableRow {
   private String mimeType;
 
   public ContactTableRow(
-      String _id,
-      String displayName,
-      String phoneNumber,
-      String mimeType) {
+    String _id,
+    String displayName,
+    String phoneNumber,
+    String mimeType) {
 
     this._id = _id;
     this.displayName = displayName;
@@ -21,15 +21,16 @@ public class ContactTableRow {
 
   public String getColumn(String what) {
 
-    if(what.equals("displayName"))
+    if (what.equals("displayName")) {
       return displayName;
-    else if(what.equals("phoneNumber"))
+    } else if (what.equals("phoneNumber")) {
       return phoneNumber;
-    else if(what.equals("mimeType"))
+    } else if (what.equals("mimeType")) {
       return mimeType;
-    else if(what.equals("_id"))
+    } else if (what.equals("_id")) {
       return _id;
-    else
+    } else {
       return "NONE";
+    }
   }
 }

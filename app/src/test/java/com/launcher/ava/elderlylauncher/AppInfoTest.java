@@ -2,6 +2,7 @@ package com.launcher.ava.elderlylauncher;
 
 import static org.junit.Assert.assertEquals;
 
+import com.launcher.ava.utilities.AppInfo;
 import org.junit.Before;
 import org.junit.Test;
 

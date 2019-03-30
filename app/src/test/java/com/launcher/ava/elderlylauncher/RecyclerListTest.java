@@ -5,6 +5,7 @@ import static org.robolectric.Shadows.shadowOf;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.core.app.ActivityScenario.ActivityAction;
+import com.launcher.ava.utilities.RecyclerList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;

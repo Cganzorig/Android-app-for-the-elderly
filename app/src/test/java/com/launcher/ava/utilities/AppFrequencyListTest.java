@@ -1,6 +1,5 @@
 package com.launcher.ava.utilities;
 
-import com.launcher.ava.elderlylauncher.AppInfo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
