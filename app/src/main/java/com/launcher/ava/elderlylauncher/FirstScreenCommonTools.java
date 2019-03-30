@@ -1,5 +1,6 @@
 package com.launcher.ava.elderlylauncher;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -8,8 +9,13 @@ import android.hardware.camera2.CameraAccessException;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.provider.ContactsContract;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
+
 import com.noob.noobcameraflash.managers.NoobCameraManager;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,8 +37,38 @@ public class FirstScreenCommonTools extends AppCompatActivity {
 
   }
 
+  public void changeTorchBoxToOff() {
+    TextView tv1 = (TextView)findViewById(R.id.torchText);
+    tv1.setText(getResources().getString(R.string.turn_torch_on));
+    ConstraintLayout torchLayout = (ConstraintLayout)findViewById(R.id.cLayoutTorch);
+    torchLayout.setBackgroundResource(R.color.lightGray);
+  }
+
+  public void turnTorchOff() {
+    try {
+      changeTorchBoxToOff();
+      NoobCameraManager.getInstance().turnOffFlash();
+    } catch (CameraAccessException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  public void onPause() {
+    turnTorchOff();
+    super.onPause();
+  }
+
+  @Override
+  public void onStop() {
+    turnTorchOff();
+    super.onStop();
+  }
+
+
   public void launchDefaultCamera(View view) {
     Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+    turnTorchOff();
     startActivity(
       getPackageManager().getLaunchIntentForPackage(
         intent.resolveActivity(getPackageManager()).getPackageName()));
@@ -41,12 +77,25 @@ public class FirstScreenCommonTools extends AppCompatActivity {
   public void launchAlarmSettings(View view) {
     Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
     openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    turnTorchOff();
     startActivity(openClockIntent);
   }
 
-  public void flashLightOn(View view) {
+  public void toggleFlash(View view) {
     try {
       NoobCameraManager.getInstance().toggleFlash();
+
+      TextView tv1 = (TextView)findViewById(R.id.torchText);
+      ConstraintLayout torchLayout = (ConstraintLayout)findViewById(R.id.cLayoutTorch);
+      if (NoobCameraManager.getInstance().isFlashOn()) {
+        tv1.setText(getResources().getString(R.string.turn_torch_off));
+        torchLayout.setBackgroundResource(R.color.torchOnYellow);
+      }
+      else {
+        tv1.setText(getResources().getString(R.string.turn_torch_on));
+        torchLayout.setBackgroundResource(R.color.lightGray);
+      }
+
       NoobCameraManager.getInstance().release();
     } catch (CameraAccessException e) {
       e.printStackTrace();
@@ -57,6 +106,7 @@ public class FirstScreenCommonTools extends AppCompatActivity {
   public void launchAddContact(View view) {
     Intent intent = new Intent(Intent.ACTION_INSERT,
       ContactsContract.Contacts.CONTENT_URI);
+    turnTorchOff();
     startActivity(intent);
   }
 
@@ -78,6 +128,7 @@ public class FirstScreenCommonTools extends AppCompatActivity {
       String packageName = (String) items.get(0).get("packageName");
       Intent i = pm.getLaunchIntentForPackage(packageName);
       if (i != null) {
+        turnTorchOff();
         startActivity(i);
       }
     } else {
@@ -89,11 +140,13 @@ public class FirstScreenCommonTools extends AppCompatActivity {
   public void launchSetTimer(View view) {
     Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_TIMER);
     openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    turnTorchOff();
     startActivity(openClockIntent);
   }
 
   public void launchPlayStore(View view) {
     Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
+    turnTorchOff();
     startActivity(launchIntent);
   }
 

@@ -17,11 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".FirstScreenCommonTools"
-          android:screenOrientation="portrait"></activity>
+          android:screenOrientation="portrait"
+          android:launchMode="singleTask">
+        </activity>
         <activity android:name=".SecondPhoneScreen"
-          android:screenOrientation="portrait"></activity>
+          android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".FirstPhoneScreen"
-          android:screenOrientation="portrait"></activity>
+          android:screenOrientation="portrait">
+        </activity>
         <!--
                  this activity enables the search dialog to initiate searches
                     in the SearchableActivity
