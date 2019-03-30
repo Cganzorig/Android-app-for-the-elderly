@@ -77,7 +77,6 @@ public class FirstScreenCommonTools extends AppCompatActivity {
   public void launchAlarmSettings(View view) {
     Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
     openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    turnTorchOff();
     startActivity(openClockIntent);
   }
 
@@ -106,7 +105,6 @@ public class FirstScreenCommonTools extends AppCompatActivity {
   public void launchAddContact(View view) {
     Intent intent = new Intent(Intent.ACTION_INSERT,
       ContactsContract.Contacts.CONTENT_URI);
-    turnTorchOff();
     startActivity(intent);
   }
 
@@ -128,7 +126,6 @@ public class FirstScreenCommonTools extends AppCompatActivity {
       String packageName = (String) items.get(0).get("packageName");
       Intent i = pm.getLaunchIntentForPackage(packageName);
       if (i != null) {
-        turnTorchOff();
         startActivity(i);
       }
     } else {
@@ -140,13 +137,11 @@ public class FirstScreenCommonTools extends AppCompatActivity {
   public void launchSetTimer(View view) {
     Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_TIMER);
     openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    turnTorchOff();
     startActivity(openClockIntent);
   }
 
   public void launchPlayStore(View view) {
     Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
-    turnTorchOff();
     startActivity(launchIntent);
   }
 
