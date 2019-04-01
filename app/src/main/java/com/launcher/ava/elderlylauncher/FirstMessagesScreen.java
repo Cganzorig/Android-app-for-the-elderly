@@ -270,7 +270,7 @@ public class FirstMessagesScreen extends AppCompatActivity {
       ContactInfo tmpInfo = new ContactInfo();
 
       // mime types we need
-      String mimeWhatsappVoice = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
+      String mimeWhatsappVoice = "vnd.android.cursor.item/vnd.com.whatsapp.profile";
       String mimePhoneVoice = "vnd.android.cursor.item/phone_v2";
       String mimeViberVoice = "vnd.android.cursor.item/vnd.com.viber.voip.viber_number_call";
       // String mimeMessengerVoice = "";

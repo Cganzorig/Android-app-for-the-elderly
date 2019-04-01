@@ -167,12 +167,6 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
           startActivity(backToHome);
           finish();
-//
-//          SharedPreferences sp1 = getSharedPreferences(spName, MODE_PRIVATE);
-//          SharedPreferences.Editor editor = sp1.edit();
-//          editor.clear();
-//          editor.apply();
-//          tv.setText(R.string.add_fav_contact);
         }
     }
   }
