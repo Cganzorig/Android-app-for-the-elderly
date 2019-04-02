@@ -28,6 +28,11 @@
   <string name="ellipsis">...</string>
   <string name="add_fav_contact">Add favourite contact</string>
 
+  <string name="add_fav_website">Add favourite website</string>
+  <string name="add_remove_fav_website">Add or remove favourite website</string>
+  <string name="remove_fav_website">Remove favourite website</string>
+  <string name="save_button">Save</string>
+
   <string name="turn_torch_on">TURN TORCH ON</string>
   <string name="turn_torch_off">TURN TORCH OFF</string>
   <string name="take_photo">TAKE A PHOTO</string>

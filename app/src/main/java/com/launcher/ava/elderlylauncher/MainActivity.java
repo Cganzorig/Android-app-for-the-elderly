@@ -41,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
     startActivity(intent);
   }
 
+  public void launchInternetScreen(View view) {
+    Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+    v.vibrate(50); // 1000 miliseconds = 1 seconds
+    Intent intent = new Intent(this, FirstInternetScreen.class);
+    startActivity(intent);
+  }
+
   public void launchCommonToolsScreen(View view) {
     Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
     v.vibrate(50); // 1000 miliseconds = 1 seconds
