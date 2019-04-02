@@ -32,8 +32,8 @@ public class FirstInternetScreen extends AppCompatActivity {
 
     this.addAndRemove = findViewById(R.id.cLayoutMessagesBtn);
     this.whiteBlock = findViewById(R.id.cLayoutMessagesWhiteBlock);
-    this.plusBtn = findViewById(R.id.message_add_button);
-    this.minusBtn = findViewById(R.id.message_remove_button);
+    this.plusBtn = findViewById(R.id.internet_add_button);
+    this.minusBtn = findViewById(R.id.internet_remove_button);
     this.et = findViewById(R.id.editText);
     this.save = findViewById(R.id.saveButton);
     this.google = findViewById(R.id.buttonGoogle);
@@ -129,17 +129,17 @@ public class FirstInternetScreen extends AppCompatActivity {
     displayFavouriteWebsites();
     switch (this.numWebs) {
       case 3:
-        tv = findViewById(R.id.buttonMessageThirdFav);
+        tv = findViewById(R.id.buttonInternetThirdFav);
         spName = "buttonWeb3";
         this.numWebs -= 1;
         break;
       case 2:
-        tv = findViewById(R.id.buttonMessageSecondFav);
+        tv = findViewById(R.id.buttonInternetSecondFav);
         spName = "buttonWeb2";
         this.numWebs -= 1;
         break;
       case 1:
-        tv = findViewById(R.id.buttonMessageFirstFav);
+        tv = findViewById(R.id.buttonInternetFirstFav);
         spName = "buttonWeb1";
         this.numWebs -= 1;
         break;
@@ -190,6 +190,10 @@ public class FirstInternetScreen extends AppCompatActivity {
         break;
     }
 
+    //enable plus and minus buttons
+    this.plusBtn.setEnabled(true);
+    this.minusBtn.setEnabled(true);
+
     this.save.setVisibility(View.INVISIBLE);
     this.et.setVisibility(View.INVISIBLE);
     this.google.setVisibility(View.VISIBLE);
@@ -199,6 +203,10 @@ public class FirstInternetScreen extends AppCompatActivity {
   }
 
   public void pickWeb() {
+    //disable plus and minus buttons
+    this.plusBtn.setEnabled(false);
+    this.minusBtn.setEnabled(false);
+
     this.google.setVisibility(View.INVISIBLE);
     this.save.setVisibility(View.VISIBLE);
     this.et.setVisibility(View.VISIBLE);
@@ -209,18 +217,18 @@ public class FirstInternetScreen extends AppCompatActivity {
     TextView tv = null;
     String spName = "";
     switch (view.getId()) {
-      case R.id.buttonMessageFirstFav:
-        tv = findViewById(R.id.buttonMessageFirstFav);
+      case R.id.buttonInternetFirstFav:
+        tv = findViewById(R.id.buttonInternetFirstFav);
         spName = "buttonWeb1";
         this.selectedButton = 1;
         break;
-      case R.id. buttonMessageSecondFav:
-        tv = findViewById(R.id.buttonMessageSecondFav);
+      case R.id. buttonInternetSecondFav:
+        tv = findViewById(R.id.buttonInternetSecondFav);
         spName = "buttonWeb2";
         this.selectedButton = 2;
         break;
-      case R.id.buttonMessageThirdFav:
-        tv = findViewById(R.id.buttonMessageThirdFav);
+      case R.id.buttonInternetThirdFav:
+        tv = findViewById(R.id.buttonInternetThirdFav);
         spName = "buttonWeb3";
         this.selectedButton = 3;
         break;
@@ -258,7 +266,7 @@ public class FirstInternetScreen extends AppCompatActivity {
     SharedPreferences sp1 = getSharedPreferences("buttonWeb1", Context.MODE_PRIVATE);
     if (sp1.contains("webName")) {
       String s = sp1.getString("webName", "");
-      TextView tv1 = findViewById(R.id.buttonMessageFirstFav);
+      TextView tv1 = findViewById(R.id.buttonInternetFirstFav);
       tv1.setText(s);
       numFavs += 1;
     }
@@ -266,7 +274,7 @@ public class FirstInternetScreen extends AppCompatActivity {
     SharedPreferences sp2 = getSharedPreferences("buttonWeb2", Context.MODE_PRIVATE);
     if (sp2.contains("webName")) {
       String s = sp2.getString("webName", "");
-      TextView tv2 = findViewById(R.id.buttonMessageSecondFav);
+      TextView tv2 = findViewById(R.id.buttonInternetSecondFav);
       tv2.setText(s);
       numFavs += 1;
     }
@@ -274,7 +282,7 @@ public class FirstInternetScreen extends AppCompatActivity {
     SharedPreferences sp3 = getSharedPreferences("buttonWeb3", Context.MODE_PRIVATE);
     if (sp3.contains("webName")) {
       String s = sp3.getString("webName", "");
-      TextView tv3 = findViewById(R.id.buttonMessageThirdFav);
+      TextView tv3 = findViewById(R.id.buttonInternetThirdFav);
       tv3.setText(s);
       numFavs += 1;
     }
