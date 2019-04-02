@@ -262,6 +262,7 @@
       android:onClick="pressPlus"
       android:text="@string/plus_sign"
       android:textSize="30sp"
+      android:visibility="visible"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toStartOf="@+id/firstMessagesScreenVertical2"
       app:layout_constraintStart_toStartOf="@+id/firstMessagesScreenVertical1"
@@ -277,18 +278,19 @@
       android:onClick="pressMinus"
       android:text="@string/minus_sign"
       android:textSize="30sp"
+      android:visibility="visible"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toStartOf="@+id/firstMessagesScreenVertical4"
       app:layout_constraintStart_toStartOf="@+id/firstMessagesScreenVertical3"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0" />
+
     <TextView
-      android:id="@+id/textMessageExplainPlusMinus"
-      android:textStyle="italic"
+      android:id="@+id/textInternetExplainPlusMinus"
       android:layout_width="wrap_content"
       android:layout_height="33dp"
-      android:layout_marginTop="11dp"
       android:layout_marginStart="39dp"
+      android:layout_marginTop="11dp"
       android:layout_marginEnd="39dp"
       android:gravity="bottom"
       android:onClick="doNothing"
@@ -296,10 +298,12 @@
       android:textAlignment="center"
       android:textColor="@color/questionGray"
       android:textSize="24sp"
+      android:textStyle="italic"
+      android:visibility="visible"
       app:layout_constraintBottom_toTopOf="@+id/add_button"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
+      app:layout_constraintTop_toTopOf="parent" />
 
 
   </android.support.constraint.ConstraintLayout>

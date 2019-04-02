@@ -24,6 +24,7 @@ public class FirstInternetScreen extends AppCompatActivity {
   EditText et;
   Button save;
   Button google;
+  TextView plusMinusExplain;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +38,14 @@ public class FirstInternetScreen extends AppCompatActivity {
     this.et = findViewById(R.id.editText);
     this.save = findViewById(R.id.saveButton);
     this.google = findViewById(R.id.buttonGoogle);
+    this.plusMinusExplain = findViewById(R.id.textInternetExplainPlusMinus);
 
     displayFavouriteWebsites();
   }
   public void setWhiteBlocks() {
     ConstraintLayout.LayoutParams paramsAddAndRemove = (ConstraintLayout.LayoutParams) this.addAndRemove.getLayoutParams();
     ConstraintLayout.LayoutParams paramsWhiteBlock = (ConstraintLayout.LayoutParams) this.whiteBlock.getLayoutParams();
-    TextView tv = findViewById(R.id.textMessageExplainPlusMinus);
+    TextView tv = findViewById(R.id.textInternetExplainPlusMinus);
     ConstraintLayout.LayoutParams paramsPlus = (ConstraintLayout.LayoutParams) this.plusBtn.getLayoutParams();
     ConstraintLayout.LayoutParams paramsMinus = (ConstraintLayout.LayoutParams) this.minusBtn.getLayoutParams();
 
@@ -194,6 +196,11 @@ public class FirstInternetScreen extends AppCompatActivity {
     this.plusBtn.setEnabled(true);
     this.minusBtn.setEnabled(true);
 
+    //make plus and minus buttons visible
+    this.plusBtn.setVisibility(View.VISIBLE);
+    this.minusBtn.setVisibility(View.VISIBLE);
+    this.plusMinusExplain.setVisibility(View.VISIBLE);
+
     this.save.setVisibility(View.INVISIBLE);
     this.et.setVisibility(View.INVISIBLE);
     this.google.setVisibility(View.VISIBLE);
@@ -206,6 +213,12 @@ public class FirstInternetScreen extends AppCompatActivity {
     //disable plus and minus buttons
     this.plusBtn.setEnabled(false);
     this.minusBtn.setEnabled(false);
+    this.plusMinusExplain.setVisibility(View.INVISIBLE);
+
+
+    //make plus and minus buttons invisible
+    this.plusBtn.setVisibility(View.INVISIBLE);
+    this.minusBtn.setVisibility(View.INVISIBLE);
 
     this.google.setVisibility(View.INVISIBLE);
     this.save.setVisibility(View.VISIBLE);
