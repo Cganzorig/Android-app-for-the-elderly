@@ -7,148 +7,242 @@
   android:layout_height="match_parent"
   tools:context=".MainActivity">
 
-    <android.support.constraint.Guideline
-      android:id="@+id/guide0"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      app:layout_constraintGuide_percent="0.0"/>
+  <android.support.constraint.Guideline
+    android:id="@+id/guide0"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.0"/>
 
-    <android.support.constraint.Guideline
-      android:id="@+id/guide1"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      app:layout_constraintGuide_percent="0.10"/>
+  <android.support.constraint.Guideline
+    android:id="@+id/guide1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.10"/>
 
-    <android.support.constraint.Guideline
-      android:id="@+id/guide2"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      app:layout_constraintGuide_percent="0.28"/>
+  <android.support.constraint.Guideline
+    android:id="@+id/guide2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.28"/>
 
-    <android.support.constraint.Guideline
-      android:id="@+id/guide3"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      app:layout_constraintGuide_percent="0.46"/>
+  <android.support.constraint.Guideline
+    android:id="@+id/guide3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.46"/>
 
-    <android.support.constraint.Guideline
-      android:id="@+id/guide4"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      app:layout_constraintGuide_percent="0.64"/>
+  <android.support.constraint.Guideline
+    android:id="@+id/guide4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.64"/>
 
-    <android.support.constraint.Guideline
-      android:id="@+id/guide5"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      app:layout_constraintGuide_percent="0.82"/>
+  <android.support.constraint.Guideline
+    android:id="@+id/guide5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.82"/>
 
-    <android.support.constraint.Guideline
-      android:id="@+id/guide6"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      app:layout_constraintGuide_percent="1.0"/>
+  <android.support.constraint.Guideline
+    android:id="@+id/guide6"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="1.0"/>
 
-    <android.support.constraint.ConstraintLayout
-      android:id="@+id/cLayoutQuestion"
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutQuestion"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/questionGray"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guide0"
+    app:layout_constraintBottom_toTopOf="@+id/guide1">
+
+    <TextView
+      android:id="@+id/textQuestion"
+      android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:background="@color/questionGray"
+      android:layout_height="73dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      android:gravity="center"
+      android:text="@string/main_question"
+      android:textColor="@android:color/black"
+      android:textSize="28sp"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutPhone"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/phoneGreen"
+    android:onClick="launchPhoneScreen"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/guide2"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guide1">
+
+    <ImageView
+      android:id="@+id/imagePhone"
+      android:layout_width="126dp"
+      android:layout_height="94dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="250dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide0"
-      app:layout_constraintBottom_toTopOf="@+id/guide1">
-
-        <TextView
-          android:id="@+id/textQuestion"
-          android:textStyle="bold"
-          android:layout_width="0dp"
-          android:layout_height="73dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginBottom="10dp"
-          android:layout_marginStart="8dp"
-          android:layout_marginEnd="8dp"
-          android:gravity="center"
-          android:text="@string/main_question"
-          android:textColor="@android:color/black"
-          android:textSize="28sp"
-          app:fontFamily="sans-serif-black"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.0"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"/>
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-      android:id="@+id/cLayoutPhone"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_phone_receiver"/>
+    <TextView
+      android:id="@+id/textPhone"
+      android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:background="@color/phoneGreen"
-      android:onClick="launchPhoneScreen"
+      android:layout_height="73dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="170dp"
+      android:layout_marginEnd="25dp"
+      android:gravity="center"
+      android:text="@string/main_call"
+      android:textColor="@android:color/black"
+      android:textSize="28sp"
+      app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintBottom_toTopOf="@+id/guide2"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide1">
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49"/>
 
-        <ImageView
-          android:id="@+id/imagePhone"
-          android:layout_width="126dp"
-          android:layout_height="94dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginBottom="10dp"
-          android:layout_marginEnd="250dp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.51"
-          app:srcCompat="@drawable/ic_phone_receiver"/>
-        <TextView
-          android:id="@+id/textPhone"
-          android:textStyle="bold"
-          android:layout_width="0dp"
-          android:layout_height="73dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginBottom="10dp"
-          android:layout_marginStart="170dp"
-          android:layout_marginEnd="25dp"
-          android:gravity="center"
-          android:text="@string/main_call"
-          android:textColor="@android:color/black"
-          android:textSize="28sp"
-          app:fontFamily="sans-serif-black"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.49"/>
-
-    </android.support.constraint.ConstraintLayout>
+  </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
     android:id="@+id/cLayoutMessages"
     android:layout_width="0dp"
-    android:layout_height="131dp"
+    android:layout_height="0dp"
     android:background="@color/messageYellow"
     android:onClick="launchMessagesScreen"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/guide3"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/guide2">
+    app:layout_constraintTop_toTopOf="@+id/guide2"
+    app:layout_constraintBottom_toTopOf="@+id/guide3">
 
     <ImageView
       android:id="@+id/imageMessages"
+      android:layout_width="126dp"
+      android:layout_height="94dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="250dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_close_envelope"/>
+    <TextView
+      android:id="@+id/textMessages"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="73dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="170dp"
+      android:layout_marginEnd="25dp"
+      android:gravity="center"
+      android:text="@string/main_message"
+      android:textColor="@android:color/black"
+      android:textSize="28sp"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutInternet"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/browserBlue"
+    android:onClick="launchInternetScreen"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guide3"
+    app:layout_constraintBottom_toTopOf="@+id/guide4">
+
+    <ImageView
+      android:id="@+id/imageInternet"
+      android:layout_width="126dp"
+      android:layout_height="94dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="250dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_world_wide_web"/>
+    <TextView
+      android:id="@+id/textInternet"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="73dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="170dp"
+      android:layout_marginEnd="25dp"
+      android:gravity="center"
+      android:text="@string/main_internet"
+      android:textColor="@android:color/black"
+      android:textSize="28sp"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutTools"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/lightGray"
+    android:onClick="launchCommonToolsScreen"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/guide5"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guide4">
+
+    <ImageView
+      android:id="@+id/imageTools"
       android:layout_width="126dp"
       android:layout_height="94dp"
       android:layout_marginTop="10dp"
@@ -159,10 +253,10 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
-      app:srcCompat="@drawable/ic_close_envelope" />
+      app:srcCompat="@drawable/ic_screwdriver_and_wrench_crossed" />
 
     <TextView
-      android:id="@+id/textMessages"
+      android:id="@+id/textTools"
       android:layout_width="0dp"
       android:layout_height="73dp"
       android:layout_marginStart="170dp"
@@ -170,7 +264,7 @@
       android:layout_marginEnd="25dp"
       android:layout_marginBottom="10dp"
       android:gravity="center"
-      android:text="@string/main_message"
+      android:text="@string/main_tool"
       android:textColor="@android:color/black"
       android:textSize="28sp"
       android:textStyle="bold"
@@ -183,145 +277,50 @@
 
   </android.support.constraint.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
-      android:id="@+id/cLayoutInternet"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:background="@color/browserBlue"
-      android:onClick="launchInternetScreen"
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutApp"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/launchAppOrange"
+    android:onClick="launchAppScreen"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guide5">
+
+    <ImageView
+      android:id="@+id/imageApp"
+      android:layout_width="126dp"
+      android:layout_height="94dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="250dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide3"
-      app:layout_constraintBottom_toTopOf="@+id/guide4">
-
-        <ImageView
-          android:id="@+id/imageInternet"
-          android:layout_width="126dp"
-          android:layout_height="94dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginBottom="10dp"
-          android:layout_marginEnd="250dp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.51"
-          app:srcCompat="@drawable/ic_world_wide_web"/>
-        <TextView
-          android:id="@+id/textInternet"
-          android:textStyle="bold"
-          android:layout_width="0dp"
-          android:layout_height="73dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginBottom="10dp"
-          android:layout_marginStart="170dp"
-          android:layout_marginEnd="25dp"
-          android:gravity="center"
-          android:text="@string/main_internet"
-          android:textColor="@android:color/black"
-          android:textSize="28sp"
-          app:fontFamily="sans-serif-black"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.49"/>
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/cLayoutTools"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/lightGray"
-        android:onClick="launchCommonToolsScreen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guide5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guide4">
-
-        <ImageView
-            android:id="@+id/imageTools"
-            android:layout_width="126dp"
-            android:layout_height="94dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="250dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.51"
-            app:srcCompat="@drawable/ic_screwdriver_and_wrench_crossed" />
-
-        <TextView
-            android:id="@+id/textTools"
-            android:layout_width="0dp"
-            android:layout_height="73dp"
-            android:layout_marginStart="170dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:text="@string/main_tool"
-            android:textColor="@android:color/black"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:fontFamily="sans-serif-black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.49" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-      android:id="@+id/cLayoutApp"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_3d"/>
+    <TextView
+      android:id="@+id/textApp"
+      android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:background="@color/launchAppOrange"
-      android:onClick="launchAppScreen"
+      android:layout_height="73dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginStart="170dp"
+      android:layout_marginEnd="25dp"
+      android:gravity="center"
+      android:text="@string/main_apps"
+      android:textColor="@android:color/black"
+      android:textSize="28sp"
+      app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guide5">
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49"/>
 
-        <ImageView
-          android:id="@+id/imageApp"
-          android:layout_width="126dp"
-          android:layout_height="94dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginBottom="10dp"
-          android:layout_marginEnd="250dp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.51"
-          app:srcCompat="@drawable/ic_3d"/>
-        <TextView
-          android:id="@+id/textApp"
-          android:textStyle="bold"
-          android:layout_width="0dp"
-          android:layout_height="73dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginBottom="10dp"
-          android:layout_marginStart="170dp"
-          android:layout_marginEnd="25dp"
-          android:gravity="center"
-          android:text="@string/main_apps"
-          android:textColor="@android:color/black"
-          android:textSize="28sp"
-          app:fontFamily="sans-serif-black"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.49"/>
-
-    </android.support.constraint.ConstraintLayout>
+  </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
