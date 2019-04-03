@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,14 +68,14 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     //This is where we build our list of app details, using the app
     //object we created to store the label, package name and icon
     PackageManager pm = c.getPackageManager();
-    appsList = new ArrayList<AppInfo>();
+    appsList = new ArrayList<>();
 
     Intent i = new Intent(Intent.ACTION_MAIN, null);
     i.addCategory(Intent.CATEGORY_LAUNCHER);
 
     List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
     for (ResolveInfo ri : allApps) {
-      if (!ri.activityInfo.packageName.equals("com.launcher.ava.elderlylauncher")) {
+      if (!ri.activityInfo.packageName.equals("com.launcher.ava.utilities")) {
         AppInfo app = new AppInfo();
         app.label = ri.loadLabel(pm);
         app.packageName = ri.activityInfo.packageName;
@@ -84,14 +83,14 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
         appsList.add(app);
       }
     }
-
-    // add link to helper app
-    AppInfo app = new AppInfo();
-    app.label = "Ava Helper";
-    app.packageName = "com.launcher.ava.helperApp";
-    Drawable drawable = ContextCompat.getDrawable(c.getApplicationContext(), R.drawable.ic_info);
-    app.icon = drawable;
-    appsList.add(app);
+//
+//    // add link to helper app
+//    AppInfo app = new AppInfo();
+//    app.label = "Ava Helper";
+//    app.packageName = "com.launcher.ava.helperApp";
+//    Drawable drawable = ContextCompat.getDrawable(c.getApplicationContext(), R.drawable.ic_info);
+//    app.icon = drawable;
+//    appsList.add(app);
 
     Collections.sort(appsList);
 
