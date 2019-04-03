@@ -40,7 +40,7 @@ public class SecondMessagesScreen extends AppCompatActivity {
     // get + before country code, replace 00 if needed
     if(this.contactInfo.number.substring(0,2).equals("00")) {
       this.contactInfo.number=
-        this.contactInfo.number.replace("00", "+");
+        this.contactInfo.number.replaceFirst("00", "+");
     }
 
     this.title = findViewById(R.id.textSecondMessagesScreenMessages);
