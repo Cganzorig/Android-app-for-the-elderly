@@ -31,8 +31,8 @@ public class FirstInternetScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_first_internet_screen);
 
-    this.addAndRemove = findViewById(R.id.cLayoutMessagesBtn);
-    this.whiteBlock = findViewById(R.id.cLayoutMessagesWhiteBlock);
+    this.addAndRemove = findViewById(R.id.cLayoutInternetBtn);
+    this.whiteBlock = findViewById(R.id.cLayoutInternetWhiteBlock);
     this.plusBtn = findViewById(R.id.internet_add_button);
     this.minusBtn = findViewById(R.id.internet_remove_button);
     this.et = findViewById(R.id.editText);
@@ -53,59 +53,59 @@ public class FirstInternetScreen extends AppCompatActivity {
     switch (this.numWebs) {
       case 0:
         paramsAddAndRemove.topToTop = R.id.firstWebScreenguide1;
-        paramsAddAndRemove.bottomToTop = R.id.firstMessagesScreenguide2;
-        paramsWhiteBlock.topToTop = R.id.firstMessagesScreenguide2;
-        paramsWhiteBlock.bottomToTop = R.id.firstMessagesScreenguide6;
+        paramsAddAndRemove.bottomToTop = R.id.firstInternetScreenguide2;
+        paramsWhiteBlock.topToTop = R.id.firstInternetScreenguide2;
+        paramsWhiteBlock.bottomToTop = R.id.firstInternetScreenguide6;
 
         minusBtn.setVisibility(View.INVISIBLE);
         plusBtn.setVisibility(View.VISIBLE);
         tv.setText(R.string.add_fav_website);
 
-        paramsPlus.startToStart = R.id.firstMessagesScreenVertical5;
-        paramsPlus.endToStart = R.id.firstMessagesScreenVertical6;
+        paramsPlus.startToStart = R.id.firstInternetScreenVertical5;
+        paramsPlus.endToStart = R.id.firstInternetScreenVertical6;
         break;
       case 1:
-        paramsAddAndRemove.topToTop = R.id.firstMessagesScreenguide2;
-        paramsAddAndRemove.bottomToTop = R.id.firstMessagesScreenguide3;
-        paramsWhiteBlock.topToTop = R.id.firstMessagesScreenguide3;
-        paramsWhiteBlock.bottomToTop = R.id.firstMessagesScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstInternetScreenguide2;
+        paramsAddAndRemove.bottomToTop = R.id.firstInternetScreenguide3;
+        paramsWhiteBlock.topToTop = R.id.firstInternetScreenguide3;
+        paramsWhiteBlock.bottomToTop = R.id.firstInternetScreenguide6;
 
         minusBtn.setVisibility(View.VISIBLE);
         plusBtn.setVisibility(View.VISIBLE);
         tv.setText(R.string.add_remove_fav_website);
 
-        paramsPlus.startToStart = R.id.firstMessagesScreenVertical1;
-        paramsPlus.endToStart = R.id.firstMessagesScreenVertical2;
-        paramsMinus.startToStart = R.id.firstMessagesScreenVertical3;
-        paramsMinus.endToStart = R.id.firstMessagesScreenVertical4;
+        paramsPlus.startToStart = R.id.firstInternetScreenVertical1;
+        paramsPlus.endToStart = R.id.firstInternetScreenVertical2;
+        paramsMinus.startToStart = R.id.firstInternetScreenVertical3;
+        paramsMinus.endToStart = R.id.firstInternetScreenVertical4;
         break;
       case 2:
-        paramsAddAndRemove.topToTop = R.id.firstMessagesScreenguide3;
-        paramsAddAndRemove.bottomToTop = R.id.firstMessagesScreenguide4;
-        paramsWhiteBlock.topToTop = R.id.firstMessagesScreenguide4;
-        paramsWhiteBlock.bottomToTop = R.id.firstMessagesScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstInternetScreenguide3;
+        paramsAddAndRemove.bottomToTop = R.id.firstInternetScreenguide4;
+        paramsWhiteBlock.topToTop = R.id.firstInternetScreenguide4;
+        paramsWhiteBlock.bottomToTop = R.id.firstInternetScreenguide6;
 
         minusBtn.setVisibility(View.VISIBLE);
         plusBtn.setVisibility(View.VISIBLE);
         tv.setText(R.string.add_remove_fav_website);
 
-        paramsPlus.startToStart = R.id.firstMessagesScreenVertical1;
-        paramsPlus.endToStart = R.id.firstMessagesScreenVertical2;
-        paramsMinus.startToStart = R.id.firstMessagesScreenVertical3;
-        paramsMinus.endToStart = R.id.firstMessagesScreenVertical4;
+        paramsPlus.startToStart = R.id.firstInternetScreenVertical1;
+        paramsPlus.endToStart = R.id.firstInternetScreenVertical2;
+        paramsMinus.startToStart = R.id.firstInternetScreenVertical3;
+        paramsMinus.endToStart = R.id.firstInternetScreenVertical4;
         break;
       case 3:
-        paramsAddAndRemove.topToTop = R.id.firstMessagesScreenguide4;
-        paramsAddAndRemove.bottomToTop = R.id.firstMessagesScreenguide5;
-        paramsWhiteBlock.topToTop = R.id.firstMessagesScreenguide5;
-        paramsWhiteBlock.bottomToTop = R.id.firstMessagesScreenguide6;
+        paramsAddAndRemove.topToTop = R.id.firstInternetScreenguide4;
+        paramsAddAndRemove.bottomToTop = R.id.firstInternetScreenguide5;
+        paramsWhiteBlock.topToTop = R.id.firstInternetScreenguide5;
+        paramsWhiteBlock.bottomToTop = R.id.firstInternetScreenguide6;
 
         minusBtn.setVisibility(View.VISIBLE);
         plusBtn.setVisibility(View.INVISIBLE);
         tv.setText(R.string.remove_fav_website);
 
-        paramsMinus.startToStart = R.id.firstMessagesScreenVertical5;
-        paramsMinus.endToStart = R.id.firstMessagesScreenVertical6;
+        paramsMinus.startToStart = R.id.firstInternetScreenVertical5;
+        paramsMinus.endToStart = R.id.firstInternetScreenVertical6;
         break;
 
     }
@@ -203,9 +203,14 @@ public class FirstInternetScreen extends AppCompatActivity {
 
     this.save.setVisibility(View.INVISIBLE);
     this.et.setVisibility(View.INVISIBLE);
-    this.google.setVisibility(View.VISIBLE);
     et.onEditorAction(EditorInfo.IME_ACTION_DONE);
     et.setText(null);
+    ConstraintLayout.LayoutParams paramsEt = (ConstraintLayout.LayoutParams) this.et.getLayoutParams();
+    ConstraintLayout.LayoutParams paramsSave = (ConstraintLayout.LayoutParams) this.save.getLayoutParams();
+    paramsEt.endToEnd = R.id.startTextBox;
+    paramsSave.endToEnd = R.id.startTextBox;
+    this.et.setLayoutParams(paramsEt);
+    this.save.setLayoutParams(paramsSave);
     displayFavouriteWebsites();
   }
 
@@ -215,12 +220,18 @@ public class FirstInternetScreen extends AppCompatActivity {
     this.minusBtn.setEnabled(false);
     this.plusMinusExplain.setVisibility(View.INVISIBLE);
 
+    ConstraintLayout.LayoutParams paramsEt = (ConstraintLayout.LayoutParams) this.et.getLayoutParams();
+    ConstraintLayout.LayoutParams paramsSave = (ConstraintLayout.LayoutParams) this.save.getLayoutParams();
+    paramsEt.endToEnd = R.id.endTextBox;
+    paramsSave.endToEnd = R.id.parent;
+    this.et.setLayoutParams(paramsEt);
+    this.save.setLayoutParams(paramsSave);
+
 
     //make plus and minus buttons invisible
     this.plusBtn.setVisibility(View.INVISIBLE);
     this.minusBtn.setVisibility(View.INVISIBLE);
 
-    this.google.setVisibility(View.INVISIBLE);
     this.save.setVisibility(View.VISIBLE);
     this.et.setVisibility(View.VISIBLE);
   }

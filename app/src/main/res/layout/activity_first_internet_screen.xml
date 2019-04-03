@@ -5,11 +5,11 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".FirstMessagesScreen">
+  tools:context=".FirstInternetScreen">
 
 
   <android.support.constraint.Guideline
-    android:id="@+id/firstMessagesScreenguide0"
+    android:id="@+id/firstInternetScreenguide0"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -23,49 +23,49 @@
     app:layout_constraintGuide_percent="0.20"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/firstMessagesScreenguide2"
+    android:id="@+id/firstInternetScreenguide2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.35"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/firstMessagesScreenguide3"
+    android:id="@+id/firstInternetScreenguide3"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.50"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/firstMessagesScreenguide4"
+    android:id="@+id/firstInternetScreenguide4"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.65"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/firstMessagesScreenguide5"
+    android:id="@+id/firstInternetScreenguide5"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.80"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/firstMessagesScreenguide6"
+    android:id="@+id/firstInternetScreenguide6"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.8"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/firstMessagesScreenguide7"
+    android:id="@+id/firstInternetScreenguide7"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="1.0"/>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutMessages"
+    android:id="@+id/cLayoutInternet"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/browserBlue"
@@ -73,10 +73,10 @@
     app:layout_constraintBottom_toTopOf="@+id/firstWebScreenguide1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/firstMessagesScreenguide0">
+    app:layout_constraintTop_toTopOf="@+id/firstInternetScreenguide0">
 
     <ImageView
-      android:id="@+id/imageMessages"
+      android:id="@+id/imageInternet"
       android:layout_width="126dp"
       android:layout_height="94dp"
       android:layout_marginTop="10dp"
@@ -89,7 +89,7 @@
       app:layout_constraintVertical_bias="0.51"
       app:srcCompat="@drawable/ic_world_wide_web"/>
     <TextView
-      android:id="@+id/textMessages"
+      android:id="@+id/textInternet"
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="73dp"
@@ -111,12 +111,12 @@
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutMessagesFirstFav"
+    android:id="@+id/cLayoutInternetFirstFav"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/colorPrimary"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/firstMessagesScreenguide2"
+    app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide2"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstWebScreenguide1">
@@ -144,15 +144,15 @@
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutMessagesSecondFav"
+    android:id="@+id/cLayoutInternetSecondFav"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/colorPrimary"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/firstMessagesScreenguide3"
+    app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide3"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/firstMessagesScreenguide2">
+    app:layout_constraintTop_toTopOf="@+id/firstInternetScreenguide2">
 
     <Button
       android:id="@+id/buttonInternetSecondFav"
@@ -175,15 +175,15 @@
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutMessagesThirdFav"
+    android:id="@+id/cLayoutInternetThirdFav"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/colorPrimary"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/firstMessagesScreenguide4"
+    app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide4"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/firstMessagesScreenguide3">
+    app:layout_constraintTop_toTopOf="@+id/firstInternetScreenguide3">
 
     <Button
       android:id="@+id/buttonInternetThirdFav"
@@ -206,48 +206,94 @@
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutMessagesBtn"
+    android:id="@+id/cLayoutInternetBtn"
     android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:layout_height="111dp"
     android:background="@color/colorPrimary"
     android:onClick="doNothing"
-    app:layout_constraintBottom_toTopOf="@+id/firstMessagesScreenguide5"
+    app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide5"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/firstMessagesScreenguide4">
+    app:layout_constraintTop_toTopOf="@+id/firstInternetScreenguide4">
+
+    <Button
+      android:id="@+id/saveButton"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="36dp"
+      android:onClick="saveButton"
+      android:text="save"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/editText"
+      app:layout_constraintStart_toEndOf="@+id/editText"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+      android:id="@+id/editText"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:gravity="center"
+      android:hint="@string/enter_website"
+      android:imeOptions="actionDone"
+      android:onClick="doNothing"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@id/startTextBox"
+      app:layout_constraintStart_toStartOf="@id/startTextBox"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:layout_editor_absoluteX="251dp"
+      tools:layout_editor_absoluteY="81dp"/>
 
     <android.support.constraint.Guideline
-      android:id="@+id/firstMessagesScreenVertical1"
+      android:id="@+id/startTextBox"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_begin="10dp"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/endTextBox"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_end="100dp"/>
+
+    <android.support.constraint.Guideline
+      android:id="@+id/firstInternetScreenVertical1"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="vertical"
       app:layout_constraintGuide_begin="101dp"/>
     <android.support.constraint.Guideline
-      android:id="@+id/firstMessagesScreenVertical2"
+      android:id="@+id/firstInternetScreenVertical2"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="vertical"
       app:layout_constraintGuide_begin="197dp"/>
     <android.support.constraint.Guideline
-      android:id="@+id/firstMessagesScreenVertical3"
+      android:id="@+id/firstInternetScreenVertical3"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="vertical"
       app:layout_constraintGuide_end="197dp"/>
     <android.support.constraint.Guideline
-      android:id="@+id/firstMessagesScreenVertical4"
+      android:id="@+id/firstInternetScreenVertical4"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="vertical"
       app:layout_constraintGuide_end="101dp"/>
     <android.support.constraint.Guideline
-      android:id="@+id/firstMessagesScreenVertical5"
+      android:id="@+id/firstInternetScreenVertical5"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="vertical"
       app:layout_constraintGuide_begin="254dp"/>
     <android.support.constraint.Guideline
-      android:id="@+id/firstMessagesScreenVertical6"
+      android:id="@+id/firstInternetScreenVertical6"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="vertical"
@@ -264,10 +310,10 @@
       android:textSize="30sp"
       android:visibility="visible"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toStartOf="@+id/firstMessagesScreenVertical2"
-      app:layout_constraintStart_toStartOf="@+id/firstMessagesScreenVertical1"
+      app:layout_constraintEnd_toStartOf="@+id/firstInternetScreenVertical2"
+      app:layout_constraintStart_toStartOf="@+id/firstInternetScreenVertical1"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="1.0" />
+      app:layout_constraintVertical_bias="1.0"/>
 
     <Button
       android:id="@+id/internet_remove_button"
@@ -280,17 +326,18 @@
       android:textSize="30sp"
       android:visibility="visible"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toStartOf="@+id/firstMessagesScreenVertical4"
-      app:layout_constraintStart_toStartOf="@+id/firstMessagesScreenVertical3"
+      app:layout_constraintEnd_toStartOf="@+id/firstInternetScreenVertical4"
+      app:layout_constraintStart_toStartOf="@+id/firstInternetScreenVertical3"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="1.0" />
+      app:layout_constraintVertical_bias="1.0"/>
 
     <TextView
       android:id="@+id/textInternetExplainPlusMinus"
+      android:textStyle="italic"
       android:layout_width="wrap_content"
       android:layout_height="33dp"
-      android:layout_marginStart="39dp"
       android:layout_marginTop="11dp"
+      android:layout_marginStart="39dp"
       android:layout_marginEnd="39dp"
       android:gravity="bottom"
       android:onClick="doNothing"
@@ -298,61 +345,25 @@
       android:textAlignment="center"
       android:textColor="@color/questionGray"
       android:textSize="24sp"
-      android:textStyle="italic"
       android:visibility="visible"
       app:layout_constraintBottom_toTopOf="@+id/add_button"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"/>
 
 
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutMessagesPickContact"
+    android:id="@+id/cLayoutInternetPickContact"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/colorPrimary"
-    app:layout_constraintBottom_toTopOf="@+id/firstMessagesScreenguide7"
+    app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide7"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/firstMessagesScreenguide6">
+    app:layout_constraintTop_toTopOf="@+id/firstInternetScreenguide6">
 
-    <EditText
-      android:id="@+id/editText"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:layout_marginStart="25dp"
-      android:layout_marginTop="30dp"
-      android:layout_marginEnd="150dp"
-      android:layout_marginBottom="30dp"
-      android:gravity="center"
-      android:hint="Enter website"
-      android:imeOptions="actionDone"
-      android:onClick="doNothing"
-      android:textColor="@android:color/black"
-      android:textSize="25sp"
-      android:textStyle="bold"
-      android:visibility="invisible"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-      android:id="@+id/saveButton"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="36dp"
-      android:layout_marginBottom="8dp"
-      android:onClick="saveButton"
-      android:text="save"
-      android:visibility="invisible"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
 
     <Button
       android:id="@+id/buttonGoogle"
@@ -373,15 +384,15 @@
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutMessagesWhiteBlock"
+    android:id="@+id/cLayoutInternetWhiteBlock"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/colorPrimary"
     android:onClick="doNothing"
-    app:layout_constraintBottom_toTopOf="@+id/firstMessagesScreenguide6"
+    app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide6"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/firstMessagesScreenguide5">
+    app:layout_constraintTop_toTopOf="@+id/firstInternetScreenguide5">
 
   </android.support.constraint.ConstraintLayout>
 

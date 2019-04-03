@@ -43,4 +43,5 @@
   <string name="add_remove_fav">Add or remove favourite contact</string>
   <string name="remove_fav">Remove favourite contact</string>
   <string name="add_fav">Add favourite contact</string>
+  <string name="enter_website">Enter website: example.com</string>
 </resources>
