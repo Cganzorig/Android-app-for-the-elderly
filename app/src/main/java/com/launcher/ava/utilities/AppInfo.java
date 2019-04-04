@@ -10,18 +10,13 @@ public class AppInfo implements Comparable<AppInfo> {
 
   @Override
   public int compareTo(AppInfo o) {
-
     for (int i = 0; i < label.length(); i++) {
-
-      CharSequence l1 = this.label.toString().toLowerCase();
-      CharSequence l2 = o.label.toString().toLowerCase();
-
       if (i >= o.label.length()) {
         return 1;
       }
-      if (l1.charAt(i) > l2.charAt(i)) {
+      if (Character.toLowerCase(this.label.charAt(i)) > Character.toLowerCase(o.label.charAt(i))) {
         return 1;
-      } else if (l1.charAt(i) < l2.charAt(i)) {
+      } else if (Character.toLowerCase(this.label.charAt(i)) < Character.toLowerCase(o.label.charAt(i))) {
         return -1;
       }
     }
