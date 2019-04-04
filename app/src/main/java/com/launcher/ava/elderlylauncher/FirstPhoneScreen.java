@@ -16,6 +16,7 @@ import android.support.constraint.ConstraintLayout.LayoutParams;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -389,7 +390,9 @@ public class FirstPhoneScreen extends AppCompatActivity {
         phoneNumber = phoneNumber.replace(" ", "");
         target = target.replace(" ", "");
       }
+
       if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
+        //phoneNumber != null && phoneNumber.contains(target.substring(2))
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
         String displayName = cursor
           .getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
