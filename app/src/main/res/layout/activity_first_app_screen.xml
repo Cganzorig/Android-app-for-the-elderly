@@ -27,8 +27,8 @@
     android:id="@+id/floatingActionButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="24dp"
+    android:layout_marginEnd="24dp"
     android:clickable="true"
     android:focusable="true"
     android:hapticFeedbackEnabled="true"
@@ -217,6 +217,8 @@
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:animateLayoutChanges="false"
+    android:clickable="false"
+    android:visibility="invisible"
     android:background="@color/colorPrimary"
     android:iconifiedByDefault="false"
     app:layout_constraintEnd_toEndOf="parent"
@@ -227,8 +229,37 @@
   <android.support.v7.widget.RecyclerView
     android:id="@+id/searcRecyView"
     android:layout_width="match_parent"
-    android:layout_height="121dp"
+    android:layout_height="118dp"
     android:background="@color/colorPrimary"
+    android:clickable="false"
+    android:visibility="invisible"
     app:layout_constraintTop_toBottomOf="@+id/searchView3"/>
+
+  <Button
+    android:id="@+id/installButton"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginBottom="130dp"
+    android:layout_marginStart="50dp"
+    android:layout_marginEnd="10dp"
+    android:onClick="launchPlayStore"
+    android:text="Install App"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/uninstallButton"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/constraintLayout"/>
+
+  <Button
+    android:id="@+id/uninstallButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="26dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="50dp"
+    android:text="Uninstall App"
+    app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/installButton"
+    app:layout_constraintTop_toBottomOf="@id/constraintLayout"/>
 
 </android.support.constraint.ConstraintLayout>
