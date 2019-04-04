@@ -1,5 +1,6 @@
 package com.launcher.ava.utilities;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,14 +9,15 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.launcher.ava.elderlylauncher.AppDrawer;
+import com.launcher.ava.elderlylauncher.FirstAppScreen;
 import com.launcher.ava.elderlylauncher.R;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -54,6 +56,8 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
         package_name = "package:" + package_name;
         intent.setData(Uri.parse(package_name));
         context.startActivity(intent);
+//        Intent back = new Intent(context, FirstAppScreen.class);
+//        context.startActivity(back);
       }
       else {
         Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(package_name);
