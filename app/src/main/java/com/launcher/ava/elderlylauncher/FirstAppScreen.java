@@ -28,7 +28,7 @@ public class FirstAppScreen extends AppCompatActivity implements SearchView.OnQu
     super.onCreate(savedInstanceState);
     RemoveStatusBar.remove(this);
 
-    setContentView(R.layout.activity_app_screen);
+    setContentView(R.layout.activity_first_app_screen);
 
     setFavouriteApps();
 
@@ -56,7 +56,7 @@ public class FirstAppScreen extends AppCompatActivity implements SearchView.OnQu
   }
 
   public void setFavouriteApps() {
-    setContentView(R.layout.activity_app_screen);
+    setContentView(R.layout.activity_first_app_screen);
     final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
     textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
     final Button app1 = (Button) findViewById(R.id.app1);

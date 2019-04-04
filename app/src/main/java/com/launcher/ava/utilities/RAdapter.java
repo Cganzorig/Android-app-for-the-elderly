@@ -69,7 +69,7 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
     List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
     for (ResolveInfo ri : allApps) {
-      if (!ri.activityInfo.packageName.equals("com.launcher.ava.utilities")) {
+      if (!ri.activityInfo.packageName.equals("com.launcher.ava.elderlylauncher")) {
         AppInfo app = new AppInfo();
         app.label = ri.loadLabel(pm);
         app.packageName = ri.activityInfo.packageName;
