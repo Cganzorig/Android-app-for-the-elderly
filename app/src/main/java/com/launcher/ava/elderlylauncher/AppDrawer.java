@@ -2,15 +2,20 @@ package com.launcher.ava.elderlylauncher;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
+
 import com.launcher.ava.utilities.RAdapter;
 import com.launcher.ava.utilities.RemoveStatusBar;
 
 public class AppDrawer extends AppCompatActivity {
 
   public static boolean isDeleteMode;
+  public static final int UNINSTALL_APP_REQUEST = 1;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +36,14 @@ public class AppDrawer extends AppCompatActivity {
     RAdapter radapter = new RAdapter(this);
     recyclerView.setAdapter(radapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == UNINSTALL_APP_REQUEST) {
+      Intent intent = new Intent(this, FirstAppScreen.class);
+      startActivity(intent);
+    }
   }
 }

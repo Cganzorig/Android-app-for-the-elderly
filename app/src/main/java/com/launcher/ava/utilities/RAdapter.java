@@ -1,5 +1,7 @@
 package com.launcher.ava.utilities;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +10,8 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -24,6 +28,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
+
+  public static final int UNINSTALL_APP_REQUEST = 1;
 
   private List<AppInfo> appsList;
 
@@ -55,9 +61,7 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
         Intent intent = new Intent(Intent.ACTION_DELETE);
         package_name = "package:" + package_name;
         intent.setData(Uri.parse(package_name));
-        context.startActivity(intent);
-//        Intent back = new Intent(context, FirstAppScreen.class);
-//        context.startActivity(back);
+        ((Activity) context).startActivityForResult(intent, UNINSTALL_APP_REQUEST);
       }
       else {
         Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(package_name);
