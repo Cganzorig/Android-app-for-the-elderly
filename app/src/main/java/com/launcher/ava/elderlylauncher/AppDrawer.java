@@ -1,5 +1,6 @@
 package com.launcher.ava.elderlylauncher;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,8 @@ import com.launcher.ava.utilities.RemoveStatusBar;
 
 public class AppDrawer extends AppCompatActivity {
 
+  public static boolean isDeleteMode;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -16,6 +19,15 @@ public class AppDrawer extends AppCompatActivity {
     RemoveStatusBar.remove(this);
     setContentView(R.layout.activity_app_drawer);
     RecyclerView recyclerView = findViewById(R.id.RView);
+
+    Intent thisIntent = getIntent();
+    if (thisIntent.getIntExtra("deleteMode", 0) == 1) {
+      isDeleteMode = true;
+    }
+    else {
+      isDeleteMode = false;
+    }
+
     RAdapter radapter = new RAdapter(this);
     recyclerView.setAdapter(radapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));

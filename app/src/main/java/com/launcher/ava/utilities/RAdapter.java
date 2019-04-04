@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.launcher.ava.elderlylauncher.AppDrawer;
 import com.launcher.ava.elderlylauncher.R;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,14 +48,21 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
       // get the package name of the app clicked on in the list
       String package_name = appsList.get(pos).packageName.toString();
-      Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(package_name);
 
-      context.startActivity(launchIntent);
-      Toast.makeText(v.getContext(), appsList.get(pos).label.toString(), Toast.LENGTH_LONG).show();
+      if (AppDrawer.isDeleteMode) {
+        Intent intent = new Intent(Intent.ACTION_DELETE);
+        package_name = "package:" + package_name;
+        intent.setData(Uri.parse(package_name));
+        context.startActivity(intent);
+      }
+      else {
+        Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(package_name);
+        context.startActivity(launchIntent);
+        Toast.makeText(v.getContext(), appsList.get(pos).label.toString(), Toast.LENGTH_LONG).show();
 
-      // increment the frequency
-      AppFrequencyList.getInstance().incrementFrequency(package_name);
-
+        // increment the frequency
+        AppFrequencyList.getInstance().incrementFrequency(package_name);
+      }
     }
   }
 
