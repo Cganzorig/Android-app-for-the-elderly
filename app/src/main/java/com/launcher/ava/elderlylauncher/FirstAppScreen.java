@@ -173,5 +173,21 @@ public class FirstAppScreen extends AppCompatActivity implements SearchView.OnQu
     return false;
   }
 
+  public void launchPlayStore(View view) {
+    Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
+    startActivity(launchIntent);
+  }
+
+  public void launchUninstallApp(View view) {
+    // Need to launch app drawer view, get package name and use in the code below to uninstall.
+    // App drawer not working currently, so have left for later
+//    Intent intent = new Intent(this, AppDrawer.class);
+//    startActivity(intent);
+
+//        Intent intent = new Intent(Intent.ACTION_DELETE);
+//        intent.setData(Uri.parse("package:com.instagram.android"));
+//        startActivity(intent);
+  }
+
 
 }

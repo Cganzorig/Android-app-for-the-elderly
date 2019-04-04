@@ -196,21 +196,41 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="20dp" />
+
+      <Button
+        android:id="@+id/installButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="launchPlayStore"
+        android:text="Install App"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app1" />
+
+      <Button
+        android:id="@+id/uninstallButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Uninstall App"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textApp2" />
     </android.support.constraint.ConstraintLayout>
 
-    <SearchView
-        android:id="@+id/searchView3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:animateLayoutChanges="false"
-        android:background="@color/colorPrimary"
-        android:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"></SearchView>
+  <SearchView
+    android:id="@+id/searchView3"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginEnd="16dp"
+    android:animateLayoutChanges="false"
+    android:background="@color/colorPrimary"
+    android:iconifiedByDefault="false"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout"></SearchView>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/searcRecyView"
