@@ -34,7 +34,7 @@
                     in the SearchableActivity
         -->
     <activity
-      android:name="com.launcher.ava.helperApp.AppScreen"
+      android:name=".FirstAppScreen"
       android:screenOrientation="portrait">
       <intent-filter>
         <action android:name="android.intent.action.SEARCH" />
@@ -81,7 +81,7 @@
     </activity>
     <activity android:name="com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity" /> <!-- this is the searchable activity; it performs searches -->
     <activity
-      android:name="com.launcher.ava.helperApp.SearchableActivity"
+      android:name="com.launcher.ava.utilities.SearchableActivity"
       android:launchMode="singleTop">
       <intent-filter>
         <action android:name="android.intent.action.SEARCH" />

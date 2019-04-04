@@ -1,4 +1,4 @@
-package com.launcher.ava.helperApp;
+package com.launcher.ava.utilities;
 
 import android.app.ListActivity;
 import android.app.SearchManager;

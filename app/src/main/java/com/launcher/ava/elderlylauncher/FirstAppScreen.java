@@ -1,4 +1,4 @@
-package com.launcher.ava.helperApp;
+package com.launcher.ava.elderlylauncher;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -13,13 +13,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import com.launcher.ava.elderlylauncher.AppDrawer;
-import com.launcher.ava.elderlylauncher.R;
 import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.utilities.RAdapter;
 import com.launcher.ava.utilities.RemoveStatusBar;
 
-public class AppScreen extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class FirstAppScreen extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
   private RAdapter radapter;
   private SearchView searchView;
@@ -43,10 +41,10 @@ public class AppScreen extends AppCompatActivity implements SearchView.OnQueryTe
     searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
       @Override
       public boolean onQueryTextSubmit(String query) {
-        radapter = new RAdapter(AppScreen.this);
+        radapter = new RAdapter(FirstAppScreen.this);
         radapter.reuturnQueryResults(query);
         recyclerView.setAdapter(radapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(AppScreen.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(FirstAppScreen.this));
         return true;
       }
 

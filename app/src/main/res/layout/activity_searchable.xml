@@ -4,7 +4,7 @@
   android:id="@+id/coordinatorLayout"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.launcher.ava.helperApp.SearchableActivity">
+  tools:context="com.launcher.ava.utilities.SearchableActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/search_RView"
