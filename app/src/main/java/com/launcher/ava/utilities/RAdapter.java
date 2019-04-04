@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.launcher.ava.elderlylauncher.R;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
@@ -77,7 +78,7 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
       }
     }
 
-   //Collections.sort(this.appsList);
+   Collections.sort(this.appsList);
 
   }
 
