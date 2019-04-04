@@ -1,17 +1,24 @@
 package com.launcher.ava.utilities;
 
+import static android.content.Context.MODE_PRIVATE;
+import static java.lang.Boolean.FALSE;
+
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class AppFrequencyList {
 
   private static ArrayList<AppInfoFrequencyPair> frequentlyUsedList = new ArrayList();
   private static AppFrequencyList instance = new AppFrequencyList();
+  private static boolean populateInvokedForFirstTime = true;
 
   private AppFrequencyList() {
   }
@@ -28,14 +35,21 @@ public class AppFrequencyList {
 
     List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
     for (ResolveInfo ri : allApps) {
-
       AppInfo app = new AppInfo();
       app.label = ri.loadLabel(pm);
       app.packageName = ri.activityInfo.packageName;
       app.icon = ri.activityInfo.loadIcon(pm);
       AppInfoFrequencyPair entry = new AppInfoFrequencyPair(app);
+      SharedPreferences sp = c.getSharedPreferences("freqList", MODE_PRIVATE);
+      String freqName = app.label.toString();
+      if(sp.contains(freqName) && populateInvokedForFirstTime){
+        int oldFreq = Integer.valueOf(Objects.requireNonNull(sp.getString(freqName, "")));
+        entry.setFreq(oldFreq);
+      }
+
       frequentlyUsedList.add(entry);
     }
+    populateInvokedForFirstTime = false;
   }
 
   public void incrementFrequency(String package_name) {
@@ -54,7 +68,22 @@ public class AppFrequencyList {
   }
 
   public AppInfo getHit(int num) {
+    Collections.sort(frequentlyUsedList, Collections.<AppInfoFrequencyPair>reverseOrder());
     return frequentlyUsedList.get(num).getAppInfo();
+  }
+  public int getHitFreq(int num) {
+    return frequentlyUsedList.get(num).getFreq();
+  }
+
+  public AppInfoFrequencyPair getPairByPackName(String packName) {
+
+    for (AppInfoFrequencyPair elem : frequentlyUsedList) {
+      if (elem.getPackage().equals(packName)) {
+
+        return elem;
+      }
+    }
+    return null;
   }
 
   public void removeApp(String package_name) {

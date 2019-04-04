@@ -16,6 +16,8 @@ public class AppInfoFrequencyPair implements Comparable<AppInfoFrequencyPair> {
     return this.freq;
   }
 
+  public void setFreq(int i){this.freq = i;}
+
   public String getLabel() {
     return app_info.label.toString();
   }

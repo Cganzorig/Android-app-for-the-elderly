@@ -1,10 +1,13 @@
 package com.launcher.ava.utilities;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
@@ -69,6 +72,13 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
         Toast.makeText(v.getContext(), appsList.get(pos).label.toString(), Toast.LENGTH_LONG).show();
 
         // increment the frequency
+        AppInfoFrequencyPair aip = AppFrequencyList.getInstance().getPairByPackName(package_name);
+        int freq = aip.getFreq();
+        String freqName = aip.getAppInfo().label.toString();
+        SharedPreferences sp = context.getSharedPreferences("freqList", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(freqName, Integer.toString(freq));
+        editor.apply();
         AppFrequencyList.getInstance().incrementFrequency(package_name);
       }
     }

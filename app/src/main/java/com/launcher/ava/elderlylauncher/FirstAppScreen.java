@@ -3,6 +3,7 @@ package com.launcher.ava.elderlylauncher;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import com.launcher.ava.utilities.AppFrequencyList;
+import com.launcher.ava.utilities.AppInfoFrequencyPair;
 import com.launcher.ava.utilities.RAdapter;
 import com.launcher.ava.utilities.RemoveStatusBar;
 
@@ -122,6 +124,16 @@ public class FirstAppScreen extends AppCompatActivity implements SearchView.OnQu
 
   private void startFreqApp(int i) {
     String packageName = AppFrequencyList.getInstance().getHit(i).packageName.toString();
+
+    // increment the frequency
+    AppInfoFrequencyPair aip = AppFrequencyList.getInstance().getPairByPackName(packageName);
+    int freq = aip.getFreq();
+    String freqName = aip.getAppInfo().label.toString();
+    SharedPreferences sp = getSharedPreferences("freqList", MODE_PRIVATE);
+    SharedPreferences.Editor editor = sp.edit();
+    editor.putString(freqName, Integer.toString(freq));
+    editor.apply();
+
     AppFrequencyList.getInstance().incrementFrequency(packageName);
     Intent launchIntent =
       getPackageManager().getLaunchIntentForPackage(packageName);
