@@ -413,7 +413,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
       case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
         // If request is cancelled, the result arrays are empty.
         if (grantResults.length > 0
-          && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED && this.pickContactIntent!=null) {
           handleResult(MY_PERMISSIONS_REQUEST_READ_CONTACTS, RESULT_OK, this.pickContactIntent);
         } else {
           // permission denied, boo! Disable the

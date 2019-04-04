@@ -218,7 +218,6 @@ public class FirstMessagesScreen extends AppCompatActivity {
   }
 
   public void pickFromList() {
-
     Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
     pickContactIntent.setType(Phone.CONTENT_TYPE);
     startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
@@ -412,7 +411,7 @@ public class FirstMessagesScreen extends AppCompatActivity {
       case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
         // If request is cancelled, the result arrays are empty.
         if (grantResults.length > 0
-          && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED && this.pickContactIntent!=null) {
           handleResult(MY_PERMISSIONS_REQUEST_READ_CONTACTS, RESULT_OK, this.pickContactIntent);
         } else {
           // permission denied, boo! Disable the

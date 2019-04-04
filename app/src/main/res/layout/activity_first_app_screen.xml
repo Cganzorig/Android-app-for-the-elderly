@@ -8,6 +8,20 @@
   android:layout_height="match_parent"
   tools:context=".FirstAppScreen">
 
+  <Button
+    android:id="@+id/app_drawer_button"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="644dp"
+    android:onClick="onClickGoToAppDrawer"
+    android:text="@string/view_all_apps"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toTopOf="@+id/searcRecyView"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0"/>
   <android.support.constraint.Guideline
     android:id="@+id/firstAppScreenguide0"
     android:layout_width="wrap_content"
@@ -23,31 +37,7 @@
     app:layout_constraintGuide_percent="0.20"/>
 
 
-  <android.support.design.widget.FloatingActionButton
-    android:id="@+id/floatingActionButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="3dp"
-    android:layout_marginBottom="20dp"
-    android:layout_marginStart="3dp"
-    android:layout_marginEnd="176dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:hapticFeedbackEnabled="true"
-    android:longClickable="false"
-    android:onClick="onClickGoToAppDrawer"
-    android:scaleType="fitCenter"
-    app:backgroundTint="@color/colorPrimary"
-    app:elevation="5dp"
-    app:fabCustomSize="80dp"
-    app:fabSize="normal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toEndOf="@+id/searcRecyView"
-    app:layout_constraintTop_toBottomOf="@+id/searchView3"
-    app:layout_constraintVertical_bias="0.0"
-    app:srcCompat="@drawable/ic_show_apps_button"/>
+
 
   <android.support.constraint.ConstraintLayout
     android:id="@+id/cLayoutApps"
@@ -252,8 +242,11 @@
     android:background="@color/colorPrimary"
     android:clickable="false"
     android:visibility="invisible"
-    app:layout_constraintTop_toBottomOf="@+id/searchView3"
-    tools:layout_editor_absoluteX="0dp"/>
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/searchView3">
+  </android.support.v7.widget.RecyclerView>
 
   <Button
     android:id="@+id/installButton"
@@ -262,12 +255,12 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="130dp"
     android:layout_marginStart="50dp"
-    android:layout_marginEnd="10dp"
+    android:layout_marginEnd="220dp"
     android:onClick="launchPlayStore"
     android:text="Install \n App"
     android:textSize="20sp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/uninstallButton"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/constraintLayout"/>
 
@@ -276,11 +269,16 @@
     android:textStyle="bold"
     android:layout_width="146dp"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="130dp"
+    android:layout_marginStart="220dp"
+    android:layout_marginEnd="50dp"
     android:onClick="launchUninstallApp"
     android:text="Uninstall \n App"
     android:textAlignment="center"
     android:textSize="20sp"
-    tools:layout_editor_absoluteX="216dp"
-    tools:layout_editor_absoluteY="544dp"/>
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout"/>
 
 </android.support.constraint.ConstraintLayout>
