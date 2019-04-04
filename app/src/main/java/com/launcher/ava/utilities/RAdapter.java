@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,7 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     //This is where we build our list of app details, using the app
     //object we created to store the label, package name and icon
     PackageManager pm = c.getPackageManager();
-    appsList = new ArrayList<>();
+    this.appsList = new ArrayList<>();
 
     Intent i = new Intent(Intent.ACTION_MAIN, null);
     i.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -80,31 +81,23 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
         app.label = ri.loadLabel(pm);
         app.packageName = ri.activityInfo.packageName;
         app.icon = ri.activityInfo.loadIcon(pm);
-        appsList.add(app);
+        this.appsList.add(app);
       }
     }
-//
-//    // add link to helper app
-//    AppInfo app = new AppInfo();
-//    app.label = "Ava Helper";
-//    app.packageName = "com.launcher.ava.helperApp";
-//    Drawable drawable = ContextCompat.getDrawable(c.getApplicationContext(), R.drawable.ic_info);
-//    app.icon = drawable;
-//    appsList.add(app);
 
-    Collections.sort(appsList);
+   //Collections.sort(this.appsList);
 
   }
 
   public void reuturnQueryResults(String str) {
-    List<AppInfo> results = new ArrayList<>();
-    for (AppInfo ri : appsList) {
-      if (ri.packageName.toString().contains(str)) {
-        results.add(ri);
-      }
-    }
-
-    appsList = results;
+//    List<AppInfo> results = new ArrayList<>();
+//    for (AppInfo ri : this.appsList) {
+//      if (ri.packageName.toString().contains(str)) {
+//        results.add(ri);
+//      }
+//    }
+//
+//    this.appsList = results;
   }
 
   @Override
@@ -112,9 +105,9 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
     //Here we use the information in the list we created to define the views
 
-    String appLabel = appsList.get(i).label.toString();
-    String appPackage = appsList.get(i).packageName.toString();
-    Drawable appIcon = appsList.get(i).icon;
+    String appLabel = this.appsList.get(i).label.toString();
+    String appPackage = this.appsList.get(i).packageName.toString();
+    Drawable appIcon = this.appsList.get(i).icon;
 
     TextView textView = viewHolder.textView;
     textView.setText(appLabel);
@@ -129,12 +122,13 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     //This method needs to be overridden so that Androids knows how many items
     //will be making it into the list
 
-    return appsList.size();
+    return this.appsList.size();
   }
 
 
+  @NonNull
   @Override
-  public RAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public RAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
     //This is what adds the code we've written in here to our target view
     LayoutInflater inflater = LayoutInflater.from(parent.getContext());

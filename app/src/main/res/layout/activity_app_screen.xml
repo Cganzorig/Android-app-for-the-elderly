@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity">
+    tools:context="com.launcher.ava.helperApp.AppScreen">
 
     <!--Frame layout by importing row.xml -->
     <!--<FrameLayout-->
@@ -38,7 +38,8 @@
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_show_apps_button" />
+        app:srcCompat="@drawable/ic_show_apps_button"
+      android:focusable="true"/>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/app_row"
