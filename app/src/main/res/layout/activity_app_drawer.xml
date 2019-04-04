@@ -8,10 +8,25 @@
   android:background="@color/colorPrimary"
   tools:context=".MainActivity">
 
+  <TextView
+    android:id="@+id/textView"
+    android:textStyle="bold"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:text="@string/list_of_downloaded_apps"
+    android:textAlignment="viewStart"
+    android:textColor="@color/colorBlack"
+    android:background="@color/lighterGray"
+    android:textSize="40sp"
+    app:layout_constraintBottom_toTopOf="@+id/RView"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
   <android.support.v7.widget.RecyclerView
     android:id="@+id/RView"
     android:layout_width="395dp"
     android:layout_height="0dp"
+    android:layout_marginTop="60dp"
     android:scrollbarSize="10dp"
     android:scrollbarThumbVertical="@android:color/black"
     android:scrollbars="vertical"
