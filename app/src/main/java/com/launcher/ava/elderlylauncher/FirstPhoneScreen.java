@@ -387,12 +387,12 @@ public class FirstPhoneScreen extends AppCompatActivity {
     while (cursor.moveToNext()) {
       String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
       if (phoneNumber != null) {
-        phoneNumber = phoneNumber.replace(" ", "");
-        target = target.replace(" ", "");
+        phoneNumber = phoneNumber.replaceAll("\\s+","");
+        target = target.replaceAll("\\s+","");
       }
 
+
       if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
-        //phoneNumber != null && phoneNumber.contains(target.substring(2))
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
         String displayName = cursor
           .getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
