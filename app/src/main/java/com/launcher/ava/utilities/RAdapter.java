@@ -2,9 +2,7 @@ package com.launcher.ava.utilities;
 
 import static android.content.Context.MODE_PRIVATE;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,10 +11,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.launcher.ava.elderlylauncher.AppDrawer;
-import com.launcher.ava.elderlylauncher.FirstAppScreen;
 import com.launcher.ava.elderlylauncher.R;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,6 +56,17 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
       if (AppDrawer.isDeleteMode) {
         Intent intent = new Intent(Intent.ACTION_DELETE);
+
+        // remove deleted app from shared preferences
+        SharedPreferences sp = context.getSharedPreferences("freqList", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        AppInfoFrequencyPair aip = AppFrequencyList.getInstance().getPairByPackName(package_name);
+        editor.remove(aip.getLabel());
+        editor.apply();
+
+        // remove deleted app from list of apps
+        AppFrequencyList.getInstance().removeApp(package_name);
+
         package_name = "package:" + package_name;
         intent.setData(Uri.parse(package_name));
         ((Activity) context).startActivityForResult(intent, UNINSTALL_APP_REQUEST);

@@ -88,7 +88,7 @@ public class AppFrequencyList {
 
   public void removeApp(String package_name) {
     for (AppInfoFrequencyPair elem : frequentlyUsedList) {
-      if (elem.getLabel().equals(package_name)) {
+      if (elem.getPackage().equals(package_name)) {
         frequentlyUsedList.remove(elem);
         Collections.sort(frequentlyUsedList, Collections.<AppInfoFrequencyPair>reverseOrder());
         return;

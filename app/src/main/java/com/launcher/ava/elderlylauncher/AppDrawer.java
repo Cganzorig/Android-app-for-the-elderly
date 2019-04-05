@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.utilities.RAdapter;
 import com.launcher.ava.utilities.RemoveStatusBar;
 
@@ -20,6 +21,9 @@ public class AppDrawer extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    // make sure any new apps are captured here
+    AppFrequencyList.populate(this);
 
     RemoveStatusBar.remove(this);
     setContentView(R.layout.activity_app_drawer);
@@ -44,6 +48,8 @@ public class AppDrawer extends AppCompatActivity {
     if (requestCode == UNINSTALL_APP_REQUEST) {
       Intent intent = new Intent(this, FirstAppScreen.class);
       startActivity(intent);
+      // make sure to close app drawer so it refreshes
+      finish();
     }
   }
 }
