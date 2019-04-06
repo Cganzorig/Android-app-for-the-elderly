@@ -8,6 +8,8 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.launcher.ava.utilities.AppFrequencyList;
+import com.launcher.ava.wizardSetUp.LaunchesOnlyOnce;
+import com.launcher.ava.wizardSetUp.WizardScreen;
 
 public class MainActivity extends AppCompatActivity {
 
