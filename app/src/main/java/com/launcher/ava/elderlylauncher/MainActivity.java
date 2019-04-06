@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.launcher.ava.helperApp.AppScreen;
 import com.launcher.ava.utilities.AppFrequencyList;
+import com.launcher.ava.wizardSetUp.LaunchesOnlyOnce;
+import com.launcher.ava.wizardSetUp.WizardScreen;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setFontSize();
+
+        LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
+        if(launchesOnlyOnce.isFirstTime()){
+            launchWizardScreen();
+        }
     }
 
     public void launchAppScreen(View view) {
@@ -33,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
     Intent intent = new Intent(this, FirstPhoneScreen.class);
     startActivity(intent);
   }
+
+  public void launchWizardScreen() { Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(50); // 1000 miliseconds = 1 seconds
+        Intent intent = new Intent(this, WizardScreen.class);
+        startActivity(intent);
+    }
+
 
 //    public void launchHelperApp(View view) {
 //        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
