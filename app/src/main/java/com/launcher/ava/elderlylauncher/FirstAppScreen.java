@@ -35,6 +35,7 @@ public class FirstAppScreen extends AppCompatActivity {
 
     Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(myToolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
   }
 
   public void setFavouriteApps() {
@@ -65,6 +66,7 @@ public class FirstAppScreen extends AppCompatActivity {
     setFavouriteApps();
     Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(myToolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
   }
 
   public void onAppClick(View v) {
@@ -130,14 +132,11 @@ public class FirstAppScreen extends AppCompatActivity {
     inflater.inflate(R.menu.menu, menu);
 
     // Disable enter click
-    SearchManager searchManager =
-      (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-    SearchView searchView =
-      (SearchView) menu.findItem(R.id.search_m).getActionView();
+    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+    SearchView searchView = (SearchView) menu.findItem(R.id.search_m).getActionView();
     final EditText searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
 
-    searchView.setSearchableInfo(
-      searchManager.getSearchableInfo(getComponentName()));
+    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
     searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
       @Override
