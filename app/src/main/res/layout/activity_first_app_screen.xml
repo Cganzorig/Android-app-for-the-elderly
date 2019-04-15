@@ -10,18 +10,16 @@
 
   <Button
     android:id="@+id/app_drawer_button"
-    android:textStyle="bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="644dp"
     android:onClick="onClickGoToAppDrawer"
     android:text="@string/view_all_apps"
     android:textSize="20sp"
-    app:layout_constraintBottom_toTopOf="@+id/searcRecyView"
+    android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0"/>
+    app:layout_constraintTop_toTopOf="parent" />
   <android.support.constraint.Guideline
     android:id="@+id/firstAppScreenguide0"
     android:layout_width="wrap_content"
@@ -235,19 +233,6 @@
     app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
   </SearchView>
 
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/searcRecyView"
-    android:layout_width="match_parent"
-    android:layout_height="118dp"
-    android:background="@color/colorPrimary"
-    android:clickable="false"
-    android:visibility="invisible"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/searchView3">
-  </android.support.v7.widget.RecyclerView>
-
   <Button
     android:id="@+id/installButton"
     android:textStyle="bold"
@@ -280,5 +265,15 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/constraintLayout"/>
+
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
 
 </android.support.constraint.ConstraintLayout>
