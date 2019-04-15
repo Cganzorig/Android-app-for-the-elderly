@@ -1,18 +1,22 @@
 package com.launcher.ava.elderlylauncher;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.SearchView;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.launcher.ava.utilities.AppFrequencyList;
@@ -55,13 +59,13 @@ public class FirstAppScreen extends AppCompatActivity {
     app4.setBackground(AppFrequencyList.getInstance().getHit(3).icon);
   }
 
-//  @Override
-//  protected void onResume() {
-//    super.onResume();
-//    setFavouriteApps();
-//    Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
-//    setSupportActionBar(myToolbar);
-//  }
+  @Override
+  protected void onResume() {
+    super.onResume();
+    setFavouriteApps();
+    Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(myToolbar);
+  }
 
   public void onAppClick(View v) {
 
@@ -124,15 +128,37 @@ public class FirstAppScreen extends AppCompatActivity {
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
     inflater.inflate(R.menu.menu, menu);
+
+    // Disable enter click
+    SearchManager searchManager =
+      (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+    SearchView searchView =
+      (SearchView) menu.findItem(R.id.search_m).getActionView();
+    final EditText searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+
+    searchView.setSearchableInfo(
+      searchManager.getSearchableInfo(getComponentName()));
+
+    searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+      @Override
+      public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_GO || actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_NULL) {
+          return true;
+        }
+        return false;
+      }
+    });
+
     return true;
   }
+
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.search_m:
         //start search dialog
-        super.onSearchRequested();
+        onSearchRequested();
         return true;
       default:
         return super.onOptionsItemSelected(item);
