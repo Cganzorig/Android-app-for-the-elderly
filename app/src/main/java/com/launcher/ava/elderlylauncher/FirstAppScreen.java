@@ -148,6 +148,7 @@ public class FirstAppScreen extends AppCompatActivity {
       }
     });
 
+//    searchView.setIconifiedByDefault(false);
     return true;
   }
 

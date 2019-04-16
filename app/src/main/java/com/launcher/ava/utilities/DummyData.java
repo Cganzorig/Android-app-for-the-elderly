@@ -3,7 +3,7 @@ package com.launcher.ava.utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoresData {
+public class DummyData {
     private static List<String> stores ;
     static {
         stores =  new ArrayList<String>();
