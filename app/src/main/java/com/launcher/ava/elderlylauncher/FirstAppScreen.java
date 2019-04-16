@@ -7,58 +7,38 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SearchView;
+import android.widget.EditText;
 import android.widget.TextView;
+
 import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.utilities.AppInfoFrequencyPair;
-import com.launcher.ava.utilities.RAdapter;
-import com.launcher.ava.utilities.RemoveStatusBar;
 
-public class FirstAppScreen extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class FirstAppScreen extends AppCompatActivity {
 
-  private RAdapter radapter;
-  private SearchView searchView;
-  private RecyclerView recyclerView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    RemoveStatusBar.remove(this);
 
     setContentView(R.layout.activity_first_app_screen);
 
     setFavouriteApps();
 
-    /* Below is the search function */
-    searchView = (SearchView) findViewById(R.id.searchView3);
-    searchView.setQueryHint("Enter search");
-
-    recyclerView = (RecyclerView) findViewById(R.id.searcRecyView);
-
-    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-      @Override
-      public boolean onQueryTextSubmit(String query) {
-        radapter = new RAdapter(FirstAppScreen.this);
-        radapter.reuturnQueryResults(query);
-        recyclerView.setAdapter(radapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(FirstAppScreen.this));
-        return true;
-      }
-
-      @Override
-      public boolean onQueryTextChange(String newText) {
-        return false;
-      }
-    });
+    Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(myToolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
   }
 
   public void setFavouriteApps() {
-    setContentView(R.layout.activity_first_app_screen);
     final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
     textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
     final Button app1 = (Button) findViewById(R.id.app1);
@@ -84,11 +64,12 @@ public class FirstAppScreen extends AppCompatActivity implements SearchView.OnQu
   protected void onResume() {
     super.onResume();
     setFavouriteApps();
+    Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(myToolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
   }
 
   public void onAppClick(View v) {
-
-//        v.getBackground().setAlpha(100);
 
     switch (v.getId()) {
       case R.id.app1:
@@ -145,44 +126,42 @@ public class FirstAppScreen extends AppCompatActivity implements SearchView.OnQu
 
   }
 
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.menu, menu);
 
-  /* Search functions */
-  public void onNewIntent(Intent intent) {
-    setIntent(intent);
-    handleIntent(intent);
+    // Disable enter click
+    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+    SearchView searchView = (SearchView) menu.findItem(R.id.search_m).getActionView();
+    final EditText searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+
+    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+    searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+      @Override
+      public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_GO || actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_NULL) {
+          return true;
+        }
+        return false;
+      }
+    });
+
+    return true;
   }
 
-  public void onListItemClick(ListView l,
-    View v, int position, long id) {
-    // call detail activity for clicked entry
-  }
 
-  private void handleIntent(Intent intent) {
-    // Get the intent, verify the action and get the query
-    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-      String query =
-        intent.getStringExtra(SearchManager.QUERY);
-      doSearch(query);
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.search_m:
+        //start search dialog
+        onSearchRequested();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
     }
-  }
-
-  private void doSearch(String queryStr) {
-    // Get all applications
-    radapter.reuturnQueryResults(queryStr);
-  }
-
-
-  @Override
-  public boolean onQueryTextSubmit(String query) {
-
-    return false;
-  }
-
-  @Override
-  public boolean onQueryTextChange(String newText) {
-    String text = newText;
-    doSearch(newText);
-    return false;
   }
 
   public void launchPlayStore(View view) {
@@ -195,6 +174,4 @@ public class FirstAppScreen extends AppCompatActivity implements SearchView.OnQu
     intent.putExtra("deleteMode", 1);
     startActivity(intent);
   }
-
-
 }
