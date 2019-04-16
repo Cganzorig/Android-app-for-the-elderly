@@ -46,4 +46,9 @@
   <string name="enter_website">Enter website: example.com</string>
   <string name="list_of_downloaded_apps">List of all apps</string>
   <string name="view_all_apps">View all \n apps</string>
+
+  <string name="go_to_next">Next</string>
+  <string name="skip_to_next">Skip</string>
+  <string name="welcome_to_launcher">Welcome to the Ava Launcher !</string>
+  <string name="wizard_favorite">Select favorite contacts here or skip.</string>
 </resources>

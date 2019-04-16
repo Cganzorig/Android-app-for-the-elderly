@@ -98,6 +98,8 @@ public class FirstScreenCommonTools extends AppCompatActivity {
 
   }
 
+
+
   public void launchAddContact(View view) {
     Intent intent = new Intent(Intent.ACTION_INSERT,
       ContactsContract.Contacts.CONTENT_URI);

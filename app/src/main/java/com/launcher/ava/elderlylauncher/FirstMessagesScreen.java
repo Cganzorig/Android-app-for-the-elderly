@@ -328,27 +328,34 @@ public class FirstMessagesScreen extends AppCompatActivity {
 
     int numFavs = 0;
     SharedPreferences sp1 = getSharedPreferences("button1", Context.MODE_PRIVATE);
+    TextView tv1 = findViewById(R.id.buttonMessageFirstFav);
     if (sp1.contains("displayName")) {
       String s = "Message " + sp1.getString("displayName", "");
-      TextView tv1 = findViewById(R.id.buttonMessageFirstFav);
+
       tv1.setText(s);
       numFavs += 1;
     }
 
     SharedPreferences sp2 = getSharedPreferences("button2", Context.MODE_PRIVATE);
+    TextView tv2 = findViewById(R.id.buttonMessageSecondFav);
     if (sp2.contains("displayName")) {
       String s = "Message " + sp2.getString("displayName", "");
-      TextView tv2 = findViewById(R.id.buttonMessageSecondFav);
+
       tv2.setText(s);
       numFavs += 1;
+    }else {
+      tv2.setText(getResources().getString(R.string.add_fav_contact));
     }
 
     SharedPreferences sp3 = getSharedPreferences("button3", Context.MODE_PRIVATE);
+    TextView tv3 = findViewById(R.id.buttonMessageThirdFav);
     if (sp3.contains("displayName")) {
       String s = "Message " + sp3.getString("displayName", "");
-      TextView tv3 = findViewById(R.id.buttonMessageThirdFav);
+
       tv3.setText(s);
       numFavs += 1;
+    }else {
+      tv3.setText(getResources().getString(R.string.add_fav_contact));
     }
 
     this.numFavs = numFavs;

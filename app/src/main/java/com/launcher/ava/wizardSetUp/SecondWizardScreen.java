@@ -1,4 +1,4 @@
 package com.launcher.ava.wizardSetUp;
 
-public class WizardScreen {
+public class SecondWizardScreen {
 }
