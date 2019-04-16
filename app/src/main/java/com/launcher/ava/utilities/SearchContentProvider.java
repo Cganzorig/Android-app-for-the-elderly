@@ -74,7 +74,8 @@ public class SearchContentProvider extends ContentProvider {
       List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
       for (ResolveInfo ri : allApps) {
         // If the name of the app contains the query, add to the result
-        if (ri.loadLabel(pm).toString().toLowerCase().contains(searchString)) {
+        if (ri.loadLabel(pm).toString().toLowerCase().contains(searchString) &&
+          !ri.activityInfo.packageName.equals("com.launcher.ava.elderlylauncher")) {
 
           String packageName = ri.activityInfo.packageName;
           ApplicationInfo appInfo = null;
