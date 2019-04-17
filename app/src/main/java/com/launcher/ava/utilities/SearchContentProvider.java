@@ -26,12 +26,12 @@ import java.util.List;
 
 public class SearchContentProvider extends ContentProvider {
 
-  private static final String STORES = "stores/" + SearchManager.SUGGEST_URI_PATH_QUERY + "/*";
+  private static final String App = "app/" + SearchManager.SUGGEST_URI_PATH_QUERY + "/*";
 
   private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
   static {
-    uriMatcher.addURI("com.launcher.ava.utilities.search", STORES, 1);
+    uriMatcher.addURI("com.launcher.ava.utilities.search", App, 1);
   }
 
   private static String[] matrixCursorColumns = {"_id",
@@ -102,47 +102,6 @@ public class SearchContentProvider extends ContentProvider {
 
     return searchResults;
   }
-
-  public static class AppIconHelperV26 {
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public static Bitmap getAppIcon(PackageManager mPackageManager, String packageName) {
-
-      try {
-        Drawable drawable = mPackageManager.getApplicationIcon(packageName);
-
-        if (drawable instanceof BitmapDrawable) {
-          return ((BitmapDrawable) drawable).getBitmap();
-        } else if (drawable instanceof AdaptiveIconDrawable) {
-          Drawable backgroundDr = ((AdaptiveIconDrawable) drawable).getBackground();
-          Drawable foregroundDr = ((AdaptiveIconDrawable) drawable).getForeground();
-
-          Drawable[] drr = new Drawable[2];
-          drr[0] = backgroundDr;
-          drr[1] = foregroundDr;
-
-          LayerDrawable layerDrawable = new LayerDrawable(drr);
-
-          int width = layerDrawable.getIntrinsicWidth();
-          int height = layerDrawable.getIntrinsicHeight();
-
-          Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-
-          Canvas canvas = new Canvas(bitmap);
-
-          layerDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-          layerDrawable.draw(canvas);
-
-          return bitmap;
-        }
-      } catch (PackageManager.NameNotFoundException e) {
-        e.printStackTrace();
-      }
-
-      return null;
-    }
-  }
-
 
   @Nullable
   @Override

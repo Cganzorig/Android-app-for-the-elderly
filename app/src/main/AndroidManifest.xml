@@ -61,6 +61,7 @@
     <activity
       android:name=".AppDrawer"
       android:screenOrientation="portrait" /> <!-- <activity android:name="com.launcher.ava.helperApp.MainAppActivity"></activity> -->
+
     <activity
       android:name="com.launcher.ava.utilities.AppSearchActivity"
       android:noHistory="true">
@@ -74,7 +75,7 @@
 
     <provider
       android:name="com.launcher.ava.utilities.SearchContentProvider"
-      android:authorities="com.launcher.ava.utilities.search"></provider>
+      android:authorities="com.launcher.ava.utilities.search"/>
 
   </application>
 

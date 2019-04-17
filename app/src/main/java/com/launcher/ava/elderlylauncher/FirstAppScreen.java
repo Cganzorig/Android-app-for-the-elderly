@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -24,6 +23,7 @@ import com.launcher.ava.utilities.AppInfoFrequencyPair;
 
 public class FirstAppScreen extends AppCompatActivity {
 
+  private Menu menu;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,18 @@ public class FirstAppScreen extends AppCompatActivity {
     Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(myToolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
+    // Set toolbar click listener
+    final int abTitleId = getResources().getIdentifier("action_bar_title", "id", "android");
+    findViewById(R.id.toolbar).setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        onOptionsItemSelected(menu.findItem(R.id.search_m));
+      }
+    });
+
   }
 
   public void setFavouriteApps() {
@@ -127,17 +139,18 @@ public class FirstAppScreen extends AppCompatActivity {
   }
 
   @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
+  public boolean onCreateOptionsMenu(final Menu menu) {
+    this.menu = menu;
+
     MenuInflater inflater = getMenuInflater();
     inflater.inflate(R.menu.menu, menu);
 
-    // Disable enter click
     SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-    SearchView searchView = (SearchView) menu.findItem(R.id.search_m).getActionView();
-    final EditText searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-
+    final SearchView searchView = (SearchView) menu.findItem(R.id.search_m).getActionView();
     searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
+    // Disable enter click
+    final EditText searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
     searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
       @Override
       public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
@@ -148,22 +161,22 @@ public class FirstAppScreen extends AppCompatActivity {
       }
     });
 
-//    searchView.setIconifiedByDefault(false);
+
     return true;
   }
 
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case R.id.search_m:
-        //start search dialog
-        onSearchRequested();
-        return true;
-      default:
-        return super.onOptionsItemSelected(item);
-    }
-  }
+//  @Override
+//  public boolean onOptionsItemSelected(MenuItem item) {
+//    switch (item.getItemId()) {
+//      case R.id.search_m:
+//        //start search dialog
+////        onSearchRequested();
+//        return true;
+//      default:
+//        return super.onOptionsItemSelected(item);
+//    }
+//  }
 
   public void launchPlayStore(View view) {
     Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
