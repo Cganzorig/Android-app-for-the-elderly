@@ -98,12 +98,15 @@
 
     <TextView
       android:id="@+id/textView"
+      android:textStyle="italic"
       android:layout_width="384dp"
       android:layout_height="27dp"
       android:text="Below are your most frequently used apps"
       android:textAlignment="center"
       android:textSize="20sp"
-      android:textStyle="italic" />
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
       android:id="@+id/app3"
@@ -279,7 +282,26 @@
     android:background="@color/lightGray"
     app:layout_constraintBottom_toTopOf="@+id/firstAppScreenguide2"
     app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/firstAppScreenguide1" />
+    app:layout_constraintTop_toBottomOf="@+id/firstAppScreenguide1"
+    app:layout_constraintVertical_bias="0.0"/>
+  <TextView
+    android:id="@+id/fakeButton"
+    android:textStyle="bold"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/lightGray"
+    android:onClick="fakeToolbarPress"
+    android:text="@string/tap_to_search"
+    android:textAlignment="center"
+    android:paddingTop="15dp"
+    android:textColor="@color/cardview_dark_background"
+    android:textSize="30sp"
+    app:layout_constraintBottom_toTopOf="@+id/firstAppScreenguide2"
+    app:layout_constraintTop_toBottomOf="@+id/firstAppScreenguide1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    />
 
 </android.support.constraint.ConstraintLayout>

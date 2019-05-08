@@ -46,4 +46,5 @@
   <string name="enter_website">Enter website: example.com</string>
   <string name="list_of_downloaded_apps">List of all apps</string>
   <string name="view_all_apps">View all \n apps</string>
+  <string name="tap_to_search">TAP TO SEARCH</string>
 </resources>
