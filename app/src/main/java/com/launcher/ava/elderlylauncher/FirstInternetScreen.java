@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.launcher.ava.utilities.WebsiteDatabase;
 
 public class FirstInternetScreen extends AppCompatActivity {
   private int numWebs;
@@ -42,6 +44,13 @@ public class FirstInternetScreen extends AppCompatActivity {
 
     displayFavouriteWebsites();
   }
+
+  public void pickFromWebsiteList(String spName) {
+    Intent intent = new Intent(this, SecondInternetScreen.class);
+    intent.putExtra("selection", spName);
+    startActivity(intent);
+  }
+
   public void setWhiteBlocks() {
     ConstraintLayout.LayoutParams paramsAddAndRemove = (ConstraintLayout.LayoutParams) this.addAndRemove.getLayoutParams();
     ConstraintLayout.LayoutParams paramsWhiteBlock = (ConstraintLayout.LayoutParams) this.whiteBlock.getLayoutParams();
@@ -162,17 +171,23 @@ public class FirstInternetScreen extends AppCompatActivity {
       case 0:
         this.selectedButton = 1;
         this.numWebs += 1;
-        pickWeb();
+        pickFromWebsiteList("buttonWeb1");
+        this.finish();
+        //pickWeb();
         break;
       case 1:
         this.selectedButton = 2;
         this.numWebs += 1;
-        pickWeb();
+        pickFromWebsiteList("buttonWeb2");
+        this.finish();
+        //pickWeb();
         break;
       case 2:
         this.selectedButton = 3;
         this.numWebs += 1;
-        pickWeb();
+        pickFromWebsiteList("buttonWeb1");
+        this.finish();
+        //pickWeb();
         break;
     }
   }
@@ -264,8 +279,7 @@ public class FirstInternetScreen extends AppCompatActivity {
     SharedPreferences sp = getSharedPreferences(name, MODE_PRIVATE);
     String webName = sp.getString("webName","");
 
-    webName = "https://www." + webName;
-    Uri webAddress = Uri.parse(webName);
+    Uri webAddress = Uri.parse(WebsiteDatabase.getUrl(webName));
 
     Intent intent = new Intent(Intent.ACTION_VIEW, webAddress);
 

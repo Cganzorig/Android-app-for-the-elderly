@@ -74,6 +74,7 @@ public class FirstAppScreen extends AppCompatActivity {
     menu.performIdentifierAction(R.id.search_m,0);
   }
 
+
   public void setFavouriteApps() {
     final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
     textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
