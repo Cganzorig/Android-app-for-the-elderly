@@ -29,8 +29,6 @@ public class SecondWizardScreen extends AppCompatActivity {
 
   private ContactInfoTable table = new ContactInfoTable();
 
-
-
   ConstraintLayout addAndRemove;
   ConstraintLayout whiteBlock;
   Button nextBtn;
