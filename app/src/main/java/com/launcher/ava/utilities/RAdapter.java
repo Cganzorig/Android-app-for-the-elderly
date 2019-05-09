@@ -115,16 +115,6 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
   }
 
-  public void reuturnQueryResults(String str) {
-//    List<AppInfo> results = new ArrayList<>();
-//    for (AppInfo ri : this.appsList) {
-//      if (ri.packageName.toString().contains(str)) {
-//        results.add(ri);
-//      }
-//    }
-//
-//    this.appsList = results;
-  }
 
   @Override
   public void onBindViewHolder(RAdapter.ViewHolder viewHolder, int i) {

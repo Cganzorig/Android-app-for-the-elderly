@@ -69,34 +69,11 @@ public class MainActivity extends AppCompatActivity {
     startActivity(intent);
   }
 
-
-  //    public void launchHelperApp(View view) {
-//        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-//        v.vibrate(50); // 1000 miliseconds = 1 seconds
-//        Intent intent = new Intent(this, MainAppActivity.class);
-//        startActivity(intent);
-//    }
-//
-//    public void launchFrequentlyUsedAppList(View view) {
-//        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-//        v.vibrate(50); // 1000 miliseconds = 1 seconds
-//        Intent intent = new Intent(this, FrequentlyUsedAppsActivity.class);
-//        startActivity(intent);
-//    }
-//
-//
-//    public void launchAppDrawer(View view) {
-//        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-//        v.vibrate(50); // 1000 miliseconds = 1 seconds
-//        Intent intent = new Intent(this, AppDrawer.class);
-//        startActivity(intent);
-//    }
-//
-    public void setFontSize() {
-        Configuration config = new Configuration();
-        config.fontScale = 4.0f;
-        getResources().getConfiguration().setTo(config);
-    }
+  public void setFontSize() {
+    Configuration config = new Configuration();
+    config.fontScale = 4.0f;
+    getResources().getConfiguration().setTo(config);
+  }
 
     @Override
     public void onBackPressed() {

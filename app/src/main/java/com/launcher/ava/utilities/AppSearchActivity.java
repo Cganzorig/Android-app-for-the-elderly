@@ -55,6 +55,7 @@ public class AppSearchActivity extends AppCompatActivity {
 
             // Launch the package selected
             Intent launchIntent = getPackageManager().getLaunchIntentForPackage(selectedPackageName);
+            AppFrequencyList.getInstance().incrementFrequency(selectedPackageName);
             startActivity(launchIntent);
         }
         else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -62,7 +63,7 @@ public class AppSearchActivity extends AppCompatActivity {
 
             SearchAdapter adapter = new SearchAdapter(this,
                     android.R.layout.simple_dropdown_item_1line,
-                    StoresData.filterData(searchQuery));
+                    DummyData.filterData(searchQuery));
             listView.setAdapter(adapter);
         }
     }

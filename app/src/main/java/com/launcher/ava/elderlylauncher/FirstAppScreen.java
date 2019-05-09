@@ -4,26 +4,34 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.FloatingActionButton.OnVisibilityChangedListener;
+import android.support.v13.view.inputmethod.EditorInfoCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnCloseListener;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.utilities.AppInfoFrequencyPair;
 
 public class FirstAppScreen extends AppCompatActivity {
 
+  private Menu menu;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +41,39 @@ public class FirstAppScreen extends AppCompatActivity {
 
     setFavouriteApps();
 
+    deflateFakeSearchButton(false);
+
     Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(myToolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+    // Set toolbar click listener
+    final int abTitleId = getResources().getIdentifier("action_bar_title", "id", "android");
+    findViewById(R.id.toolbar).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        onOptionsItemSelected(menu.findItem(R.id.search_m));
+      }
+    });
+
   }
+
+  public void deflateFakeSearchButton(boolean yes) {
+    TextView tv = findViewById(R.id.fakeButton);
+    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) tv.getLayoutParams();
+    if(yes) {
+      params.bottomToTop = R.id.firstAppScreenguide1;
+    } else {
+      params.bottomToTop = R.id.firstAppScreenguide2;
+    }
+    tv.setLayoutParams(params);
+  }
+
+  public void fakeToolbarPress(View v) {
+    deflateFakeSearchButton(true);
+    menu.performIdentifierAction(R.id.search_m,0);
+  }
+
 
   public void setFavouriteApps() {
     final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
@@ -67,6 +104,7 @@ public class FirstAppScreen extends AppCompatActivity {
     Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(myToolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
+    deflateFakeSearchButton(false);
   }
 
   public void onAppClick(View v) {
@@ -127,42 +165,55 @@ public class FirstAppScreen extends AppCompatActivity {
   }
 
   @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
+  public boolean onCreateOptionsMenu(final Menu menu) {
+    this.menu = menu;
+
     MenuInflater inflater = getMenuInflater();
     inflater.inflate(R.menu.menu, menu);
 
-    // Disable enter click
     SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-    SearchView searchView = (SearchView) menu.findItem(R.id.search_m).getActionView();
-    final EditText searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-
+    final SearchView searchView = (SearchView) menu.findItem(R.id.search_m).getActionView();
     searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+    // Disable enter click
+    final EditText searchEditText = (EditText) searchView
+      .findViewById(android.support.v7.appcompat.R.id.search_src_text);
+
+    // to re-inflate the big fake search button
+    searchView.setOnQueryTextFocusChangeListener(new OnFocusChangeListener() {
+      @Override
+      public void onFocusChange(View v, boolean hasFocus) {
+        if(!hasFocus) {
+          deflateFakeSearchButton(false);
+        }
+      }
+    });
 
     searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
       @Override
       public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
-        if (actionId == EditorInfo.IME_ACTION_GO || actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_NULL) {
+
+        if (actionId == EditorInfo.IME_ACTION_GO || actionId == EditorInfo.IME_ACTION_SEARCH
+          || actionId == EditorInfo.IME_NULL) {
           return true;
         }
         return false;
       }
     });
-
     return true;
   }
 
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case R.id.search_m:
-        //start search dialog
-        onSearchRequested();
-        return true;
-      default:
-        return super.onOptionsItemSelected(item);
-    }
-  }
+//  @Override
+//  public boolean onOptionsItemSelected(MenuItem item) {
+//    switch (item.getItemId()) {
+//      case R.id.search_m:
+//        //start search dialog
+////        onSearchRequested();
+//        return true;
+//      default:
+//        return super.onOptionsItemSelected(item);
+//    }
+//  }
 
   public void launchPlayStore(View view) {
     Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");

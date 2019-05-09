@@ -51,4 +51,6 @@
   <string name="skip_to_next">Skip</string>
   <string name="welcome_to_launcher">Welcome to the Ava Launcher !</string>
   <string name="wizard_favorite">Select favorite contacts here or skip.</string>
+  <string name="tap_to_search">TAP TO SEARCH</string>
+  <string name="add_website_to_favourites">ADD WEBSITE TO FAVOURITES</string>
 </resources>

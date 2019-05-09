@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".SecondInternetScreen">
+
+  <android.support.constraint.Guideline
+    android:id="@+id/secondAppScreenguide0"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.0" />
+
+  <android.support.constraint.Guideline
+    android:id="@+id/secondAppScreenguide1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.20" />
+
+  <android.support.constraint.Guideline
+    android:id="@+id/secondAppScreenguide2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.30" />
+
+  <android.support.constraint.Guideline
+    android:id="@+id/secondAppScreenguide3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="1" />
+
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutApps"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/browserBlue"
+    app:layout_constraintBottom_toTopOf="@+id/secondAppScreenguide1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/secondAppScreenguide0">
+
+    <ImageView
+      android:id="@+id/imageApp"
+      android:layout_width="126dp"
+      android:layout_height="94dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="250dp"
+      android:layout_marginBottom="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_world_wide_web" />
+
+    <TextView
+      android:id="@+id/textPhone"
+      android:layout_width="0dp"
+      android:layout_height="73dp"
+      android:layout_marginStart="170dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="25dp"
+      android:layout_marginBottom="10dp"
+      android:gravity="center"
+      android:text="@string/add_website_to_favourites"
+      android:textColor="@android:color/black"
+      android:textSize="28sp"
+      android:textStyle="bold"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.49" />
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/website_recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:scrollbars="vertical"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/secondAppScreenguide1"/>
+
+</android.support.constraint.ConstraintLayout>
