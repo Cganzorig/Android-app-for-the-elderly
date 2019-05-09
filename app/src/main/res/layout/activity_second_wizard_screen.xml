@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimary"
+  tools:context="com.launcher.ava.wizardSetUp.FirstWizardScreen">
+
+  <android.support.constraint.Guideline
+    android:id="@+id/firstWizardScreenguide0"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.0"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/firstWizardScreenguide1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.20"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/firstWizardScreenguide2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.35"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/firstWizardScreenguide3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.50"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/firstWizardScreenguide4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.65"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/firstWizardScreenguide5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.80"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/firstWizardScreenguide6"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.8"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/firstWizardScreenguide7"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="1.0"/>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutWizard"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/WizardBlue"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/firstWizardScreenguide1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/firstWizardScreenguide0">
+
+    <TextView
+      android:id="@+id/welcome_to_launcher"
+      android:layout_width="345dp"
+      android:layout_height="122dp"
+      android:gravity="center"
+      android:text="@string/welcome_to_launcher"
+      android:textColor="@android:color/white"
+      android:textSize="40sp"
+      android:textStyle="bold"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutFirstFav"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/firstWizardScreenguide2"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/firstWizardScreenguide1"/>
+
+  <TextView
+    android:id="@+id/textWizard"
+    android:layout_width="325dp"
+    android:layout_height="70dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:gravity="center"
+    android:text="@string/wizard_favorite"
+    android:textColor="@android:color/black"
+    android:textSize="28sp"
+    android:textStyle="bold"
+    app:fontFamily="sans-serif-black"
+    app:layout_constraintBottom_toTopOf="@+id/cLayoutSecondFav"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.497"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/cLayoutFirstFav" />
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutSecondFav"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/firstWizardScreenguide3"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/firstWizardScreenguide2">
+
+    <Button
+      android:id="@+id/textFirstFavWizard"
+      android:layout_width="361dp"
+      android:layout_height="108dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:onClick="pressFav"
+      android:text="@string/add_fav_contact"
+      android:textAlignment="viewStart"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0" />
+
+
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutThirdFavWizard"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/firstWizardScreenguide4"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/firstWizardScreenguide3">
+
+    <Button
+      android:id="@+id/textSecondFavWizard"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="25dp"
+      android:layout_marginEnd="25dp"
+      android:onClick="pressFav"
+      android:text="@string/add_fav_contact"
+      android:textAlignment="viewStart"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.714"/>
+
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutWizardBtn"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    android:onClick="doNothing"
+    app:layout_constraintBottom_toTopOf="@+id/firstWizardScreenguide5"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/firstWizardScreenguide4">
+
+    <Button
+      android:id="@+id/textThirdFavWizard"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="25dp"
+      android:layout_marginEnd="25dp"
+      android:onClick="pressFav"
+      android:text="@string/add_fav_contact"
+      android:textAlignment="viewStart"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.714"/>
+
+
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutPickContact"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toTopOf="@+id/firstWizardScreenguide7"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/firstWizardScreenguide6"
+    app:layout_constraintVertical_bias="1.0">
+
+    <Button
+      android:id="@+id/nextBtn"
+      android:layout_width="169dp"
+      android:layout_height="63dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="16dp"
+      android:gravity="center"
+      android:onClick="goToNextPage"
+      android:text="@string/skip_to_next"
+      android:textColor="@android:color/black"
+      android:textSize="25sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  </android.support.constraint.ConstraintLayout>
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/cLayoutWizardWhiteBlock"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorPrimary"
+    android:onClick="doNothing"
+    app:layout_constraintBottom_toTopOf="@+id/firstWizardScreenguide6"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/firstWizardScreenguide5">
+
+  </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

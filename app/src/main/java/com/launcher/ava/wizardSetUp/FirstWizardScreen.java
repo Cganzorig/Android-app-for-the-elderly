@@ -32,13 +32,13 @@ public class FirstWizardScreen extends AppCompatActivity  {
 
   private ContactInfoTable table = new ContactInfoTable();
 
-  private int selectedButton;
-  private int countAddedContacts;
+
 
   ConstraintLayout addAndRemove;
   ConstraintLayout whiteBlock;
   Button nextBtn;
-  Button skipBtn;
+  int buttoncount;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -46,26 +46,21 @@ public class FirstWizardScreen extends AppCompatActivity  {
     this.addAndRemove = findViewById(R.id.cLayoutWizardBtn);
     this.whiteBlock = findViewById(R.id.cLayoutWizardWhiteBlock);
     this.nextBtn= findViewById(R.id.nextBtn);
-
+    this.buttoncount = 0;
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_first_wizard_screen);
     displayFavouriteContacts();
   }
 
+  @Override
+  protected void onResume() {
+    super.onResume();
+    displayFavouriteContacts();
+  }
 
   public void pressFav(View view) {
-    switch (view.getId()) {
-      case R.id.textFirstFavWizard:
-        this.selectedButton = 1;
-        break;
-      case R.id.textSecondFavWizard:
-        this.selectedButton = 2;
-        break;
-      case R.id.textThirdFavWizard:
-        this.selectedButton = 3;
-        break;
-    }
+    this.buttoncount += 1;
     pickFromList();
   }
 
@@ -99,6 +94,10 @@ public class FirstWizardScreen extends AppCompatActivity  {
 
   private void handleResult(int requestCode, int resultCode, Intent data) {
 
+    if (this.buttoncount > 3) {
+      this.buttoncount -= 3;
+    }
+
     if (requestCode == MY_PERMISSIONS_REQUEST_READ_CONTACTS && resultCode == RESULT_OK) {
       // data is returned from startActivityFromResult()
       Uri contactUri = data.getData();
@@ -120,8 +119,7 @@ public class FirstWizardScreen extends AppCompatActivity  {
       tmpInfo.viberVoiceId = this.table.getColumnWithMime("_id", mimeViberVoice);
       tmpInfo.skypeVoiceId = this.table.getColumnWithMime("_id", mimeSkypeVoice);
 
-      switch (this.selectedButton) {
-
+      switch ((this.buttoncount)) {
         case 1:
           putContactInfoInSharedPrefs("button1", tmpInfo);
           displayFavouriteContacts();
@@ -250,6 +248,8 @@ public class FirstWizardScreen extends AppCompatActivity  {
     startActivity(intent);
   }
 
-
+  @Override
+  public void onBackPressed() {
+  }
 }
 
