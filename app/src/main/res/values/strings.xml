@@ -48,4 +48,5 @@
   <string name="view_all_apps">View all \n apps</string>
   <string name="tap_to_search">TAP TO SEARCH</string>
   <string name="add_website_to_favourites">ADD WEBSITE TO FAVOURITES</string>
+  <string name="open_browser">Open browser</string>
 </resources>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.launcher.ava.utilities.WebsiteDatabase;
 
@@ -24,7 +25,7 @@ public class FirstInternetScreen extends AppCompatActivity {
   Button minusBtn;
   EditText et;
   Button save;
-  Button google;
+  Button browser;
   TextView plusMinusExplain;
 
   @Override
@@ -38,7 +39,7 @@ public class FirstInternetScreen extends AppCompatActivity {
     this.minusBtn = findViewById(R.id.internet_remove_button);
     this.et = findViewById(R.id.editText);
     this.save = findViewById(R.id.saveButton);
-    this.google = findViewById(R.id.buttonGoogle);
+    this.browser = findViewById(R.id.buttonBrowser);
     this.plusMinusExplain = findViewById(R.id.textInternetExplainPlusMinus);
 
     displayFavouriteWebsites();
@@ -184,7 +185,7 @@ public class FirstInternetScreen extends AppCompatActivity {
       case 2:
         this.selectedButton = 3;
         this.numWebs += 1;
-        pickFromWebsiteList("buttonWeb1");
+        pickFromWebsiteList("buttonWeb3");
         this.finish();
         //pickWeb();
         break;
@@ -264,8 +265,9 @@ public class FirstInternetScreen extends AppCompatActivity {
     }
   }
 
-  public void visitGoogle(View view) {
-    String webName = "https://www.google.com";
+  public void openBrowser(View view) {
+
+    String webName = "https://";
     Uri webAddress = Uri.parse(webName);
 
     Intent intent = new Intent(Intent.ACTION_VIEW, webAddress);
@@ -279,25 +281,48 @@ public class FirstInternetScreen extends AppCompatActivity {
     int numFavs = 0;
     SharedPreferences sp1 = getSharedPreferences("buttonWeb1", Context.MODE_PRIVATE);
     if (sp1.contains("webName")) {
-      String s = sp1.getString("webName", "");
+
+      String s1 = sp1.getString("webName", "");
+      String s2 = sp1.getString("webLogo", "");
+
       TextView tv1 = findViewById(R.id.buttonInternetFirstFav);
-      tv1.setText(s);
+      tv1.setText(s1);
+
+      ImageView iv1 = findViewById(R.id.iv1);
+      iv1.setImageResource(Integer.valueOf(s2));
+
       numFavs += 1;
     }
 
     SharedPreferences sp2 = getSharedPreferences("buttonWeb2", Context.MODE_PRIVATE);
     if (sp2.contains("webName")) {
-      String s = sp2.getString("webName", "");
+
+      String s1 = sp2.getString("webName", "");
+      String s2 = sp2.getString("webLogo", "");
+
       TextView tv2 = findViewById(R.id.buttonInternetSecondFav);
-      tv2.setText(s);
+      tv2.setText(s1);
+
+      ImageView iv2 = findViewById(R.id.iv2);
+      iv2.setImageResource(Integer.valueOf(s2));
+
+
       numFavs += 1;
     }
 
     SharedPreferences sp3 = getSharedPreferences("buttonWeb3", Context.MODE_PRIVATE);
     if (sp3.contains("webName")) {
-      String s = sp3.getString("webName", "");
+
+      String s1 = sp3.getString("webName", "");
+      String s2 = sp3.getString("webLogo", "");
+
       TextView tv3 = findViewById(R.id.buttonInternetThirdFav);
-      tv3.setText(s);
+      tv3.setText(s1);
+
+      ImageView iv3 = findViewById(R.id.iv3);
+      iv3.setImageResource(Integer.valueOf(s2));
+
+
       numFavs += 1;
     }
 

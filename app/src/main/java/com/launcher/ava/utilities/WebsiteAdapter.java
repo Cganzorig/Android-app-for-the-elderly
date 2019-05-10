@@ -56,7 +56,9 @@ public class WebsiteAdapter extends RecyclerView.Adapter<WebsiteAdapter.MyViewHo
 
     @Override
     public void onClick(View v) {
-      itemClick.onItemClicked(mDataset.get(getAdapterPosition()).name);
+      String[] itemsNames = {mDataset.get(getAdapterPosition()).name,
+        Integer.toString(mDataset.get(getAdapterPosition()).logoId)};
+      itemClick.onItemClicked(itemsNames);
     }
   }
 }

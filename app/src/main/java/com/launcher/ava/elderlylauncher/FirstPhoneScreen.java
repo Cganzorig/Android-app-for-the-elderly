@@ -1,11 +1,17 @@
 package com.launcher.ava.elderlylauncher;
 
+import static com.launcher.ava.utilities.GetPhoto.getContactPhoto;
+
 import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -18,10 +24,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactTableRow;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class FirstPhoneScreen extends AppCompatActivity {
 
@@ -339,6 +348,14 @@ public class FirstPhoneScreen extends AppCompatActivity {
       String s = "Call " + sp1.getString("displayName", "");
       TextView tv1 = findViewById(R.id.textFirstFav);
       tv1.setText(s);
+
+      ImageView iv1 = findViewById(R.id.iv1);
+      Bitmap photo = getContactPhoto(this, sp1.getString("number", ""));
+      if (photo == null) {
+        iv1.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv1.setImageBitmap(photo);
+      }
       numFavs += 1;
     }
 
@@ -347,6 +364,13 @@ public class FirstPhoneScreen extends AppCompatActivity {
       String s = "Call " + sp2.getString("displayName", "");
       TextView tv2 = findViewById(R.id.textSecondFav);
       tv2.setText(s);
+      ImageView iv2 = findViewById(R.id.iv2);
+      Bitmap photo = getContactPhoto(this, sp2.getString("number", ""));
+      if (photo == null) {
+        iv2.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv2.setImageBitmap(photo);
+      }
       numFavs += 1;
     }
 
@@ -355,6 +379,13 @@ public class FirstPhoneScreen extends AppCompatActivity {
       String s = "Call " + sp3.getString("displayName", "");
       TextView tv3 = findViewById(R.id.textThirdFav);
       tv3.setText(s);
+      ImageView iv3 = findViewById(R.id.iv3);
+      Bitmap photo = getContactPhoto(this, sp3.getString("number", ""));
+      if (photo == null) {
+        iv3.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv3.setImageBitmap(photo);
+      }
       numFavs += 1;
     }
 
