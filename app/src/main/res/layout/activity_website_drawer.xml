@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/appDrawerContainer"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/colorPrimary"
-  tools:context=".MainActivity">
+  android:background="@color/colorPrimary">
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondAppScreenguide0"
+    android:id="@+id/secondWebScreenguide0"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.0"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondAppScreenguide1"
+    android:id="@+id/secondWebScreenguide1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.20"/>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutAppsDrawer"
+    android:id="@+id/cLayoutWebDrawer"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/launchAppOrange"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/secondAppScreenguide1"
+    app:layout_constraintBottom_toTopOf="@+id/secondWebScreenguide1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/secondAppScreenguide0">
+    app:layout_constraintTop_toTopOf="@+id/secondWebScreenguide0">
 
     <ImageView
-      android:id="@+id/imageApp"
+      android:id="@+id/imageWeb"
       android:layout_width="126dp"
       android:layout_height="94dp"
       android:layout_marginTop="10dp"
@@ -48,7 +46,7 @@
       app:srcCompat="@drawable/ic_3d"/>
 
     <TextView
-      android:id="@+id/textPhone"
+      android:id="@+id/textWeb"
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="73dp"
@@ -78,6 +76,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@id/secondAppScreenguide1"/>
+    app:layout_constraintTop_toTopOf="@id/secondWebScreenguide1"/>
 
 </android.support.constraint.ConstraintLayout>

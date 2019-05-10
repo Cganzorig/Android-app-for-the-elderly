@@ -80,6 +80,7 @@
       android:authorities="com.launcher.ava.utilities.search"/>
 
     <activity android:name="com.launcher.ava.wizardSetUp.FirstWizardScreen" />
+    <activity android:name="com.launcher.ava.wizardSetUp.SecondWizardScreen" />
   </application>
 
 </manifest>

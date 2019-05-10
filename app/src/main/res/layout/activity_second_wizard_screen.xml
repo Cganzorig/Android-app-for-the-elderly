@@ -80,9 +80,9 @@
       android:layout_width="345dp"
       android:layout_height="122dp"
       android:gravity="center"
-      android:text="@string/welcome_to_launcher"
+      android:text="@string/second_screen"
       android:textColor="@android:color/white"
-      android:textSize="40sp"
+      android:textSize="35sp"
       android:textStyle="bold"
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -104,13 +104,13 @@
     app:layout_constraintTop_toTopOf="@+id/secondWizardScreenguide1"/>
 
   <TextView
-    android:id="@+id/textWizard"
+    android:id="@+id/textSecondWizard"
     android:layout_width="325dp"
     android:layout_height="70dp"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
     android:gravity="center"
-    android:text="@string/wizard_favorite"
+    android:text="@string/wizard_favorite_2"
     android:textColor="@android:color/black"
     android:textSize="28sp"
     android:textStyle="bold"
@@ -140,7 +140,7 @@
       android:layout_marginEnd="8dp"
       android:layout_marginBottom="8dp"
       android:onClick="pressFav"
-      android:text="@string/add_fav_contact"
+      android:text="@string/add_fav_web"
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
@@ -174,7 +174,7 @@
       android:layout_marginStart="25dp"
       android:layout_marginEnd="25dp"
       android:onClick="pressFav"
-      android:text="@string/add_fav_contact"
+      android:text="@string/add_fav_web"
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
@@ -189,7 +189,7 @@
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutWizardBtn"
+    android:id="@+id/cLayoutSecondWizardBtn"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/colorPrimary"
@@ -207,7 +207,7 @@
       android:layout_marginStart="25dp"
       android:layout_marginEnd="25dp"
       android:onClick="pressFav"
-      android:text="@string/add_fav_contact"
+      android:text="@string/add_fav_web"
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
@@ -223,7 +223,7 @@
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutPickContact"
+    android:id="@+id/cLayoutPickSecondContactWizard"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/colorPrimary"
@@ -255,7 +255,7 @@
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutWizardWhiteBlock"
+    android:id="@+id/cLayoutSecondWizardWhiteBlock"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/colorPrimary"

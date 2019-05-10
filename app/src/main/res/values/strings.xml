@@ -49,8 +49,13 @@
 
   <string name="go_to_next">Next</string>
   <string name="skip_to_next">Skip</string>
+  <string name="add_fav_web">Add favourite website</string>
   <string name="welcome_to_launcher">Welcome to the Ava Launcher !</string>
+  <string name="second_screen">You may choose now your favorite websites.</string>
   <string name="wizard_favorite">Select favorite contacts here or skip.</string>
+  <string name="wizard_favorite_2">Select favorite websites here or skip.</string>
+
+
   <string name="tap_to_search">TAP TO SEARCH</string>
   <string name="add_website_to_favourites">ADD WEBSITE TO FAVOURITES</string>
 </resources>

@@ -33,15 +33,14 @@ public class SecondWizardScreen extends AppCompatActivity {
   ConstraintLayout whiteBlock;
   Button nextBtn;
   int websitecount;
-  LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
 
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
 
-    this.addAndRemove = findViewById(R.id.cLayoutWizardBtn);
-    this.whiteBlock = findViewById(R.id.cLayoutWizardWhiteBlock);
-    this.nextBtn= findViewById(R.id.nextBtn);
+    this.addAndRemove = findViewById(R.id.cLayoutSecondWizardBtn);
+    this.whiteBlock = findViewById(R.id.cLayoutSecondWizardWhiteBlock);
+    this.nextBtn= findViewById(R.id.secondNextBtn);
     this.websitecount = 0;
 
     super.onCreate(savedInstanceState);
@@ -134,7 +133,7 @@ public class SecondWizardScreen extends AppCompatActivity {
 
 
   public void displayFavouriteWebsites() {
-    TextView tv = findViewById(R.id.nextBtn);
+    TextView tv = findViewById(R.id.secondNextBtn);
     SharedPreferences sp1 = getSharedPreferences("buttonWeb1", Context.MODE_PRIVATE);
     TextView tv1 = findViewById(R.id.textFirstFavSecondWizard);
     if (sp1.contains("webName")) {
@@ -176,7 +175,10 @@ public class SecondWizardScreen extends AppCompatActivity {
   }
 
   public void goToNextPage(View view) {
-    this.launchesOnlyOnce.setFirstTime(false);
+    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
+    if (launchesOnlyOnce.isFirstTime()) {
+      launchesOnlyOnce.setFirstTime(false);
+    }
     Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);
   }

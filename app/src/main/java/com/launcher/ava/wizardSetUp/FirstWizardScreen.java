@@ -32,8 +32,6 @@ public class FirstWizardScreen extends AppCompatActivity  {
 
   private ContactInfoTable table = new ContactInfoTable();
 
-
-
   ConstraintLayout addAndRemove;
   ConstraintLayout whiteBlock;
   Button nextBtn;
@@ -43,8 +41,8 @@ public class FirstWizardScreen extends AppCompatActivity  {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
 
-    this.addAndRemove = findViewById(R.id.cLayoutWizardBtn);
-    this.whiteBlock = findViewById(R.id.cLayoutWizardWhiteBlock);
+    this.addAndRemove = findViewById(R.id.cLayoutSecondWizardBtn);
+    this.whiteBlock = findViewById(R.id.cLayoutSecondWizardWhiteBlock);
     this.nextBtn= findViewById(R.id.nextBtn);
     this.buttoncount = 0;
 
@@ -244,7 +242,7 @@ public class FirstWizardScreen extends AppCompatActivity  {
   }
 
   public void goToNextPage(View view) {
-    Intent intent = new Intent(this, FirstPhoneScreen.class);
+    Intent intent = new Intent(this, SecondWizardScreen.class);
     startActivity(intent);
   }
 
