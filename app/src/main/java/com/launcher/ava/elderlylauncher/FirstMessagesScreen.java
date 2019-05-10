@@ -141,6 +141,13 @@ public class FirstMessagesScreen extends AppCompatActivity {
     editor.apply();
   }
 
+  public void openDialer(View v) {
+    Intent intent = new Intent(Intent.ACTION_DIAL);
+    intent.setData(Uri.parse("tel:"));
+    startActivity(intent);
+    finish();
+  }
+
   public void pressMinus(View view) {
     TextView tv = null;
     String spName = null;

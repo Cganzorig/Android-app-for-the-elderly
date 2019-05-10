@@ -60,7 +60,6 @@ public class FirstPhoneScreen extends AppCompatActivity {
     LayoutParams paramsPlus = (LayoutParams) this.plusBtn.getLayoutParams();
     LayoutParams paramsMinus = (LayoutParams) this.minusBtn.getLayoutParams();
 
-
     switch (this.numFavs) {
       case 0:
         paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide1;
@@ -127,6 +126,13 @@ public class FirstPhoneScreen extends AppCompatActivity {
   }
 
   public void doNothing(View view) {
+  }
+
+  public void openDialer(View v) {
+    Intent intent = new Intent(Intent.ACTION_DIAL);
+    intent.setData(Uri.parse("tel:"));
+    startActivity(intent);
+    finish();
   }
 
   public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {
@@ -386,10 +392,9 @@ public class FirstPhoneScreen extends AppCompatActivity {
     while (cursor.moveToNext()) {
       String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
       if (phoneNumber != null) {
-        phoneNumber = phoneNumber.replaceAll("\\s+","");
-        target = target.replaceAll("\\s+","");
+        phoneNumber = phoneNumber.replaceAll("\\s+", "");
+        target = target.replaceAll("\\s+", "");
       }
-
 
       if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
@@ -412,7 +417,8 @@ public class FirstPhoneScreen extends AppCompatActivity {
       case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
         // If request is cancelled, the result arrays are empty.
         if (grantResults.length > 0
-          && grantResults[0] == PackageManager.PERMISSION_GRANTED && this.pickContactIntent!=null) {
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED
+          && this.pickContactIntent != null) {
           handleResult(MY_PERMISSIONS_REQUEST_READ_CONTACTS, RESULT_OK, this.pickContactIntent);
         } else {
           // permission denied, boo! Disable the

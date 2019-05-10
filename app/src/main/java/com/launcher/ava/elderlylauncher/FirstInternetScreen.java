@@ -4,10 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -228,29 +227,6 @@ public class FirstInternetScreen extends AppCompatActivity {
     this.save.setLayoutParams(paramsSave);
     displayFavouriteWebsites();
   }
-
-  public void pickWeb() {
-    //disable plus and minus buttons
-    this.plusBtn.setEnabled(false);
-    this.minusBtn.setEnabled(false);
-    this.plusMinusExplain.setVisibility(View.INVISIBLE);
-
-    ConstraintLayout.LayoutParams paramsEt = (ConstraintLayout.LayoutParams) this.et.getLayoutParams();
-    ConstraintLayout.LayoutParams paramsSave = (ConstraintLayout.LayoutParams) this.save.getLayoutParams();
-    paramsEt.endToEnd = R.id.endTextBox;
-    paramsSave.endToEnd = R.id.parent;
-    this.et.setLayoutParams(paramsEt);
-    this.save.setLayoutParams(paramsSave);
-
-
-    //make plus and minus buttons invisible
-    this.plusBtn.setVisibility(View.INVISIBLE);
-    this.minusBtn.setVisibility(View.INVISIBLE);
-
-    this.save.setVisibility(View.VISIBLE);
-    this.et.setVisibility(View.VISIBLE);
-  }
-
 
   public void pressFav(View view) {
     TextView tv = null;
