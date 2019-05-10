@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <!-- Changed Theme.AppCompat.Light.DarkActionBar to Theme.AppCompat.Light.NoActionBar->-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/questionGray</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/topQuestionBarColor</item>
+        <item name="colorPrimary">@color/whiteColor</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 

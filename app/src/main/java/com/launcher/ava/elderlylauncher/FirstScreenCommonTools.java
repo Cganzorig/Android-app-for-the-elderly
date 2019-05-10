@@ -1,8 +1,6 @@
 package com.launcher.ava.elderlylauncher;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.camera2.CameraAccessException;
 import android.os.Bundle;
@@ -13,9 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import com.noob.noobcameraflash.managers.NoobCameraManager;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class FirstScreenCommonTools extends AppCompatActivity {
 
@@ -84,7 +79,7 @@ public class FirstScreenCommonTools extends AppCompatActivity {
       ConstraintLayout torchLayout = (ConstraintLayout)findViewById(R.id.cLayoutTorch);
       if (NoobCameraManager.getInstance().isFlashOn()) {
         tv1.setText(getResources().getString(R.string.turn_torch_off));
-        torchLayout.setBackgroundResource(R.color.torchOnYellow);
+        torchLayout.setBackgroundResource(R.color.torchOnColor);
       }
       else {
         tv1.setText(getResources().getString(R.string.turn_torch_on));

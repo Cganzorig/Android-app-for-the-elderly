@@ -5,7 +5,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/colorPrimary"
+  android:background="@color/whiteColor"
   tools:context=".SecondMessagesScreen">
 
   <android.support.constraint.Guideline
@@ -75,7 +75,7 @@
     android:id="@+id/cLayoutMessages"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/messageYellow"
+    android:background="@color/messagesColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide1"
     app:layout_constraintEnd_toEndOf="parent"
@@ -352,7 +352,7 @@
     android:id="@+id/cLayoutSecondMessagesScreenWhiteBlock"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     android:onClick="doNothing"
     app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide7"
     app:layout_constraintEnd_toEndOf="parent"

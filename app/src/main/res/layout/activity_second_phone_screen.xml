@@ -5,7 +5,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/colorPrimary"
+  android:background="@color/whiteColor"
   tools:context=".SecondPhoneScreen">
 
   <android.support.constraint.Guideline
@@ -75,7 +75,7 @@
     android:id="@+id/cLayoutPhone"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/phoneGreen"
+    android:background="@color/phoneScreenColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide1"
     app:layout_constraintEnd_toEndOf="parent"
@@ -352,7 +352,7 @@
     android:id="@+id/cLayoutSecondPhoneScreenWhiteBlock"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     android:onClick="doNothing"
     app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide7"
     app:layout_constraintEnd_toEndOf="parent"
