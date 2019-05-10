@@ -185,7 +185,7 @@ public class FirstInternetScreen extends AppCompatActivity {
       case 2:
         this.selectedButton = 3;
         this.numWebs += 1;
-        pickFromWebsiteList("buttonWeb1");
+        pickFromWebsiteList("buttonWeb3");
         this.finish();
         //pickWeb();
         break;
