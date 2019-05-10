@@ -22,6 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchContentProvider extends ContentProvider {
@@ -59,13 +60,40 @@ public class SearchContentProvider extends ContentProvider {
     }
   }
 
+  private boolean checkForMatches(String searchString, ArrayList<String> rs) {
+    String lowerSearchString = searchString.toLowerCase();
+    for (String s : rs) {
+      if (s.startsWith(lowerSearchString)) {
+        System.out.println("Match");
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private ArrayList<String> getPossibleMatches(String label) {
+    String[] r = label.split("(?=[A-Z])|\\s");
+    ArrayList<String> rs = new ArrayList<>();
+    for (String s : r) {
+      if (!s.equals("")) {
+        rs.add(s.toLowerCase());
+      }
+    }
+    return rs;
+  }
+
+  private boolean matches(String searchQuery, String label) {
+    String lowerSearchQuery = searchQuery.toLowerCase();
+    ArrayList<String> possibleMatches = getPossibleMatches(label);
+    return checkForMatches(lowerSearchQuery, possibleMatches);
+  }
+
   private MatrixCursor getSearchResultsCursor(String searchString) {
     MatrixCursor searchResults = new MatrixCursor(matrixCursorColumns);
     Object[] mRow = new Object[4];
     int counterId = 0;
 
     if (searchString != null) {
-      searchString = searchString.toLowerCase();
       final PackageManager pm = getContext().getPackageManager();
 
       Intent i = new Intent(Intent.ACTION_MAIN, null);
@@ -73,7 +101,7 @@ public class SearchContentProvider extends ContentProvider {
 
       List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
       for (ResolveInfo ri : allApps) {
-        if (ri.loadLabel(pm).toString().toLowerCase().startsWith(searchString) &&
+        if (matches(searchString, ri.loadLabel(pm).toString()) &&
           !ri.activityInfo.packageName.equals("com.launcher.ava.elderlylauncher")) {
 
           String packageName = ri.activityInfo.packageName;
