@@ -9,85 +9,86 @@
   tools:context=".SecondMessagesScreen">
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondMessagesScreenGuide0"
+    android:id="@+id/secondPhoneScreenGuide0"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.0"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondMessagesScreenGuide1"
+    android:id="@+id/secondPhoneScreenGuide1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.20"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondMessagesScreenGuide2"
+    android:id="@+id/secondPhoneScreenGuide2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.30"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondMessagesScreenGuide3"
+    android:id="@+id/secondPhoneScreenGuide3"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.40"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondMessagesScreenGuide4"
+    android:id="@+id/secondPhoneScreenGuide4"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.50"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondMessagesScreenGuide5"
+    android:id="@+id/secondPhoneScreenGuide5"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.60"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondMessagesScreenGuide6"
+    android:id="@+id/secondPhoneScreenGuide6"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent=".70"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondMessagesScreenGuide7"
+    android:id="@+id/secondPhoneScreenGuide7"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent=".80"/>
 
   <android.support.constraint.Guideline
-    android:id="@+id/secondMessagesScreenGuide8"
+    android:id="@+id/secondPhoneScreenGuide8"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="1.0"/>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutMessages"
+    android:id="@+id/cLayoutPhone"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/messageIconColor"
+    android:background="@color/messagesColor"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide1"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/secondMessagesScreenGuide0">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide0">
 
     <ImageView
       android:id="@+id/imagePhone"
-      android:layout_width="126dp"
-      android:layout_height="94dp"
-      android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginBottom="20dp"
+      android:layout_marginStart="30dp"
       android:layout_marginEnd="250dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
@@ -96,160 +97,160 @@
       app:layout_constraintVertical_bias="0.51"
       app:srcCompat="@drawable/black_ic_close_envelope"/>
     <TextView
-      android:id="@+id/textSecondMessagesScreenMessages"
+      android:id="@+id/textSecondPhoneScreenPhone"
       android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
-      android:layout_marginStart="170dp"
-      android:layout_marginEnd="25dp"
+      android:layout_marginStart="30dp"
+      android:layout_marginEnd="30dp"
+      android:autoSizeTextType="uniform"
+      android:autoSizeMaxTextSize="26sp"
       android:gravity="center"
       android:text="@string/message"
       android:textColor="@android:color/black"
-      android:textSize="28sp"
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imagePhone"
       app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutSecondMessage"
+    android:id="@+id/cLayoutSecondCall"
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide3"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide3"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/secondMessagesScreenGuide2">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide2">
 
     <ImageView
-      android:id="@+id/imageSecondMessage"
-      android:layout_width="80dp"
-      android:layout_height="65dp"
-      android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
-      android:layout_marginStart="16dp"
-      android:layout_marginEnd="320dp"
+      android:id="@+id/imageSecondCall"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="15dp"
+      android:layout_marginBottom="5dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="300dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.416"
-      app:srcCompat="@drawable/ic_mail"/>
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_telephone_symbol_button"/>
 
     <Button
-      android:id="@+id/textSecondMessage"
+      android:id="@+id/textSecondCall"
       android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="65dp"
+      android:layout_height="match_parent"
       android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
-      android:layout_marginStart="100dp"
-      android:layout_marginEnd="8dp"
+      android:layout_marginEnd="30dp"
+      android:autoSizeMaxTextSize="20sp"
+      android:autoSizeTextType="uniform"
+      android:gravity="center"
+      android:onClick="pressCall"
       android:text="@string/using_whatsapp"
-      android:textAlignment="viewStart"
       android:textColor="@android:color/black"
-      android:textSize="20sp"
-      android:onClick="pressSend"
+      app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintStart_toEndOf="@id/imageSecondCall"
       app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutRegMessage"
+    android:id="@+id/cLayoutRegCall"
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide2"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide2"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/secondMessagesScreenGuide1">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide1">
 
     <ImageView
-      android:id="@+id/imageRegMessage"
-      android:layout_width="80dp"
-      android:layout_height="65dp"
-      android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
-      android:layout_marginStart="16dp"
-      android:layout_marginEnd="320dp"
+      android:id="@+id/imageRegCall"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="15dp"
+      android:layout_marginBottom="5dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="300dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/ic_mail"/>
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_telephone_symbol_button"/>
 
     <Button
-      android:id="@+id/textRegMessage"
+      android:id="@+id/textRegCall"
       android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="65dp"
+      android:layout_height="match_parent"
       android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
-      android:layout_marginStart="100dp"
-      android:layout_marginEnd="8dp"
-      android:onClick="pressSend"
+      android:layout_marginEnd="30dp"
+      android:autoSizeMaxTextSize="20sp"
+      android:autoSizeTextType="uniform"
+      android:gravity="center"
+      android:onClick="pressCall"
       android:text="@string/using_reg_phone"
-      android:textAlignment="viewStart"
       android:textColor="@android:color/black"
-      android:textSize="20sp"
+      app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintStart_toEndOf="@id/imageRegCall"
       app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutThirdMessage"
+    android:id="@+id/cLayoutThirdCall"
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide4"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide4"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/secondMessagesScreenGuide3">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide3">
 
     <ImageView
-      android:id="@+id/imageThirdMessage"
-      android:layout_width="80dp"
-      android:layout_height="65dp"
-      android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
-      android:layout_marginStart="16dp"
-      android:layout_marginEnd="320dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@+id/textThirdMessage"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/ic_mail"/>
-
-    <Button
-      android:id="@+id/textThirdMessage"
-      android:textStyle="bold"
+      android:id="@+id/imageThirdCall"
       android:layout_width="0dp"
-      android:layout_height="65dp"
-      android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
-      android:layout_marginStart="100dp"
-      android:layout_marginEnd="8dp"
-      android:text="@string/using_viber"
-      android:textAlignment="viewStart"
-      android:textColor="@android:color/black"
-      android:textSize="20sp"
-      android:onClick="pressSend"
+      android:layout_height="0dp"
+      android:layout_marginTop="15dp"
+      android:layout_marginBottom="5dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="300dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.51"
+      app:srcCompat="@drawable/ic_telephone_symbol_button"/>
+
+    <Button
+      android:id="@+id/textThirdCall"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="30dp"
+      android:autoSizeMaxTextSize="20sp"
+      android:autoSizeTextType="uniform"
+      android:gravity="center"
+      android:onClick="pressCall"
+      android:text="@string/using_viber"
+      android:textColor="@android:color/black"
+      app:fontFamily="sans-serif-black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/imageThirdCall"
       app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
@@ -259,43 +260,43 @@
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide5"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide5"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/secondMessagesScreenGuide4">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide4">
 
     <ImageView
       android:id="@+id/imageMessenger"
-      android:layout_width="80dp"
-      android:layout_height="65dp"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
       android:layout_marginTop="10dp"
       android:layout_marginBottom="10dp"
-      android:layout_marginStart="16dp"
-      android:layout_marginEnd="320dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="300dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
-      app:srcCompat="@drawable/ic_mail"/>
+      app:srcCompat="@drawable/ic_telephone_symbol_button"/>
 
     <Button
-      android:id="@+id/textFourthMessage"
+      android:id="@+id/textFourthCall"
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="65dp"
       android:layout_marginTop="10dp"
       android:layout_marginBottom="10dp"
-      android:layout_marginStart="100dp"
+      android:layout_marginStart="8dp"
       android:layout_marginEnd="8dp"
+      android:onClick="pressCall"
       android:text="@string/using_messenger"
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="20sp"
-      android:onClick="pressSend"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/imageMessenger"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.49"/>
 
@@ -306,58 +307,58 @@
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide6"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide6"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/secondMessagesScreenGuide5">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide5">
 
     <ImageView
       android:id="@+id/iamgeSkype"
-      android:layout_width="80dp"
-      android:layout_height="65dp"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
       android:layout_marginTop="10dp"
       android:layout_marginBottom="10dp"
-      android:layout_marginStart="16dp"
-      android:layout_marginEnd="320dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="300dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
-      app:srcCompat="@drawable/ic_mail"/>
+      app:srcCompat="@drawable/ic_telephone_symbol_button"/>
 
     <Button
-      android:id="@+id/textFifthMessage"
+      android:id="@+id/textFifthCall"
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="65dp"
       android:layout_marginTop="10dp"
       android:layout_marginBottom="10dp"
-      android:layout_marginStart="100dp"
+      android:layout_marginStart="8dp"
       android:layout_marginEnd="8dp"
+      android:onClick="pressCall"
       android:text="@string/using_skype"
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="20sp"
-      android:onClick="pressSend"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/iamgeSkype"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.49"/>
 
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
-    android:id="@+id/cLayoutSecondMessagesScreenWhiteBlock"
+    android:id="@+id/cLayoutSecondPhoneScreenWhiteBlock"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/whiteColor"
     android:onClick="doNothing"
-    app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide7"
+    app:layout_constraintBottom_toTopOf="@+id/secondPhoneScreenGuide7"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/secondMessagesScreenGuide8">
+    app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide8">
 
   </android.support.constraint.ConstraintLayout>
 
