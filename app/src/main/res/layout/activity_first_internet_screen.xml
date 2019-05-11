@@ -337,8 +337,10 @@
 
     <Button
       android:id="@+id/internet_add_button"
-      android:layout_width="96dp"
-      android:layout_height="55dp"
+      android:background="@drawable/circle_button"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:paddingBottom="3dp"
       android:layout_marginTop="30dp"
       android:layout_marginBottom="10dp"
       android:onClick="pressPlus"
@@ -353,8 +355,10 @@
 
     <Button
       android:id="@+id/internet_remove_button"
-      android:layout_width="96dp"
-      android:layout_height="55dp"
+      android:background="@drawable/circle_button"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:paddingBottom="3dp"
       android:layout_marginTop="30dp"
       android:layout_marginBottom="10dp"
       android:onClick="pressMinus"
@@ -419,7 +423,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       android:textColor="@color/blackColor"
-      style="@style/AppTheme.RoundedCornerMaterialButton"/>
+      />
 
   </android.support.constraint.ConstraintLayout>
 

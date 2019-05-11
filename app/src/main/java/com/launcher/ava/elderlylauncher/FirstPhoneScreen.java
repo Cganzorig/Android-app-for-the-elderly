@@ -11,7 +11,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -26,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
-import com.launcher.ava.utilities.ContactTableRow;
+import com.launcher.ava.utilities.ContactPickHandler;
 
 public class FirstPhoneScreen extends AppCompatActivity {
 
@@ -273,7 +272,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
     if (requestCode == MY_PERMISSIONS_REQUEST_READ_CONTACTS && resultCode == RESULT_OK) {
       // data is returned from startActivityFromResult()
       Uri contactUri = data.getData();
-      getInfo(contactUri);
+      this.table = ContactPickHandler.getInfo(this, contactUri);
 
       // temp housing for data of selected contact
       ContactInfo tmpInfo = new ContactInfo();
@@ -407,51 +406,6 @@ public class FirstPhoneScreen extends AppCompatActivity {
     assert cursor != null;
     cursor.close();
     return answer;
-  }
-
-  private void getInfo(Uri contactUri) {
-    ContactInfoTable table = new ContactInfoTable();
-
-    String targetPhone = queryCursor(contactUri);
-
-    Cursor cursor = getContentResolver().query(
-      ContactsContract.Data.CONTENT_URI,
-      null, null, null,
-      ContactsContract.Contacts.DISPLAY_NAME);
-
-    assert cursor != null;
-    while (cursor.moveToNext()) {
-
-      String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-
-      // we need this to fix the case where errors in transfer of phone books causes
-      // names of contacts to incorrectly be set as the phone numbers of contacts
-      String rawPhoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-
-      if (phoneNumber != null) {
-        phoneNumber = phoneNumber.replaceAll("\\s+", "");
-        phoneNumber = phoneNumber.replaceAll("\\+", "");
-
-        targetPhone = targetPhone.replaceAll("\\s+", "");
-        targetPhone = targetPhone.replaceAll("\\+", "");
-
-      }
-
-      if (phoneNumber != null && phoneNumber.equals(targetPhone)) {
-        String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
-        String displayName = cursor
-          .getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
-        String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
-
-        if (!rawPhoneNumber.equals(displayName)) {
-          table.add(new ContactTableRow(_id, displayName, phoneNumber, mimeType));
-        }
-        //Log.d("t",_id + " " + displayName +" "+ phoneNumber + " "+ mimeType);
-
-      }
-    }
-    cursor.close();
-    this.table = table;
   }
 
   @Override

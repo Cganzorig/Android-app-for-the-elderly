@@ -23,8 +23,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
+import com.launcher.ava.utilities.ContactPickHandler;
 import com.launcher.ava.utilities.ContactTableRow;
 
 public class FirstMessagesScreen extends AppCompatActivity {
@@ -274,7 +276,7 @@ public class FirstMessagesScreen extends AppCompatActivity {
     if (requestCode == MY_PERMISSIONS_REQUEST_READ_CONTACTS && resultCode == RESULT_OK) {
       // data is returned from startActivityFromResult()
       Uri contactUri = data.getData();
-      getInfo(contactUri);
+      this.table = ContactPickHandler.getInfo(this, contactUri);
 
       // temp housing for data of selected contact
       ContactInfo tmpInfo = new ContactInfo();
@@ -286,11 +288,16 @@ public class FirstMessagesScreen extends AppCompatActivity {
       // String mimeMessengerVoice = "";
       String mimeSkypeVoice = "vnd.android.cursor.item/com.skype4life.phone";
 
-      tmpInfo.displayName = this.table.getColumnWithMime("displayName", mimePhoneVoice);
-      tmpInfo.number = this.table.getColumnWithMime("phoneNumber", mimePhoneVoice);
-      tmpInfo.whatsappVoiceId = this.table.getColumnWithMime("_id", mimeWhatsappVoice);
-      tmpInfo.viberVoiceId = this.table.getColumnWithMime("_id", mimeViberVoice);
-      tmpInfo.skypeVoiceId = this.table.getColumnWithMime("_id", mimeSkypeVoice);
+      if (this.table.isEmpty()) {
+        Toast.makeText(getApplicationContext(), "ERROR: INVALID CONTACT SELECTED",
+          Toast.LENGTH_SHORT).show();
+      } else {
+        tmpInfo.displayName = this.table.getColumnWithMime("displayName", mimePhoneVoice);
+        tmpInfo.number = this.table.getColumnWithMime("phoneNumber", mimePhoneVoice);
+        tmpInfo.whatsappVoiceId = this.table.getColumnWithMime("_id", mimeWhatsappVoice);
+        tmpInfo.viberVoiceId = this.table.getColumnWithMime("_id", mimeViberVoice);
+        tmpInfo.skypeVoiceId = this.table.getColumnWithMime("_id", mimeSkypeVoice);
+      }
 
       switch (this.selectedButton) {
         case 1:
@@ -415,37 +422,6 @@ public class FirstMessagesScreen extends AppCompatActivity {
     assert cursor != null;
     cursor.close();
     return answer;
-  }
-
-  private void getInfo(Uri contactUri) {
-    ContactInfoTable table = new ContactInfoTable();
-
-    String target = queryCursor(contactUri);
-
-    Cursor cursor = getContentResolver().query(
-      ContactsContract.Data.CONTENT_URI,
-      null, null, null,
-      ContactsContract.Contacts.DISPLAY_NAME);
-
-    assert cursor != null;
-    while (cursor.moveToNext()) {
-      String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-      if (phoneNumber != null) {
-        phoneNumber = phoneNumber.replaceAll("\\s+", "");
-        target = target.replaceAll("\\s+", "");
-      }
-      if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
-        String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
-        String displayName = cursor
-          .getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
-        String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
-        table.add(new ContactTableRow(_id, displayName, phoneNumber, mimeType));
-        //Log.d("t",_id + " " + displayName +" "+ phoneNumber + " "+ mimeType);
-
-      }
-    }
-    cursor.close();
-    this.table = table;
   }
 
   @Override
