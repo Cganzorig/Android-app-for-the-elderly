@@ -15,6 +15,8 @@ public class ContactInfoTable {
     table.add(row);
   }
 
+  public boolean isEmpty() { return table.isEmpty();}
+
   public String getColumnWithMime(String column, String mimeType) {
     Iterator<ContactTableRow> iter = table.iterator();
     while (iter.hasNext()) {

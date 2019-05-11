@@ -13,7 +13,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.provider.ContactsContract.Contacts;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintLayout.LayoutParams;
@@ -24,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactTableRow;
@@ -286,11 +286,16 @@ public class FirstPhoneScreen extends AppCompatActivity {
       // String mimeMessengerVoice = "";
       String mimeSkypeVoice = "vnd.android.cursor.item/com.skype4life.phone";
 
-      tmpInfo.displayName = this.table.getColumnWithMime("displayName", mimePhoneVoice);
-      tmpInfo.number = this.table.getColumnWithMime("phoneNumber", mimePhoneVoice);
-      tmpInfo.whatsappVoiceId = this.table.getColumnWithMime("_id", mimeWhatsappVoice);
-      tmpInfo.viberVoiceId = this.table.getColumnWithMime("_id", mimeViberVoice);
-      tmpInfo.skypeVoiceId = this.table.getColumnWithMime("_id", mimeSkypeVoice);
+      if (this.table.isEmpty()) {
+        Toast.makeText(getApplicationContext(), "ERROR: INVALID CONTACT SELECTED",
+          Toast.LENGTH_SHORT).show();
+      } else {
+        tmpInfo.displayName = this.table.getColumnWithMime("displayName", mimePhoneVoice);
+        tmpInfo.number = this.table.getColumnWithMime("phoneNumber", mimePhoneVoice);
+        tmpInfo.whatsappVoiceId = this.table.getColumnWithMime("_id", mimeWhatsappVoice);
+        tmpInfo.viberVoiceId = this.table.getColumnWithMime("_id", mimeViberVoice);
+        tmpInfo.skypeVoiceId = this.table.getColumnWithMime("_id", mimeSkypeVoice);
+      }
 
       switch (this.selectedButton) {
         case 1:
@@ -423,7 +428,6 @@ public class FirstPhoneScreen extends AppCompatActivity {
       // we need this to fix the case where errors in transfer of phone books causes
       // names of contacts to incorrectly be set as the phone numbers of contacts
       String rawPhoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-      String rawName = cursor.getString(cursor.getColumnIndex(Contacts.DISPLAY_NAME));
 
       if (phoneNumber != null) {
         phoneNumber = phoneNumber.replaceAll("\\s+", "");
