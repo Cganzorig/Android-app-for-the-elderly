@@ -26,7 +26,7 @@
     android:id="@+id/cLayoutAppsDrawer"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/launchAppColor"
+    android:background="@color/appIconColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/secondAppScreenguide1"
     app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
-      app:srcCompat="@drawable/ic_3d"/>
+      app:srcCompat="@drawable/black_ic_3d"/>
 
     <TextView
       android:id="@+id/textPhone"

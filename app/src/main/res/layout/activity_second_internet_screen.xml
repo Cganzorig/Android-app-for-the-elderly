@@ -40,7 +40,7 @@
     android:id="@+id/cLayoutApps"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/internetScreenColor"
+    android:background="@color/internetIconColor"
     app:layout_constraintBottom_toTopOf="@+id/secondAppScreenguide1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
-      app:srcCompat="@drawable/ic_world_wide_web" />
+      app:srcCompat="@drawable/black_ic_world_wide_web" />
 
     <TextView
       android:id="@+id/textPhone"
