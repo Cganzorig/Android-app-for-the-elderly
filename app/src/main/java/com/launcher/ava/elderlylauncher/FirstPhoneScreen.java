@@ -3,19 +3,17 @@ package com.launcher.ava.elderlylauncher;
 import static com.launcher.ava.utilities.GetPhoto.getContactPhoto;
 
 import android.Manifest;
-import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.Contacts;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintLayout.LayoutParams;
@@ -29,8 +27,6 @@ import android.widget.TextView;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactTableRow;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class FirstPhoneScreen extends AppCompatActivity {
 
@@ -412,7 +408,7 @@ public class FirstPhoneScreen extends AppCompatActivity {
   private void getInfo(Uri contactUri) {
     ContactInfoTable table = new ContactInfoTable();
 
-    String target = queryCursor(contactUri);
+    String targetPhone = queryCursor(contactUri);
 
     Cursor cursor = getContentResolver().query(
       ContactsContract.Data.CONTENT_URI,
@@ -421,18 +417,28 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
     assert cursor != null;
     while (cursor.moveToNext()) {
+
       String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
+
+      // we need this to fix the case where errors in transfer of phone books causes
+      // names of contacts to incorrectly be set as the phone numbers of contacts
+      String rawPhoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
+      String rawName = cursor.getString(cursor.getColumnIndex(Contacts.DISPLAY_NAME));
+
       if (phoneNumber != null) {
         phoneNumber = phoneNumber.replaceAll("\\s+", "");
-        target = target.replaceAll("\\s+", "");
+        targetPhone = targetPhone.replaceAll("\\s+", "");
       }
 
-      if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
+      if (phoneNumber != null && phoneNumber.contains(targetPhone.substring(2))) {
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
         String displayName = cursor
           .getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
         String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
-        table.add(new ContactTableRow(_id, displayName, phoneNumber, mimeType));
+
+        if (!rawPhoneNumber.equals(displayName)) {
+          table.add(new ContactTableRow(_id, displayName, phoneNumber, mimeType));
+        }
         //Log.d("t",_id + " " + displayName +" "+ phoneNumber + " "+ mimeType);
 
       }
