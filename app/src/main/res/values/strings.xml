@@ -47,8 +47,7 @@
   <string name="list_of_downloaded_apps">List of all apps</string>
   <string name="view_all_apps">View all \n apps</string>
 
-  <string name="go_to_next">Next</string>
-  <string name="skip_to_next">Skip</string>
+  <string name="go_to_next">NEXT</string>
   <string name="add_fav_web">Add favourite website</string>
   <string name="welcome_to_launcher">Welcome to the Ava Launcher !</string>
   <string name="second_screen">You may choose now your favorite websites.</string>
@@ -60,4 +59,6 @@
   <string name="add_website_to_favourites">ADD WEBSITE TO FAVOURITES</string>
   <string name="open_browser">Open browser</string>
   <string name="pick_three_favourite_contacts">PICK THREE FAVOURITE CONTACTS</string>
+  <string name="welcome_to_ava_launcher">WELCOME TO AVA LAUNCHER!</string>
+  <string name="go_to_prev">PREVIOUS</string>
 </resources>

@@ -1,6 +1,10 @@
 package com.launcher.ava.wizardSetUp;
 
 import static com.launcher.ava.utilities.GetPhoto.getContactPhoto;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.DONE_WIZARD;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.ONE_WIZARD;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.TWO_WIZARD;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.ZERO_WIZARD;
 
 import android.Manifest;
 import android.content.Context;
@@ -27,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.launcher.ava.elderlylauncher.FirstPhoneScreen;
+import com.launcher.ava.elderlylauncher.MainActivity;
 import com.launcher.ava.elderlylauncher.R;
 import com.launcher.ava.elderlylauncher.SecondPhoneScreen;
 import com.launcher.ava.utilities.ContactInfo;
@@ -55,6 +60,9 @@ public class FirstWizardScreen extends AppCompatActivity  {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_first_wizard_screen);
+
+    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
+    launchesOnlyOnce.setPosition(ONE_WIZARD);
 
     this.addAndRemove = findViewById(R.id.cLayoutBtn);
     this.whiteBlock = findViewById(R.id.cLayoutWhiteBlock);
@@ -467,9 +475,16 @@ public class FirstWizardScreen extends AppCompatActivity  {
     }
   }
 
-  public void goToNextPage(View v) {
-    Intent intent = new Intent(this, SecondWizardScreen.class);
-    startActivity(intent);
+  public void goToPrevPage(View v) {
+    startActivity(new Intent(this, ZerothWizardScreen.class));
+    finish();
   }
+
+  public void goToNextPage(View v) {
+    startActivity(new Intent(this, SecondWizardScreen.class));
+    finish();
+  }
+
+  public void onBackPressed() {}
 }
 

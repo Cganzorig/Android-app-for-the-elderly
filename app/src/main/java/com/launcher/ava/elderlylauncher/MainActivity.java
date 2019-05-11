@@ -1,5 +1,10 @@
 package com.launcher.ava.elderlylauncher;
 
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.DONE_WIZARD;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.ONE_WIZARD;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.TWO_WIZARD;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.ZERO_WIZARD;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -10,6 +15,8 @@ import android.view.View;
 import com.launcher.ava.utilities.AppFrequencyList;
 import com.launcher.ava.wizardSetUp.LaunchesOnlyOnce;
 import com.launcher.ava.wizardSetUp.FirstWizardScreen;
+import com.launcher.ava.wizardSetUp.SecondWizardScreen;
+import com.launcher.ava.wizardSetUp.ZerothWizardScreen;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,10 +24,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
       AppFrequencyList.populate(this);
       LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
-      if (launchesOnlyOnce.isFirstTime()) {
-        launchWizardScreen();
+
+      Intent wizardIntent;
+      int position = launchesOnlyOnce.getPosition();
+      switch (position) {
+        case ZERO_WIZARD:
+          wizardIntent = new Intent(this, ZerothWizardScreen.class);
+          break;
+        case ONE_WIZARD:
+          wizardIntent = new Intent(this, FirstWizardScreen.class);
+          break;
+        case TWO_WIZARD:
+          wizardIntent = new Intent(this, SecondWizardScreen.class);
+          break;
+          default:
+            wizardIntent = new Intent(this, ZerothWizardScreen.class);
+      }
+
+      if(position != DONE_WIZARD) {
+        startActivity(wizardIntent);
         finish();
       }
+
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
       setFontSize();

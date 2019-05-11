@@ -1,29 +1,38 @@
 package com.launcher.ava.wizardSetUp;
 
 // https://www.supinfo.com/articles/single/3628-creer-ecran-introduction-votre-application-android
+
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class LaunchesOnlyOnce {
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
-    Context launchContext;
 
-    int MODE_PRIVATE = 0;
+  public final static int ZERO_WIZARD = 0;
+  public final static int ONE_WIZARD = 1;
+  public final static int TWO_WIZARD = 2;
+  public final static int DONE_WIZARD = 3;
 
-    public LaunchesOnlyOnce(Context context){
-        this.launchContext = context;
-        preferences = launchContext.getSharedPreferences("LAUNCH_PREFERENCE", MODE_PRIVATE);
-        editor = preferences.edit();
-    }
 
-    public boolean isFirstTime(){
-        return preferences.getBoolean("ISFIRSTTIME", true);
-    }
+  SharedPreferences.Editor editor;
+  Context launchContext;
+  SharedPreferences sp;
 
-    public void setFirstTime (boolean isFirstTime){
-        editor.putBoolean("ISFIRSTTIME", isFirstTime);
-        editor.commit();
-    }
+
+  public LaunchesOnlyOnce(Context context) {
+    this.launchContext = context;
+    this.sp = launchContext.getSharedPreferences("WIZARD", MODE_PRIVATE);
+  }
+
+  public void setPosition(int i) {
+    SharedPreferences.Editor editor = sp.edit();
+    editor.putInt("LOCATION", i);
+    editor.apply();
+  }
+
+  public int getPosition() {
+    return sp.getInt("LOCATION", 0);
+  }
 
 }

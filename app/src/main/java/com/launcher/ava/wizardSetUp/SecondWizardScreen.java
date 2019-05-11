@@ -1,5 +1,9 @@
 package com.launcher.ava.wizardSetUp;
 
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.DONE_WIZARD;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.ONE_WIZARD;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.TWO_WIZARD;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,6 +40,9 @@ public class SecondWizardScreen extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_second_wizard_screen);
+
+    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
+    launchesOnlyOnce.setPosition(TWO_WIZARD);
 
     this.addAndRemove = findViewById(R.id.cLayoutInternetBtn);
     this.whiteBlock = findViewById(R.id.cLayoutInternetWhiteBlock);
@@ -335,12 +342,19 @@ public class SecondWizardScreen extends AppCompatActivity {
     setWhiteBlocks();
   }
 
+  public void goToPrevPage(View v) {
+    startActivity(new Intent(this, FirstWizardScreen.class));
+    finish();
+  }
+
   public void goToNextPage(View v) {
     LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
-    launchesOnlyOnce.setFirstTime(false);
-    Intent intent = new Intent(this, MainActivity.class);
-    startActivity(intent);
+    launchesOnlyOnce.setPosition(DONE_WIZARD);
+    startActivity(new Intent(this, MainActivity.class));
+    finish();
   }
+
+  public void onBackPressed() {}
 
 }
 
