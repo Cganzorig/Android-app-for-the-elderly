@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,7 +25,6 @@ import android.widget.Toast;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactPickHandler;
-import com.launcher.ava.wizardSetUp.SecondWizardScreen;
 
 public class FirstPhoneScreen extends AppCompatActivity {
 
@@ -134,9 +132,13 @@ public class FirstPhoneScreen extends AppCompatActivity {
   }
 
   public void openDialer(View v) {
-    Intent intent = new Intent(Intent.ACTION_DIAL);
-    intent.setData(Uri.parse("tel:"));
-    startActivity(intent);
+    try {
+      Intent intent = new Intent(Intent.ACTION_DIAL);
+      intent.setData(Uri.parse("tel:"));
+      startActivity(intent);
+    } catch (Exception e) {
+      //
+    }
   }
 
   public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {

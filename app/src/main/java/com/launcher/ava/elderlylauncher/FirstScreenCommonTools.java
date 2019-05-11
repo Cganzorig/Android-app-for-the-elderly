@@ -29,9 +29,9 @@ public class FirstScreenCommonTools extends AppCompatActivity {
   }
 
   public void changeTorchBoxToOff() {
-    TextView tv1 = (TextView)findViewById(R.id.torchText);
+    TextView tv1 = (TextView) findViewById(R.id.torchText);
     tv1.setText(getResources().getString(R.string.turn_torch_on));
-    ConstraintLayout torchLayout = (ConstraintLayout)findViewById(R.id.cLayoutTorch);
+    ConstraintLayout torchLayout = (ConstraintLayout) findViewById(R.id.cLayoutTorch);
     torchLayout.setBackgroundResource(R.color.lightGray);
   }
 
@@ -75,13 +75,12 @@ public class FirstScreenCommonTools extends AppCompatActivity {
     try {
       NoobCameraManager.getInstance().toggleFlash();
 
-      TextView tv1 = (TextView)findViewById(R.id.torchText);
-      ConstraintLayout torchLayout = (ConstraintLayout)findViewById(R.id.cLayoutTorch);
+      TextView tv1 = (TextView) findViewById(R.id.torchText);
+      ConstraintLayout torchLayout = (ConstraintLayout) findViewById(R.id.cLayoutTorch);
       if (NoobCameraManager.getInstance().isFlashOn()) {
         tv1.setText(getResources().getString(R.string.turn_torch_off));
         torchLayout.setBackgroundResource(R.color.torchOnColor);
-      }
-      else {
+      } else {
         tv1.setText(getResources().getString(R.string.turn_torch_on));
         torchLayout.setBackgroundResource(R.color.lightGray);
       }
@@ -94,11 +93,16 @@ public class FirstScreenCommonTools extends AppCompatActivity {
   }
 
 
-
   public void launchAddContact(View view) {
-    Intent intent = new Intent(Intent.ACTION_INSERT,
-      ContactsContract.Contacts.CONTENT_URI);
-    startActivity(intent);
+
+    try {
+      Intent intent = new Intent(Intent.ACTION_INSERT,
+        ContactsContract.Contacts.CONTENT_URI);
+      startActivity(intent);
+    } catch (Exception e) {
+      //
+    }
+
   }
 
   public void launchSettings(View view) {
@@ -109,5 +113,5 @@ public class FirstScreenCommonTools extends AppCompatActivity {
     Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
     startActivity(launchIntent);
   }
-  
+
 }

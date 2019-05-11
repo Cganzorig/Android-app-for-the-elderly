@@ -11,7 +11,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -27,7 +26,6 @@ import android.widget.Toast;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactPickHandler;
-import com.launcher.ava.utilities.ContactTableRow;
 
 public class FirstMessagesScreen extends AppCompatActivity {
 
@@ -147,11 +145,16 @@ public class FirstMessagesScreen extends AppCompatActivity {
   }
 
   public void openDialer(View v) {
-    Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-    sendIntent.addCategory(Intent.CATEGORY_DEFAULT);
-    sendIntent.setData(Uri.parse("sms:"));
-    sendIntent.putExtra("sms_body", "");
-    startActivity(sendIntent);
+    try {
+      Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+      sendIntent.addCategory(Intent.CATEGORY_DEFAULT);
+      sendIntent.setData(Uri.parse("sms:"));
+      sendIntent.putExtra("sms_body", "");
+      startActivity(sendIntent);
+    } catch (Exception e) {
+      //
+    }
+
   }
 
   public void pressMinus(View view) {
@@ -231,7 +234,8 @@ public class FirstMessagesScreen extends AppCompatActivity {
   }
 
   public void pickFromList() {
-    Intent pickContactIntent = new Intent(Intent.ACTION_PICK);    try {
+    Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
+    try {
       pickContactIntent.setType(Phone.CONTENT_TYPE);
       startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
     } catch (Exception e) {
