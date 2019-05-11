@@ -43,7 +43,7 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
       //Finds the views from our row.xml
       textView = itemView.findViewById(R.id.text);
-      img = itemView.findViewById(R.id.img);
+      img = itemView.findViewById(R.id.text);
       itemView.setOnClickListener(this);
     }
 

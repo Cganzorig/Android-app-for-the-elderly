@@ -49,8 +49,8 @@ public class WebsiteAdapter extends RecyclerView.Adapter<WebsiteAdapter.MyViewHo
       super(itemView);
       itemView.setClickable(true);
       itemView.setOnClickListener(this);
-      websiteName = itemView.findViewById(R.id.website_name);
-      websiteLogo = itemView.findViewById(R.id.website_logo);
+      websiteName = itemView.findViewById(R.id.text);
+      websiteLogo = itemView.findViewById(R.id.img);
     }
 
 
