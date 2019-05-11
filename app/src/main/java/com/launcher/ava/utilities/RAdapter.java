@@ -70,11 +70,11 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
         package_name = "package:" + package_name;
         intent.setData(Uri.parse(package_name));
         ((Activity) context).startActivityForResult(intent, UNINSTALL_APP_REQUEST);
-      }
-      else {
+      } else {
         Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(package_name);
         context.startActivity(launchIntent);
-        Toast.makeText(v.getContext(), appsList.get(pos).label.toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(v.getContext(), appsList.get(pos).label.toString(), Toast.LENGTH_LONG)
+          .show();
 
         // increment the frequency
         AppInfoFrequencyPair aip = AppFrequencyList.getInstance().getPairByPackName(package_name);
@@ -102,16 +102,25 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
 
     List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
     for (ResolveInfo ri : allApps) {
-      if (!ri.activityInfo.packageName.equals("com.launcher.ava.elderlylauncher")) {
+
+      if (AppDrawer.isDeleteMode) {
         AppInfo app = new AppInfo();
         app.label = ri.loadLabel(pm);
         app.packageName = ri.activityInfo.packageName;
         app.icon = ri.activityInfo.loadIcon(pm);
         this.appsList.add(app);
+      } else {
+        if (!ri.activityInfo.packageName.equals("com.launcher.ava.elderlylauncher")) {
+          AppInfo app = new AppInfo();
+          app.label = ri.loadLabel(pm);
+          app.packageName = ri.activityInfo.packageName;
+          app.icon = ri.activityInfo.loadIcon(pm);
+          this.appsList.add(app);
+        }
       }
     }
 
-   Collections.sort(this.appsList);
+    Collections.sort(this.appsList);
 
   }
 
