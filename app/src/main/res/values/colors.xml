@@ -22,4 +22,11 @@
 
   <color name="WizardBlue">#3346ff</color>
 
+  <color name="phoneIconColor">#00b159</color>
+  <color name="messageIconColor">#ed6146</color>
+  <color name="internetIconColor">#7facd7</color>
+  <color name="toolIconSColor">#b56aaf</color>
+  <color name="appIconColor">#fcb13a</color>
+
+
 </resources>

@@ -75,7 +75,7 @@
     android:id="@+id/cLayoutMessages"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/messagesColor"
+    android:background="@color/messageIconColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/secondMessagesScreenGuide1"
     app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +94,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
-      app:srcCompat="@drawable/ic_close_envelope"/>
+      app:srcCompat="@drawable/black_ic_close_envelope"/>
     <TextView
       android:id="@+id/textSecondMessagesScreenMessages"
       android:textStyle="bold"
