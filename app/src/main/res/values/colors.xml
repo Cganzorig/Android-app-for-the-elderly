@@ -15,8 +15,8 @@
   <color name="toolsPink2">#FFA1C2</color>
   <color name="colorAccent">#D81B60</color>
   <color name="blackColor">#000000</color>
-  <color name="lightGray">#e0dedd</color>
-  <color name="lighterGray">#D5D3D3</color>
+  <color name="lightGray">#E4E2E2</color>
+  <color name="darkGray">#CCCCCC</color>
   <color name="torchOnColor">#ffed00</color>
 
 
