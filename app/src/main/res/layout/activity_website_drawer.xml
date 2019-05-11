@@ -4,7 +4,7 @@
   android:id="@+id/appDrawerContainer"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/colorPrimary">
+  android:background="@color/whiteColor">
 
   <android.support.constraint.Guideline
     android:id="@+id/secondWebScreenguide0"
@@ -24,7 +24,7 @@
     android:id="@+id/cLayoutWebDrawer"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/launchAppOrange"
+    android:background="@color/messagesColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/secondWebScreenguide1"
     app:layout_constraintEnd_toEndOf="parent"
