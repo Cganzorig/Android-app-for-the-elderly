@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
       AppFrequencyList.populate(this);
       LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
+      launchesOnlyOnce.setFirstTime(true);
       if (launchesOnlyOnce.isFirstTime()) {
         launchWizardScreen();
       }
