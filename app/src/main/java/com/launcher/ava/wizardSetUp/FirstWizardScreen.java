@@ -1,10 +1,7 @@
 package com.launcher.ava.wizardSetUp;
 
 import static com.launcher.ava.utilities.GetPhoto.getContactPhoto;
-import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.DONE_WIZARD;
 import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.ONE_WIZARD;
-import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.TWO_WIZARD;
-import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.ZERO_WIZARD;
 
 import android.Manifest;
 import android.content.Context;
@@ -15,31 +12,26 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintLayout.LayoutParams;
-import android.support.constraint.solver.widgets.WidgetContainer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.launcher.ava.elderlylauncher.FirstPhoneScreen;
-import com.launcher.ava.elderlylauncher.MainActivity;
 import com.launcher.ava.elderlylauncher.R;
 import com.launcher.ava.elderlylauncher.SecondPhoneScreen;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
-import com.launcher.ava.utilities.ContactTableRow;
+import com.launcher.ava.utilities.ContactPickHandler;
 
 
-public class FirstWizardScreen extends AppCompatActivity  {
+public class FirstWizardScreen extends AppCompatActivity {
 
   static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;  // The request code
 
@@ -245,8 +237,12 @@ public class FirstWizardScreen extends AppCompatActivity  {
   public void pickFromList() {
 
     Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(Phone.CONTENT_TYPE);
-    startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+    try {
+      pickContactIntent.setType(Phone.CONTENT_TYPE);
+      startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+    } catch (Exception e) {
+      startActivity(new Intent(this, SecondWizardScreen.class));
+    }
   }
 
   public void pressFav(View view) {
@@ -288,7 +284,7 @@ public class FirstWizardScreen extends AppCompatActivity  {
     if (requestCode == MY_PERMISSIONS_REQUEST_READ_CONTACTS && resultCode == RESULT_OK) {
       // data is returned from startActivityFromResult()
       Uri contactUri = data.getData();
-      getInfo(contactUri);
+      this.table = ContactPickHandler.getInfo(this, contactUri);
 
       // temp housing for data of selected contact
       ContactInfo tmpInfo = new ContactInfo();
@@ -419,38 +415,6 @@ public class FirstWizardScreen extends AppCompatActivity  {
     return answer;
   }
 
-  private void getInfo(Uri contactUri) {
-    ContactInfoTable table = new ContactInfoTable();
-
-    String target = queryCursor(contactUri);
-
-    Cursor cursor = getContentResolver().query(
-      ContactsContract.Data.CONTENT_URI,
-      null, null, null,
-      ContactsContract.Contacts.DISPLAY_NAME);
-
-    assert cursor != null;
-    while (cursor.moveToNext()) {
-      String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-      if (phoneNumber != null) {
-        phoneNumber = phoneNumber.replaceAll("\\s+", "");
-        target = target.replaceAll("\\s+", "");
-      }
-
-      if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
-        String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
-        String displayName = cursor
-          .getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
-        String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
-        table.add(new ContactTableRow(_id, displayName, phoneNumber, mimeType));
-        //Log.d("t",_id + " " + displayName +" "+ phoneNumber + " "+ mimeType);
-
-      }
-    }
-    cursor.close();
-    this.table = table;
-  }
-
   @Override
   public void onRequestPermissionsResult(int requestCode,
     @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -485,6 +449,7 @@ public class FirstWizardScreen extends AppCompatActivity  {
     finish();
   }
 
-  public void onBackPressed() {}
+  public void onBackPressed() {
+  }
 }
 

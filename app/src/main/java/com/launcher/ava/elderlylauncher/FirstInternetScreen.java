@@ -71,8 +71,8 @@ public class FirstInternetScreen extends AppCompatActivity {
         plusBtn.setVisibility(View.VISIBLE);
         tv.setText(R.string.add_fav_website);
 
-        paramsPlus.startToStart = R.id.firstInternetScreenVertical5;
-        paramsPlus.endToStart = R.id.firstInternetScreenVertical6;
+        paramsPlus.startToStart = R.id.firstInternetScreenVertical6;
+        paramsPlus.endToStart = R.id.firstInternetScreenVertical5;
         break;
       case 1:
         paramsAddAndRemove.topToTop = R.id.firstInternetScreenguide2;

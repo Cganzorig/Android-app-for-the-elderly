@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,6 +115,7 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
           AppInfo app = new AppInfo();
           app.label = ri.loadLabel(pm);
           app.packageName = ri.activityInfo.packageName;
+          Log.d("t", "LOOKHERE: " + app.packageName);
           app.icon = ri.activityInfo.loadIcon(pm);
           this.appsList.add(app);
         }

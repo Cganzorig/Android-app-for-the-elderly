@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -75,8 +74,8 @@ public class FirstPhoneScreen extends AppCompatActivity {
         plusBtn.setVisibility(View.VISIBLE);
         tv.setText(R.string.add_fav);
 
-        paramsPlus.startToStart = R.id.firstPhoneScreenVertical5;
-        paramsPlus.endToStart = R.id.firstPhoneScreenVertical6;
+        paramsPlus.startToStart = R.id.firstPhoneScreenVertical6;
+        paramsPlus.endToStart = R.id.firstPhoneScreenVertical5;
         break;
       case 1:
         paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide2;
@@ -118,8 +117,8 @@ public class FirstPhoneScreen extends AppCompatActivity {
         plusBtn.setVisibility(View.INVISIBLE);
         tv.setText(R.string.remove_fav);
 
-        paramsMinus.startToStart = R.id.firstPhoneScreenVertical5;
-        paramsMinus.endToStart = R.id.firstPhoneScreenVertical6;
+        paramsMinus.startToStart = R.id.firstPhoneScreenVertical6;
+        paramsMinus.endToStart = R.id.firstPhoneScreenVertical5;
         break;
 
     }
@@ -133,9 +132,13 @@ public class FirstPhoneScreen extends AppCompatActivity {
   }
 
   public void openDialer(View v) {
-    Intent intent = new Intent(Intent.ACTION_DIAL);
-    intent.setData(Uri.parse("tel:"));
-    startActivity(intent);
+    try {
+      Intent intent = new Intent(Intent.ACTION_DIAL);
+      intent.setData(Uri.parse("tel:"));
+      startActivity(intent);
+    } catch (Exception e) {
+      //
+    }
   }
 
   public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {
@@ -230,7 +233,12 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
     Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
     pickContactIntent.setType(Phone.CONTENT_TYPE);
-    startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+    try {
+      pickContactIntent.setType(Phone.CONTENT_TYPE);
+      startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+    } catch (Exception e) {
+      startActivity(new Intent(this, MainActivity.class));
+    }
   }
 
   public void pressFav(View view) {
@@ -390,22 +398,6 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
     this.numFavs = numFavs;
     setWhiteBlocks();
-  }
-
-  private String queryCursor(Uri contactUri) {
-
-    String answer = "False";
-    String[] projection = new String[]{Phone.NUMBER};
-
-    Cursor cursor = getContentResolver()
-      .query(contactUri, projection, null, null, null);
-
-    if (cursor != null && cursor.moveToFirst()) {
-      answer = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-    }
-    assert cursor != null;
-    cursor.close();
-    return answer;
   }
 
   @Override

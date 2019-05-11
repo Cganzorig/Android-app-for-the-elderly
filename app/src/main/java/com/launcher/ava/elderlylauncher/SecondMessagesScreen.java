@@ -43,11 +43,11 @@ public class SecondMessagesScreen extends AppCompatActivity {
         this.contactInfo.number.replaceFirst("00", "+");
     }
 
-    this.title = findViewById(R.id.textSecondMessagesScreenMessages);
+    this.title = findViewById(R.id.textSecondPhoneScreenPhone);
     String s = title.getText().toString() + "\n" + this.contactInfo.displayName;
     title.setText(s);
 
-    this.whiteBlock = findViewById(R.id.cLayoutSecondMessagesScreenWhiteBlock);
+    this.whiteBlock = findViewById(R.id.cLayoutSecondPhoneScreenWhiteBlock);
 
     setViews();
   }
@@ -56,36 +56,36 @@ public class SecondMessagesScreen extends AppCompatActivity {
 
     LayoutParams params = (LayoutParams) this.whiteBlock.getLayoutParams();
 
-    this.callOption = findViewById(R.id.textRegMessage);
+    this.callOption = findViewById(R.id.textRegCall);
 
     if (!this.contactInfo.whatsappVoiceId.equals("NONE")) {
-      this.whatsappVoiceOption = findViewById(R.id.textSecondMessage);
+      this.whatsappVoiceOption = findViewById(R.id.textSecondCall);
       this.whatsappVoiceOption.setText(getString(R.string.using_whatsapp));
-      this.whatsappVoiceImage = findViewById(R.id.imageSecondMessage);
+      this.whatsappVoiceImage = findViewById(R.id.imageSecondCall);
       this.whatsappVoiceImage.setImageDrawable(getDrawable(R.drawable.ic_whatsapp));
 
       this.secondOptionFlag = "WHATSAPP";
       if (!this.contactInfo.viberVoiceId.equals("NONE")) {
-        this.viberVoiceOption = findViewById(R.id.textThirdMessage);
+        this.viberVoiceOption = findViewById(R.id.textThirdCall);
         this.viberVoiceOption.setText(getString(R.string.using_viber));
 
-        this.viberVoiceImage = findViewById(R.id.imageThirdMessage);
+        this.viberVoiceImage = findViewById(R.id.imageThirdCall);
         this.viberVoiceImage.setImageDrawable(getDrawable(R.drawable.ic_viber));
-        params.topToTop = R.id.secondMessagesScreenGuide4;
+        params.topToTop = R.id.secondPhoneScreenGuide4;
       } else {
-        params.topToTop = R.id.secondMessagesScreenGuide3;
+        params.topToTop = R.id.secondPhoneScreenGuide3;
       }
 
     } else {
       if (!this.contactInfo.viberVoiceId.equals("NONE")) {
-        this.viberVoiceOption = findViewById(R.id.textSecondMessage);
+        this.viberVoiceOption = findViewById(R.id.textSecondCall);
         this.viberVoiceOption.setText(getString(R.string.using_viber));
-        this.viberVoiceImage = findViewById(R.id.imageSecondMessage);
+        this.viberVoiceImage = findViewById(R.id.imageSecondCall);
         this.viberVoiceImage.setImageDrawable(getDrawable(R.drawable.ic_viber));
         this.secondOptionFlag = "VIBER";
-        params.topToTop = R.id.secondMessagesScreenGuide3;
+        params.topToTop = R.id.secondPhoneScreenGuide3;
       } else {
-        params.topToTop = R.id.secondMessagesScreenGuide2;
+        params.topToTop = R.id.secondPhoneScreenGuide2;
       }
     }
   }
@@ -100,9 +100,9 @@ public class SecondMessagesScreen extends AppCompatActivity {
     finish();
   }
 
-  public void pressSend(View view) {
+  public void pressCall(View view) {
     switch (view.getId()) {
-      case R.id.textRegMessage:
+      case R.id.textRegCall:
         String uriRegMsg= "smsto:"+this.contactInfo.number;
         Intent intentRegMsg = new Intent(Intent.ACTION_SENDTO, Uri.parse(uriRegMsg));
         intentRegMsg.putExtra("sms_body", "");
@@ -110,7 +110,7 @@ public class SecondMessagesScreen extends AppCompatActivity {
         startActivity(intentRegMsg);
         finish();
         break;
-      case R.id.textSecondMessage:
+      case R.id.textSecondCall:
         if (this.secondOptionFlag.equals("WHATSAPP")) {
           String whatsAppRoot = "http://api.whatsapp.com/";
           String number = "send?phone="+ this.contactInfo.number;
@@ -129,7 +129,7 @@ public class SecondMessagesScreen extends AppCompatActivity {
           startActivity(intent);
         }
         break;
-      case R.id.textThirdMessage:
+      case R.id.textThirdCall:
         Uri uri = Uri.parse("tel:" + Uri.encode(contactInfo.number));
         Intent intent = new Intent("android.intent.action.VIEW");
         intent.setClassName("com.viber.voip", "com.viber.voip.WelcomeActivity");
