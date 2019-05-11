@@ -105,7 +105,7 @@
       android:layout_marginStart="170dp"
       android:layout_marginEnd="25dp"
       android:gravity="center"
-      android:text="@string/main_call"
+      android:text="@string/call"
       android:textColor="@android:color/black"
       android:textSize="28sp"
       app:fontFamily="sans-serif-black"

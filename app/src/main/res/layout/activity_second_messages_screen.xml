@@ -105,7 +105,7 @@
       android:layout_marginStart="170dp"
       android:layout_marginEnd="25dp"
       android:gravity="center"
-      android:text="@string/main_message"
+      android:text="@string/message"
       android:textColor="@android:color/black"
       android:textSize="28sp"
       app:fontFamily="sans-serif-black"

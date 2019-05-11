@@ -45,7 +45,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
     this.contactInfo.viberVoiceId = thisIntent.getStringExtra("viberVoiceId");
 
     this.title = findViewById(R.id.textSecondPhoneScreenPhone);
-    String s = title.getText().toString() + " TO " + this.contactInfo.displayName;
+    String s = title.getText().toString() + "\n" + this.contactInfo.displayName;
     title.setText(s);
 
     this.whiteBlock = findViewById(R.id.cLayoutSecondPhoneScreenWhiteBlock);

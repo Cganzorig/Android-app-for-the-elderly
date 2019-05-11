@@ -20,17 +20,17 @@
   <string name="using_reg_phone">Using regular phone</string>
   <string name="using_messenger">Using Messenger</string>
   <string name="using_skype">Using Skype</string>
-  <string name="pick_contact_from_list">Pick contact from list</string>
+  <string name="pick_contact_from_list">OPEN FULL CONTACT LIST</string>
 
   <string name="plus_sign">+</string>
   <string name="minus_sign">\u2013</string>
-  <string name="default_quick_call">Add favourite contact</string>
+  <string name="default_quick_call">Set a favourite contact</string>
   <string name="ellipsis">...</string>
   <string name="add_fav_contact">Pick a favourite from contacts</string>
 
   <string name="add_fav_website">Pick a favourite website</string>
   <string name="add_remove_fav_website">Pick/remove favourite website</string>
-  <string name="remove_fav_website">Remove a website from favourites</string>
+  <string name="remove_fav_website">Remove  website from favourites</string>
   <string name="save_button">Save</string>
 
   <string name="turn_torch_on">TURN TORCH ON</string>
@@ -40,15 +40,15 @@
   <string name="set_alarm">SET AN ALARM</string>
   <string name="launch_settings">LAUNCH SETTINGS</string>
   <string name="del_text">DEL</string>
-  <string name="add_remove_fav">Add or remove favourite contact</string>
+  <string name="add_remove_fav">Pick/remove favourite contact</string>
   <string name="remove_fav">Remove favourite contact</string>
-  <string name="add_fav">Add favourite contact</string>
+  <string name="add_fav">Pick favourite contact</string>
   <string name="enter_website">Enter website: example.com</string>
   <string name="list_of_downloaded_apps">List of all apps</string>
   <string name="view_all_apps">View all \n apps</string>
 
   <string name="go_to_next">NEXT</string>
-  <string name="add_fav_web">Add favourite website</string>
+  <string name="add_fav_web">Pick favourite website</string>
   <string name="welcome_to_launcher">Welcome to the Ava Launcher !</string>
   <string name="second_screen">You may choose now your favorite websites.</string>
   <string name="wizard_favorite">Select favorite contacts here or skip.</string>
@@ -61,4 +61,6 @@
   <string name="pick_three_favourite_contacts">PICK THREE FAVOURITE CONTACTS</string>
   <string name="welcome_to_ava_launcher">WELCOME TO AVA LAUNCHER!</string>
   <string name="go_to_prev">PREVIOUS</string>
+  <string name="message">MESSAGE</string>
+  <string name="call">CALL</string>
 </resources>

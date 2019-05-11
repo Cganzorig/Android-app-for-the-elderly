@@ -368,15 +368,17 @@
       app:layout_constraintTop_toTopOf="parent"/>
     <ImageButton
       android:id="@+id/dialup"
+      style="@style/AppTheme.RoundedCornerMaterialButton"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_marginTop="30dp"
       android:layout_marginBottom="30dp"
       android:layout_marginStart="25dp"
       android:layout_marginEnd="25dp"
+      android:padding="10sp"
       android:onClick="openDialer"
       android:scaleType="fitCenter"
-      android:src="@drawable/ic_dial"
+      android:src="@drawable/ic_message"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="1.0"

@@ -260,23 +260,25 @@
       app:layout_constraintTop_toBottomOf="@+id/textApp4" />
 
     <Button
-      android:textColor="@color/blackColor"
-      style="@style/AppTheme.RoundedCornerMaterialButton"
       android:id="@+id/app_drawer_button"
+      style="@style/AppTheme.RoundedCornerMaterialButton"
+      android:textStyle="bold"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="8dp"
       android:layout_marginTop="40dp"
-      android:layout_marginEnd="8dp"
       android:layout_marginBottom="20dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      android:padding="3sp"
       android:onClick="onClickGoToAppDrawer"
       android:text="@string/view_all_apps"
+      android:textAlignment="center"
+      android:textColor="@color/blackColor"
       android:textSize="20sp"
-      android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="@+id/uninstallButton"
       app:layout_constraintStart_toStartOf="@+id/installButton"
-      app:layout_constraintTop_toTopOf="@+id/uninstallButton" />
+      app:layout_constraintTop_toTopOf="@+id/uninstallButton"/>
 
 
   </android.support.constraint.ConstraintLayout>

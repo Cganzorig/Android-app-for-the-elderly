@@ -64,7 +64,6 @@ public class FirstMessagesScreen extends AppCompatActivity {
     LayoutParams paramsPlus = (LayoutParams) this.plusBtn.getLayoutParams();
     LayoutParams paramsMinus = (LayoutParams) this.minusBtn.getLayoutParams();
 
-
     switch (this.numFavs) {
       case 0:
         paramsAddAndRemove.topToTop = R.id.firstMessagesScreenguide1;
@@ -146,10 +145,11 @@ public class FirstMessagesScreen extends AppCompatActivity {
   }
 
   public void openDialer(View v) {
-    Intent intent = new Intent(Intent.ACTION_DIAL);
-    intent.setData(Uri.parse("tel:"));
-    startActivity(intent);
-    finish();
+    Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+    sendIntent.addCategory(Intent.CATEGORY_DEFAULT);
+    sendIntent.setData(Uri.parse("sms:"));
+    sendIntent.putExtra("sms_body", "");
+    startActivity(sendIntent);
   }
 
   public void pressMinus(View view) {
@@ -244,7 +244,7 @@ public class FirstMessagesScreen extends AppCompatActivity {
         spName = "button1";
         this.selectedButton = 1;
         break;
-      case R.id. buttonMessageSecondFav:
+      case R.id.buttonMessageSecondFav:
         tv = findViewById(R.id.buttonMessageSecondFav);
         spName = "button2";
         this.selectedButton = 2;
@@ -371,9 +371,8 @@ public class FirstMessagesScreen extends AppCompatActivity {
         iv2.setImageBitmap(photo);
       }
 
-
       numFavs += 1;
-    }else {
+    } else {
       tv2.setText(getResources().getString(R.string.add_fav_contact));
     }
 
@@ -392,16 +391,14 @@ public class FirstMessagesScreen extends AppCompatActivity {
         iv3.setImageBitmap(photo);
       }
 
-
       numFavs += 1;
-    }else {
+    } else {
       tv3.setText(getResources().getString(R.string.add_fav_contact));
     }
 
     this.numFavs = numFavs;
     setWhiteBlocks();
   }
-
 
 
   private String queryCursor(Uri contactUri) {
@@ -434,8 +431,8 @@ public class FirstMessagesScreen extends AppCompatActivity {
     while (cursor.moveToNext()) {
       String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
       if (phoneNumber != null) {
-        phoneNumber = phoneNumber.replaceAll("\\s+","");
-        target = target.replaceAll("\\s+","");
+        phoneNumber = phoneNumber.replaceAll("\\s+", "");
+        target = target.replaceAll("\\s+", "");
       }
       if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
@@ -458,7 +455,8 @@ public class FirstMessagesScreen extends AppCompatActivity {
       case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
         // If request is cancelled, the result arrays are empty.
         if (grantResults.length > 0
-          && grantResults[0] == PackageManager.PERMISSION_GRANTED && this.pickContactIntent!=null) {
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED
+          && this.pickContactIntent != null) {
           handleResult(MY_PERMISSIONS_REQUEST_READ_CONTACTS, RESULT_OK, this.pickContactIntent);
         } else {
           // permission denied, boo! Disable the

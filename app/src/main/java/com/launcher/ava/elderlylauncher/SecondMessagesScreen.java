@@ -44,7 +44,7 @@ public class SecondMessagesScreen extends AppCompatActivity {
     }
 
     this.title = findViewById(R.id.textSecondMessagesScreenMessages);
-    String s = title.getText().toString() + " TO " + this.contactInfo.displayName;
+    String s = title.getText().toString() + "\n" + this.contactInfo.displayName;
     title.setText(s);
 
     this.whiteBlock = findViewById(R.id.cLayoutSecondMessagesScreenWhiteBlock);

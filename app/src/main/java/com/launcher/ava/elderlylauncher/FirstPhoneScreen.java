@@ -137,7 +137,6 @@ public class FirstPhoneScreen extends AppCompatActivity {
     Intent intent = new Intent(Intent.ACTION_DIAL);
     intent.setData(Uri.parse("tel:"));
     startActivity(intent);
-    finish();
   }
 
   public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {
