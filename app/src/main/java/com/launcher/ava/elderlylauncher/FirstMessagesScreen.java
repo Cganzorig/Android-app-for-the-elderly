@@ -231,9 +231,12 @@ public class FirstMessagesScreen extends AppCompatActivity {
   }
 
   public void pickFromList() {
-    Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(Phone.CONTENT_TYPE);
-    startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+    Intent pickContactIntent = new Intent(Intent.ACTION_PICK);    try {
+      pickContactIntent.setType(Phone.CONTENT_TYPE);
+      startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+    } catch (Exception e) {
+      startActivity(new Intent(this, MainActivity.class));
+    }
   }
 
 

@@ -1,12 +1,24 @@
 package com.launcher.ava.utilities;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 
 public class ContactPickHandler {
+
+  public static boolean appInstalledOrNot(Context c, String packName) {
+    PackageManager pm = c.getPackageManager();
+    try {
+      pm.getPackageInfo(packName, 0);
+      return true;
+    } catch (PackageManager.NameNotFoundException e) {
+    }
+
+    return false;
+  }
 
   private static String queryCursor(Context c, Uri contactUri) {
 
@@ -52,7 +64,7 @@ public class ContactPickHandler {
 
       }
 
-      if (phoneNumber != null && phoneNumber.equals(targetPhone)) {
+      if (phoneNumber != null && phoneNumber.contains(targetPhone.substring(2))) {
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
         String displayName = cursor
           .getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));

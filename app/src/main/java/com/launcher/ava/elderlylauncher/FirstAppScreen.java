@@ -4,23 +4,17 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.FloatingActionButton.OnVisibilityChangedListener;
-import android.support.v13.view.inputmethod.EditorInfoCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.SearchView.OnCloseListener;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,7 +55,7 @@ public class FirstAppScreen extends AppCompatActivity {
   public void deflateFakeSearchButton(boolean yes) {
     TextView tv = findViewById(R.id.fakeButton);
     ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) tv.getLayoutParams();
-    if(yes) {
+    if (yes) {
       params.bottomToTop = R.id.firstAppScreenguide1;
     } else {
       params.bottomToTop = R.id.firstAppScreenguide2;
@@ -71,7 +65,7 @@ public class FirstAppScreen extends AppCompatActivity {
 
   public void fakeToolbarPress(View v) {
     deflateFakeSearchButton(true);
-    menu.performIdentifierAction(R.id.search_m,0);
+    menu.performIdentifierAction(R.id.search_m, 0);
   }
 
 
@@ -183,7 +177,7 @@ public class FirstAppScreen extends AppCompatActivity {
     searchView.setOnQueryTextFocusChangeListener(new OnFocusChangeListener() {
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
-        if(!hasFocus) {
+        if (!hasFocus) {
           deflateFakeSearchButton(false);
         }
       }
@@ -216,8 +210,12 @@ public class FirstAppScreen extends AppCompatActivity {
 //  }
 
   public void launchPlayStore(View view) {
-    Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
-    startActivity(launchIntent);
+    try {
+      Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
+      startActivity(launchIntent);
+    } catch (Exception e) {
+      Toast.makeText(this, "You don't have app store!", Toast.LENGTH_SHORT).show();
+    }
   }
 
   public void launchUninstallApp(View view) {
