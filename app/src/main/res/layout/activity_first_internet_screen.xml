@@ -68,7 +68,7 @@
     android:id="@+id/cLayoutInternet"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/browserBlue"
+    android:background="@color/internetScreenColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/firstWebScreenguide1"
     app:layout_constraintEnd_toEndOf="parent"
@@ -114,18 +114,31 @@
     android:id="@+id/cLayoutInternetFirstFav"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide2"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstWebScreenguide1">
 
-    <Button
-      android:id="@+id/buttonInternetFirstFav"
+    <ImageView
+      android:id="@+id/iv1"
       android:layout_width="0dp"
       android:layout_height="0dp"
-      android:layout_marginStart="25dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/buttonInternetFirstFav"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:srcCompat="@tools:sample/avatars"/>
+    <Button
+      android:id="@+id/buttonInternetFirstFav"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="150dp"
       android:layout_marginEnd="25dp"
       android:gravity="center"
       android:onClick="pressFav"
@@ -133,13 +146,12 @@
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.714" />
+      app:layout_constraintVertical_bias="0.714"/>
 
   </android.support.constraint.ConstraintLayout>
 
@@ -147,18 +159,31 @@
     android:id="@+id/cLayoutInternetSecondFav"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide3"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstInternetScreenguide2">
 
+    <ImageView
+      android:id="@+id/iv2"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/buttonInternetSecondFav"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:srcCompat="@tools:sample/avatars"/>
     <Button
       android:id="@+id/buttonInternetSecondFav"
-      android:layout_width="361dp"
-      android:layout_height="110dp"
-      android:layout_marginStart="25dp"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="150dp"
       android:layout_marginEnd="25dp"
       android:gravity="center"
       android:onClick="pressFav"
@@ -166,11 +191,10 @@
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 
@@ -178,18 +202,31 @@
     android:id="@+id/cLayoutInternetThirdFav"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide4"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstInternetScreenguide3">
 
+    <ImageView
+      android:id="@+id/iv3"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/buttonInternetThirdFav"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:srcCompat="@tools:sample/avatars"/>
     <Button
       android:id="@+id/buttonInternetThirdFav"
-      android:layout_width="361dp"
-      android:layout_height="105dp"
-      android:layout_marginStart="25dp"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="150dp"
       android:layout_marginEnd="25dp"
       android:gravity="center"
       android:onClick="pressFav"
@@ -197,19 +234,18 @@
       android:textAlignment="viewStart"
       android:textColor="@android:color/black"
       android:textSize="25sp"
-      android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 
   <android.support.constraint.ConstraintLayout
     android:id="@+id/cLayoutInternetBtn"
     android:layout_width="0dp"
-    android:layout_height="111dp"
-    android:background="@color/colorPrimary"
+    android:layout_height="0dp"
+    android:background="@color/whiteColor"
     android:onClick="doNothing"
     app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide5"
     app:layout_constraintEnd_toEndOf="parent"
@@ -343,7 +379,7 @@
       android:onClick="doNothing"
       android:text="@string/add_remove_fav"
       android:textAlignment="center"
-      android:textColor="@color/questionGray"
+      android:textColor="@color/topQuestionBarColor"
       android:textSize="24sp"
       android:visibility="visible"
       app:layout_constraintBottom_toTopOf="@+id/add_button"
@@ -358,7 +394,7 @@
     android:id="@+id/cLayoutInternetPickContact"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide7"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -366,20 +402,22 @@
 
 
     <Button
-      android:id="@+id/buttonGoogle"
-      android:layout_width="361dp"
-      android:layout_height="110dp"
+      android:id="@+id/buttonBrowser"
+      android:textStyle="bold"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginBottom="20dp"
       android:layout_marginStart="25dp"
       android:layout_marginEnd="25dp"
-      android:onClick="visitGoogle"
-      android:text="Google"
+      android:onClick="openBrowser"
+      android:text="@string/open_browser"
       android:textSize="25sp"
       android:visibility="visible"
-      android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 
@@ -387,7 +425,7 @@
     android:id="@+id/cLayoutInternetWhiteBlock"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     android:onClick="doNothing"
     app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide6"
     app:layout_constraintEnd_toEndOf="parent"

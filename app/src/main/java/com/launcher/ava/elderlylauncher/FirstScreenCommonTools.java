@@ -1,8 +1,6 @@
 package com.launcher.ava.elderlylauncher;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.camera2.CameraAccessException;
 import android.os.Bundle;
@@ -13,9 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import com.noob.noobcameraflash.managers.NoobCameraManager;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class FirstScreenCommonTools extends AppCompatActivity {
 
@@ -84,7 +79,7 @@ public class FirstScreenCommonTools extends AppCompatActivity {
       ConstraintLayout torchLayout = (ConstraintLayout)findViewById(R.id.cLayoutTorch);
       if (NoobCameraManager.getInstance().isFlashOn()) {
         tv1.setText(getResources().getString(R.string.turn_torch_off));
-        torchLayout.setBackgroundResource(R.color.torchOnYellow);
+        torchLayout.setBackgroundResource(R.color.torchOnColor);
       }
       else {
         tv1.setText(getResources().getString(R.string.turn_torch_on));
@@ -106,50 +101,13 @@ public class FirstScreenCommonTools extends AppCompatActivity {
     startActivity(intent);
   }
 
-  public void launchCalculator(View view) {
-    ArrayList<HashMap<String, Object>> items = new ArrayList<HashMap<String, Object>>();
-
-    final PackageManager pm = getPackageManager();
-    List<PackageInfo> packs = pm.getInstalledPackages(0);
-    for (PackageInfo pi : packs) {
-      if (pi.packageName.toString().toLowerCase().contains("calcul")) {
-        HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("appName", pi.applicationInfo.loadLabel(pm));
-        map.put("packageName", pi.packageName);
-        items.add(map);
-      }
-    }
-
-    if (items.size() >= 1) {
-      String packageName = (String) items.get(0).get("packageName");
-      Intent i = pm.getLaunchIntentForPackage(packageName);
-      if (i != null) {
-        startActivity(i);
-      }
-    } else {
-      // No calculator app found
-    }
-
-  }
-
-  public void launchSetTimer(View view) {
-    Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_TIMER);
-    openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    startActivity(openClockIntent);
+  public void launchSettings(View view) {
+    startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
   }
 
   public void launchPlayStore(View view) {
     Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
     startActivity(launchIntent);
   }
-
-  public void launchUninstallApp(View view) {
-    // Need to launch app drawer view, get package name and use in the code below to uninstall.
-    // App drawer not working currently, so have left for later
-
-//        Intent intent = new Intent(Intent.ACTION_DELETE);
-//        intent.setData(Uri.parse("package:com.instagram.android"));
-//        startActivity(intent);
-  }
-
+  
 }

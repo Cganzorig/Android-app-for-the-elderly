@@ -1,11 +1,17 @@
 package com.launcher.ava.elderlylauncher;
 
+import static com.launcher.ava.utilities.GetPhoto.getContactPhoto;
+
 import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -18,10 +24,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactTableRow;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class FirstPhoneScreen extends AppCompatActivity {
 
@@ -59,7 +68,6 @@ public class FirstPhoneScreen extends AppCompatActivity {
     TextView tv = findViewById(R.id.textExplainPlusMinus);
     LayoutParams paramsPlus = (LayoutParams) this.plusBtn.getLayoutParams();
     LayoutParams paramsMinus = (LayoutParams) this.minusBtn.getLayoutParams();
-
 
     switch (this.numFavs) {
       case 0:
@@ -127,6 +135,13 @@ public class FirstPhoneScreen extends AppCompatActivity {
   }
 
   public void doNothing(View view) {
+  }
+
+  public void openDialer(View v) {
+    Intent intent = new Intent(Intent.ACTION_DIAL);
+    intent.setData(Uri.parse("tel:"));
+    startActivity(intent);
+    finish();
   }
 
   public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {
@@ -333,6 +348,14 @@ public class FirstPhoneScreen extends AppCompatActivity {
       String s = "Call " + sp1.getString("displayName", "");
       TextView tv1 = findViewById(R.id.textFirstFav);
       tv1.setText(s);
+
+      ImageView iv1 = findViewById(R.id.iv1);
+      Bitmap photo = getContactPhoto(this, sp1.getString("number", ""));
+      if (photo == null) {
+        iv1.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv1.setImageBitmap(photo);
+      }
       numFavs += 1;
     }
 
@@ -341,6 +364,13 @@ public class FirstPhoneScreen extends AppCompatActivity {
       String s = "Call " + sp2.getString("displayName", "");
       TextView tv2 = findViewById(R.id.textSecondFav);
       tv2.setText(s);
+      ImageView iv2 = findViewById(R.id.iv2);
+      Bitmap photo = getContactPhoto(this, sp2.getString("number", ""));
+      if (photo == null) {
+        iv2.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv2.setImageBitmap(photo);
+      }
       numFavs += 1;
     }
 
@@ -349,6 +379,13 @@ public class FirstPhoneScreen extends AppCompatActivity {
       String s = "Call " + sp3.getString("displayName", "");
       TextView tv3 = findViewById(R.id.textThirdFav);
       tv3.setText(s);
+      ImageView iv3 = findViewById(R.id.iv3);
+      Bitmap photo = getContactPhoto(this, sp3.getString("number", ""));
+      if (photo == null) {
+        iv3.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv3.setImageBitmap(photo);
+      }
       numFavs += 1;
     }
 
@@ -386,10 +423,9 @@ public class FirstPhoneScreen extends AppCompatActivity {
     while (cursor.moveToNext()) {
       String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
       if (phoneNumber != null) {
-        phoneNumber = phoneNumber.replaceAll("\\s+","");
-        target = target.replaceAll("\\s+","");
+        phoneNumber = phoneNumber.replaceAll("\\s+", "");
+        target = target.replaceAll("\\s+", "");
       }
-
 
       if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
@@ -412,7 +448,8 @@ public class FirstPhoneScreen extends AppCompatActivity {
       case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
         // If request is cancelled, the result arrays are empty.
         if (grantResults.length > 0
-          && grantResults[0] == PackageManager.PERMISSION_GRANTED && this.pickContactIntent!=null) {
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED
+          && this.pickContactIntent != null) {
           handleResult(MY_PERMISSIONS_REQUEST_READ_CONTACTS, RESULT_OK, this.pickContactIntent);
         } else {
           // permission denied, boo! Disable the

@@ -40,7 +40,7 @@
     android:id="@+id/cLayoutApps"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/browserBlue"
+    android:background="@color/internetScreenColor"
     app:layout_constraintBottom_toTopOf="@+id/secondAppScreenguide1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -62,23 +62,23 @@
 
     <TextView
       android:id="@+id/textPhone"
+      android:textStyle="bold"
       android:layout_width="0dp"
-      android:layout_height="73dp"
-      android:layout_marginStart="170dp"
+      android:layout_height="0dp"
       android:layout_marginTop="10dp"
-      android:layout_marginEnd="25dp"
       android:layout_marginBottom="10dp"
+      android:layout_marginStart="170dp"
+      android:layout_marginEnd="25dp"
       android:gravity="center"
       android:text="@string/add_website_to_favourites"
       android:textColor="@android:color/black"
       android:textSize="28sp"
-      android:textStyle="bold"
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.49" />
+      app:layout_constraintVertical_bias="0.49"/>
 
   </android.support.constraint.ConstraintLayout>
 
@@ -87,7 +87,7 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:scrollbars="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

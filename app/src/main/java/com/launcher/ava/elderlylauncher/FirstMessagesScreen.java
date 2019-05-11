@@ -1,11 +1,14 @@
 package com.launcher.ava.elderlylauncher;
 
+import static com.launcher.ava.utilities.GetPhoto.getContactPhoto;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -18,6 +21,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
@@ -139,6 +143,13 @@ public class FirstMessagesScreen extends AppCompatActivity {
     editor.putString("viberVoiceId", tmpInfo.viberVoiceId);
     editor.putString("skypeVoiceId", tmpInfo.skypeVoiceId);
     editor.apply();
+  }
+
+  public void openDialer(View v) {
+    Intent intent = new Intent(Intent.ACTION_DIAL);
+    intent.setData(Uri.parse("tel:"));
+    startActivity(intent);
+    finish();
   }
 
   public void pressMinus(View view) {
@@ -333,6 +344,15 @@ public class FirstMessagesScreen extends AppCompatActivity {
       String s = "Message " + sp1.getString("displayName", "");
 
       tv1.setText(s);
+
+      ImageView iv1 = findViewById(R.id.iv1);
+      Bitmap photo = getContactPhoto(this, sp1.getString("number", ""));
+      if (photo == null) {
+        iv1.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv1.setImageBitmap(photo);
+      }
+
       numFavs += 1;
     }
 
@@ -342,6 +362,16 @@ public class FirstMessagesScreen extends AppCompatActivity {
       String s = "Message " + sp2.getString("displayName", "");
 
       tv2.setText(s);
+
+      ImageView iv2 = findViewById(R.id.iv2);
+      Bitmap photo = getContactPhoto(this, sp2.getString("number", ""));
+      if (photo == null) {
+        iv2.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv2.setImageBitmap(photo);
+      }
+
+
       numFavs += 1;
     }else {
       tv2.setText(getResources().getString(R.string.add_fav_contact));
@@ -353,6 +383,16 @@ public class FirstMessagesScreen extends AppCompatActivity {
       String s = "Message " + sp3.getString("displayName", "");
 
       tv3.setText(s);
+
+      ImageView iv3 = findViewById(R.id.iv3);
+      Bitmap photo = getContactPhoto(this, sp3.getString("number", ""));
+      if (photo == null) {
+        iv3.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv3.setImageBitmap(photo);
+      }
+
+
       numFavs += 1;
     }else {
       tv3.setText(getResources().getString(R.string.add_fav_contact));

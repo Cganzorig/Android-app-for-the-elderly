@@ -5,7 +5,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/colorPrimary"
+  android:background="@color/whiteColor"
   tools:context=".FirstPhoneScreen">
 
   <android.support.constraint.Guideline
@@ -68,7 +68,7 @@
     android:id="@+id/cLayoutPhone"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/phoneGreen"
+    android:background="@color/phoneScreenColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide1"
     app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +114,7 @@
     android:id="@+id/cLayoutFirstFav"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide2"
     app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +126,7 @@
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="0dp"
-      android:layout_marginStart="25dp"
+      android:layout_marginStart="150dp"
       android:layout_marginEnd="25dp"
       android:onClick="pressFav"
       android:text="@string/add_fav_contact"
@@ -139,6 +139,17 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.714"/>
+    <ImageView
+      android:id="@+id/iv1"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/textFirstFav"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:srcCompat="@tools:sample/avatars"/>
 
   </android.support.constraint.ConstraintLayout>
 
@@ -146,19 +157,30 @@
     android:id="@+id/cLayoutSecondFav"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide3"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide2">
 
+    <ImageView
+      android:id="@+id/iv2"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/textSecondFav"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:srcCompat="@tools:sample/avatars"/>
     <Button
       android:id="@+id/textSecondFav"
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="0dp"
-      android:layout_marginStart="25dp"
+      android:layout_marginStart="150dp"
       android:layout_marginEnd="25dp"
       android:onClick="pressFav"
       android:text="@string/add_fav_contact"
@@ -178,19 +200,31 @@
     android:id="@+id/cLayoutThirdFav"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide4"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide3">
 
+    <ImageView
+      android:id="@+id/iv3"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/textThirdFav"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:srcCompat="@tools:sample/avatars"/>
     <Button
       android:id="@+id/textThirdFav"
       android:textStyle="bold"
-      android:layout_width="361dp"
-      android:layout_height="105dp"
-      android:layout_marginStart="25dp"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="150dp"
       android:layout_marginEnd="25dp"
       android:onClick="pressFav"
       android:text="@string/add_fav_contact"
@@ -208,7 +242,7 @@
     android:id="@+id/cLayoutBtn"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     android:onClick="doNothing"
     app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide5"
     app:layout_constraintEnd_toEndOf="parent"
@@ -292,7 +326,7 @@
       android:onClick="doNothing"
       android:text="@string/add_remove_fav"
       android:textAlignment="center"
-      android:textColor="@color/questionGray"
+      android:textColor="@color/topQuestionBarColor"
       android:textSize="24sp"
       app:layout_constraintBottom_toTopOf="@+id/add_button"
       app:layout_constraintEnd_toEndOf="parent"
@@ -306,7 +340,7 @@
     android:id="@+id/cLayoutPickContact"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide7"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -320,7 +354,7 @@
       android:layout_marginTop="30dp"
       android:layout_marginBottom="30dp"
       android:layout_marginStart="25dp"
-      android:layout_marginEnd="25dp"
+      android:layout_marginEnd="150dp"
       android:gravity="center"
       android:onClick="pressFav"
       android:text="@string/pick_contact_from_list"
@@ -331,6 +365,23 @@
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
+    <ImageButton
+      android:id="@+id/dialup"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="30dp"
+      android:layout_marginBottom="30dp"
+      android:layout_marginStart="25dp"
+      android:layout_marginEnd="25dp"
+      android:onClick="openDialer"
+      android:scaleType="fitCenter"
+      android:src="@drawable/ic_dial"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toEndOf="@+id/textPickContact"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0"/>
 
   </android.support.constraint.ConstraintLayout>
 
@@ -338,7 +389,7 @@
     android:id="@+id/cLayoutWhiteBlock"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteColor"
     android:onClick="doNothing"
     app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide6"
     app:layout_constraintEnd_toEndOf="parent"
