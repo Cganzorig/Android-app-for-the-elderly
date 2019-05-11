@@ -427,10 +427,14 @@ public class FirstPhoneScreen extends AppCompatActivity {
 
       if (phoneNumber != null) {
         phoneNumber = phoneNumber.replaceAll("\\s+", "");
+        phoneNumber = phoneNumber.replaceAll("\\+", "");
+
         targetPhone = targetPhone.replaceAll("\\s+", "");
+        targetPhone = targetPhone.replaceAll("\\+", "");
+
       }
 
-      if (phoneNumber != null && phoneNumber.contains(targetPhone.substring(2))) {
+      if (phoneNumber != null && phoneNumber.equals(targetPhone)) {
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
         String displayName = cursor
           .getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
