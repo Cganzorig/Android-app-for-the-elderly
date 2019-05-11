@@ -17,15 +17,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
       AppFrequencyList.populate(this);
       LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
-      launchesOnlyOnce.setFirstTime(true);
       if (launchesOnlyOnce.isFirstTime()) {
         launchWizardScreen();
+        finish();
       }
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
       setFontSize();
-
-
     }
 
     public void launchAppScreen(View view) {

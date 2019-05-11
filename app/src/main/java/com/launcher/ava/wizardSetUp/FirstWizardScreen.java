@@ -1,15 +1,21 @@
 package com.launcher.ava.wizardSetUp;
 
+import static com.launcher.ava.utilities.GetPhoto.getContactPhoto;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintLayout.LayoutParams;
 import android.support.constraint.solver.widgets.WidgetContainer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -17,10 +23,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.launcher.ava.elderlylauncher.FirstPhoneScreen;
 import com.launcher.ava.elderlylauncher.R;
+import com.launcher.ava.elderlylauncher.SecondPhoneScreen;
 import com.launcher.ava.utilities.ContactInfo;
 import com.launcher.ava.utilities.ContactInfoTable;
 import com.launcher.ava.utilities.ContactTableRow;
@@ -30,71 +38,244 @@ public class FirstWizardScreen extends AppCompatActivity  {
 
   static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;  // The request code
 
+
   private ContactInfoTable table = new ContactInfoTable();
+  private int numFavs;
+
+  private int selectedButton;
 
   ConstraintLayout addAndRemove;
   ConstraintLayout whiteBlock;
-  Button nextBtn;
-  int buttoncount;
+  Button plusBtn;
+  Button minusBtn;
+  private Intent pickContactIntent;
 
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-
-    this.addAndRemove = findViewById(R.id.cLayoutSecondWizardBtn);
-    this.whiteBlock = findViewById(R.id.cLayoutSecondWizardWhiteBlock);
-    this.nextBtn= findViewById(R.id.nextBtn);
-    this.buttoncount = 0;
-
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_first_wizard_screen);
+
+    this.addAndRemove = findViewById(R.id.cLayoutBtn);
+    this.whiteBlock = findViewById(R.id.cLayoutWhiteBlock);
+    this.plusBtn = findViewById(R.id.add_button);
+    this.minusBtn = findViewById(R.id.remove_button);
+
     displayFavouriteContacts();
   }
 
-  @Override
-  protected void onResume() {
-    super.onResume();
+  public void setWhiteBlocks() {
+    LayoutParams paramsAddAndRemove = (LayoutParams) this.addAndRemove.getLayoutParams();
+    LayoutParams paramsWhiteBlock = (LayoutParams) this.whiteBlock.getLayoutParams();
+    TextView tv = findViewById(R.id.textExplainPlusMinus);
+    LayoutParams paramsPlus = (LayoutParams) this.plusBtn.getLayoutParams();
+    LayoutParams paramsMinus = (LayoutParams) this.minusBtn.getLayoutParams();
+
+    switch (this.numFavs) {
+      case 0:
+        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide1;
+        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide2;
+        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide2;
+        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+
+        minusBtn.setVisibility(View.INVISIBLE);
+        plusBtn.setVisibility(View.VISIBLE);
+        tv.setText(R.string.add_fav);
+
+        paramsPlus.startToStart = R.id.firstPhoneScreenVertical5;
+        paramsPlus.endToStart = R.id.firstPhoneScreenVertical6;
+        break;
+      case 1:
+        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide2;
+        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide3;
+        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide3;
+        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+
+        minusBtn.setVisibility(View.VISIBLE);
+        plusBtn.setVisibility(View.VISIBLE);
+        tv.setText(R.string.add_remove_fav);
+
+        paramsPlus.startToStart = R.id.firstPhoneScreenVertical1;
+        paramsPlus.endToStart = R.id.firstPhoneScreenVertical2;
+        paramsMinus.startToStart = R.id.firstPhoneScreenVertical3;
+        paramsMinus.endToStart = R.id.firstPhoneScreenVertical4;
+        break;
+      case 2:
+        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide3;
+        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide4;
+        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide4;
+        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+
+        minusBtn.setVisibility(View.VISIBLE);
+        plusBtn.setVisibility(View.VISIBLE);
+        tv.setText(R.string.add_remove_fav);
+
+        paramsPlus.startToStart = R.id.firstPhoneScreenVertical1;
+        paramsPlus.endToStart = R.id.firstPhoneScreenVertical2;
+        paramsMinus.startToStart = R.id.firstPhoneScreenVertical3;
+        paramsMinus.endToStart = R.id.firstPhoneScreenVertical4;
+        break;
+      case 3:
+        paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide4;
+        paramsAddAndRemove.bottomToTop = R.id.firstPhoneScreenguide5;
+        paramsWhiteBlock.topToTop = R.id.firstPhoneScreenguide5;
+        paramsWhiteBlock.bottomToTop = R.id.firstPhoneScreenguide6;
+
+        minusBtn.setVisibility(View.VISIBLE);
+        plusBtn.setVisibility(View.INVISIBLE);
+        tv.setText(R.string.remove_fav);
+
+        paramsMinus.startToStart = R.id.firstPhoneScreenVertical5;
+        paramsMinus.endToStart = R.id.firstPhoneScreenVertical6;
+        break;
+
+    }
+    addAndRemove.setLayoutParams(paramsAddAndRemove);
+    whiteBlock.setLayoutParams(paramsWhiteBlock);
+    plusBtn.setLayoutParams(paramsPlus);
+    minusBtn.setLayoutParams(paramsMinus);
+  }
+
+  public void doNothing(View view) {
+  }
+
+  public void openDialer(View v) {
+    Intent intent = new Intent(Intent.ACTION_DIAL);
+    intent.setData(Uri.parse("tel:"));
+    startActivity(intent);
+    finish();
+  }
+
+  public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {
+
+    SharedPreferences sp = getSharedPreferences(sharedPrefName, MODE_PRIVATE);
+    SharedPreferences.Editor editor = sp.edit();
+    editor.putString("displayName", tmpInfo.displayName);
+    editor.putString("number", tmpInfo.number);
+    editor.putString("whatsappVoiceId", tmpInfo.whatsappVoiceId);
+    editor.putString("viberVoiceId", tmpInfo.viberVoiceId);
+    editor.putString("skypeVoiceId", tmpInfo.skypeVoiceId);
+    editor.apply();
+  }
+
+  public void pressMinus(View view) {
+    TextView tv = null;
+    String spName = null;
+    displayFavouriteContacts();
+    switch (this.numFavs) {
+      case 3:
+        tv = findViewById(R.id.textThirdFav);
+        spName = "button3";
+        this.numFavs -= 1;
+        break;
+      case 2:
+        tv = findViewById(R.id.textSecondFav);
+        spName = "button2";
+        this.numFavs -= 1;
+        break;
+      case 1:
+        tv = findViewById(R.id.textFirstFav);
+        spName = "button1";
+        this.numFavs -= 1;
+        break;
+      default:
+        break;
+    }
+    if (tv != null) {
+      SharedPreferences sp1 = getSharedPreferences(spName, MODE_PRIVATE);
+      SharedPreferences.Editor editor = sp1.edit();
+      editor.clear();
+      editor.apply();
+      tv.setText(R.string.add_fav_contact);
+    }
     displayFavouriteContacts();
   }
 
-  public void pressFav(View view) {
-    this.buttoncount += 1;
-    pickFromList();
+  public void pressPlus(View view) {
+    displayFavouriteContacts();
+    switch (this.numFavs) {
+      case 0:
+        this.selectedButton = 1;
+        this.numFavs += 1;
+        pickFromList();
+        break;
+      case 1:
+        this.selectedButton = 2;
+        this.numFavs += 1;
+        pickFromList();
+        break;
+      case 2:
+        this.selectedButton = 3;
+        this.numFavs += 1;
+        pickFromList();
+        break;
+      default:
+        break;
+    }
+    displayFavouriteContacts();
+  }
+
+  public void passExtraInfoToNewIntent(String sharedPrefName) {
+
+    Intent intent = new Intent(this, SecondPhoneScreen.class);
+    SharedPreferences sp = getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE);
+
+    String displayName = sp.getString("displayName", "");
+    String number = sp.getString("number", "");
+    String whatsappVoiceId = sp.getString("whatsappVoiceId", "");
+    String viberVoiceId = sp.getString("viberVoiceId", "");
+
+    intent.putExtra("number", number);
+    intent.putExtra("displayName", displayName);
+    intent.putExtra("whatsappVoiceId", whatsappVoiceId);
+    intent.putExtra("viberVoiceId", viberVoiceId);
+
+    startActivity(intent);
+
   }
 
   public void pickFromList() {
+
     Intent pickContactIntent = new Intent(Intent.ACTION_PICK);
-    pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+    pickContactIntent.setType(Phone.CONTENT_TYPE);
     startActivityForResult(pickContactIntent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
   }
 
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-
-    if (ContextCompat.checkSelfPermission(this,
-      Manifest.permission.READ_CONTACTS)
-      != PackageManager.PERMISSION_GRANTED) {
-
-      // No explanation needed; request the permission
-      ActivityCompat.requestPermissions(this,
-        new String[]{Manifest.permission.READ_CONTACTS},
-        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-
-      // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-      // app-defined int constant. The callback method gets the
-      // result of the request.
-
+  public void pressFav(View view) {
+    TextView tv;
+    String spName;
+    switch (view.getId()) {
+      case R.id.textFirstFav:
+        tv = findViewById(R.id.textFirstFav);
+        spName = "button1";
+        this.selectedButton = 1;
+        break;
+      case R.id.textSecondFav:
+        tv = findViewById(R.id.textSecondFav);
+        spName = "button2";
+        this.selectedButton = 2;
+        break;
+      case R.id.textThirdFav:
+        tv = findViewById(R.id.textThirdFav);
+        spName = "button3";
+        this.selectedButton = 3;
+        break;
+      default:
+        tv = findViewById(R.id.textPickContact);
+        spName = "button4";
+        this.selectedButton = 4;
+    }
+    if (tv.getText().toString().equals(getResources().getString(R.string.add_fav_contact))) {
+      pickFromList();
+    } else if (tv.getText().toString()
+      .equals(getResources().getString(R.string.pick_contact_from_list))) {
+      pickFromList();
     } else {
-      handleResult(requestCode, resultCode, data);
+      passExtraInfoToNewIntent(spName);
     }
   }
 
   private void handleResult(int requestCode, int resultCode, Intent data) {
-
-    if (this.buttoncount > 3) {
-      this.buttoncount -= 3;
-    }
 
     if (requestCode == MY_PERMISSIONS_REQUEST_READ_CONTACTS && resultCode == RESULT_OK) {
       // data is returned from startActivityFromResult()
@@ -117,38 +298,118 @@ public class FirstWizardScreen extends AppCompatActivity  {
       tmpInfo.viberVoiceId = this.table.getColumnWithMime("_id", mimeViberVoice);
       tmpInfo.skypeVoiceId = this.table.getColumnWithMime("_id", mimeSkypeVoice);
 
-      switch ((this.buttoncount)) {
+      switch (this.selectedButton) {
         case 1:
           putContactInfoInSharedPrefs("button1", tmpInfo);
-          displayFavouriteContacts();
           break;
         case 2:
           putContactInfoInSharedPrefs("button2", tmpInfo);
-          displayFavouriteContacts();
           break;
         case 3:
           putContactInfoInSharedPrefs("button3", tmpInfo);
-          displayFavouriteContacts();
+          break;
+        case 4:
+          putContactInfoInSharedPrefs("button4", tmpInfo);
+          passExtraInfoToNewIntent("button4");
           break;
       }
       displayFavouriteContacts();
     }
   }
 
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
 
+    this.pickContactIntent = data;
 
-  public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {
+    if (ContextCompat.checkSelfPermission(this,
+      Manifest.permission.READ_CONTACTS)
+      != PackageManager.PERMISSION_GRANTED) {
 
-    SharedPreferences sp = getSharedPreferences(sharedPrefName, MODE_PRIVATE);
-    SharedPreferences.Editor editor = sp.edit();
-    editor.putString("displayName", tmpInfo.displayName);
-    editor.putString("number", tmpInfo.number);
-    editor.putString("whatsappVoiceId", tmpInfo.whatsappVoiceId);
-    editor.putString("viberVoiceId", tmpInfo.viberVoiceId);
-    editor.putString("skypeVoiceId", tmpInfo.skypeVoiceId);
-    editor.apply();
+      // No explanation needed; request the permission
+      ActivityCompat.requestPermissions(this,
+        new String[]{Manifest.permission.READ_CONTACTS},
+        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+      // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+      // app-defined int constant. The callback method gets the
+      // result of the request.
+
+    } else {
+      handleResult(requestCode, resultCode, data);
+    }
   }
 
+
+  public void displayFavouriteContacts() {
+
+    int numFavs = 0;
+    SharedPreferences sp1 = getSharedPreferences("button1", Context.MODE_PRIVATE);
+    if (sp1.contains("displayName")) {
+      String s = "Call " + sp1.getString("displayName", "");
+      TextView tv1 = findViewById(R.id.textFirstFav);
+      tv1.setText(s);
+
+      ImageView iv1 = findViewById(R.id.iv1);
+      Bitmap photo = getContactPhoto(this, sp1.getString("number", ""));
+      if (photo == null) {
+        iv1.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv1.setImageBitmap(photo);
+      }
+      numFavs += 1;
+    }
+
+    SharedPreferences sp2 = getSharedPreferences("button2", Context.MODE_PRIVATE);
+    if (sp2.contains("displayName")) {
+      String s = "Call " + sp2.getString("displayName", "");
+      TextView tv2 = findViewById(R.id.textSecondFav);
+      tv2.setText(s);
+      ImageView iv2 = findViewById(R.id.iv2);
+      Bitmap photo = getContactPhoto(this, sp2.getString("number", ""));
+      if (photo == null) {
+        iv2.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv2.setImageBitmap(photo);
+      }
+      numFavs += 1;
+    }
+
+    SharedPreferences sp3 = getSharedPreferences("button3", Context.MODE_PRIVATE);
+    if (sp3.contains("displayName")) {
+      String s = "Call " + sp3.getString("displayName", "");
+      TextView tv3 = findViewById(R.id.textThirdFav);
+      tv3.setText(s);
+      ImageView iv3 = findViewById(R.id.iv3);
+      Bitmap photo = getContactPhoto(this, sp3.getString("number", ""));
+      if (photo == null) {
+        iv3.setImageDrawable(getDrawable(R.drawable.ic_user_));
+      } else {
+        iv3.setImageBitmap(photo);
+      }
+      numFavs += 1;
+    }
+
+    this.numFavs = numFavs;
+    setWhiteBlocks();
+  }
+
+  private String queryCursor(Uri contactUri) {
+
+    String answer = "False";
+    String[] projection = new String[]{Phone.NUMBER};
+
+    Cursor cursor = getContentResolver()
+      .query(contactUri, projection, null, null, null);
+
+    if (cursor != null && cursor.moveToFirst()) {
+      answer = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
+    }
+    assert cursor != null;
+    cursor.close();
+    return answer;
+  }
 
   private void getInfo(Uri contactUri) {
     ContactInfoTable table = new ContactInfoTable();
@@ -162,12 +423,11 @@ public class FirstWizardScreen extends AppCompatActivity  {
 
     assert cursor != null;
     while (cursor.moveToNext()) {
-      String phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+      String phoneNumber = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
       if (phoneNumber != null) {
-        phoneNumber = phoneNumber.replaceAll("\\s+","");
-        target = target.replaceAll("\\s+","");
+        phoneNumber = phoneNumber.replaceAll("\\s+", "");
+        target = target.replaceAll("\\s+", "");
       }
-
 
       if (phoneNumber != null && phoneNumber.contains(target.substring(2))) {
         String _id = cursor.getString(cursor.getColumnIndex(ContactsContract.Data._ID));
@@ -183,71 +443,33 @@ public class FirstWizardScreen extends AppCompatActivity  {
     this.table = table;
   }
 
-  private String queryCursor(Uri contactUri) {
+  @Override
+  public void onRequestPermissionsResult(int requestCode,
+    @NonNull String[] permissions, @NonNull int[] grantResults) {
+    switch (requestCode) {
+      case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+        // If request is cancelled, the result arrays are empty.
+        if (grantResults.length > 0
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED
+          && this.pickContactIntent != null) {
+          handleResult(MY_PERMISSIONS_REQUEST_READ_CONTACTS, RESULT_OK, this.pickContactIntent);
+        } else {
+          // permission denied, boo! Disable the
+          // functionality that depends on this permission.
+          Intent backToHome = new Intent(this, FirstPhoneScreen.class);
+          startActivity(backToHome);
+          finish();
+        }
+      }
 
-    String answer = "False";
-    String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER};
-
-    Cursor cursor = getContentResolver()
-      .query(contactUri, projection, null, null, null);
-
-    if (cursor != null && cursor.moveToFirst()) {
-      answer = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+      // other 'case' lines to check for other
+      // permissions this app might request.
     }
-    assert cursor != null;
-    cursor.close();
-    return answer;
   }
 
-  public void displayFavouriteContacts() {
-    TextView tv = findViewById(R.id.nextBtn);
-    SharedPreferences sp1 = getSharedPreferences("button1", Context.MODE_PRIVATE);
-    TextView tv1 = findViewById(R.id.textFirstFavWizard);
-    if (sp1.contains("displayName")) {
-      String s = sp1.getString("displayName", "");
-
-      tv1.setText(s);
-      tv.setText("Next");
-
-    }else {
-      tv1.setText(getResources().getString(R.string.add_fav_contact));
-    }
-
-    SharedPreferences sp2 = getSharedPreferences("button2", Context.MODE_PRIVATE);
-    TextView tv2 = findViewById(R.id.textSecondFavWizard);
-    if (sp2.contains("displayName")) {
-      String s = sp2.getString("displayName", "");
-      tv2.setText(s);
-      tv.setText("Next");
-
-    }else {
-      tv2.setText(getResources().getString(R.string.add_fav_contact));
-    }
-
-    SharedPreferences sp3 = getSharedPreferences("button3", Context.MODE_PRIVATE);
-    TextView tv3 = findViewById(R.id.textThirdFavWizard);
-    if (sp3.contains("displayName")) {
-      String s = sp3.getString("displayName", "");
-      tv3.setText(s);
-      tv.setText("Next");
-
-    }else {
-      tv3.setText(getResources().getString(R.string.add_fav_contact));
-    }
-
-  }
-
-
-  public void doNothing(View view) {
-  }
-
-  public void goToNextPage(View view) {
+  public void goToNextPage(View v) {
     Intent intent = new Intent(this, SecondWizardScreen.class);
     startActivity(intent);
-  }
-
-  @Override
-  public void onBackPressed() {
   }
 }
 

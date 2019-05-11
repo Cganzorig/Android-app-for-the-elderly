@@ -1,188 +1,346 @@
 package com.launcher.ava.wizardSetUp;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.launcher.ava.elderlylauncher.FirstPhoneScreen;
 import com.launcher.ava.elderlylauncher.MainActivity;
 import com.launcher.ava.elderlylauncher.R;
-import com.launcher.ava.utilities.ContactInfo;
-import com.launcher.ava.utilities.ContactInfoTable;
-import com.launcher.ava.utilities.ContactTableRow;
-import com.launcher.ava.utilities.Website;
+import com.launcher.ava.elderlylauncher.SecondInternetScreen;
+import com.launcher.ava.utilities.WebsiteDatabase;
 
 public class SecondWizardScreen extends AppCompatActivity {
 
-  static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;  // The request code
+  private int numWebs;
+  private int selectedButton;
 
   ConstraintLayout addAndRemove;
   ConstraintLayout whiteBlock;
-  Button nextBtn;
-  int websitecount;
-
+  Button plusBtn;
+  Button minusBtn;
+  EditText et;
+  Button save;
+  Button browser;
+  TextView plusMinusExplain;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-
-    this.addAndRemove = findViewById(R.id.cLayoutSecondWizardBtn);
-    this.whiteBlock = findViewById(R.id.cLayoutSecondWizardWhiteBlock);
-    this.nextBtn= findViewById(R.id.secondNextBtn);
-    this.websitecount = 0;
-
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_second_wizard_screen);
+
+    this.addAndRemove = findViewById(R.id.cLayoutInternetBtn);
+    this.whiteBlock = findViewById(R.id.cLayoutInternetWhiteBlock);
+    this.plusBtn = findViewById(R.id.internet_add_button);
+    this.minusBtn = findViewById(R.id.internet_remove_button);
+    this.et = findViewById(R.id.editText);
+    this.save = findViewById(R.id.saveButton);
+    this.browser = findViewById(R.id.buttonBrowser);
+    this.plusMinusExplain = findViewById(R.id.textInternetExplainPlusMinus);
+
     displayFavouriteWebsites();
   }
 
-  @Override
-  protected void onResume() {
-    super.onResume();
-    displayFavouriteWebsites();
+  public void pickFromWebsiteList(String spName) {
+    Intent intent = new Intent(this, SecondInternetScreen.class);
+    intent.putExtra("selection", spName);
+    intent.putExtra("calledByWizard", "YES");
+    startActivity(intent);
   }
 
-  public void pressFav(View view) {
-    this.websitecount += 1;
-    pickFromList();
-  }
+  public void setWhiteBlocks() {
+    ConstraintLayout.LayoutParams paramsAddAndRemove = (ConstraintLayout.LayoutParams) this.addAndRemove.getLayoutParams();
+    ConstraintLayout.LayoutParams paramsWhiteBlock = (ConstraintLayout.LayoutParams) this.whiteBlock.getLayoutParams();
+    TextView tv = findViewById(R.id.textInternetExplainPlusMinus);
+    ConstraintLayout.LayoutParams paramsPlus = (ConstraintLayout.LayoutParams) this.plusBtn.getLayoutParams();
+    ConstraintLayout.LayoutParams paramsMinus = (ConstraintLayout.LayoutParams) this.minusBtn.getLayoutParams();
 
-  public void pickFromList() {
-    Intent intent = new Intent(this, WebsiteDrawer.class);
-    startActivityForResult(intent, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-  }
 
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
+    switch (this.numWebs) {
+      case 0:
+        paramsAddAndRemove.topToTop = R.id.firstWebScreenguide1;
+        paramsAddAndRemove.bottomToTop = R.id.firstInternetScreenguide2;
+        paramsWhiteBlock.topToTop = R.id.firstInternetScreenguide2;
+        paramsWhiteBlock.bottomToTop = R.id.firstInternetScreenguide6;
 
-    if (ContextCompat.checkSelfPermission(this,
-      Manifest.permission.READ_CONTACTS)
-      != PackageManager.PERMISSION_GRANTED) {
+        minusBtn.setVisibility(View.INVISIBLE);
+        plusBtn.setVisibility(View.VISIBLE);
+        tv.setText(R.string.add_fav_website);
 
-      // No explanation needed; request the permission
-      ActivityCompat.requestPermissions(this,
-        new String[]{Manifest.permission.READ_CONTACTS},
-        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+        paramsPlus.startToStart = R.id.firstInternetScreenVertical5;
+        paramsPlus.endToStart = R.id.firstInternetScreenVertical6;
+        break;
+      case 1:
+        paramsAddAndRemove.topToTop = R.id.firstInternetScreenguide2;
+        paramsAddAndRemove.bottomToTop = R.id.firstInternetScreenguide3;
+        paramsWhiteBlock.topToTop = R.id.firstInternetScreenguide3;
+        paramsWhiteBlock.bottomToTop = R.id.firstInternetScreenguide6;
 
-      // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-      // app-defined int constant. The callback method gets the
-      // result of the request.
+        minusBtn.setVisibility(View.VISIBLE);
+        plusBtn.setVisibility(View.VISIBLE);
+        tv.setText(R.string.add_remove_fav_website);
 
-    } else {
-      handleResult(requestCode, resultCode, data);
+        paramsPlus.startToStart = R.id.firstInternetScreenVertical1;
+        paramsPlus.endToStart = R.id.firstInternetScreenVertical2;
+        paramsMinus.startToStart = R.id.firstInternetScreenVertical3;
+        paramsMinus.endToStart = R.id.firstInternetScreenVertical4;
+        break;
+      case 2:
+        paramsAddAndRemove.topToTop = R.id.firstInternetScreenguide3;
+        paramsAddAndRemove.bottomToTop = R.id.firstInternetScreenguide4;
+        paramsWhiteBlock.topToTop = R.id.firstInternetScreenguide4;
+        paramsWhiteBlock.bottomToTop = R.id.firstInternetScreenguide6;
+
+        minusBtn.setVisibility(View.VISIBLE);
+        plusBtn.setVisibility(View.VISIBLE);
+        tv.setText(R.string.add_remove_fav_website);
+
+        paramsPlus.startToStart = R.id.firstInternetScreenVertical1;
+        paramsPlus.endToStart = R.id.firstInternetScreenVertical2;
+        paramsMinus.startToStart = R.id.firstInternetScreenVertical3;
+        paramsMinus.endToStart = R.id.firstInternetScreenVertical4;
+        break;
+      case 3:
+        paramsAddAndRemove.topToTop = R.id.firstInternetScreenguide4;
+        paramsAddAndRemove.bottomToTop = R.id.firstInternetScreenguide5;
+        paramsWhiteBlock.topToTop = R.id.firstInternetScreenguide5;
+        paramsWhiteBlock.bottomToTop = R.id.firstInternetScreenguide6;
+
+        minusBtn.setVisibility(View.VISIBLE);
+        plusBtn.setVisibility(View.INVISIBLE);
+        tv.setText(R.string.remove_fav_website);
+
+        paramsMinus.startToStart = R.id.firstInternetScreenVertical5;
+        paramsMinus.endToStart = R.id.firstInternetScreenVertical6;
+        break;
+
     }
+    addAndRemove.setLayoutParams(paramsAddAndRemove);
+    whiteBlock.setLayoutParams(paramsWhiteBlock);
+    plusBtn.setLayoutParams(paramsPlus);
+    minusBtn.setLayoutParams(paramsMinus);
   }
-
-  private void handleResult(int requestCode, int resultCode, Intent data) {
-
-    if (this.websitecount > 3) {
-      this.websitecount -= 3;
-    }
-
-    if (requestCode == MY_PERMISSIONS_REQUEST_READ_CONTACTS && resultCode == RESULT_OK) {
-      // temp housing for data of selected contact
-      Website tmpwebsite = new Website();
-
-      // data is returned from startActivityFromResult()
-      Bundle extras = getIntent().getExtras();
-
-      if (extras != null) {
-        tmpwebsite.name = extras.getString("name");
-        tmpwebsite.url = extras.getString("url");
-        tmpwebsite.logoId = extras.getInt("logo");
-      }
-
-      switch ((this.websitecount)) {
-        case 1:
-          putWebInfoInSharedPrefs("buttonWeb1", tmpwebsite);
-          break;
-        case 2:
-          putWebInfoInSharedPrefs("buttonWeb2", tmpwebsite);
-          break;
-        case 3:
-          putWebInfoInSharedPrefs("buttonWeb3", tmpwebsite);
-          break;
-      }
-      displayFavouriteWebsites();
-    }
-  }
-
-
-
-  public void putWebInfoInSharedPrefs(String sharedPrefName, Website website) {
-    SharedPreferences sp = getSharedPreferences(sharedPrefName, MODE_PRIVATE);
-    SharedPreferences.Editor editor = sp.edit();
-    editor.putString("webName", website.name);
-    editor.putString("webUrl", website.url);
-    editor.putString("webID", website.logoId.toString());
-    editor.apply();
-  }
-
-
-  public void displayFavouriteWebsites() {
-    TextView tv = findViewById(R.id.secondNextBtn);
-    SharedPreferences sp1 = getSharedPreferences("buttonWeb1", Context.MODE_PRIVATE);
-    TextView tv1 = findViewById(R.id.textFirstFavSecondWizard);
-    if (sp1.contains("webName")) {
-      String s = sp1.getString("webName", "");
-
-      tv1.setText(s);
-      tv.setText("Next");
-
-    }else {
-      tv1.setText(getResources().getString(R.string.add_fav_website));
-    }
-
-    SharedPreferences sp2 = getSharedPreferences("buttonWeb2", Context.MODE_PRIVATE);
-    TextView tv2 = findViewById(R.id.textSecondFavSecondWizard);
-    if (sp2.contains("webName")) {
-      String s = sp2.getString("webName", "");
-      tv2.setText(s);
-      tv.setText("Next");
-
-    }else {
-      tv2.setText(getResources().getString(R.string.add_fav_website));
-    }
-
-    SharedPreferences sp3 = getSharedPreferences("buttonWeb3", Context.MODE_PRIVATE);
-    TextView tv3 = findViewById(R.id.textThirdFavSecondWizard);
-    if (sp3.contains("webName")) {
-      String s = sp3.getString("webName", "");
-      tv3.setText(s);
-      tv.setText("Next");
-
-    }else {
-      tv3.setText(getResources().getString(R.string.add_fav_website));
-    }
-
-  }
-
 
   public void doNothing(View view) {
   }
 
-  public void goToNextPage(View view) {
-    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
-    if (launchesOnlyOnce.isFirstTime()) {
-      launchesOnlyOnce.setFirstTime(false);
+  public void putWebInfoInSharedPrefs(String sharedPrefName, String webName) {
+    SharedPreferences sp = getSharedPreferences(sharedPrefName, MODE_PRIVATE);
+    SharedPreferences.Editor editor = sp.edit();
+    editor.putString("webName", webName);
+    editor.apply();
+  }
+
+  public void pressMinus(View view) {
+    TextView tv = null;
+    String spName = null;
+    displayFavouriteWebsites();
+    switch (this.numWebs) {
+      case 3:
+        tv = findViewById(R.id.buttonInternetThirdFav);
+        spName = "buttonWeb3";
+        this.numWebs -= 1;
+        break;
+      case 2:
+        tv = findViewById(R.id.buttonInternetSecondFav);
+        spName = "buttonWeb2";
+        this.numWebs -= 1;
+        break;
+      case 1:
+        tv = findViewById(R.id.buttonInternetFirstFav);
+        spName = "buttonWeb1";
+        this.numWebs -= 1;
+        break;
     }
+    if (tv != null) {
+      SharedPreferences sp1 = getSharedPreferences(spName, MODE_PRIVATE);
+      SharedPreferences.Editor editor = sp1.edit();
+      editor.clear();
+      editor.apply();
+      tv.setText(R.string.add_fav_website);
+    }
+    displayFavouriteWebsites();
+  }
+
+  public void pressPlus(View view) {
+    displayFavouriteWebsites();
+    switch (this.numWebs) {
+      case 0:
+        this.selectedButton = 1;
+        this.numWebs += 1;
+        pickFromWebsiteList("buttonWeb1");
+        this.finish();
+        //pickWeb();
+        break;
+      case 1:
+        this.selectedButton = 2;
+        this.numWebs += 1;
+        pickFromWebsiteList("buttonWeb2");
+        this.finish();
+        //pickWeb();
+        break;
+      case 2:
+        this.selectedButton = 3;
+        this.numWebs += 1;
+        pickFromWebsiteList("buttonWeb3");
+        this.finish();
+        //pickWeb();
+        break;
+    }
+  }
+
+  public void saveButton(View view) {
+    String name = et.getText().toString();
+
+    switch (this.selectedButton) {
+      case 1:
+        putWebInfoInSharedPrefs("buttonWeb1", name);
+        break;
+      case 2:
+        putWebInfoInSharedPrefs("buttonWeb2", name);
+        break;
+      case 3:
+        putWebInfoInSharedPrefs("buttonWeb3", name);
+        break;
+    }
+
+    //enable plus and minus buttons
+    this.plusBtn.setEnabled(true);
+    this.minusBtn.setEnabled(true);
+
+    //make plus and minus buttons visible
+    this.plusBtn.setVisibility(View.VISIBLE);
+    this.minusBtn.setVisibility(View.VISIBLE);
+    this.plusMinusExplain.setVisibility(View.VISIBLE);
+
+    this.save.setVisibility(View.INVISIBLE);
+    this.et.setVisibility(View.INVISIBLE);
+    et.onEditorAction(EditorInfo.IME_ACTION_DONE);
+    et.setText(null);
+    ConstraintLayout.LayoutParams paramsEt = (ConstraintLayout.LayoutParams) this.et.getLayoutParams();
+    ConstraintLayout.LayoutParams paramsSave = (ConstraintLayout.LayoutParams) this.save.getLayoutParams();
+    paramsEt.endToEnd = R.id.startTextBox;
+    paramsSave.endToEnd = R.id.startTextBox;
+    this.et.setLayoutParams(paramsEt);
+    this.save.setLayoutParams(paramsSave);
+    displayFavouriteWebsites();
+  }
+
+  public void pressFav(View view) {
+    TextView tv = null;
+    String spName = "";
+    switch (view.getId()) {
+      case R.id.buttonInternetFirstFav:
+        tv = findViewById(R.id.buttonInternetFirstFav);
+        spName = "buttonWeb1";
+        this.selectedButton = 1;
+        break;
+      case R.id. buttonInternetSecondFav:
+        tv = findViewById(R.id.buttonInternetSecondFav);
+        spName = "buttonWeb2";
+        this.selectedButton = 2;
+        break;
+      case R.id.buttonInternetThirdFav:
+        tv = findViewById(R.id.buttonInternetThirdFav);
+        spName = "buttonWeb3";
+        this.selectedButton = 3;
+        break;
+    }
+    visitWebsite(view, spName);
+  }
+
+  public void visitWebsite(View view, String name) {
+    SharedPreferences sp = getSharedPreferences(name, MODE_PRIVATE);
+    String webName = sp.getString("webName","");
+
+    Uri webAddress = Uri.parse(WebsiteDatabase.getUrl(webName));
+
+    Intent intent = new Intent(Intent.ACTION_VIEW, webAddress);
+
+    if(intent.resolveActivity(getPackageManager()) != null) {
+      startActivity(intent);
+    }
+  }
+
+  public void openBrowser(View view) {
+
+    String webName = "https://";
+    Uri webAddress = Uri.parse(webName);
+
+    Intent intent = new Intent(Intent.ACTION_VIEW, webAddress);
+
+    if(intent.resolveActivity(getPackageManager()) != null) {
+      startActivity(intent);
+    }
+  }
+
+  public void displayFavouriteWebsites() {
+    int numFavs = 0;
+    SharedPreferences sp1 = getSharedPreferences("buttonWeb1", Context.MODE_PRIVATE);
+    if (sp1.contains("webName")) {
+
+      String s1 = sp1.getString("webName", "");
+      String s2 = sp1.getString("webLogo", "");
+
+      TextView tv1 = findViewById(R.id.buttonInternetFirstFav);
+      tv1.setText(s1);
+
+      ImageView iv1 = findViewById(R.id.iv1);
+      iv1.setImageResource(Integer.valueOf(s2));
+
+      numFavs += 1;
+    }
+
+    SharedPreferences sp2 = getSharedPreferences("buttonWeb2", Context.MODE_PRIVATE);
+    if (sp2.contains("webName")) {
+
+      String s1 = sp2.getString("webName", "");
+      String s2 = sp2.getString("webLogo", "");
+
+      TextView tv2 = findViewById(R.id.buttonInternetSecondFav);
+      tv2.setText(s1);
+
+      ImageView iv2 = findViewById(R.id.iv2);
+      iv2.setImageResource(Integer.valueOf(s2));
+
+
+      numFavs += 1;
+    }
+
+    SharedPreferences sp3 = getSharedPreferences("buttonWeb3", Context.MODE_PRIVATE);
+    if (sp3.contains("webName")) {
+
+      String s1 = sp3.getString("webName", "");
+      String s2 = sp3.getString("webLogo", "");
+
+      TextView tv3 = findViewById(R.id.buttonInternetThirdFav);
+      tv3.setText(s1);
+
+      ImageView iv3 = findViewById(R.id.iv3);
+      iv3.setImageResource(Integer.valueOf(s2));
+
+
+      numFavs += 1;
+    }
+
+    this.numWebs = numFavs;
+    setWhiteBlocks();
+  }
+
+  public void goToNextPage(View v) {
+    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
+    launchesOnlyOnce.setFirstTime(false);
     Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);
   }
-
 
 }
 

@@ -2,12 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.launcher.ava.elderlylauncher">
 
-  <uses-permission android:name="android.permission.CALL_PHONE" />
-  <uses-permission android:name="android.permission.READ_CONTACTS" />
-  <uses-permission android:name="android.permission.VIBRATE" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+  <uses-permission android:name="android.permission.CALL_PHONE"/>
+  <uses-permission android:name="android.permission.READ_CONTACTS"/>
+  <uses-permission android:name="android.permission.VIBRATE"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
   <application
     android:allowBackup="true"
@@ -16,14 +16,15 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name="com.launcher.ava.wizardSetUp.ZerothWizardScreen">
+    </activity>
     <activity android:name=".FirstInternetScreen"/>
     <activity android:name=".SecondInternetScreen"/>
-
     <activity android:name=".SecondMessagesScreen"/>
     <activity android:name=".FirstMessagesScreen"/>
     <activity
-      android:name=".FirstScreenCommonTools"
       android:launchMode="singleTask"
+      android:name=".FirstScreenCommonTools"
       android:screenOrientation="portrait"/>
     <activity
       android:name=".SecondPhoneScreen"
@@ -31,56 +32,56 @@
     <activity
       android:name=".FirstPhoneScreen"
       android:screenOrientation="portrait"/>
-
     <activity
+      android:launchMode="singleTop"
       android:name=".FirstAppScreen"
-      android:screenOrientation="portrait"
-      android:launchMode="singleTop">
-
+      android:screenOrientation="portrait">
       <meta-data
         android:name="android.app.default_searchable"
-        android:value="com.launcher.ava.utilities.AppSearchActivity" />
+        android:value="com.launcher.ava.utilities.AppSearchActivity"/>
     </activity>
     <activity
-      android:name=".MainActivity"
       android:clearTaskOnLaunch="true"
       android:launchMode="singleTask"
+      android:name=".MainActivity"
       android:screenOrientation="portrait">
-
-
       <intent-filter>
+
         <!-- Map launcher to home button (two lines below) -->
-        <category android:name="android.intent.category.HOME" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.HOME"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+
+        <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
     <activity
       android:name="com.launcher.ava.utilities.RecyclerList"
-      android:screenOrientation="portrait" />
+      android:screenOrientation="portrait"/>
     <activity
       android:name=".AppDrawer"
-      android:screenOrientation="portrait" /> <!-- <activity android:name="com.launcher.ava.helperApp.MainAppActivity"></activity> -->
-
+      android:screenOrientation="portrait"/> <!-- <activity android:name="com.launcher.ava.helperApp.MainAppActivity"></activity> -->
     <activity
       android:name="com.launcher.ava.utilities.AppSearchActivity"
       android:noHistory="true">
       <intent-filter>
-        <action android:name="android.intent.action.SEARCH" />
+        <action android:name="android.intent.action.SEARCH"/>
       </intent-filter>
+
       <meta-data
         android:name="android.app.searchable"
-        android:resource="@xml/searchable" />
+        android:resource="@xml/searchable"/>
     </activity>
 
     <provider
-      android:name="com.launcher.ava.utilities.SearchContentProvider"
-      android:authorities="com.launcher.ava.utilities.search"/>
+      android:authorities="com.launcher.ava.utilities.search"
+      android:name="com.launcher.ava.utilities.SearchContentProvider"/>
 
-    <activity android:name="com.launcher.ava.wizardSetUp.FirstWizardScreen" />
-    <activity android:name="com.launcher.ava.wizardSetUp.SecondWizardScreen" />
+    <activity android:name="com.launcher.ava.wizardSetUp.FirstWizardScreen"/>
+    <activity android:name="com.launcher.ava.wizardSetUp.SecondWizardScreen"/>
   </application>
 
 </manifest>

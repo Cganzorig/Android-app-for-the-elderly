@@ -48,6 +48,7 @@ public class FirstInternetScreen extends AppCompatActivity {
   public void pickFromWebsiteList(String spName) {
     Intent intent = new Intent(this, SecondInternetScreen.class);
     intent.putExtra("selection", spName);
+    intent.putExtra("calledByWizard", "NO");
     startActivity(intent);
   }
 

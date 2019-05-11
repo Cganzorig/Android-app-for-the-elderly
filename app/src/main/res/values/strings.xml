@@ -26,11 +26,11 @@
   <string name="minus_sign">\u2013</string>
   <string name="default_quick_call">Add favourite contact</string>
   <string name="ellipsis">...</string>
-  <string name="add_fav_contact">Add favourite contact</string>
+  <string name="add_fav_contact">Pick a favourite from contacts</string>
 
-  <string name="add_fav_website">Add favourite website</string>
-  <string name="add_remove_fav_website">Add or remove favourite website</string>
-  <string name="remove_fav_website">Remove favourite website</string>
+  <string name="add_fav_website">Pick a favourite website</string>
+  <string name="add_remove_fav_website">Pick/remove favourite website</string>
+  <string name="remove_fav_website">Remove a website from favourites</string>
   <string name="save_button">Save</string>
 
   <string name="turn_torch_on">TURN TORCH ON</string>
@@ -59,4 +59,5 @@
   <string name="tap_to_search">TAP TO SEARCH</string>
   <string name="add_website_to_favourites">ADD WEBSITE TO FAVOURITES</string>
   <string name="open_browser">Open browser</string>
+  <string name="pick_three_favourite_contacts">PICK THREE FAVOURITE CONTACTS</string>
 </resources>

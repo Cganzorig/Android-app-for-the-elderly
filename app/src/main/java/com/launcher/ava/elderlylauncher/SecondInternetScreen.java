@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.launcher.ava.utilities.OnItemClick;
 import com.launcher.ava.utilities.WebsiteAdapter;
 import com.launcher.ava.utilities.WebsiteDatabase;
+import com.launcher.ava.wizardSetUp.SecondWizardScreen;
 
 public class SecondInternetScreen extends AppCompatActivity implements OnItemClick {
 
@@ -16,6 +17,7 @@ public class SecondInternetScreen extends AppCompatActivity implements OnItemCli
   private RecyclerView.Adapter mAdapter;
   private RecyclerView.LayoutManager mLayoutManager;
   public String spName;
+  public String calledByWizard;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class SecondInternetScreen extends AppCompatActivity implements OnItemCli
     setContentView(R.layout.activity_second_internet_screen);
 
     spName = getIntent().getStringExtra("selection");
+    calledByWizard = getIntent().getStringExtra("calledByWizard");
 
     mRecyclerView = findViewById(R.id.website_recycler_view);
     mRecyclerView.setHasFixedSize(true);
@@ -44,8 +47,13 @@ public class SecondInternetScreen extends AppCompatActivity implements OnItemCli
     editor.putString("webName", itemsNames[0]);
     editor.putString("webLogo", itemsNames[1]);
     editor.apply();
-    Intent intent = new Intent(this, FirstInternetScreen.class);
-    startActivity(intent);
+    if(calledByWizard.equals("NO")) {
+      Intent intent = new Intent(this, FirstInternetScreen.class);
+      startActivity(intent);
+    } else {
+      Intent intent = new Intent(this, SecondWizardScreen.class);
+      startActivity(intent);
+    }
     this.finish();
   }
 }
