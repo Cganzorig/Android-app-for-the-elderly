@@ -347,6 +347,7 @@
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide6">
 
     <Button
+      style="@style/AppTheme.RoundedCornerMaterialButton"
       android:id="@+id/textPickContact"
       android:textStyle="bold"
       android:layout_width="0dp"
@@ -365,14 +366,16 @@
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
+
     <ImageButton
       android:id="@+id/dialup"
+      style="@style/AppTheme.RoundedCornerMaterialButton"
       android:layout_width="0dp"
       android:layout_height="0dp"
-      android:layout_marginTop="30dp"
-      android:layout_marginBottom="30dp"
       android:layout_marginStart="25dp"
+      android:layout_marginTop="30dp"
       android:layout_marginEnd="25dp"
+      android:layout_marginBottom="30dp"
       android:onClick="openDialer"
       android:scaleType="fitCenter"
       android:src="@drawable/ic_dial"
@@ -381,7 +384,7 @@
       app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toEndOf="@+id/textPickContact"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.0"/>
+      app:layout_constraintVertical_bias="0.0" />
 
   </android.support.constraint.ConstraintLayout>
 

@@ -347,6 +347,7 @@
     app:layout_constraintTop_toTopOf="@+id/firstMessagesScreenguide6">
 
     <Button
+      style="@style/AppTheme.RoundedCornerMaterialButton"
       android:id="@+id/buttonMessagePickContact"
       android:textStyle="bold"
       android:layout_width="0dp"

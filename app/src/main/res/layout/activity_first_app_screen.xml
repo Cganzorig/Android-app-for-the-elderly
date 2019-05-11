@@ -224,6 +224,8 @@
       app:layout_constraintTop_toBottomOf="@+id/app4" />
 
     <Button
+      android:textColor="@color/blackColor"
+      style="@style/AppTheme.RoundedCornerMaterialButton"
       android:id="@+id/installButton"
       android:layout_width="146dp"
       android:layout_height="wrap_content"
@@ -240,6 +242,8 @@
       app:layout_constraintTop_toBottomOf="@+id/textApp3" />
 
     <Button
+      android:textColor="@color/blackColor"
+      style="@style/AppTheme.RoundedCornerMaterialButton"
       android:id="@+id/uninstallButton"
       android:layout_width="146dp"
       android:layout_height="wrap_content"
@@ -256,6 +260,8 @@
       app:layout_constraintTop_toBottomOf="@+id/textApp4" />
 
     <Button
+      android:textColor="@color/blackColor"
+      style="@style/AppTheme.RoundedCornerMaterialButton"
       android:id="@+id/app_drawer_button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
