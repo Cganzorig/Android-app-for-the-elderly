@@ -11,8 +11,7 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
-import com.launcher.ava.frequentlyUsedAppsScreen.FrequentlyUsedAppsActivity;
-import com.launcher.ava.helperApp.MainAppActivity;
+
 import com.launcher.ava.utilities.AppFrequencyList;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,15 +27,14 @@ public class MainActivityTest {
 
   // helper app
   Instrumentation.ActivityMonitor monitorHelperApp = getInstrumentation()
-      .addMonitor(MainAppActivity.class.getName(), null, false);
+      .addMonitor(MainActivity.class.getName(), null, false);
 
   // drawer
   Instrumentation.ActivityMonitor monitorAppDrawer = getInstrumentation()
       .addMonitor(AppDrawer.class.getName(), null, false);
 
   // frequently used apps
-  Instrumentation.ActivityMonitor monitorFrequentApps = getInstrumentation()
-      .addMonitor(FrequentlyUsedAppsActivity.class.getName(), null, false);
+
 
   @Before
   public void createMainActivity() {

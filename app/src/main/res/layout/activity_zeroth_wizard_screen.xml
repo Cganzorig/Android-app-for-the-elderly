@@ -87,7 +87,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
-      app:srcCompat="@drawable/ic_rocket"/>
+      app:srcCompat="@drawable/ic_launcher"/>
     <TextView
       android:id="@+id/textPhone"
       android:textStyle="bold"
@@ -162,7 +162,6 @@
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/whiteColor"
-    android:onClick="doNothing"
     app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide6"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

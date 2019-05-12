@@ -4,15 +4,12 @@
   <color name="phoneScreenColor">#0abca0</color>
   <color name="messagesColor">#DE735D</color>
   <color name="internetScreenColor">#7facd7</color>
-  <color name="toolScreenColor">#eaf2e9</color>
   <color name="launchAppColor">#bf9c72</color>
 
 
   <color name="whiteColor">#FFFFFF</color>
   <color name="dimWhiteColor">#DDDDDD</color>
   <color name="colorPrimaryDark">#00574B</color>
-  <color name="toolsPink">#D81B60</color>
-  <color name="toolsPink2">#FFA1C2</color>
   <color name="colorAccent">#D81B60</color>
   <color name="blackColor">#000000</color>
   <color name="lightGray">#E4E2E2</color>

@@ -19,8 +19,6 @@ import org.junit.runner.RunWith;
 public class FrequentlyUsedAppsActivityTest {
 
   @Rule
-  public IntentsTestRule<FrequentlyUsedAppsActivity> intentsRule =
-      new IntentsTestRule<>(FrequentlyUsedAppsActivity.class);
 
   private String PACK_NAME_1;
   private String PACK_NAME_2;

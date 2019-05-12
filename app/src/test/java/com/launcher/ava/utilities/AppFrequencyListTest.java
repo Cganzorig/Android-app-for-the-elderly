@@ -16,27 +16,11 @@ public class AppFrequencyListTest {
   }
 
   @Test
-  public void populate() {
-  }
-
-  @Test
-  public void sortFrequencyMap() {
-  }
-
-  @Test
-  public void incrementFrequency() {
-  }
-
-  @Test
   public void testAddNewApp() {
     int result = appFrequencyList.getSize();
     appFrequencyList.addNewApp(mockedAppInfo);
     int result1 = appFrequencyList.getSize();
     Assert.assertNotEquals(result,result1);
-  }
-
-  @Test
-  public void getHit() {
   }
 
   @Test
@@ -58,4 +42,5 @@ public class AppFrequencyListTest {
     Assert.assertEquals(result1, result2);
 
   }
+
 }

@@ -20,8 +20,7 @@ public class AppFrequencyList {
   private static AppFrequencyList instance = new AppFrequencyList();
   private static boolean populateInvokedForFirstTime = true;
 
-  private AppFrequencyList() {
-  }
+  private AppFrequencyList() { }
 
   public static AppFrequencyList getInstance() {
     return instance;
