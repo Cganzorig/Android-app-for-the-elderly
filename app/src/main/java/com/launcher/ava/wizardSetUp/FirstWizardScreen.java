@@ -82,8 +82,8 @@ public class FirstWizardScreen extends AppCompatActivity {
         plusBtn.setVisibility(View.VISIBLE);
         tv.setText(R.string.add_fav);
 
-        paramsPlus.startToStart = R.id.firstPhoneScreenVertical5;
-        paramsPlus.endToStart = R.id.firstPhoneScreenVertical6;
+        paramsPlus.startToStart = R.id.firstPhoneScreenVertical6;
+        paramsPlus.endToStart = R.id.firstPhoneScreenVertical5;
         break;
       case 1:
         paramsAddAndRemove.topToTop = R.id.firstPhoneScreenguide2;
@@ -125,8 +125,8 @@ public class FirstWizardScreen extends AppCompatActivity {
         plusBtn.setVisibility(View.INVISIBLE);
         tv.setText(R.string.remove_fav);
 
-        paramsMinus.startToStart = R.id.firstPhoneScreenVertical5;
-        paramsMinus.endToStart = R.id.firstPhoneScreenVertical6;
+        paramsMinus.startToStart = R.id.firstPhoneScreenVertical6;
+        paramsMinus.endToStart = R.id.firstPhoneScreenVertical5;
         break;
 
     }

@@ -100,7 +100,7 @@
       android:autoSizeTextType="uniform"
       android:autoSizeMaxTextSize="26sp"
       android:gravity="center"
-      android:text="@string/main_internet"
+      android:text="PICK THREE FAVOURITE WEBSITES"
       android:textColor="@android:color/black"
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"

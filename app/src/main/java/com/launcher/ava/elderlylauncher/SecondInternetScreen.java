@@ -3,9 +3,11 @@ package com.launcher.ava.elderlylauncher;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 import com.launcher.ava.utilities.OnItemClick;
 import com.launcher.ava.utilities.WebsiteAdapter;
 import com.launcher.ava.utilities.WebsiteDatabase;
@@ -26,6 +28,20 @@ public class SecondInternetScreen extends AppCompatActivity implements OnItemCli
 
     spName = getIntent().getStringExtra("selection");
     calledByWizard = getIntent().getStringExtra("calledByWizard");
+
+    if(calledByWizard.equals("YES")) {
+      ImageView iv = findViewById(R.id.imageApp);
+      iv.setImageResource(R.drawable.ic_launcher);
+
+      ConstraintLayout cl = findViewById(R.id.cLayoutApps);
+      cl.setBackgroundColor(getColor(R.color.WizardBlue));
+    } else {
+      ImageView iv = findViewById(R.id.imageApp);
+      iv.setImageResource(R.drawable.black_ic_world_wide_web);
+
+      ConstraintLayout cl = findViewById(R.id.cLayoutApps);
+      cl.setBackgroundColor(getColor(R.color.internetIconColor));
+    }
 
     mRecyclerView = findViewById(R.id.website_recycler_view);
     mRecyclerView.setHasFixedSize(true);
