@@ -109,7 +109,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
           ActivityCompat.requestPermissions(this,
             new String[]{Manifest.permission.CALL_PHONE},
-            MY_PERMISSIONS_REQUEST_WHATSAPP);
+            MY_PERMISSIONS_REQUEST_CALL_PHONE);
 
         } else {
           makeCall();
