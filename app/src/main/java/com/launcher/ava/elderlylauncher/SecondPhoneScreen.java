@@ -21,6 +21,8 @@ public class SecondPhoneScreen extends AppCompatActivity {
   private ContactInfo contactInfo = new ContactInfo();
 
   private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
+  private static final int MY_PERMISSIONS_REQUEST_WHATSAPP = 2;
+
   TextView title;
   TextView callOption;
   TextView whatsappVoiceOption = null;
@@ -107,13 +109,13 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
           ActivityCompat.requestPermissions(this,
             new String[]{Manifest.permission.CALL_PHONE},
-            MY_PERMISSIONS_REQUEST_CALL_PHONE);
+            MY_PERMISSIONS_REQUEST_WHATSAPP);
 
         } else {
           makeCall();
         }
         break;
-      case R.id.textSecondCall://23594
+      case R.id.textSecondCall:
         if (this.secondOptionFlag.equals("WHATSAPP")) {
 
           if (ContextCompat.checkSelfPermission(this,
@@ -122,20 +124,10 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
             ActivityCompat.requestPermissions(this,
               new String[]{Manifest.permission.CALL_PHONE},
-              MY_PERMISSIONS_REQUEST_CALL_PHONE);
+              MY_PERMISSIONS_REQUEST_WHATSAPP);
 
           } else {
-            String mimeString = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
-            String data = "content://com.android.contacts/data/" + this.contactInfo.whatsappVoiceId;
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.parse(data), mimeString);
-            intent.setPackage("com.whatsapp");
-            try {
-              startActivity(intent);
-            } catch (Exception e) {
-              //
-            }
+            callWhatsapp();
           }
         }
 
@@ -154,6 +146,20 @@ public class SecondPhoneScreen extends AppCompatActivity {
         intent.setData(uri);
         startActivity(intent);
         break;
+    }
+  }
+
+  private void callWhatsapp() {
+    String mimeString = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
+    String data = "content://com.android.contacts/data/" + this.contactInfo.whatsappVoiceId;
+    Intent intent = new Intent();
+    intent.setAction(Intent.ACTION_VIEW);
+    intent.setDataAndType(Uri.parse(data), mimeString);
+    intent.setPackage("com.whatsapp");
+    try {
+      startActivity(intent);
+    } catch (Exception e) {
+      //
     }
   }
 
@@ -183,6 +189,26 @@ public class SecondPhoneScreen extends AppCompatActivity {
           startActivity(backToHome);
           finish();
         }
+        break;
+      case MY_PERMISSIONS_REQUEST_WHATSAPP:
+        // permission was granted
+        if (grantResults.length > 0
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+          callWhatsapp();
+        } else {
+          // permission denied
+          Intent backToHome = new Intent(this, SecondPhoneScreen.class);
+          backToHome.putExtra("displayName", this.contactInfo.displayName);
+          backToHome.putExtra("number", this.contactInfo.number);
+          backToHome.putExtra("whatsappVoiceId", this.contactInfo.whatsappVoiceId);
+          backToHome.putExtra("skypeVoiceId", this.contactInfo.skypeVoiceId);
+          backToHome.putExtra("viberVoiceId", this.contactInfo.viberVoiceId);
+
+          startActivity(backToHome);
+          finish();
+        }
+        break;
     }
   }
 }
