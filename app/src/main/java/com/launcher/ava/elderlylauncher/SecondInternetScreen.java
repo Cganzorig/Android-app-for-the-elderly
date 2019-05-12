@@ -29,20 +29,6 @@ public class SecondInternetScreen extends AppCompatActivity implements OnItemCli
     spName = getIntent().getStringExtra("selection");
     calledByWizard = getIntent().getStringExtra("calledByWizard");
 
-    if(calledByWizard.equals("YES")) {
-      ImageView iv = findViewById(R.id.imageApp);
-      iv.setImageResource(R.drawable.ic_launcher);
-
-      ConstraintLayout cl = findViewById(R.id.cLayoutApps);
-      cl.setBackgroundColor(getColor(R.color.WizardBlue));
-    } else {
-      ImageView iv = findViewById(R.id.imageApp);
-      iv.setImageResource(R.drawable.black_ic_world_wide_web);
-
-      ConstraintLayout cl = findViewById(R.id.cLayoutApps);
-      cl.setBackgroundColor(getColor(R.color.internetIconColor));
-    }
-
     mRecyclerView = findViewById(R.id.website_recycler_view);
     mRecyclerView.setHasFixedSize(true);
 

@@ -127,17 +127,27 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide2">
 
+    <android.support.constraint.Guideline
+      android:id="@+id/endImage2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.27"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/startImgage2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.04"/>
     <ImageView
       android:id="@+id/imageSecondCall"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_marginTop="15dp"
       android:layout_marginBottom="5dp"
-      android:layout_marginStart="10dp"
-      android:layout_marginEnd="300dp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/endImage2"
+      app:layout_constraintStart_toStartOf="@+id/startImgage2"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
       app:srcCompat="@drawable/ic_telephone_symbol_button"/>
@@ -158,7 +168,7 @@
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@id/imageSecondCall"
+      app:layout_constraintStart_toStartOf="@+id/endImage2"
       app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
@@ -173,17 +183,28 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide1">
 
+    <android.support.constraint.Guideline
+      android:id="@+id/endImage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.27"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/startImgage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.04"/>
+
     <ImageView
       android:id="@+id/imageRegCall"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_marginTop="15dp"
       android:layout_marginBottom="5dp"
-      android:layout_marginStart="10dp"
-      android:layout_marginEnd="300dp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/endImage"
+      app:layout_constraintStart_toStartOf="@+id/startImgage"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
       app:srcCompat="@drawable/ic_telephone_symbol_button"/>
@@ -204,7 +225,7 @@
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@id/imageRegCall"
+      app:layout_constraintStart_toStartOf="@+id/endImage"
       app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
@@ -219,17 +240,27 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/secondPhoneScreenGuide3">
 
+    <android.support.constraint.Guideline
+      android:id="@+id/endImage3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.27"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/startImgage3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.04"/>
     <ImageView
       android:id="@+id/imageThirdCall"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_marginTop="15dp"
       android:layout_marginBottom="5dp"
-      android:layout_marginStart="10dp"
-      android:layout_marginEnd="300dp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/endImage3"
+      app:layout_constraintStart_toStartOf="@+id/startImgage3"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.51"
       app:srcCompat="@drawable/ic_telephone_symbol_button"/>
@@ -250,7 +281,7 @@
       app:fontFamily="sans-serif-black"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@id/imageThirdCall"
+      app:layout_constraintStart_toStartOf="@+id/endImage3"
       app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>

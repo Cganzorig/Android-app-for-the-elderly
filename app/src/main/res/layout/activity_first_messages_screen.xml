@@ -138,17 +138,27 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@id/iv1"
       app:layout_constraintTop_toTopOf="parent"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/endImage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.32"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/startImgage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.07"/>
     <ImageView
       android:id="@+id/iv1"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_marginTop="15dp"
       android:layout_marginBottom="5dp"
-      android:layout_marginStart="30dp"
-      android:layout_marginEnd="250dp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@+id/textFirstFav"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/endImage"
+      app:layout_constraintStart_toStartOf="@+id/startImgage"
       app:layout_constraintTop_toTopOf="parent"
       tools:srcCompat="@tools:sample/avatars"/>
 
@@ -164,18 +174,27 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide2">
-
+    <android.support.constraint.Guideline
+      android:id="@+id/endImage2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.32"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/startImgage2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.07"/>
     <ImageView
       android:id="@+id/iv2"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_marginTop="15dp"
       android:layout_marginBottom="5dp"
-      android:layout_marginStart="30dp"
-      android:layout_marginEnd="250dp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@+id/textSecondFav"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/endImage2"
+      app:layout_constraintStart_toStartOf="@+id/startImgage2"
       app:layout_constraintTop_toTopOf="parent"
       tools:srcCompat="@tools:sample/avatars"/>
     <Button
@@ -209,18 +228,27 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide3">
-
+    <android.support.constraint.Guideline
+      android:id="@+id/endImage3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.32"/>
+    <android.support.constraint.Guideline
+      android:id="@+id/startImgage3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.07"/>
     <ImageView
       android:id="@+id/iv3"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_marginTop="15dp"
       android:layout_marginBottom="5dp"
-      android:layout_marginStart="30dp"
-      android:layout_marginEnd="250dp"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@+id/textThirdFav"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/endImage3"
+      app:layout_constraintStart_toStartOf="@+id/startImgage3"
       app:layout_constraintTop_toTopOf="parent"
       tools:srcCompat="@tools:sample/avatars"/>
     <Button

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.util.Log;
 
 public class ContactPickHandler {
 
@@ -73,7 +74,7 @@ public class ContactPickHandler {
         if (!rawPhoneNumber.equals(displayName)) {
           table.add(new ContactTableRow(_id, displayName, phoneNumber, mimeType));
         }
-        //Log.d("t",_id + " " + displayName +" "+ phoneNumber + " "+ mimeType);
+        Log.d("t", "LOOKHERE: " +_id + " " + displayName +" "+ phoneNumber + " "+ mimeType);
 
       }
     }

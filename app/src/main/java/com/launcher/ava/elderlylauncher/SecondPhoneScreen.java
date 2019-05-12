@@ -113,15 +113,30 @@ public class SecondPhoneScreen extends AppCompatActivity {
           makeCall();
         }
         break;
-      case R.id.textSecondCall:
+      case R.id.textSecondCall://23594
         if (this.secondOptionFlag.equals("WHATSAPP")) {
-          String mimeString = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
-          String data = "content://com.android.contacts/data/" + this.contactInfo.whatsappVoiceId;
-          Intent intent = new Intent();
-          intent.setAction(Intent.ACTION_VIEW);
-          intent.setDataAndType(Uri.parse(data), mimeString);
-          intent.setPackage("com.whatsapp");
-          startActivity(intent);
+
+          if (ContextCompat.checkSelfPermission(this,
+            Manifest.permission.CALL_PHONE)
+            != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+              new String[]{Manifest.permission.CALL_PHONE},
+              MY_PERMISSIONS_REQUEST_CALL_PHONE);
+
+          } else {
+            String mimeString = "vnd.android.cursor.item/vnd.com.whatsapp.voip.call";
+            String data = "content://com.android.contacts/data/" + this.contactInfo.whatsappVoiceId;
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.parse(data), mimeString);
+            intent.setPackage("com.whatsapp");
+            try {
+              startActivity(intent);
+            } catch (Exception e) {
+              //
+            }
+          }
         }
 
         if (this.secondOptionFlag.equals("VIBER")) {
