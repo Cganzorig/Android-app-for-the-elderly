@@ -386,10 +386,10 @@
     android:layout_height="0dp"
     android:background="@color/whiteColor"
     android:onClick="doNothing"
-    app:layout_constraintBottom_toTopOf="@+id/firstInternetScreenguide6"
+    app:layout_constraintBottom_toTopOf="@+id/firstPhoneScreenguide6"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/firstInternetScreenguide5">
+    app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide5">
 
   </android.support.constraint.ConstraintLayout>
 
