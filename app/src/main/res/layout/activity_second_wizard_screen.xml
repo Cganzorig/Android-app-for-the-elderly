@@ -359,47 +359,85 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/firstPhoneScreenguide6">
 
+    <android.support.constraint.Guideline
+      android:id="@+id/startTop"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.27"/>
+
+    <android.support.constraint.Guideline
+      android:id="@+id/endTop"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.73"/>
+
+    <android.support.constraint.Guideline
+      android:id="@+id/startPrev"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.05"/>
+
+    <android.support.constraint.Guideline
+      android:id="@+id/endNext"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.95"/>
+
+    <android.support.constraint.Guideline
+      android:id="@+id/startNext"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.58"/>
+
+    <android.support.constraint.Guideline
+      android:id="@+id/endPrev"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.41"/>
+
     <Button
       android:id="@+id/nextBtn"
       android:textStyle="bold"
       android:layout_width="0dp"
       android:layout_height="0dp"
-      android:layout_marginTop="40dp"
-      android:layout_marginBottom="40dp"
-      android:layout_marginStart="240dp"
-      android:layout_marginEnd="20dp"
       android:gravity="center"
       android:onClick="goToNextPage"
       android:text="@string/go_to_next"
       android:textColor="@android:color/black"
-      android:textSize="25sp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
+      android:autoSizeMaxTextSize="25sp"
+      android:autoSizeTextType="uniform"
+      app:layout_constraintBottom_toTopOf="@+id/endTop"
+      app:layout_constraintEnd_toStartOf="@+id/endNext"
+      app:layout_constraintStart_toStartOf="@+id/startNext"
+      app:layout_constraintTop_toTopOf="@+id/startTop"/>
 
     <Button
       android:id="@+id/prevButton"
-      android:layout_width="wrap_content"
+      android:textStyle="bold"
+      android:layout_width="0dp"
       android:layout_height="0dp"
-      android:layout_marginStart="20dp"
-      android:layout_marginTop="40dp"
-      android:layout_marginEnd="240dp"
-      android:layout_marginBottom="40dp"
       android:gravity="center"
       android:onClick="goToPrevPage"
       android:text="@string/go_to_prev"
       android:textColor="@android:color/black"
-      android:textSize="25sp"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
+      android:autoSizeMaxTextSize="25sp"
+      android:autoSizeTextType="uniform"
+      app:layout_constraintBottom_toTopOf="@+id/endTop"
+      app:layout_constraintEnd_toStartOf="@+id/endPrev"
       app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.0" />
+      app:layout_constraintStart_toStartOf="@+id/startPrev"
+      app:layout_constraintTop_toTopOf="@+id/startTop"
+      app:layout_constraintVertical_bias="0.0"/>
+
+
   </android.support.constraint.ConstraintLayout>
+
 
   <android.support.constraint.ConstraintLayout
     android:id="@+id/cLayoutInternetWhiteBlock"
