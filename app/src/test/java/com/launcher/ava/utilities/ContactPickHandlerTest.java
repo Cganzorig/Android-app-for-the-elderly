@@ -16,25 +16,14 @@ import static org.junit.Assert.*;
 
 public class ContactPickHandlerTest {
 
-  private ContactInfoTable contactInfoTable;
-  private ContactPickHandler contactPickHandler;
-  private Cursor cursor;
-
-  @Mock
-  private Uri contactUri;
-  private Context context;
-  private String[] projection;
-
+  //TODO
 
   @Before
   public void init(){
-    contactPickHandler = new ContactPickHandler();
   }
 
 
   @Test
   public void getInfoTest() {
-    Mockito.when(context.getContentResolver().query(contactUri, projection, null, null, null)).thenReturn(cursor);
-
   }
 }
