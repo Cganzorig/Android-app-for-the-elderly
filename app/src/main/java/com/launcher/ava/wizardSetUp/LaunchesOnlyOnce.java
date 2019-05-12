@@ -15,7 +15,6 @@ public class LaunchesOnlyOnce {
   public final static int DONE_WIZARD = 3;
 
 
-  SharedPreferences.Editor editor;
   Context launchContext;
   SharedPreferences sp;
 

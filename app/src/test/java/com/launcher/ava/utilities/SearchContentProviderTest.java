@@ -3,7 +3,7 @@ package com.launcher.ava.utilities;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-//TODO
+
 public class SearchContentProviderTest {
 
   @Test
