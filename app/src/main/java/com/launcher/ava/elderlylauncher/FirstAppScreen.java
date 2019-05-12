@@ -197,18 +197,6 @@ public class FirstAppScreen extends AppCompatActivity {
     return true;
   }
 
-//  @Override
-//  public boolean onOptionsItemSelected(MenuItem item) {
-//    switch (item.getItemId()) {
-//      case R.id.search_m:
-//        //start search dialog
-////        onSearchRequested();
-//        return true;
-//      default:
-//        return super.onOptionsItemSelected(item);
-//    }
-//  }
-
   public void launchPlayStore(View view) {
     try {
       Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");

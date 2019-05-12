@@ -160,7 +160,7 @@ public class RAdapter extends RecyclerView.Adapter<RAdapter.ViewHolder> {
     //This is what adds the code we've written in here to our target view
     LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-    View view = inflater.inflate(R.layout.row, parent, false);
+    View view = inflater.inflate(R.layout.website_row, parent, false);
 
     ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;

@@ -63,4 +63,6 @@
   <string name="go_to_prev">PREVIOUS</string>
   <string name="message">MESSAGE</string>
   <string name="call">CALL</string>
+  <string name="install_app">Install App</string>
+  <string name="below_are_your_most_frequently_used_apps">Below are your most frequently used apps</string>
 </resources>
