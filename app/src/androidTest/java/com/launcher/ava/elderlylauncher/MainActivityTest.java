@@ -1,101 +1,85 @@
 package com.launcher.ava.elderlylauncher;
 
-import static android.support.test.InstrumentationRegistry.getInstrumentation;
-import static org.junit.Assert.assertNotNull;
-
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.support.test.espresso.Espresso;
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.filters.LargeTest;
-import android.support.test.rule.ActivityTestRule;
-import android.view.View;
 
-import com.launcher.ava.utilities.AppFrequencyList;
-import org.junit.Before;
+import androidx.test.rule.ActivityTestRule;
+
+import org.junit.Rule;
 import org.junit.Test;
 
-// Only required if you mix JUnit 3 and 4
-// @RunWith(AndroidJUnit4.class)
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+import static org.junit.Assert.*;
 
-@LargeTest
 public class MainActivityTest {
 
-  public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
-  private MainActivity mainActivity;
+  @Rule
+  public ActivityTestRule<FirstAppScreen> activityTestRule = new ActivityTestRule<>(FirstAppScreen.class);
 
-  // helper app
-  Instrumentation.ActivityMonitor monitorHelperApp = getInstrumentation()
-      .addMonitor(MainActivity.class.getName(), null, false);
+  private MainActivity mainActivity = new MainActivity();
 
-  // drawer
-  Instrumentation.ActivityMonitor monitorAppDrawer = getInstrumentation()
-      .addMonitor(AppDrawer.class.getName(), null, false);
-
-  // frequently used apps
+  Instrumentation.ActivityMonitor monitorAppScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
+  Instrumentation.ActivityMonitor monitorPhoneScreen = getInstrumentation().addMonitor(FirstPhoneScreen.class.getName(), null, false);
+  Instrumentation.ActivityMonitor monitorMessagesScreen = getInstrumentation().addMonitor(FirstMessagesScreen.class.getName(), null, false);
+  Instrumentation.ActivityMonitor monitorInternetScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
+  Instrumentation.ActivityMonitor monitorCommonToolsScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
 
 
-  @Before
-  public void createMainActivity() {
-    activityRule.launchActivity(null);
-    mainActivity = activityRule.getActivity();
+  @Test
+  public void launchAppScreen() {
+    assertNotNull(mainActivity.findViewById(R.id.cLayoutApp));
+    onView(withId(R.id.cLayoutApp)).perform(click());
+
+    Activity appScreen = getInstrumentation().waitForMonitorWithTimeout(monitorAppScreen, 5000);
+
+    assertNotNull(appScreen);
+    appScreen.finish();
   }
 
-//  @Test
-//  public void clickOnCreateShouldOpenMainActivityLayout() {
-//
-//    View view = mainActivity.findViewById(R.id.frameLayout);
-//    assertNotNull(view);
-//
-//  }
-//
-//  @Test
-//  public void clickOnCreateShouldPopulateAppFrequencyList() {
-//    AppFrequencyList.populate(mainActivity);
-//  }
-//
-//  @Test
-//  public void clickLaunchHelperAppOpensActivityMainApp() {
-//    // checks click is working
-//    assertNotNull(mainActivity.findViewById(R.id.helperApp));
-//
-//    Espresso.onView(ViewMatchers.withId(R.id.helperApp)).perform(ViewActions.click());
-//
-//    Activity activity = getInstrumentation()
-//        .waitForMonitorWithTimeout(monitorHelperApp, 5000);
-//
-//    assertNotNull(activity);
-//    activity.finish();
-//
-//  }
-//
-//  @Test
-//  public void launchFrequentlyUsedAppList() {
-//    // checks click is working
-//    assertNotNull(mainActivity.findViewById(R.id.frequentlyUsedButton));
-//
-//    Espresso.onView(ViewMatchers.withId(R.id.frequentlyUsedButton)).perform(ViewActions.click());
-//
-//    Activity activity = getInstrumentation()
-//        .waitForMonitorWithTimeout(monitorFrequentApps, 5000);
-//
-//    assertNotNull(activity);
-//    activity.finish();
-//  }
-//
-//  @Test
-//  public void launchAppDrawer() {
-//    // checks click is working
-//    assertNotNull(mainActivity.findViewById(R.id.app_drawer_button));
-//
-//    Espresso.onView(ViewMatchers.withId(R.id.app_drawer_button)).perform(ViewActions.click());
-//
-//    Activity activity = getInstrumentation()
-//        .waitForMonitorWithTimeout(monitorAppDrawer, 5000);
-//
-//    assertNotNull(activity);
-//    activity.finish();
-//  }
+  @Test
+  public void launchPhoneScreen() {
+    assertNotNull(mainActivity.findViewById(R.id.cLayoutApp));
+    onView(withId(R.id.cLayoutApp)).perform(click());
 
+    Activity phone = getInstrumentation().waitForMonitorWithTimeout(monitorPhoneScreen, 5000);
+
+    assertNotNull(phone);
+    phone.finish();
+  }
+
+  @Test
+  public void launchMessagesScreen() {
+    assertNotNull(mainActivity.findViewById(R.id.cLayoutMessages));
+    onView(withId(R.id.cLayoutMessages)).perform(click());
+
+    Activity message = getInstrumentation().waitForMonitorWithTimeout(monitorMessagesScreen, 5000);
+
+    assertNotNull(message);
+    message.finish();
+  }
+
+  @Test
+  public void launchInternetScreen() {
+    assertNotNull(mainActivity.findViewById(R.id.cLayoutInternet));
+    onView(withId(R.id.cLayoutInternet)).perform(click());
+
+    Activity internet = getInstrumentation().waitForMonitorWithTimeout(monitorInternetScreen, 5000);
+
+    assertNotNull(internet);
+    internet.finish();
+  }
+
+  @Test
+  public void launchCommonToolsScreen() {
+    assertNotNull(mainActivity.findViewById(R.id.cLayoutTools));
+    onView(withId(R.id.cLayoutTools)).perform(click());
+
+    Activity commonTools = getInstrumentation().waitForMonitorWithTimeout(monitorCommonToolsScreen, 5000);
+
+    assertNotNull(commonTools);
+    commonTools.finish();
+  }
 }

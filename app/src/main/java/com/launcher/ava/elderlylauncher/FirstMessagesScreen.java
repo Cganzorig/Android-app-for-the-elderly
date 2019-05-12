@@ -455,4 +455,7 @@ public class FirstMessagesScreen extends AppCompatActivity {
     }
   }
 
+  public int getNumFavs() {
+    return numFavs;
+  }
 }

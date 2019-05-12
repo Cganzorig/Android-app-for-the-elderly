@@ -287,4 +287,8 @@ public class FirstInternetScreen extends AppCompatActivity {
     this.numFavs = numFavs;
     setWhiteBlocks();
   }
+
+  public int getNumFavs() {
+    return numFavs;
+  }
 }
