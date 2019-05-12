@@ -131,7 +131,7 @@
       android:layout_marginBottom="150dp"
       android:layout_marginStart="10dp"
       android:layout_marginEnd="10dp"
-      android:text="Hello, \n Please follow the next two screens to set up you favrourite contacs and websites for quick access."
+      android:text="Hello, \n Please follow the next two screens to set up you favourite contacts and websites for quick access."
       android:textAlignment="center"
       android:textColor="@color/blackColor"
       android:autoSizeTextType="uniform"

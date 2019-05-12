@@ -79,6 +79,7 @@ public class SearchContentProvider extends ContentProvider {
         rs.add(s.toLowerCase());
       }
     }
+    rs.add(label.toLowerCase());
     return rs;
   }
 

@@ -17,10 +17,10 @@ public class WebsiteDatabase {
     websiteList.add( new Website(R.drawable.ic_bbc, "BBC News", "https://www.bbc.co.uk/news/"));
     websiteList.add( new Website(R.drawable.ic_sunny,"Accu Weather", "https://www.accuweather.com"));
     websiteList.add( new Website(R.drawable.ic_crown, "Gov UK", "https://www.gov.uk/"));
-    websiteList.add( new Website(R.drawable.ic_news,"Google news", "https://www.news.google.co.uk/"));
+    websiteList.add( new Website(R.drawable.ic_news,"Google News", "https://www.news.google.com"));
     websiteList.add( new Website(R.drawable.ic_tripadvisor, "Trip Advisor", "https://www.tripadvisor.co.uk/"));
     websiteList.add( new Website(R.drawable.ic_merriam_webster_logo,"Merriam Webster", "https://www.merriam-webster.com/"));
-    websiteList.add( new Website(R.drawable.ic_goodreads_letter_logo, "Good reads", "https://www.goodreads.com/"));
+    websiteList.add( new Website(R.drawable.ic_goodreads_letter_logo, "Goodreads", "https://www.goodreads.com/"));
   }
 
   public static List<Website> getInstance() {return websiteList;}
