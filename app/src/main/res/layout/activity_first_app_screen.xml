@@ -119,9 +119,7 @@
       app:layout_constraintTop_toTopOf="parent"/>
 
 
-
-
-    <Button
+    <ImageView
       android:id="@+id/app3"
       android:layout_width="0dp"
       android:layout_height="0dp"
@@ -133,31 +131,31 @@
       app:layout_constraintTop_toTopOf="@+id/bottomRowApps"
       app:layout_constraintVertical_bias="0.49"/>
 
-    <Button
+    <ImageView
       android:id="@+id/app1"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:onClick="onAppClick"
       app:layout_constraintBottom_toTopOf="@+id/firstRow"
       app:layout_constraintEnd_toStartOf="@+id/firstColumn"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toStartOf="@+id/startColumn"
       app:layout_constraintTop_toTopOf="@+id/topRowApps"
-      app:layout_constraintVertical_bias="0.49"/>
+      app:layout_constraintVertical_bias="0.50"/>
 
-    <Button
+    <ImageView
       android:id="@+id/app2"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:onClick="onAppClick"
       app:layout_constraintBottom_toTopOf="@+id/firstRow"
       app:layout_constraintEnd_toStartOf="@+id/endColumn"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="@+id/secondColumn"
       app:layout_constraintTop_toTopOf="@+id/topRowApps"
-      app:layout_constraintVertical_bias="0.49"/>
+      app:layout_constraintVertical_bias="0.0"/>
 
-    <Button
+    <ImageView
       android:id="@+id/app4"
       android:layout_width="0dp"
       android:layout_height="0dp"

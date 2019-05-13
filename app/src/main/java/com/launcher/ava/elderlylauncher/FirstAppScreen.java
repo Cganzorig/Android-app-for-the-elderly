@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.constraint.ConstraintLayout;
@@ -18,6 +19,8 @@ import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.launcher.ava.utilities.AppFrequencyList;
@@ -49,7 +52,6 @@ public class FirstAppScreen extends AppCompatActivity {
         onOptionsItemSelected(menu.findItem(R.id.search_m));
       }
     });
-
   }
 
   public void deflateFakeSearchButton(boolean yes) {
@@ -72,23 +74,23 @@ public class FirstAppScreen extends AppCompatActivity {
   public void setFavouriteApps() {
     final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
     textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
-    final Button app1 = (Button) findViewById(R.id.app1);
-    app1.setBackground(AppFrequencyList.getInstance().getHit(0).icon);
+    final ImageView app1 = findViewById(R.id.app1);
+    app1.setImageDrawable(AppFrequencyList.getInstance().getHit(0).icon);
 
     final TextView textApp2 = (TextView) findViewById(R.id.textApp2);
     textApp2.setText(AppFrequencyList.getInstance().getHit(1).label);
-    final Button app2 = (Button) findViewById(R.id.app2);
-    app2.setBackground(AppFrequencyList.getInstance().getHit(1).icon);
+    final ImageView app2 = findViewById(R.id.app2);
+    app2.setImageDrawable(AppFrequencyList.getInstance().getHit(1).icon);
 
     final TextView textApp3 = (TextView) findViewById(R.id.textApp3);
     textApp3.setText(AppFrequencyList.getInstance().getHit(2).label);
-    final Button app3 = (Button) findViewById(R.id.app3);
-    app3.setBackground(AppFrequencyList.getInstance().getHit(2).icon);
+    final ImageView app3 =  findViewById(R.id.app3);
+    app3.setImageDrawable(AppFrequencyList.getInstance().getHit(2).icon);
 
     final TextView textApp4 = (TextView) findViewById(R.id.textApp4);
     textApp4.setText(AppFrequencyList.getInstance().getHit(3).label);
-    final Button app4 = (Button) findViewById(R.id.app4);
-    app4.setBackground(AppFrequencyList.getInstance().getHit(3).icon);
+    final ImageView app4 = findViewById(R.id.app4);
+    app4.setImageDrawable(AppFrequencyList.getInstance().getHit(3).icon);
   }
 
   @Override
