@@ -2,7 +2,9 @@ package com.launcher.ava.elderlylauncher;
 
 import android.app.Activity;
 import android.app.Instrumentation;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.provider.MediaStore;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
@@ -19,33 +21,41 @@ import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.intent.Intents.intended;
+import static android.support.test.espresso.intent.Intents.intending;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasData;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.toPackage;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class MainActivityTest {
 
   @Rule
-  public IntentsTestRule<MainActivity> activityRule = new IntentsTestRule<>(MainActivity.class);
+  public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
 
-  public MainActivity mainActivity = activityRule.getActivity();
+  public MainActivity mainActivity;
 
-//  @Before
-//  public void setUp() {
-//    Intents.init();
-//    activityRule.launchActivity(new Intent());
-//  }
-//
-//  @Test
-//  public void launchAppScreen() {
-//    onView(withId(R.id.cLayoutApp)).perform(click());
-//    intended(hasComponent(FirstAppScreen.class.getName()));
-//  }
+  private Intent intent;
+
+  @Before
+  public void setUp() {
+    activityRule.launchActivity(new Intent());
+    mainActivity = activityRule.getActivity();
+    intent = new Intent(mainActivity.getBaseContext(), FirstAppScreen.class);
+  }
+
+  @Test
+  public void launchAppScreen() {
+    mainActivity.launchAppScreen(mainActivity.findViewById(R.id.cLayoutApp));
+    assertEquals(intent, mainActivity.getIntent());
+  }
 
 //
 //  private MainActivity mainActivity = new MainActivity();

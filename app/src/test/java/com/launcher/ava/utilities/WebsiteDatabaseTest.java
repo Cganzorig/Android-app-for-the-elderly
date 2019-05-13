@@ -38,5 +38,6 @@ public class WebsiteDatabaseTest {
   @Test
   public void getUrlTest() {
     assertEquals("https://www.amazon.co.uk/", getUrl("Amazon"));
+    assertEquals("www.google.com", getUrl("Free"));
   }
 }

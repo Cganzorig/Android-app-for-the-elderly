@@ -1,5 +1,8 @@
 package com.launcher.ava.elderlylauncher;
 
+import com.launcher.ava.utilities.ContactInfo;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -10,9 +13,8 @@ import static org.junit.Assert.assertThat;
 
 public class FirstMessagesScreenTest {
 
-  private FirstMessagesScreen firstMessagesScreen = new FirstMessagesScreen();
 
-
+}
 //  @Test
 //  public void pressMinus() {
 //
@@ -33,6 +35,3 @@ public class FirstMessagesScreenTest {
 //
 //  }
 
-
-
-}
