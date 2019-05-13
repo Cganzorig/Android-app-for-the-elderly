@@ -31,6 +31,11 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
 android {
     compileSdkVersion 28
 
+    // adding lint options to gen APK for google
+    lintOptions {
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "com.launcher.ava.elderlylauncher"
         minSdkVersion 23 // support text resize
@@ -46,13 +51,14 @@ android {
     buildTypes {
 
         debug {
-            testCoverageEnabled true
+            testCoverageEnabled false // true for debug
         }
 
         release {
             minifyEnabled false
+            //debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            testCoverageEnabled true
+            testCoverageEnabled false // true for debug
         }
     }
 
