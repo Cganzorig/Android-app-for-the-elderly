@@ -66,4 +66,5 @@
   <string name="below_are_your_most_frequently_used_apps">Below are your most frequently used apps</string>
   <string name="pick_three_favourite_contacts">PICK THREE FAVOURITE CONTACTS</string>
   <string name="list_of_drawers">LIST OF APPS</string>
+  <string name="using_sms_app">USING SMS APP</string>
 </resources>
