@@ -3,15 +3,13 @@ package com.launcher.ava.elderlylauncher;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
-import android.provider.MediaStore;
-import android.support.test.espresso.intent.Intents;
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.ViewAction;
+import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
-import junit.framework.TestCase;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,31 +19,33 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasData;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.toPackage;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.v4.content.ContextCompat.startActivity;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class MainActivityTest {
 
-  @Rule
-  public IntentsTestRule<MainActivity> activityRule = new IntentsTestRule<>(MainActivity.class);
+//  @Rule
+//  public IntentsTestRule<MainActivity> activityRule = new IntentsTestRule<>(MainActivity.class);
 
   @Rule
-  public ActivityTestRule activityTestRule = new ActivityTestRule<>(AppDrawer.class);
+  public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
   public MainActivity mainActivity;
+
+
+  Instrumentation.ActivityMonitor monitorAppScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
+  Instrumentation.ActivityMonitor monitorMessageScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
 
 
   @Before
   public void createMainActivity() {
-//    activityTestRule.launchActivity(null);
-    mainActivity = activityRule.getActivity();
+    mainActivity = activityTestRule.getActivity();
   }
 
   @Test
@@ -54,11 +54,27 @@ public class MainActivityTest {
     assertNotNull(view);
   }
 
-//  @Test
-//  public void launchAppScreen() {
-//    onView(withId(R.id.cLayoutApp)).perform(click());
-//    intended(hasComponent(FirstAppScreen.class.getName()));
+  @Test
+  public void launchAppScreen() {
+    assertNotNull(mainActivity.findViewById(R.id.cLayoutApp));
+    onView(withId(R.id.cLayoutApp)).perform(click());
+    Activity appScreen = getInstrumentation().waitForMonitorWithTimeout(monitorAppScreen, 5000);
 
+    assertNotNull(appScreen);
+    appScreen.finish();
+  }
+
+  @Test
+  public void launchMessagesScreen() {
+    onView(isRoot()).perform(ViewActions.pressBack());
+    onView(withId(R.id.cLayoutMessages)).check(matches(isDisplayed()));
+//    assertNotNull(mainActivity.findViewById(R.id.cLayoutMessages));
+//    onView(withId(R.id.cLayoutMessages)).perform(click());
+//    Activity appScreen = getInstrumentation().waitForMonitorWithTimeout(monitorMessageScreen, 5000);
+//
+//    assertNotNull(appScreen);
+//    appScreen.finish();
+  }
 
 //    Assert.assertNotEquals(intent, mainActivity.getIntent());
 //    onView(withId(R.id.RView)).check(matches(isDisplayed()));
