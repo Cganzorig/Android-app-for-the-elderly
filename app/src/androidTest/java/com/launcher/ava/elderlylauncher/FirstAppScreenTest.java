@@ -2,17 +2,16 @@ package com.launcher.ava.elderlylauncher;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-
-import androidx.test.rule.ActivityTestRule;
+import android.support.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
-import static org.junit.Assert.*;
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.junit.Assert.assertNotNull;
 
 public class FirstAppScreenTest {
 
@@ -22,6 +21,42 @@ public class FirstAppScreenTest {
   private FirstAppScreen firstAppScreen = activityTestRule.getActivity();
 
   Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(AppDrawer.class.getName(), null, false);
+
+  @Test
+  public void onCreate() {
+  }
+
+  @Test
+  public void deflateFakeSearchButton() {
+  }
+
+  @Test
+  public void fakeToolbarPress() {
+  }
+
+  @Test
+  public void setFavouriteApps() {
+  }
+
+  @Test
+  public void onResume() {
+  }
+
+  @Test
+  public void onAppClick() {
+  }
+
+  @Test
+  public void onClickGoToAppDrawer() {
+  }
+
+  @Test
+  public void onResetClick() {
+  }
+
+  @Test
+  public void onCreateOptionsMenu() {
+  }
 
   @Test
   public void launchPlayStore() {
@@ -45,5 +80,6 @@ public class FirstAppScreenTest {
     assertNotNull(appDrawer);
     appDrawer.finish();
   }
-
 }
+
+

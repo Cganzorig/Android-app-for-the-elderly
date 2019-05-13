@@ -43,4 +43,36 @@ public class AppFrequencyListTest {
 
   }
 
+  @Test
+  public void populate() {
+
+  }
+
+  @Test
+  public void incrementFrequency() {
+  }
+
+  @Test
+  public void getHit() {
+  }
+
+  @Test
+  public void getHitFreq() {
+  }
+
+  @Test
+  public void getPairByPackName() {
+  }
+
+  @Test
+  public void removeApp() {
+  }
+
+  @Test
+  public void removeApp1() {
+  }
+
+  @Test
+  public void getSize() {
+  }
 }

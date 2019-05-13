@@ -24,7 +24,6 @@ public class RemoveStatusBarTest {
   public void init(){
 
     removeStatusBar = new RemoveStatusBar();
-    Mockito.when(activity.requestWindowFeature(anyInt())).thenReturn(true);
     Mockito.when(activity.getWindow()).thenReturn(window);
     Mockito.doNothing().when(window).addFlags(anyInt());
 
