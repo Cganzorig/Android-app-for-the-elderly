@@ -2,6 +2,7 @@ package com.launcher.ava.elderlylauncher;
 
 import android.app.Activity;
 import android.app.Instrumentation;
+import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
@@ -22,9 +23,20 @@ public class FirstAppScreenTest {
   @Rule
   public ActivityTestRule<FirstAppScreen> activityTestRule = new ActivityTestRule<>(FirstAppScreen.class);
 
-  private FirstAppScreen firstAppScreen;
+  private FirstAppScreen firstAppScreen = null;
 
   Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(AppDrawer.class.getName(), null, false);
+
+  @Before
+  public void setUp() throws Exception {
+    firstAppScreen = activityTestRule.getActivity();
+  }
+//
+//  @Test
+//  public void onClickGoToAppDrawer() {
+//    assertNotNull(firstAppScreen.findViewById(R.id.openDrawer));
+//  }
+
 
 //  @Before
 //  public void setUp() {

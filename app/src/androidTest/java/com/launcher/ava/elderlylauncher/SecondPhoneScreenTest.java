@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
+import android.support.test.rule.ActivityTestRule;
+import android.text.Layout;
+import android.view.View;
 
 import com.launcher.ava.utilities.ContactInfo;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -20,6 +24,23 @@ public class SecondPhoneScreenTest {
   public IntentsTestRule<SecondPhoneScreen> activityRule = new IntentsTestRule<>(SecondPhoneScreen.class);
 
   private ContactInfo contactInfo = new ContactInfo();
+
+  @Rule
+  public ActivityTestRule<SecondPhoneScreen> activityTestRule = new ActivityTestRule<>(SecondPhoneScreen.class);
+  public SecondPhoneScreen secondPhoneScreen;
+
+
+  @Before
+  public void createMainActivity() {
+    activityTestRule.launchActivity(null);
+    secondPhoneScreen = activityRule.getActivity();
+  }
+
+//  @Test
+//  public void onCreate() {
+//    View view = secondPhoneScreen.findViewById(R.id.cLayoutSecondPhoneScreenWhiteBlock);
+//    assertNotNull(view);
+//  }
 
 //  @Test
 //  public void makeCall() {

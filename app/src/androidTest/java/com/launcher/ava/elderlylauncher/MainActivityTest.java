@@ -11,6 +11,7 @@ import android.view.View;
 
 import junit.framework.TestCase;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -18,11 +19,14 @@ import org.junit.Test;
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasData;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.v4.content.ContextCompat.startActivity;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -33,8 +37,31 @@ public class MainActivityTest {
   @Rule
   public IntentsTestRule<MainActivity> activityRule = new IntentsTestRule<>(MainActivity.class);
 
-  public MainActivity mainActivity = activityRule.getActivity();
+  @Rule
+  public ActivityTestRule activityTestRule = new ActivityTestRule<>(AppDrawer.class);
+  public MainActivity mainActivity;
 
+
+  @Before
+  public void createMainActivity() {
+//    activityTestRule.launchActivity(null);
+    mainActivity = activityRule.getActivity();
+  }
+
+  @Test
+  public void onCreateLoadsCorrectView() {
+    View view = mainActivity.findViewById(R.id.constraintLayout);
+    assertNotNull(view);
+  }
+
+//  @Test
+//  public void launchAppScreen() {
+//    onView(withId(R.id.cLayoutApp)).perform(click());
+//    intended(hasComponent(FirstAppScreen.class.getName()));
+
+
+//    Assert.assertNotEquals(intent, mainActivity.getIntent());
+//    onView(withId(R.id.RView)).check(matches(isDisplayed()));
 //  @Before
 //  public void setUp() {
 //    Intents.init();

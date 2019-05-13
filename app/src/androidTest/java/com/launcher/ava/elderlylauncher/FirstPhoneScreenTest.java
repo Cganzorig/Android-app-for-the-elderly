@@ -1,19 +1,19 @@
 package com.launcher.ava.elderlylauncher;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 
+import com.launcher.ava.utilities.ContactInfo;
+
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
+import static android.content.Context.MODE_PRIVATE;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasData;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class FirstPhoneScreenTest {
@@ -21,6 +21,14 @@ public class FirstPhoneScreenTest {
   @Rule
   public IntentsTestRule<FirstPhoneScreen> activityRule = new IntentsTestRule<>(FirstPhoneScreen.class);
 
+  public ContactInfo contactInfo;
+//
+//  @Before
+//  public void setUp() {
+//    contactInfo = new ContactInfo();
+//    contactInfo.displayName = "John";
+//    contactInfo.
+//  }
 
   @Test
   public void openDialer() {

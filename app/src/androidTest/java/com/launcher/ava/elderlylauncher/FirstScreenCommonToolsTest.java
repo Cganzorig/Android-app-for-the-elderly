@@ -41,12 +41,12 @@ public class FirstScreenCommonToolsTest {
   }
 
 
-//  @Test
-//  public void launchDefaultCamera() {
-//    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-//    onView(withId(R.id.cLayoutPhoto)).perform(click());
-//    assertTrue(hasData("android.media.action.IMAGE_CAPTURE").matches(intent));
-//  }
+  @Test
+  public void launchDefaultCamera() {
+    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+    onView(withId(R.id.cLayoutPhoto)).perform(click());
+    assertTrue(hasAction("android.media.action.IMAGE_CAPTURE").matches(intent));
+  }
 
   @Test
   public void launchSettings() {
@@ -60,11 +60,10 @@ public class FirstScreenCommonToolsTest {
     intended(hasAction(equalTo(AlarmClock.ACTION_SET_ALARM)));
   }
 
-//  @Test
-//  public void launchPlayStore() {
-//    onView(withId(R.id.installApp)).perform(click());
-//    Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
-//    intended(hasAction(equalTo(AlarmClock.ACTION_SET_ALARM)));
-//  }
+  @Test
+  public void launchPlayStore() {
+    Intent intent = new Intent("com.android.vending");
+    assertTrue(hasAction("com.android.vending").matches(intent));
+  }
 
 }
