@@ -33,7 +33,7 @@ android {
 
     defaultConfig {
         applicationId "com.launcher.ava.elderlylauncher"
-        minSdkVersion 26 // support text resize
+        minSdkVersion 23 // support text resize
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
