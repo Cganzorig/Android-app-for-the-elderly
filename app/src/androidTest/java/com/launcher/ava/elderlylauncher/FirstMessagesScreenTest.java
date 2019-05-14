@@ -38,7 +38,6 @@ public class FirstMessagesScreenTest {
 
   @Before
   public void Init() {
-    activityRule.launchActivity(null);
     firstMessagesScreen = activityRule.getActivity();
 //    firstMessagesScreen = new FirstMessagesScreen();
 //    firstMessagesScreen.numFavs = 1;
