@@ -11,6 +11,8 @@ import android.view.View;
 import com.launcher.ava.elderlylauncher.MainActivity;
 import com.launcher.ava.elderlylauncher.R;
 
+import org.junit.Before;
+
 public class ThirdWizardScreen extends AppCompatActivity {
 
   @Override

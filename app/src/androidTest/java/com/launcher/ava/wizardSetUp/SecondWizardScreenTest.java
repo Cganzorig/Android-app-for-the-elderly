@@ -10,10 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.*;
 
@@ -64,10 +66,16 @@ public class SecondWizardScreenTest {
 
   @Test
   public void goToPrevPage() {
+    onView(withId(R.id.prevButton)).perform(click());
+    onView(withText(R.string.pick_three_favourite_contacts))
+      .check(matches(isDisplayed()));
   }
 
   @Test
   public void goToNextPage() {
+    onView(withId(R.id.nextBtn)).perform(click());
+    onView(withText("MAKE AVA DEFAULT HOME APP"))
+      .check(matches(isDisplayed()));
   }
 
   @Test

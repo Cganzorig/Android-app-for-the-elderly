@@ -101,8 +101,6 @@ public class FirstWizardScreenTest {
 
   @Test
   public void putContactInfoInSharedPrefsTest() {
-
-
   }
 
   @Test

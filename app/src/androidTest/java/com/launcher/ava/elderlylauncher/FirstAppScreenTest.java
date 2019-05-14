@@ -29,7 +29,6 @@ public class FirstAppScreenTest {
 
   @Before
   public void setUp() throws Exception {
-    firstAppScreen = activityTestRule.getActivity();
 
   }
 
