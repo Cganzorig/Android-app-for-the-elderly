@@ -8,6 +8,8 @@ import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
 import com.launcher.ava.utilities.ContactInfo;
+import com.launcher.ava.wizardSetUp.FirstWizardScreen;
+import com.launcher.ava.wizardSetUp.LaunchesOnlyOnce;
 
 import junit.framework.TestCase;
 
@@ -29,24 +31,33 @@ import static org.junit.Assert.assertTrue;
 public class FirstMessagesScreenTest {
 
 
-  private ContactInfo contactInfo = new ContactInfo();
-
   @Rule
-  public ActivityTestRule<FirstMessagesScreen> activityRule = new ActivityTestRule<>(FirstMessagesScreen.class);
+  public ActivityTestRule<FirstMessagesScreen> activityTestRule = new ActivityTestRule<>(FirstMessagesScreen.class);
+  @Rule
+  public ActivityTestRule<FirstWizardScreen> activityTestRule2 = new ActivityTestRule<>(FirstWizardScreen.class);
 
-  private FirstMessagesScreen firstMessagesScreen = null;
+  private FirstMessagesScreen firstMessagesScreen;
+  private FirstWizardScreen firstWizardScreen;
+
+
 
   @Before
-  public void Init() {
-    firstMessagesScreen = activityRule.getActivity();
-//    firstMessagesScreen = new FirstMessagesScreen();
-//    firstMessagesScreen.numFavs = 1;
+  public void createMainActivity() {
+    Intent intent1 = new Intent();
+    activityTestRule2.launchActivity(intent1);
+    firstWizardScreen = activityTestRule2.getActivity();
+    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(firstWizardScreen.getBaseContext());
+    launchesOnlyOnce.setPosition(3);
+
+    Intent intent = new Intent();
+    activityTestRule.launchActivity(intent);
+    firstMessagesScreen = activityTestRule.getActivity();
 
   }
 
   @Test
   public void onCreateTest() {
-    View view = firstMessagesScreen.findViewById(R.id.textPhone);
+    View view = firstMessagesScreen.findViewById(R.id.textMessages);
     TestCase.assertNotNull(view);
   }
 
@@ -62,35 +73,30 @@ public class FirstMessagesScreenTest {
     assertTrue(hasAction(Intent.ACTION_VIEW).matches(sendIntent));
     assertTrue(hasData(Uri.parse("sms:")).matches(sendIntent));
   }
-//
-//  @Test
-//  public void pickFromList() {
-//    Intent intent = new Intent(Intent.ACTION_PICK);
-//    intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
-//    assertTrue(hasAction(Intent.ACTION_PICK).matches(intent));
-//  }
 
-//  @Test
-//  public void pressMinus() {
-//    onView(withId(R.id.remove_button)).perform(click());
-//    assertEquals(0, firstMessagesScreen.numFavs);
-//
+  @Test
+  public void pickFromList() {
+    Intent intent = new Intent(Intent.ACTION_PICK);
+    assertTrue(hasAction(Intent.ACTION_PICK).matches(intent));
 
-//    int num = firstMessagesScreen.getNumFavs();
-//    onView(withId(R.id.remove_button)).perform(click());
-//
-//    assertThat(firstMessagesScreen.getNumFavs(), is(num-1));
+    onView(withId(R.id.textFirstFav)).perform(click());
+  }
 
-//
-//  @Test
-//  public void pressPlus() {
-//
-////    int num = firstMessagesScreen.getNumFavs();
-////    onView(withId(R.id.add_button)).perform(click());
-////
-////    assertThat(firstMessagesScreen.getNumFavs(), is(num+1));
-//
-//  }
+  @Test
+  public void pressMinus() {
+    onView(withId(R.id.add_button)).perform(click());
+  }
+
+  @Test
+  public void pressPlus() {
+    onView(withId(R.id.add_button)).perform(click());
+
+  }
+
+  @Test
+  public void pressFav() {
+    onView(withId(R.id.textFirstFav)).perform(click());
+  }
 
 
 
