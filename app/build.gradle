@@ -46,7 +46,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
 
-
     }
     buildTypes {
 
@@ -66,7 +65,7 @@ android {
         execution 'ANDROID_TEST_ORCHESTRATOR'
         animationsDisabled true
         unitTests.all {
-                setIgnoreFailures(true)
+            setIgnoreFailures(true)
         }
 
         unitTests {

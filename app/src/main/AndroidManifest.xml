@@ -16,16 +16,23 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name="com.launcher.ava.wizardSetUp.ZerothWizardScreen"
+    <activity android:name="com.launcher.ava.wizardSetUp.ThirdWizardScreen">
+    </activity>
+    <activity
+      android:name="com.launcher.ava.wizardSetUp.ZerothWizardScreen"
       android:screenOrientation="portrait">
     </activity>
-    <activity android:name=".FirstInternetScreen"
+    <activity
+      android:name=".FirstInternetScreen"
       android:screenOrientation="portrait"/>
-    <activity android:name=".SecondInternetScreen"
+    <activity
+      android:name=".SecondInternetScreen"
       android:screenOrientation="portrait"/>
-    <activity android:name=".SecondMessagesScreen"
+    <activity
+      android:name=".SecondMessagesScreen"
       android:screenOrientation="portrait"/>
-    <activity android:name=".FirstMessagesScreen"
+    <activity
+      android:name=".FirstMessagesScreen"
       android:screenOrientation="portrait"/>
     <activity
       android:launchMode="singleTask"
@@ -85,9 +92,11 @@
       android:authorities="com.launcher.ava.utilities.search"
       android:name="com.launcher.ava.utilities.SearchContentProvider"/>
 
-    <activity android:name="com.launcher.ava.wizardSetUp.FirstWizardScreen"
+    <activity
+      android:name="com.launcher.ava.wizardSetUp.FirstWizardScreen"
       android:screenOrientation="portrait"/>
-    <activity android:name="com.launcher.ava.wizardSetUp.SecondWizardScreen"
+    <activity
+      android:name="com.launcher.ava.wizardSetUp.SecondWizardScreen"
       android:screenOrientation="portrait"/>
   </application>
 

@@ -276,8 +276,6 @@ public class SecondWizardScreen extends AppCompatActivity {
   }
 
   public void goToNextPage(View v) {
-    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
-    launchesOnlyOnce.setPosition(DONE_WIZARD);
     startActivity(new Intent(this, MainActivity.class));
     finish();
   }
