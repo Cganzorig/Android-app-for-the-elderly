@@ -75,6 +75,7 @@ public class SearchAdapterTest {
   public void getViewTest(){
     View testview = searchAdapter.getView(3, fakeview, viewGroup);
     verify(fakeTv).setText("a");
+    View view = null;
 
   }
 }

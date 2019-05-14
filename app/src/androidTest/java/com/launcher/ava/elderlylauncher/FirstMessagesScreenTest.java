@@ -5,8 +5,11 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.rule.ActivityTestRule;
+import android.view.View;
 
 import com.launcher.ava.utilities.ContactInfo;
+
+import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -35,9 +38,17 @@ public class FirstMessagesScreenTest {
 
   @Before
   public void Init() {
+    activityRule.launchActivity(null);
+    firstMessagesScreen = activityRule.getActivity();
 //    firstMessagesScreen = new FirstMessagesScreen();
 //    firstMessagesScreen.numFavs = 1;
 
+  }
+
+  @Test
+  public void onCreateTest() {
+    View view = firstMessagesScreen.findViewById(R.id.textPhone);
+    TestCase.assertNotNull(view);
   }
 
 

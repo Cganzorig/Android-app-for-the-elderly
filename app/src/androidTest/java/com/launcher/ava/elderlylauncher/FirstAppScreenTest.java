@@ -30,81 +30,47 @@ public class FirstAppScreenTest {
   @Before
   public void setUp() throws Exception {
     firstAppScreen = activityTestRule.getActivity();
+
   }
-//
-//  @Test
-//  public void onClickGoToAppDrawer() {
-//    assertNotNull(firstAppScreen.findViewById(R.id.openDrawer));
-//  }
 
 
-//  @Before
-//  public void setUp() {
-//    activityTestRule.launchActivity(null);
-//    firstAppScreen = activityTestRule.getActivity();
-//  }
-//
-//
-//  @Test
-//  public void onCreate() {
-//    View view = firstAppScreen.findViewById(R.id.container);
-//    assertNotNull(view);
-//  }
-//
-//  @Test
-//  public void deflateFakeSearchButton() {
-//  }
-//
-//  @Test
-//  public void fakeToolbarPress() {
-//  }
-//
-//  @Test
-//  public void setFavouriteApps() {
-//  }
-//
-//  @Test
-//  public void onResume() {
-//  }
-//
-//  @Test
-//  public void onAppClick() {
-//  }
-//
-//  @Test
-//  public void onClickGoToAppDrawer() {
-//  }
-//
-//  @Test
-//  public void onResetClick() {
-//  }
-//
-//  @Test
-//  public void onCreateOptionsMenu() {
-//  }
-//
-//  @Test
-//  public void launchPlayStore() {
-//    assertNotNull(firstAppScreen.findViewById(R.id.openDrawer));
-//    onView(withId(R.id.openDrawer)).perform(click());
-//
-//    Activity appDrawer = getInstrumentation().waitForMonitorWithTimeout(monitor, 5000);
-//
-//    assertNotNull(appDrawer);
-//    appDrawer.finish();
-//
-//  }
-//
-//  @Test
-//  public void launchUninstallApp() {
-//    assertNotNull(firstAppScreen.findViewById(R.id.uninstallApp));
-//    onView(withId(R.id.uninstallApp)).perform(click());
-//
-//    Activity appDrawer = getInstrumentation().waitForMonitorWithTimeout(monitor, 5000);
-//
-//    assertNotNull(appDrawer);
-//    appDrawer.finish();
-//  }
+  @Test
+  public void deflateFakeSearchButton() {
+  }
+
+  @Test
+  public void fakeToolbarPress() {
+  }
+
+  @Test
+  public void setFavouriteApps() {
+  }
+
+  @Test
+  public void onResume() {
+  }
+
+  @Test
+  public void onAppClick() {
+  }
+
+  @Test
+  public void onClickGoToAppDrawer() {
+  }
+
+  @Test
+  public void onResetClick() {
+  }
+
+  @Test
+  public void onCreateOptionsMenu() {
+  }
+
+  @Test
+  public void launchPlayStore() {
+  }
+
+  @Test
+  public void launchUninstallApp() {
+  }
 }
-
-

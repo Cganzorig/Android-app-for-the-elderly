@@ -67,8 +67,11 @@ public class AppFrequencyList {
   }
 
   public AppInfo getHit(int num) {
-    Collections.sort(frequentlyUsedList, Collections.<AppInfoFrequencyPair>reverseOrder());
-    return frequentlyUsedList.get(num).getAppInfo();
+    if(frequentlyUsedList.size() != 0) {
+      Collections.sort(frequentlyUsedList, Collections.<AppInfoFrequencyPair>reverseOrder());
+      return frequentlyUsedList.get(num).getAppInfo();
+    }
+    return null;
   }
   public int getHitFreq(int num) {
     return frequentlyUsedList.get(num).getFreq();

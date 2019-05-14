@@ -25,8 +25,9 @@ public class RecyclerListTest {
 
   @Test
   public void onCreateTest() {
-    View view = recyclerList.getCurrentFocus();
-    assertEquals(view, recyclerList.findViewById(R.layout.activity_recycler_list));
+    View view = recyclerList.findViewById(R.id.appList);
+    assertNotNull(view);
+
   }
 
 }

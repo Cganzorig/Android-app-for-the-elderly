@@ -76,6 +76,7 @@ public class MainActivityTest {
 //    appScreen.finish();
   }
 
+
 //    Assert.assertNotEquals(intent, mainActivity.getIntent());
 //    onView(withId(R.id.RView)).check(matches(isDisplayed()));
 //  @Before
@@ -153,5 +154,11 @@ public class MainActivityTest {
 ////
 ////    assertNotNull(commonTools);
 ////    commonTools.finish();
-//  }
+
+  @Test
+  public void doNothingTest() {
+    onView(isRoot()).perform(ViewActions.pressBack());
+    onView(withId(R.id.textPhone))
+      .check(matches(isDisplayed()));
+  }
 }
