@@ -6,6 +6,7 @@ import android.view.View;
 import com.launcher.ava.elderlylauncher.AppDrawer;
 import com.launcher.ava.elderlylauncher.R;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,6 +22,11 @@ public class RecyclerListTest {
   public void createMainActivity() {
     activityRule.launchActivity(null);
     recyclerList = activityRule.getActivity();
+  }
+
+  @After
+  public void and(){
+    activityRule.finishActivity();
   }
 
   @Test

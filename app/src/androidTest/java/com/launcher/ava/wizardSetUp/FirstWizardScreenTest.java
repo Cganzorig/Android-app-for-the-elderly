@@ -19,6 +19,7 @@ import com.launcher.ava.elderlylauncher.R;
 import com.launcher.ava.utilities.OnItemClick;
 import com.launcher.ava.utilities.RecyclerList;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,8 +53,12 @@ public class FirstWizardScreenTest {
     activityRule.launchActivity(null);
     firstWizardScreen = activityRule.getActivity();
     launchesOnlyOnce = new LaunchesOnlyOnce(firstWizardScreen.getBaseContext());
+  }
 
 
+  @After
+  public void and(){
+    activityRule.finishActivity();
   }
 
   @Test
@@ -137,10 +142,16 @@ public class FirstWizardScreenTest {
 
   @Test
   public void goToPrevPage() {
+    onView(withId(R.id.prevButton)).perform(click());
+    onView(withText("Hello, \n Please follow the next two screens to set up your favourite contacts and websites for quick access."))
+      .check(matches(isDisplayed()));
   }
 
   @Test
   public void goToNextPage() {
+    onView(withId(R.id.nextBtn)).perform(click());
+    onView(withText(R.string.add_website_to_favourites))
+      .check(matches(isDisplayed()));
   }
 
   @Test

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.launcher.ava.elderlylauncher.R;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,6 +42,11 @@ public class AppSearchActivityTest {
   public void createMainActivity() {
     activityRule.launchActivity(null);
     appSearchActivity = activityRule.getActivity();
+  }
+
+  @After
+  public void and(){
+    activityRule.finishActivity();
   }
 
   @Test

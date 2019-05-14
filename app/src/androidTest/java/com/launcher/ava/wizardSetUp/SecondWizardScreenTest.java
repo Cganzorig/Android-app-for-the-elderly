@@ -1,11 +1,15 @@
 package com.launcher.ava.wizardSetUp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
 import com.launcher.ava.elderlylauncher.R;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,22 +26,22 @@ import static org.junit.Assert.*;
 public class SecondWizardScreenTest {
 
   public ActivityTestRule<SecondWizardScreen> activityRule = new ActivityTestRule<>(SecondWizardScreen.class);
-  private SecondWizardScreen SecondWizardScreen;
+  private SecondWizardScreen secondWizardScreen;
 
   @Before
   public void init(){
     activityRule.launchActivity(null);
-    SecondWizardScreen = activityRule.getActivity();
+    secondWizardScreen = activityRule.getActivity();
+  }
 
+  @After
+  public void and(){
+    activityRule.finishActivity();
   }
   @Test
   public void onCreate() {
-    View view = SecondWizardScreen.findViewById(R.id.textPhone);
+    View view = secondWizardScreen.findViewById(R.id.textPhone);
     assertNotNull(view);
-  }
-
-  @Test
-  public void setWhiteBlocks() {
   }
 
   @Test
@@ -56,13 +60,6 @@ public class SecondWizardScreenTest {
   public void pressPlus() {
   }
 
-  @Test
-  public void pressFav() {
-  }
-
-  @Test
-  public void displayFavouriteWebsites() {
-  }
 
   @Test
   public void goToPrevPage() {
