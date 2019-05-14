@@ -276,7 +276,7 @@ public class SecondWizardScreen extends AppCompatActivity {
   }
 
   public void goToNextPage(View v) {
-    startActivity(new Intent(this, MainActivity.class));
+    startActivity(new Intent(this, ThirdWizardScreen.class));
     finish();
   }
 

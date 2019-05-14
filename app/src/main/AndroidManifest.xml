@@ -16,7 +16,9 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name="com.launcher.ava.wizardSetUp.ThirdWizardScreen">
+    <activity
+      android:name="com.launcher.ava.wizardSetUp.ThirdWizardScreen"
+      android:screenOrientation="portrait">
     </activity>
     <activity
       android:name="com.launcher.ava.wizardSetUp.ZerothWizardScreen"
