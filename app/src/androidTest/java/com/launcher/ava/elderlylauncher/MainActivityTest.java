@@ -46,11 +46,6 @@ public class MainActivityTest {
   public MainActivity mainActivity;
   private FirstWizardScreen firstWizardScreen;
 
-
-  Instrumentation.ActivityMonitor monitorAppScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
-  Instrumentation.ActivityMonitor monitorMessageScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
-
-
   @Before
   public void createMainActivity() {
     Intent intent1 = new Intent();
