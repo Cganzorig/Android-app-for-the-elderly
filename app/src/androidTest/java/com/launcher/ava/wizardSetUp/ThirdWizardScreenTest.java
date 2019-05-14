@@ -1,5 +1,6 @@
 package com.launcher.ava.wizardSetUp;
 
+import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
@@ -25,7 +26,8 @@ public class ThirdWizardScreenTest {
 
   @Before
   public void init(){
-    activityRule.launchActivity(null);
+    Intent intent = new Intent();
+    activityRule.launchActivity(intent);
     thirdWizardScreen = activityRule.getActivity();
   }
 

@@ -11,6 +11,7 @@ import android.provider.ContactsContract;
 import android.support.constraint.ConstraintLayout;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.rule.GrantPermissionRule;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import com.launcher.ava.utilities.RecyclerList;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -44,13 +46,17 @@ import static org.junit.Assert.*;
 
 public class FirstWizardScreenTest {
 
+  @Rule
   public ActivityTestRule<FirstWizardScreen> activityRule = new ActivityTestRule<>(FirstWizardScreen.class);
+
+
   private FirstWizardScreen firstWizardScreen;
   private LaunchesOnlyOnce launchesOnlyOnce;
 
   @Before
   public void init(){
-    activityRule.launchActivity(null);
+    Intent intent = new Intent();
+    activityRule.launchActivity(intent);
     firstWizardScreen = activityRule.getActivity();
     launchesOnlyOnce = new LaunchesOnlyOnce(firstWizardScreen.getBaseContext());
   }
@@ -104,41 +110,6 @@ public class FirstWizardScreenTest {
     assertTrue(hasData(Uri.parse("tel:")).matches(intent));
   }
 
-  @Test
-  public void putContactInfoInSharedPrefsTest() {
-  }
-
-  @Test
-  public void pressMinus() {
-  }
-
-  @Test
-  public void pressPlus() {
-  }
-
-  @Test
-  public void passExtraInfoToNewIntent() {
-  }
-
-  @Test
-  public void pickFromList() {
-  }
-
-  @Test
-  public void pressFav() {
-  }
-
-  @Test
-  public void onActivityResult() {
-  }
-
-  @Test
-  public void displayFavouriteContacts() {
-  }
-
-  @Test
-  public void onRequestPermissionsResult() {
-  }
 
   @Test
   public void goToPrevPage() {
@@ -150,11 +121,13 @@ public class FirstWizardScreenTest {
   @Test
   public void goToNextPage() {
     onView(withId(R.id.nextBtn)).perform(click());
-    onView(withText(R.string.add_website_to_favourites))
+    onView(withText("PICK THREE FAVOURITE WEBSITES"))
       .check(matches(isDisplayed()));
   }
 
   @Test
   public void onBackPressed() {
   }
+
+
 }

@@ -30,7 +30,8 @@ public class SecondWizardScreenTest {
 
   @Before
   public void init(){
-    activityRule.launchActivity(null);
+    Intent intent = new Intent();
+    activityRule.launchActivity(intent);
     secondWizardScreen = activityRule.getActivity();
   }
 

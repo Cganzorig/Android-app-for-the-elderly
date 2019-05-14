@@ -65,6 +65,18 @@ public class MainActivityTest {
   }
 
 
+  @After
+  public void end() {
+    firstWizardScreen = activityTestRule2.getActivity();
+    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(firstWizardScreen.getBaseContext());
+    launchesOnlyOnce.setPosition(0);
+
+
+    activityTestRule.finishActivity();
+    activityTestRule2.finishActivity();
+  }
+
+
   @Test
   public void onCreateLoadsCorrectView() {
     View view = mainActivity.findViewById(R.id.constraintLayout);

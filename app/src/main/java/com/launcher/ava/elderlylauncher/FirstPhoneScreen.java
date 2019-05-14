@@ -424,7 +424,5 @@ public class FirstPhoneScreen extends AppCompatActivity {
     }
   }
 
-  public int getNumFavs() {
-    return numFavs;
-  }
+
 }
