@@ -2,6 +2,7 @@ package com.launcher.ava.elderlylauncher;
 
 import android.app.Activity;
 import android.app.Instrumentation;
+import android.content.Context;
 import android.content.Intent;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.ViewAction;
@@ -10,6 +11,10 @@ import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
+import com.launcher.ava.wizardSetUp.FirstWizardScreen;
+import com.launcher.ava.wizardSetUp.LaunchesOnlyOnce;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -25,7 +30,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.v4.content.ContextCompat.startActivity;
+import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.DONE_WIZARD;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertNotNull;
 
@@ -36,17 +43,29 @@ public class MainActivityTest {
 
   @Rule
   public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+  @Rule
+  public ActivityTestRule<FirstWizardScreen> activityTestRule2 = new ActivityTestRule<>(FirstWizardScreen.class);
+
   public MainActivity mainActivity;
+  private FirstWizardScreen firstWizardScreen;
 
-
-  Instrumentation.ActivityMonitor monitorAppScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
-  Instrumentation.ActivityMonitor monitorMessageScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
 
 
   @Before
   public void createMainActivity() {
+    Intent intent1 = new Intent();
+    activityTestRule2.launchActivity(intent1);
+    firstWizardScreen = activityTestRule2.getActivity();
+    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(firstWizardScreen.getBaseContext());
+    launchesOnlyOnce.setPosition(3);
+
+    Intent intent = new Intent();
+    activityTestRule.launchActivity(intent);
     mainActivity = activityTestRule.getActivity();
+
+
   }
+
 
   @Test
   public void onCreateLoadsCorrectView() {
@@ -56,6 +75,10 @@ public class MainActivityTest {
 
   @Test
   public void launchAppScreen() {
+    Instrumentation.ActivityMonitor monitorAppScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
+    Instrumentation.ActivityMonitor monitorMessageScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
+
+
     assertNotNull(mainActivity.findViewById(R.id.cLayoutApp));
     onView(withId(R.id.cLayoutApp)).perform(click());
     Activity appScreen = getInstrumentation().waitForMonitorWithTimeout(monitorAppScreen, 5000);
@@ -66,8 +89,8 @@ public class MainActivityTest {
 
   @Test
   public void launchMessagesScreen() {
-    onView(isRoot()).perform(ViewActions.pressBack());
-    onView(withId(R.id.cLayoutMessages)).check(matches(isDisplayed()));
+    onView(withId(R.id.cLayoutMessages)).perform(click());
+    onView(withText(R.string.main_message)).check(matches(isDisplayed()));
 //    assertNotNull(mainActivity.findViewById(R.id.cLayoutMessages));
 //    onView(withId(R.id.cLayoutMessages)).perform(click());
 //    Activity appScreen = getInstrumentation().waitForMonitorWithTimeout(monitorMessageScreen, 5000);
@@ -159,6 +182,13 @@ public class MainActivityTest {
   public void doNothingTest() {
     onView(isRoot()).perform(ViewActions.pressBack());
     onView(withId(R.id.textPhone))
+      .check(matches(isDisplayed()));
+  }
+
+  @Test
+  public void buttonCall() {
+    onView(withId(R.id.cLayoutBtn)).perform();
+    onView(withText(R.string.pick_contact_from_list))
       .check(matches(isDisplayed()));
   }
 }

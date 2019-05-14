@@ -8,6 +8,7 @@ import com.launcher.ava.elderlylauncher.R;
 
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,7 +32,11 @@ public class ZerothWizardScreenTest {
   public void init(){
     activityRule.launchActivity(null);
     zerothWizardScreen = activityRule.getActivity();
+  }
 
+  @After
+  public void and(){
+    activityRule.finishActivity();
   }
 
   @Test

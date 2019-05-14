@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.launcher.ava.elderlylauncher.R;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,8 +27,13 @@ public class ThirdWizardScreenTest {
   public void init(){
     activityRule.launchActivity(null);
     thirdWizardScreen = activityRule.getActivity();
-
   }
+
+  @After
+  public void and(){
+    activityRule.finishActivity();
+  }
+
   @Test
   public void onCreate() {
     View view = thirdWizardScreen.findViewById(R.id.textPhone);
