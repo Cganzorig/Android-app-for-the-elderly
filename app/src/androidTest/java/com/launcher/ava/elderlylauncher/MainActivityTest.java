@@ -38,9 +38,6 @@ import static org.junit.Assert.assertNotNull;
 
 public class MainActivityTest {
 
-//  @Rule
-//  public IntentsTestRule<MainActivity> activityRule = new IntentsTestRule<>(MainActivity.class);
-
   @Rule
   public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
   @Rule
@@ -65,8 +62,6 @@ public class MainActivityTest {
     Intent intent = new Intent();
     activityTestRule.launchActivity(intent);
     mainActivity = activityTestRule.getActivity();
-
-
   }
 
 
@@ -78,108 +73,34 @@ public class MainActivityTest {
 
   @Test
   public void launchAppScreen() {
-    Instrumentation.ActivityMonitor monitorAppScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
-    Instrumentation.ActivityMonitor monitorMessageScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
-
-
-    assertNotNull(mainActivity.findViewById(R.id.cLayoutApp));
     onView(withId(R.id.cLayoutApp)).perform(click());
-    Activity appScreen = getInstrumentation().waitForMonitorWithTimeout(monitorAppScreen, 5000);
-
-    assertNotNull(appScreen);
-    appScreen.finish();
+    onView(withText(R.string.main_apps)).check(matches(isDisplayed()));
   }
 
   @Test
   public void launchMessagesScreen() {
     onView(withId(R.id.cLayoutMessages)).perform(click());
     onView(withText(R.string.main_message)).check(matches(isDisplayed()));
-//    assertNotNull(mainActivity.findViewById(R.id.cLayoutMessages));
-//    onView(withId(R.id.cLayoutMessages)).perform(click());
-//    Activity appScreen = getInstrumentation().waitForMonitorWithTimeout(monitorMessageScreen, 5000);
-//
-//    assertNotNull(appScreen);
-//    appScreen.finish();
   }
 
+  @Test
+  public void launchPhoneScreen() {
+    onView(withId(R.id.cLayoutPhone)).perform(click());
+    onView(withText(R.string.main_call)).check(matches(isDisplayed()));
+  }
 
-//    Assert.assertNotEquals(intent, mainActivity.getIntent());
-//    onView(withId(R.id.RView)).check(matches(isDisplayed()));
-//  @Before
-//  public void setUp() {
-//    Intents.init();
-//    activityRule.launchActivity(new Intent());
-//  }
-//
-//  @Test
-//  public void launchAppScreen() {
-//    onView(withId(R.id.cLayoutApp)).perform(click());
-//    intended(hasComponent(FirstAppScreen.class.getName()));
-//  }
+  @Test
+  public void launchToolScreen() {
+    onView(withId(R.id.cLayoutTools)).perform(click());
+    onView(withText(R.string.main_question)).check(matches(isDisplayed()));
+  }
 
-//
-//  private MainActivity mainActivity = new MainActivity();
-//
-//  Instrumentation.ActivityMonitor monitorAppScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
-//  Instrumentation.ActivityMonitor monitorPhoneScreen = getInstrumentation().addMonitor(FirstPhoneScreen.class.getName(), null, false);
-//  Instrumentation.ActivityMonitor monitorMessagesScreen = getInstrumentation().addMonitor(FirstMessagesScreen.class.getName(), null, false);
-//  Instrumentation.ActivityMonitor monitorInternetScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
-//  Instrumentation.ActivityMonitor monitorCommonToolsScreen = getInstrumentation().addMonitor(FirstAppScreen.class.getName(), null, false);
-//
-//
-//  @Test
-//  public void launchAppScreen() {
-//    assertNotNull(mainActivity.findViewById(R.id.cLayoutApp));
-//    onView(withId(R.id.cLayoutApp)).perform(click());
-//
-//    Activity appScreen = getInstrumentation().waitForMonitorWithTimeout(monitorAppScreen, 5000);
-//
-//    assertNotNull(appScreen);
-//    appScreen.finish();
-//  }
-//
-//  @Test
-//  public void launchPhoneScreen() {
-////    assertNotNull(mainActivity.findViewById(R.id.cLayoutApp));
-////    onView(withId(R.id.cLayoutApp)).perform(click());
-////
-////    Activity phone = getInstrumentation().waitForMonitorWithTimeout(monitorPhoneScreen, 5000);
-////
-////    assertNotNull(phone);
-////    phone.finish();
-//  }
-//
-//  @Test
-//  public void launchMessagesScreen() {
-////    assertNotNull(mainActivity.findViewById(R.id.cLayoutMessages));
-////    onView(withId(R.id.cLayoutMessages)).perform(click());
-////
-////    Activity message = getInstrumentation().waitForMonitorWithTimeout(monitorMessagesScreen, 5000);
-////
-////    assertNotNull(message);
-////    message.finish();
-//  }
-//
-//  @Test
-//  public void launchInternetScreen() {
-////    assertNotNull(mainActivity.findViewById(R.id.cLayoutInternet));
-////    onView(withId(R.id.cLayoutInternet)).perform(click());
-////
-////    Activity internet = getInstrumentation().waitForMonitorWithTimeout(monitorInternetScreen, 5000);
-////
-////    assertNotNull(internet);
-////    internet.finish();
-//  }
-//
-//  @Test
-//  public void launchCommonToolsScreen() {
-////    assertNotNull(mainActivity.findViewById(R.id.cLayoutTools));
-////    onView(withId(R.id.cLayoutTools)).perform(click());
-////
-////    Activity commonTools = getInstrumentation().waitForMonitorWithTimeout(monitorCommonToolsScreen, 5000);
-////
-////    assertNotNull(commonTools);
-////    commonTools.finish();
+  @Test
+  public void launchInternetScreen() {
+    onView(withId(R.id.cLayoutInternet)).perform(click());
+    onView(withText(R.string.main_internet)).check(matches(isDisplayed()));
+  }
+
 
   @Test
   public void doNothingTest() {
