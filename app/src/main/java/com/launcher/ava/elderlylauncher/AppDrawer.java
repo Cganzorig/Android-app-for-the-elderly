@@ -6,6 +6,7 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.launcher.ava.utilities.AppFrequencyList;
@@ -32,9 +33,13 @@ public class AppDrawer extends AppCompatActivity {
     Intent thisIntent = getIntent();
     if (thisIntent.getIntExtra("deleteMode", 0) == 1) {
       isDeleteMode = true;
+      TextView title = findViewById(R.id.textPhone);
+      title.setText("SELECT APP TO DELETE");
     }
     else {
       isDeleteMode = false;
+      TextView title = findViewById(R.id.textPhone);
+      title.setText("LIST OF APPS");
     }
 
     RAdapter radapter = new RAdapter(this);

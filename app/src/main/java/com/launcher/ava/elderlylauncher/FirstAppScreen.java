@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -11,6 +12,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -70,25 +72,49 @@ public class FirstAppScreen extends AppCompatActivity {
     menu.performIdentifierAction(R.id.search_m, 0);
   }
 
+  private String setTitle(String label) {
+
+    DisplayMetrics displayMetrics = new DisplayMetrics();
+
+    getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+    int height = displayMetrics.heightPixels;
+
+    if (height <  600 && label.length() > 10) {
+
+      label = label.substring(0, 10) + "...";
+    }
+
+    return label;
+  }
 
   public void setFavouriteApps() {
+
     final TextView textApp1 = (TextView) findViewById(R.id.textApp1);
-    textApp1.setText(AppFrequencyList.getInstance().getHit(0).label);
+    String label1 = setTitle(AppFrequencyList.getInstance().getHit(0).label.toString());
+    textApp1.setText(label1);
+
     final ImageView app1 = findViewById(R.id.app1);
     app1.setImageDrawable(AppFrequencyList.getInstance().getHit(0).icon);
 
     final TextView textApp2 = (TextView) findViewById(R.id.textApp2);
-    textApp2.setText(AppFrequencyList.getInstance().getHit(1).label);
+    String label2 = setTitle(AppFrequencyList.getInstance().getHit(1).label.toString());
+    textApp2.setText(label2);
+
     final ImageView app2 = findViewById(R.id.app2);
     app2.setImageDrawable(AppFrequencyList.getInstance().getHit(1).icon);
 
     final TextView textApp3 = (TextView) findViewById(R.id.textApp3);
-    textApp3.setText(AppFrequencyList.getInstance().getHit(2).label);
+    String label3 = setTitle(AppFrequencyList.getInstance().getHit(2).label.toString());
+    textApp3.setText(label3);
+
     final ImageView app3 =  findViewById(R.id.app3);
     app3.setImageDrawable(AppFrequencyList.getInstance().getHit(2).icon);
 
     final TextView textApp4 = (TextView) findViewById(R.id.textApp4);
-    textApp4.setText(AppFrequencyList.getInstance().getHit(3).label);
+    String label4 = setTitle(AppFrequencyList.getInstance().getHit(3).label.toString());
+    textApp4.setText(label4);
+
     final ImageView app4 = findViewById(R.id.app4);
     app4.setImageDrawable(AppFrequencyList.getInstance().getHit(3).icon);
   }

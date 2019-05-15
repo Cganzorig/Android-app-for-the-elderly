@@ -40,8 +40,8 @@ android {
         applicationId "com.launcher.ava.elderlylauncher"
         minSdkVersion 23 // support text resize
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -55,7 +55,6 @@ android {
 
         release {
             minifyEnabled false
-            //debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testCoverageEnabled true // true for debug
         }
