@@ -4,9 +4,30 @@ This project has been designed on ANDROID STUDIO,
 and requires at least the 23rd Android SDK version to run.
 (target compiling JDK version is 28th Android JDK version)
 
-To make this project run, build the gradle using the
+To make this project run,
 
-./gradlew build
+1. Create an emulator using an appropriate system image / use a phone connection
+
+   ////////////////////////////////////////////////////////////////////////////////////
+   To create the emulator, got to tools -> AVD manager -> create virutal Device
+
+   Pick a device (e.g. Pixel 3), download an API (with level 28)
+
+   Press next until you reach the last option selector and finish.
+   ////////////////////////////////////////////////////////////////////////////////////
+
+2. Build the project using the "Make Project" functionality (green hammer)
+
+3. Run the app executable on the emulator/the Phone by pressing "Run App" or SHIFT+F10
+
+4. To Obtain a jacoco report, go to the gradle pannel,
+
+   search in :app the jacocoTestReport gradle task and execute it by double cliking on it.
+
+   Otherwise, type ./gradlew jacocoTestReport
+
+https://play.google.com/store/apps/details?id=com.launcher.ava.elderlylauncher
+
 
 
 
