@@ -50,13 +50,13 @@ android {
     buildTypes {
 
         debug {
-            testCoverageEnabled true // true for debug
+            testCoverageEnabled false // true for debug
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            testCoverageEnabled true // true for debug
+            testCoverageEnabled false // true for debug
         }
     }
 
