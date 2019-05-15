@@ -125,9 +125,6 @@ public class FirstWizardScreenTest {
       .check(matches(isDisplayed()));
   }
 
-  @Test
-  public void onBackPressed() {
-  }
 
 
 }

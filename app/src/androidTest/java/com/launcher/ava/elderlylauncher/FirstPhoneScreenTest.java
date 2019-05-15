@@ -60,47 +60,6 @@ public class FirstPhoneScreenTest {
 
 
 
-//  private FirstPhoneScreen firstPhoneScreen;
-//  private ContactInfo contactInfo;
-//  private String sp = "testPhone";
-//  SharedPreferences sharedPreferences ;
-//
-//
-//  @Before
-//  public void setUp() {
-//    firstPhoneScreen = new FirstPhoneScreen();
-//    contactInfo = new ContactInfo();
-//    contactInfo.displayName = "John";
-//    contactInfo.number = "1224567897";
-//    contactInfo.skypeVoiceId = "";
-//    contactInfo.viberVoiceId = "";
-//    contactInfo.whatsappVoiceId = "";
-//  }
-//
-//  @Test
-//  public void putContactInfoInSharedPrefs() {
-//    firstPhoneScreen.putContactInfoInSharedPrefs(sp, contactInfo);
-//
-//    assertEquals("John", sharedPreferences.getString("displayName", ""));
-//
-//
-//  }
-
-
-
-
-//  public void putContactInfoInSharedPrefs(String sharedPrefName, ContactInfo tmpInfo) {
-//
-//    SharedPreferences sp = getSharedPreferences(sharedPrefName, MODE_PRIVATE);
-//    SharedPreferences.Editor editor = sp.edit();
-//    editor.putString("displayName", tmpInfo.displayName);
-//    editor.putString("number", tmpInfo.number);
-//    editor.putString("whatsappVoiceId", tmpInfo.whatsappVoiceId);
-//    editor.putString("viberVoiceId", tmpInfo.viberVoiceId);
-//    editor.putString("skypeVoiceId", tmpInfo.skypeVoiceId);
-//    editor.apply();
-//  }
-
   @Test
   public void pickFromList() {
     Intent intent = new Intent(Intent.ACTION_PICK);

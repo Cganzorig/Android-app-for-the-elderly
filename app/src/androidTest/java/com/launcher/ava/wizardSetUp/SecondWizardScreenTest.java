@@ -45,22 +45,6 @@ public class SecondWizardScreenTest {
     assertNotNull(view);
   }
 
-  @Test
-  public void pickFromWebsiteList() {
-  }
-
-  @Test
-  public void doNothing() {
-  }
-
-  @Test
-  public void pressMinus() {
-  }
-
-  @Test
-  public void pressPlus() {
-  }
-
 
   @Test
   public void goToPrevPage() {

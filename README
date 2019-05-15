@@ -1,0 +1,15 @@
+/////README FILE//////
+
+This project has been designed on ANDROID STUDIO,
+and requires at least the 23rd Android SDK version to run.
+(target compiling JDK version is 28th Android JDK version)
+
+To make this project run, build the gradle using the
+
+./gradlew build
+
+
+
+
+
+

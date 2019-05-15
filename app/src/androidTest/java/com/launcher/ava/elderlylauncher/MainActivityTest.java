@@ -116,10 +116,5 @@ public class MainActivityTest {
       .check(matches(isDisplayed()));
   }
 
-  @Test
-  public void buttonCall() {
-    onView(withId(R.id.cLayoutBtn)).perform();
-    onView(withText(R.string.pick_contact_from_list))
-      .check(matches(isDisplayed()));
-  }
+
 }
