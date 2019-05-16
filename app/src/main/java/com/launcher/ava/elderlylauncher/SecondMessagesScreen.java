@@ -90,53 +90,54 @@ public class SecondMessagesScreen extends AppCompatActivity {
     }
   }
 
-  public void sendMessage() {
-    // Permission has already been granted
-    String uri= "smsto:"+this.contactInfo.number;
-    Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(uri));
-    intent.putExtra("sms_body", "");
-    intent.putExtra("compose_mode", true);
-    startActivity(intent);
-    finish();
-  }
-
   public void pressCall(View view) {
     switch (view.getId()) {
       case R.id.textRegCall:
-        String uriRegMsg= "smsto:"+this.contactInfo.number;
-        Intent intentRegMsg = new Intent(Intent.ACTION_SENDTO, Uri.parse(uriRegMsg));
-        intentRegMsg.putExtra("sms_body", "");
-        intentRegMsg.putExtra("compose_mode", true);
-        startActivity(intentRegMsg);
-        finish();
+        sendTextMessage();
         break;
       case R.id.textSecondCall:
         if (this.secondOptionFlag.equals("WHATSAPP")) {
-          String whatsAppRoot = "http://api.whatsapp.com/";
-          String number = "send?phone="+ this.contactInfo.number;
-          String uriWhatsapp = whatsAppRoot+number;
-
-          Intent intentWhatsapp = new Intent(Intent.ACTION_VIEW);
-          intentWhatsapp.setData(Uri.parse(uriWhatsapp));
-          startActivity(intentWhatsapp);
+          sendWhatsAppMessage();
         }
 
         if (this.secondOptionFlag.equals("VIBER")) {
-          Uri uri = Uri.parse("tel:" + Uri.encode(contactInfo.number));
-          Intent intent = new Intent("android.intent.action.VIEW");
-          intent.setClassName("com.viber.voip", "com.viber.voip.WelcomeActivity");
-          intent.setData(uri);
-          startActivity(intent);
+          sendViberMessage();
         }
         break;
       case R.id.textThirdCall:
-        Uri uri = Uri.parse("tel:" + Uri.encode(contactInfo.number));
-        Intent intent = new Intent("android.intent.action.VIEW");
-        intent.setClassName("com.viber.voip", "com.viber.voip.WelcomeActivity");
-        intent.setData(uri);
-        startActivity(intent);
+        sendViberMessage();
         break;
     }
+  }
+
+  private void sendViberMessage() {
+    String viberRoot = "viber://chat?number=%2B";
+    String uriViberapp = viberRoot+this.contactInfo.number;
+
+    Intent intentWhatsapp = new Intent(Intent.ACTION_VIEW);
+    intentWhatsapp.setData(Uri.parse(uriViberapp));
+    startActivity(intentWhatsapp);
+    finish();
+  }
+
+  private void sendWhatsAppMessage() {
+    String whatsAppRoot = "http://api.whatsapp.com/";
+    String number = "send?phone="+ this.contactInfo.number;
+    String uriWhatsapp = whatsAppRoot+number;
+
+    Intent intentWhatsapp = new Intent(Intent.ACTION_VIEW);
+    intentWhatsapp.setData(Uri.parse(uriWhatsapp));
+    startActivity(intentWhatsapp);
+    finish();
+  }
+
+  private void sendTextMessage() {
+    String uriRegMsg = "smsto:" + this.contactInfo.number;
+    Intent intentRegMsg = new Intent(Intent.ACTION_SENDTO, Uri.parse(uriRegMsg));
+    intentRegMsg.putExtra("sms_body", "");
+    intentRegMsg.putExtra("compose_mode", true);
+    startActivity(intentRegMsg);
+    finish();
   }
 
   public void doNothing(View view) {

@@ -132,19 +132,33 @@ public class SecondPhoneScreen extends AppCompatActivity {
         }
 
         if (this.secondOptionFlag.equals("VIBER")) {
-          Uri uri = Uri.parse("tel:" + Uri.encode(contactInfo.number));
-          Intent intent = new Intent("android.intent.action.VIEW");
-          intent.setClassName("com.viber.voip", "com.viber.voip.WelcomeActivity");
-          intent.setData(uri);
-          startActivity(intent);
+
+          if (ContextCompat.checkSelfPermission(this,
+            Manifest.permission.CALL_PHONE)
+            != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+              new String[]{Manifest.permission.CALL_PHONE},
+              MY_PERMISSIONS_REQUEST_WHATSAPP);
+
+          } else {
+            callViber();
+          }
+
         }
         break;
       case R.id.textThirdCall:
-        Uri uri = Uri.parse("tel:" + Uri.encode(contactInfo.number));
-        Intent intent = new Intent("android.intent.action.VIEW");
-        intent.setClassName("com.viber.voip", "com.viber.voip.WelcomeActivity");
-        intent.setData(uri);
-        startActivity(intent);
+        if (ContextCompat.checkSelfPermission(this,
+          Manifest.permission.CALL_PHONE)
+          != PackageManager.PERMISSION_GRANTED) {
+
+          ActivityCompat.requestPermissions(this,
+            new String[]{Manifest.permission.CALL_PHONE},
+            MY_PERMISSIONS_REQUEST_WHATSAPP);
+
+        } else {
+          callViber();
+        }
         break;
     }
   }
@@ -162,6 +176,21 @@ public class SecondPhoneScreen extends AppCompatActivity {
       //
     }
   }
+
+  private void callViber() {
+    String uriString = "content://com.android.contacts/data/" + contactInfo.viberVoiceId;
+
+    Intent intent = new Intent();
+    intent.setAction(Intent.ACTION_VIEW);
+    intent.setData(Uri.parse(uriString));
+    intent.setPackage("com.viber.voip");
+    try {
+      startActivity(intent);
+    } catch (Exception e) {
+      //
+    }
+  }
+
 
   public void doNothing(View view) {
   }
