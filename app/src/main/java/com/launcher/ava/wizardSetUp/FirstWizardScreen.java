@@ -351,7 +351,7 @@ public class FirstWizardScreen extends AppCompatActivity {
     int numFavs = 0;
     SharedPreferences sp1 = getSharedPreferences("button1", Context.MODE_PRIVATE);
     if (sp1.contains("displayName")) {
-      String s = "Call " + sp1.getString("displayName", "");
+      String s = sp1.getString("displayName", "");
       TextView tv1 = findViewById(R.id.textFirstFav);
       tv1.setText(s);
 
@@ -367,7 +367,7 @@ public class FirstWizardScreen extends AppCompatActivity {
 
     SharedPreferences sp2 = getSharedPreferences("button2", Context.MODE_PRIVATE);
     if (sp2.contains("displayName")) {
-      String s = "Call " + sp2.getString("displayName", "");
+      String s = sp2.getString("displayName", "");
       TextView tv2 = findViewById(R.id.textSecondFav);
       tv2.setText(s);
       ImageView iv2 = findViewById(R.id.iv2);
@@ -382,7 +382,7 @@ public class FirstWizardScreen extends AppCompatActivity {
 
     SharedPreferences sp3 = getSharedPreferences("button3", Context.MODE_PRIVATE);
     if (sp3.contains("displayName")) {
-      String s = "Call " + sp3.getString("displayName", "");
+      String s = sp3.getString("displayName", "");
       TextView tv3 = findViewById(R.id.textThirdFav);
       tv3.setText(s);
       ImageView iv3 = findViewById(R.id.iv3);
@@ -397,22 +397,6 @@ public class FirstWizardScreen extends AppCompatActivity {
 
     this.numFavs = numFavs;
     setWhiteBlocks();
-  }
-
-  private String queryCursor(Uri contactUri) {
-
-    String answer = "False";
-    String[] projection = new String[]{Phone.NUMBER};
-
-    Cursor cursor = getContentResolver()
-      .query(contactUri, projection, null, null, null);
-
-    if (cursor != null && cursor.moveToFirst()) {
-      answer = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
-    }
-    assert cursor != null;
-    cursor.close();
-    return answer;
   }
 
   @Override

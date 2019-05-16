@@ -1,12 +1,10 @@
 package com.launcher.ava.wizardSetUp;
 
-import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.ONE_WIZARD;
-import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.TWO_WIZARD;
 import static com.launcher.ava.wizardSetUp.LaunchesOnlyOnce.ZERO_WIZARD;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.launcher.ava.elderlylauncher.R;
 
