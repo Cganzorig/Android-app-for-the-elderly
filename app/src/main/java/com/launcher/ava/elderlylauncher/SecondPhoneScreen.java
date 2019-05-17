@@ -22,6 +22,8 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
   private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
   private static final int MY_PERMISSIONS_REQUEST_WHATSAPP = 2;
+  private static final int MY_PERMISSIONS_REQUEST_VIBER = 3;
+
 
   TextView title;
   TextView callOption;
@@ -139,7 +141,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
             ActivityCompat.requestPermissions(this,
               new String[]{Manifest.permission.CALL_PHONE},
-              MY_PERMISSIONS_REQUEST_WHATSAPP);
+              MY_PERMISSIONS_REQUEST_VIBER);
 
           } else {
             callViber();
@@ -154,7 +156,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
 
           ActivityCompat.requestPermissions(this,
             new String[]{Manifest.permission.CALL_PHONE},
-            MY_PERMISSIONS_REQUEST_WHATSAPP);
+            MY_PERMISSIONS_REQUEST_VIBER);
 
         } else {
           callViber();
@@ -208,15 +210,7 @@ public class SecondPhoneScreen extends AppCompatActivity {
           makeCall();
         } else {
           // permission denied
-          Intent backToHome = new Intent(this, SecondPhoneScreen.class);
-          backToHome.putExtra("displayName", this.contactInfo.displayName);
-          backToHome.putExtra("number", this.contactInfo.number);
-          backToHome.putExtra("whatsappVoiceId", this.contactInfo.whatsappVoiceId);
-          backToHome.putExtra("skypeVoiceId", this.contactInfo.skypeVoiceId);
-          backToHome.putExtra("viberVoiceId", this.contactInfo.viberVoiceId);
-
-          startActivity(backToHome);
-          finish();
+          backHomeIfPermDenied();
         }
         break;
       case MY_PERMISSIONS_REQUEST_WHATSAPP:
@@ -227,17 +221,32 @@ public class SecondPhoneScreen extends AppCompatActivity {
           callWhatsapp();
         } else {
           // permission denied
-          Intent backToHome = new Intent(this, SecondPhoneScreen.class);
-          backToHome.putExtra("displayName", this.contactInfo.displayName);
-          backToHome.putExtra("number", this.contactInfo.number);
-          backToHome.putExtra("whatsappVoiceId", this.contactInfo.whatsappVoiceId);
-          backToHome.putExtra("skypeVoiceId", this.contactInfo.skypeVoiceId);
-          backToHome.putExtra("viberVoiceId", this.contactInfo.viberVoiceId);
+          backHomeIfPermDenied();
+        }
+        break;
+      case MY_PERMISSIONS_REQUEST_VIBER:
+        // permission was granted
+        if (grantResults.length > 0
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-          startActivity(backToHome);
-          finish();
+          callWhatsapp();
+        } else {
+          // permission denied
+          backHomeIfPermDenied();
         }
         break;
     }
+  }
+
+  private void backHomeIfPermDenied() {
+    Intent backToHome = new Intent(this, SecondPhoneScreen.class);
+    backToHome.putExtra("displayName", this.contactInfo.displayName);
+    backToHome.putExtra("number", this.contactInfo.number);
+    backToHome.putExtra("whatsappVoiceId", this.contactInfo.whatsappVoiceId);
+    backToHome.putExtra("skypeVoiceId", this.contactInfo.skypeVoiceId);
+    backToHome.putExtra("viberVoiceId", this.contactInfo.viberVoiceId);
+
+    startActivity(backToHome);
+    finish();
   }
 }

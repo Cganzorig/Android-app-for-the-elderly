@@ -25,9 +25,9 @@ public class ThirdWizardScreen extends AppCompatActivity {
   }
 
   public void goToNextPage(View v) {
-    LaunchesOnlyOnce launchesOnlyOnce = new LaunchesOnlyOnce(this);
-    launchesOnlyOnce.setPosition(DONE_WIZARD);
-    startActivity(new Intent(this, MainActivity.class));
+    Intent i = new Intent(Intent.ACTION_MAIN);
+    i.addCategory(Intent.CATEGORY_HOME);
+    startActivity(i);
     finish();
   }
 }
